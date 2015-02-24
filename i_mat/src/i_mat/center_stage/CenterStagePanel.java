@@ -27,10 +27,14 @@ public class CenterStagePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        filterSortViewPanel1 = new i_mat.center_stage.FilterSortViewPanel();
+
         setLayout(new java.awt.BorderLayout());
+        add(filterSortViewPanel1, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private i_mat.center_stage.FilterSortViewPanel filterSortViewPanel1;
     // End of variables declaration//GEN-END:variables
 }
