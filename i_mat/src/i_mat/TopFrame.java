@@ -29,10 +29,12 @@ public class TopFrame extends javax.swing.JFrame {
 
         centerStagePanel1 = new i_mat.center_stage.CenterStagePanel();
         filterSortViewPanel2 = new i_mat.center_stage.FilterSortViewPanel();
+        browsePanel1 = new i_mat.BrowsePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        centerStagePanel1.add(filterSortViewPanel2, java.awt.BorderLayout.PAGE_START);
+        centerStagePanel1.add(filterSortViewPanel2, java.awt.BorderLayout.CENTER);
+        centerStagePanel1.add(browsePanel1, java.awt.BorderLayout.WEST);
 
         getContentPane().add(centerStagePanel1, java.awt.BorderLayout.CENTER);
 
@@ -75,6 +77,7 @@ public class TopFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private i_mat.BrowsePanel browsePanel1;
     private i_mat.center_stage.CenterStagePanel centerStagePanel1;
     private i_mat.center_stage.FilterSortViewPanel filterSortViewPanel2;
     // End of variables declaration//GEN-END:variables
