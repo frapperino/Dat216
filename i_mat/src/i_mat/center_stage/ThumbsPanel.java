@@ -40,12 +40,13 @@ public class ThumbsPanel extends javax.swing.JPanel implements ResultsPanel {
 
     @Override
     public void filterBy(Filter f) {
+        //TODO Implement filtering mechanism.
     }
     
     @Override
     public void sortBy(Comparator<Product> c) {
+        //TODO Implement sorting mechanism
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
