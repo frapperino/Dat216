@@ -5,6 +5,11 @@
  */
 package i_mat;
 
+import java.awt.Color;
+import java.awt.Component;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultTreeCellRenderer;
+
 /**
  *
  * @author weeeeeew
@@ -16,6 +21,28 @@ public class BrowsePanel extends javax.swing.JPanel {
      */
     public BrowsePanel() {
         initComponents();
+        BrowseTree.setCellRenderer(new DefaultTreeCellRenderer() {
+            @Override
+            public Component getTreeCellRendererComponent(JTree tree,
+                                                        Object value,
+                                                        boolean selected,
+                                                        boolean expanded,
+                                                        boolean leaf,
+                                                        int row,
+                                                        boolean hasFocus) {
+                // Allow the original renderer to set up the label
+                Component c = super.getTreeCellRendererComponent(
+                      tree, value, selected,
+                      expanded, leaf, row,
+                      hasFocus); 
+
+                if (leaf) { 
+                    c.setBackground(Color.BLUE);
+                } 
+
+                return c; 
+            }
+        });
     }
 
     /**
@@ -27,28 +54,31 @@ public class BrowsePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        BrowseScrollPane = new javax.swing.JScrollPane();
+        BrowseTree = new javax.swing.JTree();
 
-        jScrollPane1.setViewportView(jTree1);
+        BrowseTree.setName(""); // NOI18N
+        BrowseTree.setRootVisible(false);
+        BrowseTree.setScrollsOnExpand(true);
+        BrowseScrollPane.setViewportView(BrowseTree);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(BrowseScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BrowseScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTree jTree1;
+    private javax.swing.JScrollPane BrowseScrollPane;
+    private javax.swing.JTree BrowseTree;
     // End of variables declaration//GEN-END:variables
 }
