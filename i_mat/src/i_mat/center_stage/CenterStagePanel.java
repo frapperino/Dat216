@@ -29,6 +29,7 @@ public class CenterStagePanel extends javax.swing.JPanel {
 
         filterSortViewPanel1 = new i_mat.center_stage.FilterSortViewPanel();
 
+        setOpaque(false);
         setLayout(new java.awt.BorderLayout());
         add(filterSortViewPanel1, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents

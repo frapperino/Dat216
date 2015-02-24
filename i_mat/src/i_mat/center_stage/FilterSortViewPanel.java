@@ -32,6 +32,7 @@ public class FilterSortViewPanel extends javax.swing.JPanel {
         viewSearchPanel2 = new i_mat.center_stage.ViewSearchPanel();
         sortSearchPanel1 = new i_mat.center_stage.SortSearchPanel();
 
+        setOpaque(false);
         setLayout(new java.awt.BorderLayout());
         add(filterSearchPanel2, java.awt.BorderLayout.CENTER);
         add(viewSearchPanel2, java.awt.BorderLayout.LINE_END);
