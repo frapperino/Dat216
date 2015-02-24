@@ -27,18 +27,14 @@ public class TopFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        centerStagePanel1 = new i_mat.center_stage.CenterStagePanel();
+        filterSortViewPanel2 = new i_mat.center_stage.FilterSortViewPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        centerStagePanel1.add(filterSortViewPanel2, java.awt.BorderLayout.PAGE_START);
+
+        getContentPane().add(centerStagePanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +75,7 @@ public class TopFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private i_mat.center_stage.CenterStagePanel centerStagePanel1;
+    private i_mat.center_stage.FilterSortViewPanel filterSortViewPanel2;
     // End of variables declaration//GEN-END:variables
 }
