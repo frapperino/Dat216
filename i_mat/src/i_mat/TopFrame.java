@@ -28,15 +28,14 @@ public class TopFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        browsePanel1 = new i_mat.BrowsePanel();
-        centerStagePanel1 = new i_mat.center_stage.CenterStagePanel();
-        filterSortViewPanel2 = new i_mat.center_stage.FilterSortViewPanel();
-        browsePanel1 = new i_mat.BrowsePanel();
+        browsePanel2 = new i_mat.BrowsePanel();
+        filterSortViewPanel1 = new i_mat.center_stage.FilterSortViewPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        centerStagePanel1.add(filterSortViewPanel2, java.awt.BorderLayout.CENTER);
-        centerStagePanel1.add(browsePanel1, java.awt.BorderLayout.WEST);
+        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel1.add(browsePanel2, java.awt.BorderLayout.WEST);
+        jPanel1.add(filterSortViewPanel1, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,8 +87,8 @@ public class TopFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private i_mat.BrowsePanel browsePanel1;
-    private i_mat.center_stage.CenterStagePanel centerStagePanel1;
+    private i_mat.BrowsePanel browsePanel2;
+    private i_mat.center_stage.FilterSortViewPanel filterSortViewPanel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
