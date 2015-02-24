@@ -13,7 +13,7 @@ import se.chalmers.ait.dat215.project.Product;
  */
 public class PriceFilter implements Filter<Product> {
     
-    double lowest, highest;
+    private double lowest, highest;
     
     public PriceFilter(double lowest, double highest) {
         this.lowest=lowest;

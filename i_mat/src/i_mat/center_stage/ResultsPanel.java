@@ -23,8 +23,7 @@ public interface ResultsPanel {
     
     /**
      * Tells the view to only display items that passes through the given filter.
-     * @param lowest
-     * @param highest 
+     * @param f 
      */
     public void filterBy(Filter f);
     
