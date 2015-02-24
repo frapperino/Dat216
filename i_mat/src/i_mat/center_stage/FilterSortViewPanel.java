@@ -35,8 +35,8 @@ public class FilterSortViewPanel extends javax.swing.JPanel {
         setOpaque(false);
         setLayout(new java.awt.BorderLayout());
         add(filterSearchPanel2, java.awt.BorderLayout.CENTER);
-        add(viewSearchPanel2, java.awt.BorderLayout.LINE_END);
-        add(sortSearchPanel1, java.awt.BorderLayout.LINE_START);
+        add(viewSearchPanel2, java.awt.BorderLayout.EAST);
+        add(sortSearchPanel1, java.awt.BorderLayout.WEST);
     }// </editor-fold>//GEN-END:initComponents
 
 

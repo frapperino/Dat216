@@ -33,14 +33,14 @@
     <Component class="i_mat.center_stage.ViewSearchPanel" name="viewSearchPanel2">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-          <BorderConstraints direction="After"/>
+          <BorderConstraints direction="East"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="i_mat.center_stage.SortSearchPanel" name="sortSearchPanel1">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-          <BorderConstraints direction="Before"/>
+          <BorderConstraints direction="West"/>
         </Constraint>
       </Constraints>
     </Component>
