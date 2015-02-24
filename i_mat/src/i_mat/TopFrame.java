@@ -30,12 +30,13 @@ public class TopFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         browsePanel1 = new i_mat.BrowsePanel();
         centerStagePanel1 = new i_mat.center_stage.CenterStagePanel();
+        filterSortViewPanel2 = new i_mat.center_stage.FilterSortViewPanel();
+        browsePanel1 = new i_mat.BrowsePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
-        jPanel1.add(browsePanel1, java.awt.BorderLayout.WEST);
-        jPanel1.add(centerStagePanel1, java.awt.BorderLayout.CENTER);
+        centerStagePanel1.add(filterSortViewPanel2, java.awt.BorderLayout.CENTER);
+        centerStagePanel1.add(browsePanel1, java.awt.BorderLayout.WEST);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

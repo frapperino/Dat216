@@ -41,14 +41,14 @@
         <Component class="i_mat.BrowsePanel" name="browsePanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="West"/>
+              <BorderConstraints direction="Center"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="i_mat.center_stage.CenterStagePanel" name="centerStagePanel1">
+        <Component class="i_mat.BrowsePanel" name="browsePanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="Center"/>
+              <BorderConstraints direction="West"/>
             </Constraint>
           </Constraints>
         </Component>
