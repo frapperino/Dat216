@@ -7,6 +7,7 @@ package i_mat.center_stage;
 
 import i_mat.model.Model;
 import i_mat.utilities.GUIConstants;
+import java.awt.Dimension;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 
@@ -14,10 +15,12 @@ import se.chalmers.ait.dat215.project.Product;
  *
  * @author Hjort
  */
-public class ProductThumbnail extends javax.swing.JLabel {
+public class ProductThumbnail extends javax.swing.JPanel {
     
-    Product product;
+    public static final Dimension SIZE = new Dimension(130,250);
     
+    
+    private final Product product;
     /**
      * Creates new form ProductThumbnail
      */
@@ -32,7 +35,11 @@ public class ProductThumbnail extends javax.swing.JLabel {
     public ProductThumbnail(Product p) {
         this.product = p;
         initComponents();
-
+        this.validate();
+    }
+    
+    public Product getProduct() {
+        return this.product;
     }
 
     /**
@@ -44,52 +51,28 @@ public class ProductThumbnail extends javax.swing.JLabel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        imageButton = new javax.swing.JButton();
+        nameLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 255));
-        setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 0, 102)));
+        setOpaque(false);
+        setLayout(new java.awt.BorderLayout());
 
-        jButton1.setIcon(IMatDataHandler.getInstance().getImageIcon(product, GUIConstants.THUMBNAIL_SIZE)
+        imageButton.setIcon(Model.getImageIconForProduct(this.product, GUIConstants.THUMBNAIL_SIZE)
         );
-        jButton1.setText("hej");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        imageButton.setToolTipText("");
+        imageButton.setBorder(null);
+        imageButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(imageButton, java.awt.BorderLayout.CENTER);
 
-        jLabel1.setText(product.getName());
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(0, 33, Short.MAX_VALUE))
-        );
+        nameLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        nameLabel.setText(this.product.getName());
+        add(nameLabel, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton imageButton;
+    private javax.swing.JLabel nameLabel;
     // End of variables declaration//GEN-END:variables
 }

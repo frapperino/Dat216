@@ -5,7 +5,10 @@
  */
 package i_mat.model;
 
+import java.awt.Dimension;
 import java.util.List;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 
@@ -30,5 +33,9 @@ public class Model {
      */
     public static Product getTestProduct() {
         return dataHandler.getProducts().get(3);
+    }
+    
+    public static ImageIcon getImageIconForProduct(Product p, Dimension d) {
+        return Model.dataHandler.getImageIcon(p, d);
     }
 }
