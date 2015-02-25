@@ -13,7 +13,7 @@ import se.chalmers.ait.dat215.project.Product;
  *
  * @author Hjort
  */
-public interface ResultsPanel {
+public interface ResultsPanel  {
     /**
      * Tells the view to sort its contents based on the sorting mechanism in the 
      * Comparator passed to it.

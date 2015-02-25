@@ -22,7 +22,7 @@ public class GenerateComponentsUtilities {
      * @param products
      * @return 
      */
-    static List<ProductThumbnail> generateThumbnailsFromProducts(List<Product> products) {
+    public static List<ProductThumbnail> generateThumbnailsFromProducts(List<Product> products) {
         List<ProductThumbnail> returnList = new ArrayList<>();
         
         for(Product p : products) {

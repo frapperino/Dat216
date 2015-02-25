@@ -26,5 +26,12 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="i_mat.center_stage.ThumbsPanel" name="thumbsPanel1">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="Center"/>
+        </Constraint>
+      </Constraints>
+    </Component>
   </SubComponents>
 </Form>

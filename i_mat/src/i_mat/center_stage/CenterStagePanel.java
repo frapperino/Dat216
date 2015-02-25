@@ -5,17 +5,30 @@
  */
 package i_mat.center_stage;
 
+import java.awt.BorderLayout;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+
 /**
  *
  * @author Hjort
  */
 public class CenterStagePanel extends javax.swing.JPanel {
 
+    private ResultsPanel resultsPanel;
     /**
      * Creates new form CenterStagePanel
      */
     public CenterStagePanel() {
+        this(new ThumbsPanel());
+    }
+    
+    public CenterStagePanel(ResultsPanel resultsPanel) {
         initComponents();
+        this.resultsPanel = resultsPanel;
+
+        if (this.resultsPanel instanceof java.awt.Component) {
+            this.add((java.awt.Component)resultsPanel, BorderLayout.CENTER);
+        }   
     }
 
     /**
@@ -28,14 +41,17 @@ public class CenterStagePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         filterSortViewPanel2 = new i_mat.center_stage.FilterSortViewPanel();
+        thumbsPanel1 = new i_mat.center_stage.ThumbsPanel();
 
         setOpaque(false);
         setLayout(new java.awt.BorderLayout());
         add(filterSortViewPanel2, java.awt.BorderLayout.PAGE_START);
+        add(thumbsPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private i_mat.center_stage.FilterSortViewPanel filterSortViewPanel2;
+    private i_mat.center_stage.ThumbsPanel thumbsPanel1;
     // End of variables declaration//GEN-END:variables
 }
