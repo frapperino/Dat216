@@ -33,8 +33,7 @@ public class IMat {
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
             public void run() {
-                //This code will run before shutdown
-                System.out.println("Closing RecipeSearch");
+
             }
         }));
     }

@@ -29,23 +29,23 @@ public class TopFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         browsePanel2 = new i_mat.BrowsePanel();
-        filterSortViewPanel1 = new i_mat.center_stage.FilterSortViewPanel();
+        centerStagePanel1 = new i_mat.center_stage.CenterStagePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.BorderLayout());
         jPanel1.add(browsePanel2, java.awt.BorderLayout.WEST);
-        jPanel1.add(filterSortViewPanel1, java.awt.BorderLayout.CENTER);
+        jPanel1.add(centerStagePanel1, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 849, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, Short.MAX_VALUE)
         );
 
         pack();
@@ -88,7 +88,7 @@ public class TopFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private i_mat.BrowsePanel browsePanel2;
-    private i_mat.center_stage.FilterSortViewPanel filterSortViewPanel1;
+    private i_mat.center_stage.CenterStagePanel centerStagePanel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

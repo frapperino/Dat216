@@ -31,6 +31,8 @@ public class FilterSearchPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
+        setOpaque(false);
+
         jButton1.setText("Kategori");
         add(jButton1);
 
