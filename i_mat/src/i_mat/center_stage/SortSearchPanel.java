@@ -29,12 +29,14 @@ public class SortSearchPanel extends javax.swing.JPanel {
 
         jComboBox1 = new javax.swing.JComboBox();
 
+        setMaximumSize(new java.awt.Dimension(20, 32767));
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(160, 34));
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Relevans", "Namn (A-Ö)", "Namn (Ö-A)", "Pris (lågt-högt)", "Pris (högt-lågt)" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Relevans", "Namn (A-Ö)", "Namn (Ö-A)", "Pris (lågt-högt)", "Pris (högt–lågt)" }));
+        jComboBox1.setMaximumSize(new java.awt.Dimension(50, 32767));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);

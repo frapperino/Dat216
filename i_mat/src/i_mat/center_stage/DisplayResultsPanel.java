@@ -12,17 +12,17 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
  *
  * @author Hjort
  */
-public class CenterStagePanel extends javax.swing.JPanel {
+public class DisplayResultsPanel extends javax.swing.JPanel {
 
     private ResultsPanel resultsPanel;
     /**
      * Creates new form CenterStagePanel
      */
-    public CenterStagePanel() {
+    public DisplayResultsPanel() {
         this(new ThumbsPanel());
     }
     
-    public CenterStagePanel(ResultsPanel resultsPanel) {
+    public DisplayResultsPanel(ResultsPanel resultsPanel) {
         initComponents();
         this.resultsPanel = resultsPanel;
 
@@ -43,6 +43,7 @@ public class CenterStagePanel extends javax.swing.JPanel {
         filterSortViewPanel2 = new i_mat.center_stage.FilterSortViewPanel();
         thumbsPanel1 = new i_mat.center_stage.ThumbsPanel();
 
+        setMinimumSize(new java.awt.Dimension(750, 62));
         setOpaque(false);
         setLayout(new java.awt.BorderLayout());
         add(filterSortViewPanel2, java.awt.BorderLayout.PAGE_START);

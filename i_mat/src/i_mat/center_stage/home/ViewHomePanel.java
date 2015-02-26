@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package i_mat.center_stage;
+package i_mat.center_stage.home;
 
 /**
  *
@@ -28,7 +28,7 @@ public class ViewHomePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         recipiePanel2 = new i_mat.center_stage.RecipiePanel();
-        promoPanel2 = new i_mat.center_stage.PromoPanel();
+        promoPanel2 = new i_mat.center_stage.home.PromoPanel();
 
         setLayout(new java.awt.GridLayout(2, 0));
         add(recipiePanel2);
@@ -49,7 +49,7 @@ public class ViewHomePanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private i_mat.center_stage.PromoPanel promoPanel2;
+    private i_mat.center_stage.home.PromoPanel promoPanel2;
     private i_mat.center_stage.RecipiePanel recipiePanel2;
     // End of variables declaration//GEN-END:variables
 }

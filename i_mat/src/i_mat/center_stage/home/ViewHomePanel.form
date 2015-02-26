@@ -21,7 +21,7 @@
   <SubComponents>
     <Component class="i_mat.center_stage.RecipiePanel" name="recipiePanel2">
     </Component>
-    <Container class="i_mat.center_stage.PromoPanel" name="promoPanel2">
+    <Container class="i_mat.center_stage.home.PromoPanel" name="promoPanel2">
 
       <Layout>
         <DimensionLayout dim="0">
