@@ -31,7 +31,7 @@ public class TopFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        browsePanel2 = new i_mat.BrowsePanel();
+        browsePanel2 = new i_mat.browse_panel.BrowsePanel();
         shoppingCartPanel1 = new i_mat.shopping_cart.ShoppingCartPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -149,7 +149,7 @@ public class TopFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private i_mat.BrowsePanel browsePanel2;
+    private i_mat.browse_panel.BrowsePanel browsePanel2;
     private javax.swing.JPanel centerStagePanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
