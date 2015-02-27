@@ -7,6 +7,7 @@ package i_mat.navigation_panel;
 
 import i_mat.IMat;
 import i_mat.center_stage.home.ViewHomePanel;
+import i_mat.list_view.ListView;
 
 /**
  *
@@ -89,6 +90,11 @@ public class NavigationPanel extends javax.swing.JPanel {
         listsButton.setFocusable(false);
         listsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         listsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        listsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listsButtonActionPerformed(evt);
+            }
+        });
         navigationBar.add(listsButton);
         navigationBar.add(filler3);
 
@@ -117,6 +123,10 @@ public class NavigationPanel extends javax.swing.JPanel {
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         IMat.setCenterStage(new ViewHomePanel());
     }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void listsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listsButtonActionPerformed
+        IMat.setCenterStage(new ListView());
+    }//GEN-LAST:event_listsButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
