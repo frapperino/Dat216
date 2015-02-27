@@ -9,6 +9,7 @@ import i_mat.center_stage.ProductThumbnail;
 import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -29,5 +30,18 @@ public class GenerateComponentsUtilities {
             returnList.add(new ProductThumbnail(p));
         }
         return returnList;
+    }
+    
+    public static String getProductsString(List<ShoppingItem> items) {
+        String s = "|";
+        int i = 0;
+        for(ShoppingItem item : items) {
+            s += item.getProduct().getName();
+            
+            i++;
+            if(i > 4)
+               break;
+        }
+        return s += "…";
     }
 }

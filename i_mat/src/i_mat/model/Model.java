@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 
 /**
@@ -47,5 +48,9 @@ public class Model {
     
     public static void save() {
         dataHandler.shutDown();
+    }
+    
+    public List<Order> getOrderHistory() {
+        return dataHandler.getOrders();
     }
 }
