@@ -27,7 +27,7 @@ public class ViewHomePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        recipiePanel2 = new i_mat.center_stage.RecipiePanel();
+        recipiePanel2 = new i_mat.center_stage.home.RecipiePanel();
         promoPanel2 = new i_mat.center_stage.home.PromoPanel();
 
         setLayout(new java.awt.GridLayout(2, 0));
@@ -50,6 +50,6 @@ public class ViewHomePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private i_mat.center_stage.home.PromoPanel promoPanel2;
-    private i_mat.center_stage.RecipiePanel recipiePanel2;
+    private i_mat.center_stage.home.RecipiePanel recipiePanel2;
     // End of variables declaration//GEN-END:variables
 }

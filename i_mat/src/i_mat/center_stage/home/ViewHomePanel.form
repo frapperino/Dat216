@@ -19,7 +19,7 @@
     <Property name="rows" type="int" value="2"/>
   </Layout>
   <SubComponents>
-    <Component class="i_mat.center_stage.RecipiePanel" name="recipiePanel2">
+    <Component class="i_mat.center_stage.home.RecipiePanel" name="recipiePanel2">
     </Component>
     <Container class="i_mat.center_stage.home.PromoPanel" name="promoPanel2">
 
