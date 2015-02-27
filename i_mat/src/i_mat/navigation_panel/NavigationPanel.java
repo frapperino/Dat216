@@ -33,8 +33,10 @@ public class NavigationPanel extends javax.swing.JPanel {
         backButton = new javax.swing.JButton();
         forwardButton = new javax.swing.JButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
         searchField = new javax.swing.JTextField();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
         listsButton = new javax.swing.JButton();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
         profileButton = new javax.swing.JButton();
@@ -66,12 +68,14 @@ public class NavigationPanel extends javax.swing.JPanel {
         forwardButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         navigationBar.add(forwardButton);
         navigationBar.add(filler2);
+        navigationBar.add(filler6);
 
         searchField.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         searchField.setText("Sök produkter och kategorier");
         searchField.setToolTipText("");
         navigationBar.add(searchField);
         navigationBar.add(filler4);
+        navigationBar.add(filler5);
 
         listsButton.setText("Inköpslistor");
         listsButton.setFocusable(false);
@@ -109,6 +113,8 @@ public class NavigationPanel extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler5;
+    private javax.swing.Box.Filler filler6;
     private javax.swing.JButton forwardButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton listsButton;
