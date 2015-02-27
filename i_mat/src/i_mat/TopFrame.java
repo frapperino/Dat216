@@ -33,11 +33,9 @@ public class TopFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         browsePanel2 = new i_mat.browse_panel.BrowsePanel();
         shoppingCartPanel1 = new i_mat.shopping_cart.ShoppingCartPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         centerStagePanel = this.centerStagePanel = new ViewHomePanel();
         viewHomePanel1 = new i_mat.center_stage.home.ViewHomePanel();
+        navigationPanel = new i_mat.navigation_panel.NavigationPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,47 +43,11 @@ public class TopFrame extends javax.swing.JFrame {
         jPanel1.add(browsePanel2, java.awt.BorderLayout.WEST);
         jPanel1.add(shoppingCartPanel1, java.awt.BorderLayout.EAST);
 
-        jButton1.setText("Hem");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Produkter");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addContainerGap(643, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(30, 30, 30))
-        );
-
-        jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
-
         centerStagePanel.setLayout(new java.awt.BorderLayout());
         centerStagePanel.add(viewHomePanel1, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(centerStagePanel, java.awt.BorderLayout.CENTER);
+        jPanel1.add(navigationPanel, java.awt.BorderLayout.PAGE_START);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,23 +57,11 @@ public class TopFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.centerStagePanel.removeAll();
-        this.centerStagePanel.add(new DisplayResultsPanel());
-        this.validate();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.centerStagePanel.removeAll();
-        this.centerStagePanel.add(new ViewHomePanel());
-        this.validate();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,10 +101,8 @@ public class TopFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private i_mat.browse_panel.BrowsePanel browsePanel2;
     private javax.swing.JPanel centerStagePanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private i_mat.navigation_panel.NavigationPanel navigationPanel;
     private i_mat.shopping_cart.ShoppingCartPanel shoppingCartPanel1;
     private i_mat.center_stage.home.ViewHomePanel viewHomePanel1;
     // End of variables declaration//GEN-END:variables
