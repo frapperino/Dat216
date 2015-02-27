@@ -5,7 +5,9 @@
  */
 package i_mat.list_view;
 
+import i_mat.model.Model;
 import i_mat.utilities.GenerateComponentsUtilities;
+import java.awt.Dimension;
 import se.chalmers.ait.dat215.project.Order;
 
 /**
@@ -15,16 +17,20 @@ import se.chalmers.ait.dat215.project.Order;
 public class OldOrderPanel extends javax.swing.JPanel {
 
     private Order order;
+    private HistoryFullListPanel fullList;
+    private boolean clicked = false;
     
     /**
      * Creates new form OldOrderPanel
      */
     public OldOrderPanel() {
+        this(Model.getOrderHistory().get(0));
     }
 
     public OldOrderPanel(Order o) {
+        this.order = o == null ? new Order(): o;
+        this.fullList = new HistoryFullListPanel(this.order);
         initComponents();
-        this.order = o;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,41 +41,71 @@ public class OldOrderPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        headLabel = new javax.swing.JLabel();
+        subPanel = new javax.swing.JPanel();
+        subLabel = new javax.swing.JLabel();
 
-        jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD, jLabel1.getFont().getSize()+5));
-        jLabel1.setText(this.order.getDate().toString());
+        setBackground(new java.awt.Color(0, 255, 0));
+        setOpaque(false);
 
-        jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getSize()-1f));
-        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel2.setText(GenerateComponentsUtilities.getProductsString(this.order.getItems()));
+        headLabel.setFont(headLabel.getFont().deriveFont(headLabel.getFont().getStyle() | java.awt.Font.BOLD, headLabel.getFont().getSize()+5));
+        headLabel.setText(this.order.getDate().toString());
+        headLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                headLabelMouseClicked(evt);
+            }
+        });
+
+        subPanel.setOpaque(false);
+        subPanel.setLayout(new java.awt.BorderLayout());
+
+        subLabel.setFont(subLabel.getFont().deriveFont(subLabel.getFont().getSize()-1f));
+        subLabel.setForeground(new java.awt.Color(153, 153, 153));
+        subLabel.setText(GenerateComponentsUtilities.getProductsString(this.order.getItems()));
+        subLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                headLabelMouseClicked(evt);
+            }
+        });
+        subPanel.add(subLabel, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 277, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(headLabel)
+                .addGap(0, 280, Short.MAX_VALUE))
+            .addComponent(subPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(headLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addComponent(subPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void headLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headLabelMouseClicked
+        if (this.clicked) {
+            this.subPanel.removeAll();
+            this.subPanel.add(this.subLabel);
+            this.validate();
+        }
+        else {
+            this.subPanel.removeAll();
+            this.subPanel.add(this.fullList);
+            this.validate();
+        }
+        this.clicked = !this.clicked;
+
+    }//GEN-LAST:event_headLabelMouseClicked
        
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel headLabel;
+    private javax.swing.JLabel subLabel;
+    private javax.swing.JPanel subPanel;
     // End of variables declaration//GEN-END:variables
 }

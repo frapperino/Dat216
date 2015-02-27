@@ -50,7 +50,9 @@ public class Model {
         dataHandler.shutDown();
     }
     
-    public List<Order> getOrderHistory() {
+    public static List<Order> getOrderHistory() {
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(1));
+        dataHandler.placeOrder();
         return dataHandler.getOrders();
     }
 }
