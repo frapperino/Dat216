@@ -39,6 +39,7 @@ public class NavigationPanel extends javax.swing.JPanel {
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
         profileButton = new javax.swing.JButton();
 
+        navigationBar.setFloatable(false);
         navigationBar.setRollover(true);
 
         homeButton.setText("Hem");
