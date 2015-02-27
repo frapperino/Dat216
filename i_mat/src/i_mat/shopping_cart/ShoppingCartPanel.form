@@ -29,7 +29,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="CheckoutButton" min="-2" pref="253" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="FastCheckoutButton" pref="53" max="32767" attributes="0"/>
+              <Component id="FastCheckoutButton" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -338,6 +338,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Kassa"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CheckoutButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="FastCheckoutButton">
       <Properties>

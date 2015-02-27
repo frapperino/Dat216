@@ -5,6 +5,9 @@
  */
 package i_mat.shopping_cart;
 
+import i_mat.IMat;
+import i_mat.center_stage.checkout.CheckoutPanel;
+
 /**
  *
  * @author Hjort
@@ -238,6 +241,11 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
         );
 
         CheckoutButton.setText("Kassa");
+        CheckoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckoutButtonActionPerformed(evt);
+            }
+        });
 
         FastCheckoutButton.setText(">");
 
@@ -256,7 +264,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(CheckoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(FastCheckoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, Short.MAX_VALUE))
+                .addComponent(FastCheckoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,6 +290,11 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void CheckoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckoutButtonActionPerformed
+        IMat.setCenterStage(new CheckoutPanel());       
+        System.out.println("click!");
+    }//GEN-LAST:event_CheckoutButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

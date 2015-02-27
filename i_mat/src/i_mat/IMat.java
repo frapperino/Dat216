@@ -14,6 +14,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class IMat {
 
+    private static TopFrame topFrame;
     /**
      * @param args the command line arguments
      */
@@ -28,7 +29,8 @@ public class IMat {
                     " look and feel not supported");
         }
         
-        new TopFrame().setVisible(true);
+        topFrame = new TopFrame();
+        topFrame.setVisible(true);
         
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
@@ -38,4 +40,7 @@ public class IMat {
         }));
     }
     
+    public static void setCenterStage(javax.swing.JPanel panel) {
+        topFrame.setCenterStage(panel);
+    }
 }

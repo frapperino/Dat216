@@ -7,6 +7,7 @@ package i_mat;
 
 import i_mat.center_stage.DisplayResultsPanel;
 import i_mat.center_stage.home.ViewHomePanel;
+import java.awt.BorderLayout;
 
 /**
  *
@@ -30,7 +31,7 @@ public class TopFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        topPanel = new javax.swing.JPanel();
         browsePanel2 = new i_mat.browse_panel.BrowsePanel();
         shoppingCartPanel1 = new i_mat.shopping_cart.ShoppingCartPanel();
         centerStagePanel = this.centerStagePanel = new ViewHomePanel();
@@ -39,25 +40,25 @@ public class TopFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
-        jPanel1.add(browsePanel2, java.awt.BorderLayout.WEST);
-        jPanel1.add(shoppingCartPanel1, java.awt.BorderLayout.EAST);
+        topPanel.setLayout(new java.awt.BorderLayout());
+        topPanel.add(browsePanel2, java.awt.BorderLayout.WEST);
+        topPanel.add(shoppingCartPanel1, java.awt.BorderLayout.EAST);
 
         centerStagePanel.setLayout(new java.awt.BorderLayout());
         centerStagePanel.add(viewHomePanel1, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(centerStagePanel, java.awt.BorderLayout.CENTER);
-        jPanel1.add(navigationPanel, java.awt.BorderLayout.PAGE_START);
+        topPanel.add(centerStagePanel, java.awt.BorderLayout.CENTER);
+        topPanel.add(navigationPanel, java.awt.BorderLayout.PAGE_START);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE)
+            .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+            .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
         );
 
         pack();
@@ -75,13 +76,20 @@ public class TopFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    void setCenterStage(javax.swing.JPanel panel) {
+        this.topPanel.remove(this.centerStagePanel);
+        this.centerStagePanel = panel;
+        this.topPanel.add(this.centerStagePanel, BorderLayout.CENTER);
+        this.validate();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private i_mat.browse_panel.BrowsePanel browsePanel2;
     private javax.swing.JPanel centerStagePanel;
-    private javax.swing.JPanel jPanel1;
     private i_mat.navigation_panel.NavigationPanel navigationPanel;
     private i_mat.shopping_cart.ShoppingCartPanel shoppingCartPanel1;
+    private javax.swing.JPanel topPanel;
     private i_mat.center_stage.home.ViewHomePanel viewHomePanel1;
     // End of variables declaration//GEN-END:variables
 }
