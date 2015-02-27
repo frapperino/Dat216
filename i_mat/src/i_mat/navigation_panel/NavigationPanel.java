@@ -5,6 +5,9 @@
  */
 package i_mat.navigation_panel;
 
+import i_mat.IMat;
+import i_mat.center_stage.home.ViewHomePanel;
+
 /**
  *
  * @author weeeeeew
@@ -48,6 +51,11 @@ public class NavigationPanel extends javax.swing.JPanel {
         homeButton.setFocusable(false);
         homeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         homeButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
         navigationBar.add(homeButton);
         navigationBar.add(filler1);
 
@@ -105,6 +113,10 @@ public class NavigationPanel extends javax.swing.JPanel {
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        IMat.setCenterStage(new ViewHomePanel());
+    }//GEN-LAST:event_homeButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
