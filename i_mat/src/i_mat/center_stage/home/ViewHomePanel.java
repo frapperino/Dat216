@@ -16,6 +16,8 @@ public class ViewHomePanel extends javax.swing.JPanel {
      */
     public ViewHomePanel() {
         initComponents();
+        this.add(new RecipiePanel());
+        this.add(new PromoPanel());
     }
 
     /**
@@ -27,29 +29,10 @@ public class ViewHomePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        recipiePanel2 = new i_mat.center_stage.home.RecipiePanel();
-        promoPanel2 = new i_mat.center_stage.home.PromoPanel();
-
         setLayout(new java.awt.GridLayout(2, 0));
-        add(recipiePanel2);
-
-        javax.swing.GroupLayout promoPanel2Layout = new javax.swing.GroupLayout(promoPanel2);
-        promoPanel2.setLayout(promoPanel2Layout);
-        promoPanel2Layout.setHorizontalGroup(
-            promoPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
-        );
-        promoPanel2Layout.setVerticalGroup(
-            promoPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 232, Short.MAX_VALUE)
-        );
-
-        add(promoPanel2);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private i_mat.center_stage.home.PromoPanel promoPanel2;
-    private i_mat.center_stage.home.RecipiePanel recipiePanel2;
     // End of variables declaration//GEN-END:variables
 }
