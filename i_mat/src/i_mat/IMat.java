@@ -5,6 +5,7 @@
  */
 package i_mat;
 
+import i_mat.model.Model;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -35,7 +36,7 @@ public class IMat {
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
             public void run() {
-
+                Model.save();
             }
         }));
     }

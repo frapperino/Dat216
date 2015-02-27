@@ -44,4 +44,8 @@ public class Model {
     public static ImageIcon getImageIconForProduct(Product p, Dimension d) {
         return Model.dataHandler.getImageIcon(p, d);
     }
+    
+    public static void save() {
+        dataHandler.shutDown();
+    }
 }
