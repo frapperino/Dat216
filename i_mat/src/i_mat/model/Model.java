@@ -22,6 +22,20 @@ import se.chalmers.ait.dat215.project.Product;
 public class Model {
     private static final IMatDataHandler dataHandler = IMatDataHandler.getInstance();
     private static final List<Product> promoProducts = Arrays.asList(dataHandler.getProduct(1), dataHandler.getProduct(2));
+    
+    /* 
+     * Analogous to the constructor of an instantiatable class. Add any set-up
+     * procedures here...
+     */
+    static {
+    }
+    
+    /*
+     * ... but *do not* add them here.
+     */
+    private Model() {
+    }
+    
     /**
     * The standard way to get all products. 
     * Should exclude unwanted products on the "no show"-list.
