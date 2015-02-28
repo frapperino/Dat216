@@ -14,6 +14,8 @@ import se.chalmers.ait.dat215.project.Customer;
  */
 public class DeliveryAddress extends Customer {
     
+    private int id;
+    
     protected DeliveryAddress(Customer c) {
         this(c.getFirstName(),c.getLastName(),c.getAddress(),c.getPostCode(),
              c.getPostAddress(),c.getPhoneNumber(),c.getMobilePhoneNumber(),c.getEmail());
@@ -31,5 +33,25 @@ public class DeliveryAddress extends Customer {
         setPhoneNumber(phoneNumber);
         setMobilePhoneNumber(mobilePhoneNumber);
         setEmail(email);
+    }
+    
+    public boolean equals(Object o) {
+        /*if (o instanceof DeliveryAddress) {
+            DeliveryAddress da = (DeliveryAddress) o;
+            
+            return d
+        } else*/ if (o instanceof Customer) {
+            Customer c = (Customer) o;
+            
+            return getFirstName().equals(c.getFirstName())
+                 & getLastName().equals(c.getLastName())
+                 & getAddress().equals(c.getAddress())
+                 & getPostCode().equals(c.getPostCode())
+                 & getPostAddress().equals(c.getPostAddress())
+                 & getPhoneNumber().equals(c.getPhoneNumber())
+                 & getMobilePhoneNumber().equals(c.getMobilePhoneNumber());
+        } else {
+            return false;
+        }
     }
 }

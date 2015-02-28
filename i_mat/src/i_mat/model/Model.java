@@ -25,14 +25,14 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class Model {
     private static final IMatDataHandler dataHandler = IMatDataHandler.getInstance();
     private static final List<Product> promoProducts = Arrays.asList(dataHandler.getProduct(1), dataHandler.getProduct(2));
-    private static final List<Customer> deliveryAddresses = new ArrayList<Customer>();
+    private static final List<DeliveryAddress> deliveryAddresses = new ArrayList<DeliveryAddress>();
     
     /* 
      * Analogous to the constructor of an instantiatable class. Add any set-up
      * procedures here...
      */
     static {
-        deliveryAddresses.add(dataHandler.getCustomer());
+        
     }
     
     /*
@@ -65,6 +65,32 @@ public class Model {
         return Model.dataHandler.getImageIcon(p, d);
     }
     
+    /**
+     * Changes the default delivery address.
+     * @param deliveryAddress The new default address.
+     */
+    public static void setDefaultDeliveryAddress(DeliveryAddress deliveryAddress) {
+        Customer backendCustomer = dataHandler.getCustomer();
+        
+        deliveryAddresses.add(new DeliveryAddress(backendCustomer));
+        deliveryAddresses.remove(deliveryAddress);
+        
+        backendCustomer.setFirstName(deliveryAddress.getFirstName());
+        backendCustomer.setLastName(deliveryAddress.getLastName());
+        backendCustomer.setAddress(deliveryAddress.getAddress());
+        backendCustomer.setPostCode(deliveryAddress.getPostCode());
+        backendCustomer.setPostAddress(deliveryAddress.getPostAddress());
+        backendCustomer.setPhoneNumber(deliveryAddress.getPhoneNumber());
+        backendCustomer.setMobilePhoneNumber(deliveryAddress.getMobilePhoneNumber());
+        backendCustomer.setEmail(deliveryAddress.getEmail());
+    }
+    
+//TODO fix this    public static void editDeliveryAddress() 
+    
+    /**
+     * Return a customer from the database for testing.
+     * @return 
+     */
     public static Customer getTestCustomer() {
         return new DeliveryAddress("Test", "Testsson", "Testgatan 42", "123 45",
                     "Testberga", "031-420420", "070-312 1337", "test@test.test");

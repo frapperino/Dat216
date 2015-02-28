@@ -131,11 +131,11 @@ public class SingleAddressPanel extends javax.swing.JPanel {
             jPanel1.add(deliveryAddressPanel1);
         }
         jPanel1.validate();
-        jPanel1.repaint();
         jPanel1.revalidate();
+        jPanel1.repaint();
         validate();
-        repaint();
         revalidate();
+        repaint();
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
 
