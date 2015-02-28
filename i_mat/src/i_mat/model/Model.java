@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
@@ -22,12 +23,14 @@ import se.chalmers.ait.dat215.project.Product;
 public class Model {
     private static final IMatDataHandler dataHandler = IMatDataHandler.getInstance();
     private static final List<Product> promoProducts = Arrays.asList(dataHandler.getProduct(1), dataHandler.getProduct(2));
+    private static final List<Customer> deliveryAddresses = new ArrayList<Customer>();
     
     /* 
      * Analogous to the constructor of an instantiatable class. Add any set-up
      * procedures here...
      */
     static {
+        deliveryAddresses.add(dataHandler.getCustomer());
     }
     
     /*
@@ -58,6 +61,10 @@ public class Model {
     
     public static ImageIcon getImageIconForProduct(Product p, Dimension d) {
         return Model.dataHandler.getImageIcon(p, d);
+    }
+    
+    public static Customer getTestCustomer() {
+        return dataHandler.getCustomer();
     }
     
     public static void save() {
