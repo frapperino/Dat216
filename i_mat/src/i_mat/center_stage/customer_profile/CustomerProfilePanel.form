@@ -16,37 +16,25 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="addressesPanel1" max="32767" attributes="0"/>
-          <Component id="paymentsPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="paymentsPanel1" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="addressesPanel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="addressesPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="addressesPanel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="paymentsPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="i_mat.center_stage.customer_profile.AddressesPanel" name="addressesPanel1">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-    </Container>
     <Container class="i_mat.center_stage.customer_profile.PaymentsPanel" name="paymentsPanel1">
 
       <Layout>
@@ -62,5 +50,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Component class="i_mat.center_stage.customer_profile.AddressesPanel" name="addressesPanel2">
+    </Component>
   </SubComponents>
 </Form>
