@@ -50,6 +50,7 @@ public class OldOrderPanel extends javax.swing.JPanel {
 
         headLabel.setFont(headLabel.getFont().deriveFont(headLabel.getFont().getStyle() | java.awt.Font.BOLD, headLabel.getFont().getSize()+5));
         headLabel.setText(GenerateComponentsUtilities.getNameFromDate(this.order.getDate()));
+        headLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         headLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 headLabelMouseClicked(evt);
@@ -62,6 +63,7 @@ public class OldOrderPanel extends javax.swing.JPanel {
         subLabel.setFont(subLabel.getFont().deriveFont(subLabel.getFont().getSize()-1f));
         subLabel.setForeground(new java.awt.Color(153, 153, 153));
         subLabel.setText(GenerateComponentsUtilities.getProductsString(this.order.getItems()));
+        subLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         subLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 headLabelMouseClicked(evt);
