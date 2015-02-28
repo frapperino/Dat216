@@ -35,13 +35,20 @@ public class GenerateComponentsUtilities {
     public static String getProductsString(List<ShoppingItem> items) {
         String s = "| ";
         int i = 0;
+        int size = items.size();
         for(ShoppingItem item : items) {
             s += item.getProduct().getName();
             
             i++;
-            if(i > 4)
+            //If we have more than 5 objects, we truncate and add ellipsis
+            if(i > 4) {
                s += "…"; 
                break;
+               
+               //If we have not reached the end of the list, we add colon.
+            } else if (i < size) {
+                s += ", ";
+            }
         }
         return s;
     }
