@@ -18,4 +18,12 @@ public class ColorScheme {
     public static Color rowStripingDark() {
         return new Color(248, 248, 248);
     }
+    
+    public static Color enabledButtonForeground() {
+        return Color.black;
+    }
+    
+    public static Color disabledButtonForeground() {
+        return Color.gray;
+    }
 }
