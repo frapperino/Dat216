@@ -6,6 +6,7 @@
 package i_mat.navigation_panel;
 
 import i_mat.IMat;
+import i_mat.center_stage.customer_profile.CustomerProfilePanel;
 import i_mat.center_stage.home.ViewHomePanel;
 import i_mat.list_view.ListView;
 
@@ -102,6 +103,11 @@ public class NavigationPanel extends javax.swing.JPanel {
         profileButton.setFocusable(false);
         profileButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         profileButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        profileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profileButtonActionPerformed(evt);
+            }
+        });
         navigationBar.add(profileButton);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -127,6 +133,10 @@ public class NavigationPanel extends javax.swing.JPanel {
     private void listsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listsButtonActionPerformed
         IMat.setCenterStage(new ListView());
     }//GEN-LAST:event_listsButtonActionPerformed
+
+    private void profileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileButtonActionPerformed
+        IMat.setCenterStage(new CustomerProfilePanel());
+    }//GEN-LAST:event_profileButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -36,8 +36,7 @@ public class Model {
     /*
      * ... but *do not* add them here.
      */
-    private Model() {
-    }
+    private Model() {};
     
     /**
     * The standard way to get all products. 
@@ -64,7 +63,8 @@ public class Model {
     }
     
     public static Customer getTestCustomer() {
-        return dataHandler.getCustomer();
+        return new DeliveryAddress("Test", "Testsson", "Testgatan 42", "123 45",
+                    "Testberga", "031-420420", "070-312 1337", "test@test.test");
     }
     
     public static void save() {

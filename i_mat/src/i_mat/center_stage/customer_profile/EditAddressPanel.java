@@ -5,16 +5,26 @@
  */
 package i_mat.center_stage.customer_profile;
 
+import i_mat.model.Model;
+import se.chalmers.ait.dat215.project.Customer;
+
 /**
  *
  * @author weeeeeew
  */
 public class EditAddressPanel extends javax.swing.JPanel {
 
+    private Customer customer;
+    
     /**
      * Creates new form AddressPanel
      */
     public EditAddressPanel() {
+        this(Model.getTestCustomer());
+    }
+
+    EditAddressPanel(Customer customer) {
+        this.customer = customer;
         initComponents();
     }
 
@@ -36,22 +46,22 @@ public class EditAddressPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        jTextField2.setText("c/o");
+        jTextField2.setText(customer.getLastName());
 
-        jTextField1.setText("Namn");
+        jTextField1.setText(customer.getFirstName());
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jTextField6.setText("Telefon");
+        jTextField6.setText(customer.getPhoneNumber());
 
-        jTextField5.setText("Ort");
+        jTextField5.setText(customer.getPostAddress());
 
-        jTextField4.setText("Postnr");
+        jTextField4.setText(customer.getPostCode());
 
-        jTextField3.setText("Adress");
+        jTextField3.setText(customer.getAddress());
 
         jButton2.setText("Ta bort");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
