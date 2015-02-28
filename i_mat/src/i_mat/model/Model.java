@@ -37,6 +37,7 @@ public class Model {
     
     /**
      * Return a product from the database for testing where you need one product
+     * @return 
      */
     public static Product getTestProduct() {
         return dataHandler.getProducts().get(3);
@@ -52,6 +53,11 @@ public class Model {
     
     public static List<Order> getOrderHistory() {
         dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(1));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(2));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(3));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(4));
+        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(5));
+
         dataHandler.placeOrder();
         return dataHandler.getOrders();
     }

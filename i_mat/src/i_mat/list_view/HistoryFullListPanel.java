@@ -5,6 +5,7 @@
  */
 package i_mat.list_view;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.PopupMenu;
@@ -34,7 +35,7 @@ public class HistoryFullListPanel extends javax.swing.JPanel {
             this.add(new JLabel(item.getProduct().getName()));
             this.add(new JLabel(Double.toString(item.getAmount()) 
             + item.getProduct().getUnitSuffix()));
-            this.add(new JLabel(item.getTotal() + " kr"), "wrap");
+            this.add(new JLabel(item.getTotal() + " kr"), "wrap 0");
         }
         JLabel totalLabel = new JLabel(Integer.toString(total) + " kr");
         totalLabel.setAlignmentX(RIGHT_ALIGNMENT);

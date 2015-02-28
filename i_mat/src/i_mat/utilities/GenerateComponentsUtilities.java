@@ -33,15 +33,16 @@ public class GenerateComponentsUtilities {
     }
     
     public static String getProductsString(List<ShoppingItem> items) {
-        String s = "|";
+        String s = "| ";
         int i = 0;
         for(ShoppingItem item : items) {
             s += item.getProduct().getName();
             
             i++;
             if(i > 4)
+               s += "…"; 
                break;
         }
-        return s += "…";
+        return s;
     }
 }
