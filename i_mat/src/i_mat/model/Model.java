@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
@@ -24,6 +25,22 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class Model {
     private static final IMatDataHandler dataHandler = IMatDataHandler.getInstance();
     private static final List<Product> promoProducts = Arrays.asList(dataHandler.getProduct(1), dataHandler.getProduct(2));
+    private static final List<Customer> deliveryAddresses = new ArrayList<Customer>();
+    
+    /* 
+     * Analogous to the constructor of an instantiatable class. Add any set-up
+     * procedures here...
+     */
+    static {
+        deliveryAddresses.add(dataHandler.getCustomer());
+    }
+    
+    /*
+     * ... but *do not* add them here.
+     */
+    private Model() {
+    }
+    
     /**
     * The standard way to get all products. 
     * Should exclude unwanted products on the "no show"-list.
@@ -47,6 +64,10 @@ public class Model {
     
     public static ImageIcon getImageIconForProduct(Product p, Dimension d) {
         return Model.dataHandler.getImageIcon(p, d);
+    }
+    
+    public static Customer getTestCustomer() {
+        return dataHandler.getCustomer();
     }
     
     public static void save() {

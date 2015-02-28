@@ -5,19 +5,29 @@
  */
 package i_mat.center_stage.customer_profile;
 
+import i_mat.model.Model;
+import se.chalmers.ait.dat215.project.Customer;
+
 /**
  *
  * @author weeeeeew
  */
-public class AddressesPanel extends javax.swing.JPanel {
+public class SingleAddressPanel extends javax.swing.JPanel {
 
+    private Customer customer;
+    
     /**
-     * Creates new form AdressesPanel
+     * Creates new form SingleAddress
      */
-    public AddressesPanel() {
-        initComponents();
+    public SingleAddressPanel() {
+        this(Model.getTestCustomer());
     }
 
+    public SingleAddressPanel(Customer c) {
+        initComponents();
+        customer = c;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,24 +39,21 @@ public class AddressesPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD, jLabel1.getFont().getSize()+7));
-        jLabel1.setText("Leveransadresser");
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addGap(0, 355, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addGap(0, 284, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
