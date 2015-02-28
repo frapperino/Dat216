@@ -6,6 +6,10 @@
 package i_mat.list_view;
 
 import i_mat.model.Model;
+import java.awt.Component;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Comparator;
 import java.util.List;
 import net.miginfocom.swing.MigLayout;
 import se.chalmers.ait.dat215.project.Order;
@@ -14,7 +18,7 @@ import se.chalmers.ait.dat215.project.Order;
  *
  * @author Hjort
  */
-public class ListView extends javax.swing.JPanel {
+public class ListView extends javax.swing.JPanel implements PropertyChangeListener {
     private final List<Order> history;
     /**
      * Creates new form ListView
@@ -22,12 +26,18 @@ public class ListView extends javax.swing.JPanel {
     public ListView() {
         initComponents();
         this.history = Model.getOrderHistory();
-        System.out.println(history);
+        this.history.sort(new Comparator<Order>() {
+            @Override
+            public int compare(Order o1, Order o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
         this.historyPanel.setLayout(new MigLayout("wrap 1"));
         for (Order o : this.history) {
-            this.historyPanel.add(new OldOrderPanel(o));
+            OldOrderPanel panel = new OldOrderPanel(o);
+            panel.addPropertyChangeListener(this);
+            this.historyPanel.add(panel);
         }
-        this.jScrollPane1.validate();
     }
     
     /**
@@ -102,4 +112,9 @@ public class ListView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        this.revalidate();
+    }
 }

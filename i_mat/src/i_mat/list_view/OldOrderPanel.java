@@ -7,18 +7,28 @@ package i_mat.list_view;
 
 import i_mat.model.Model;
 import i_mat.utilities.GenerateComponentsUtilities;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.plaf.metal.MetalIconFactory;
 import se.chalmers.ait.dat215.project.Order;
 
 /**
  *
  * @author Hjort
  */
-public class OldOrderPanel extends javax.swing.JPanel {
+public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
 
     private Order order;
     private HistoryFullListPanel fullList;
     private boolean clicked = false;
+    private JButton collapseButton;
     
     /**
      * Creates new form OldOrderPanel
@@ -30,6 +40,12 @@ public class OldOrderPanel extends javax.swing.JPanel {
     public OldOrderPanel(Order o) {
         this.order = o == null ? new Order(): o;
         this.fullList = new HistoryFullListPanel(this.order);
+        this.collapseButton = new JButton();
+        this.collapseButton.setBackground(Color.red);
+        this.collapseButton.setIcon(new MetalIconFactory.PaletteCloseIcon());
+        this.collapseButton.setOpaque(false);
+        this.collapseButton.setText(null);
+        this.collapseButton.addActionListener(this);
         initComponents();
     }
     /**
@@ -49,7 +65,8 @@ public class OldOrderPanel extends javax.swing.JPanel {
         setOpaque(false);
 
         headLabel.setFont(headLabel.getFont().deriveFont(headLabel.getFont().getStyle() | java.awt.Font.BOLD, headLabel.getFont().getSize()+5));
-        headLabel.setText(this.order.getDate().toString());
+        headLabel.setText(GenerateComponentsUtilities.getNameFromDate(this.order.getDate()));
+        headLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         headLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 headLabelMouseClicked(evt);
@@ -62,6 +79,7 @@ public class OldOrderPanel extends javax.swing.JPanel {
         subLabel.setFont(subLabel.getFont().deriveFont(subLabel.getFont().getSize()-1f));
         subLabel.setForeground(new java.awt.Color(153, 153, 153));
         subLabel.setText(GenerateComponentsUtilities.getProductsString(this.order.getItems()));
+        subLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         subLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 headLabelMouseClicked(evt);
@@ -88,18 +106,7 @@ public class OldOrderPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void headLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headLabelMouseClicked
-        if (this.clicked) {
-            this.subPanel.removeAll();
-            this.subPanel.add(this.subLabel);
-            this.validate();
-        }
-        else {
-            this.subPanel.removeAll();
-            this.subPanel.add(this.fullList);
-            this.validate();
-        }
-        this.clicked = !this.clicked;
-
+        this.switchView();
     }//GEN-LAST:event_headLabelMouseClicked
        
     
@@ -108,4 +115,23 @@ public class OldOrderPanel extends javax.swing.JPanel {
     private javax.swing.JLabel subLabel;
     private javax.swing.JPanel subPanel;
     // End of variables declaration//GEN-END:variables
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        this.switchView();
+    }
+    
+    private void switchView() {
+        if (this.clicked) {
+            this.subPanel.removeAll();
+            this.subPanel.add(this.subLabel);
+        }
+        else {
+            this.subPanel.removeAll();
+            this.subPanel.add(this.fullList);
+            this.subPanel.add(this.collapseButton, BorderLayout.SOUTH);
+        }
+        this.clicked = !this.clicked;
+        this.firePropertyChange("Changed value", !clicked, clicked);
+    }
 }

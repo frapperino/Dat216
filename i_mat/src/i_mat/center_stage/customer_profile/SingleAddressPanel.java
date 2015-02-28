@@ -58,9 +58,20 @@ public class SingleAddressPanel extends javax.swing.JPanel {
         jToggleButton1.setText("►");
         jToggleButton1.setBorderPainted(false);
         jToggleButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton1MouseClicked(evt);
+            }
+        });
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
             }
         });
 
@@ -104,6 +115,14 @@ public class SingleAddressPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // perhaps the same as jToggleButton1MouseClicked(), i dunno lol?
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        jToggleButton1MouseClicked(evt);
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
         if (jToggleButton1.isSelected()) {
             jToggleButton1.setText("▼");
             jPanel1 = expandedAddressPanel;
@@ -112,7 +131,8 @@ public class SingleAddressPanel extends javax.swing.JPanel {
             jPanel1 = collapsedAddressPanel;
         }
         validate();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+        repaint();
+    }//GEN-LAST:event_jToggleButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

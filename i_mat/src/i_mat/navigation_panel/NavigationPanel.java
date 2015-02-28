@@ -9,6 +9,8 @@ import i_mat.IMat;
 import i_mat.center_stage.customer_profile.CustomerProfilePanel;
 import i_mat.center_stage.home.ViewHomePanel;
 import i_mat.list_view.ListView;
+import i_mat.utilities.ColorScheme;
+import java.awt.Color;
 
 /**
  *
@@ -35,7 +37,7 @@ public class NavigationPanel extends javax.swing.JPanel {
         navigationBar = new javax.swing.JToolBar();
         homeButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
-        backButton = new javax.swing.JButton();
+        backwardButton = new javax.swing.JButton();
         forwardButton = new javax.swing.JButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
@@ -61,21 +63,28 @@ public class NavigationPanel extends javax.swing.JPanel {
         navigationBar.add(homeButton);
         navigationBar.add(filler1);
 
-        backButton.setText("Bakåt");
-        backButton.setFocusable(false);
-        backButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        backButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        backButton.addActionListener(new java.awt.event.ActionListener() {
+        backwardButton.setForeground(this.decideBackwardEnabledColor());
+        backwardButton.setText("Bakåt");
+        backwardButton.setFocusable(false);
+        backwardButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        backwardButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        backwardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+                backwardButtonActionPerformed(evt);
             }
         });
-        navigationBar.add(backButton);
+        navigationBar.add(backwardButton);
 
+        forwardButton.setForeground(this.decideForwardEnabledColor());
         forwardButton.setText("Framåt");
         forwardButton.setFocusable(false);
         forwardButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         forwardButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        forwardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forwardButtonActionPerformed(evt);
+            }
+        });
         navigationBar.add(forwardButton);
         navigationBar.add(filler2);
         navigationBar.add(filler6);
@@ -122,9 +131,10 @@ public class NavigationPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_backButtonActionPerformed
+    private void backwardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backwardButtonActionPerformed
+        if (IMat.moveBackwardPossible())
+            IMat.moveBackward();
+    }//GEN-LAST:event_backwardButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         IMat.setCenterStage(new ViewHomePanel());
@@ -138,9 +148,32 @@ public class NavigationPanel extends javax.swing.JPanel {
         IMat.setCenterStage(new CustomerProfilePanel());
     }//GEN-LAST:event_profileButtonActionPerformed
 
+    private void forwardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwardButtonActionPerformed
+        if (IMat.moveForwardPossible())
+            IMat.moveForward();
+    }//GEN-LAST:event_forwardButtonActionPerformed
+
+    public void setNavButtonsColor() {
+        this.backwardButton.setForeground(decideBackwardEnabledColor());
+        this.forwardButton.setForeground(decideForwardEnabledColor());
+    }
+    
+    private Color decideBackwardEnabledColor() {
+        if (IMat.moveBackwardPossible()) {
+            return ColorScheme.enabledButtonForeground();
+        }
+        return ColorScheme.disabledButtonForeground();
+    }
+    
+     private Color decideForwardEnabledColor() {
+        if (IMat.moveForwardPossible()) {
+            return ColorScheme.enabledButtonForeground();
+        }
+        return ColorScheme.disabledButtonForeground();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
+    private javax.swing.JButton backwardButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;

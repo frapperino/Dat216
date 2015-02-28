@@ -8,6 +8,7 @@ package i_mat;
 import i_mat.center_stage.DisplayResultsPanel;
 import i_mat.center_stage.home.ViewHomePanel;
 import java.awt.BorderLayout;
+import javax.swing.JPanel;
 
 /**
  *
@@ -77,11 +78,17 @@ public class TopFrame extends javax.swing.JFrame {
         });
     }
     
-    void setCenterStage(javax.swing.JPanel panel) {
+    void setCenterStage(JPanel panel) {
         this.topPanel.remove(this.centerStagePanel);
         this.centerStagePanel = panel;
         this.topPanel.add(this.centerStagePanel, BorderLayout.CENTER);
-        this.validate();
+        this.revalidate();
+        this.repaint();
+        this.navigationPanel.setNavButtonsColor();
+    }
+    
+    JPanel getCenterStage() {
+        return this.centerStagePanel;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

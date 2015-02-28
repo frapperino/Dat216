@@ -6,6 +6,8 @@
 package i_mat;
 
 import i_mat.model.Model;
+import java.util.Stack;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -16,6 +18,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class IMat {
 
     private static TopFrame topFrame;
+    private final static Stack<JPanel> backwardStack = new Stack<>();
+    private final static Stack<JPanel> forwardStack = new Stack<>();
     /**
      * @param args the command line arguments
      */
@@ -42,6 +46,26 @@ public class IMat {
     }
     
     public static void setCenterStage(javax.swing.JPanel panel) {
-        topFrame.setCenterStage(panel);
+        backwardStack.push(topFrame.getCenterStage());
+        forwardStack.clear();
+        topFrame.setCenterStage(panel); 
+    }
+    
+    public static void moveBackward() {
+        forwardStack.push(topFrame.getCenterStage());
+        topFrame.setCenterStage(backwardStack.pop());
+    }
+    
+    public static void moveForward() {
+        backwardStack.push(topFrame.getCenterStage());
+        topFrame.setCenterStage(forwardStack.pop());
+    }
+    
+    public static boolean moveBackwardPossible() {
+        return !backwardStack.empty();
+    }
+    
+    public static boolean moveForwardPossible() {
+        return !forwardStack.empty();
     }
 }

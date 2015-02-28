@@ -9,12 +9,14 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -53,6 +55,7 @@ public class Model {
     
     /**
      * Return a product from the database for testing where you need one product
+     * @return 
      */
     public static Product getTestProduct() {
         return dataHandler.getProducts().get(3);
@@ -72,8 +75,46 @@ public class Model {
     }
     
     public static List<Order> getOrderHistory() {
-        dataHandler.getShoppingCart().addProduct(dataHandler.getProduct(1));
+        Random r = new Random();
+        int nbrOfProducts = r.nextInt(29) + 1;
+        //Only for testing: fills shopping cart with up to 30 random products and places order.
+        for (int i = 0; i<nbrOfProducts; i++) {
+            Product p = dataHandler.getProducts().get((r.nextInt(dataHandler.getProducts().size())));            
+            addShoppingItem(new ShoppingItem(p));
+        }
         dataHandler.placeOrder();
         return dataHandler.getOrders();
+    }
+    
+    /*
+    Resets dataHandler.isFirstRun() to true
+    */
+    public static void resetToFirstRun() {
+        dataHandler.resetFirstRun();
+    }
+    /*
+    Resets data handler completely.
+    */
+    public static void reset() {
+        dataHandler.reset();
+    }
+    
+    /*
+    Use this for adding products to shopping cart. It first checks whether the 
+    product is already in the shopping cart. If it is, the method just adds more
+    of the same, rather than create a new item in the shopping cart.
+    */
+    public static void addShoppingItem(ShoppingItem i) {
+        List<ShoppingItem> items = dataHandler.getShoppingCart().getItems();
+        boolean containsItem = false;
+        for (ShoppingItem item : items) {
+            if (i.getProduct().equals(item.getProduct())) {
+                item.setAmount(item.getAmount() + i.getAmount());
+                containsItem = true;
+            }
+        }
+        if (!containsItem) {
+            dataHandler.getShoppingCart().addItem(i);
+        }
     }
 }
