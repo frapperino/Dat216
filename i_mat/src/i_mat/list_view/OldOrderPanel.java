@@ -49,7 +49,7 @@ public class OldOrderPanel extends javax.swing.JPanel {
         setOpaque(false);
 
         headLabel.setFont(headLabel.getFont().deriveFont(headLabel.getFont().getStyle() | java.awt.Font.BOLD, headLabel.getFont().getSize()+5));
-        headLabel.setText(this.order.getDate().toString());
+        headLabel.setText(GenerateComponentsUtilities.getNameFromDate(this.order.getDate()));
         headLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 headLabelMouseClicked(evt);
@@ -99,7 +99,7 @@ public class OldOrderPanel extends javax.swing.JPanel {
             this.validate();
         }
         this.clicked = !this.clicked;
-
+        this.firePropertyChange("Changed value", !clicked, clicked);
     }//GEN-LAST:event_headLabelMouseClicked
        
     

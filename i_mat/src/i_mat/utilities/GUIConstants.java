@@ -15,6 +15,6 @@ import java.awt.Font;
 public class GUIConstants {
     public final static Dimension THUMBNAIL_SIZE = new Dimension(200,200);
     public final static Dimension PRODUCT_THUMBNAIL_SIZE = new Dimension(200,275);
-    
+    public final static Dimension MICRO_THUMBNAIL_SIZE = new Dimension(30,30);
  // TODO: Pick a standard font for titles  public final static Font titleFont1 = new Font('')
 }

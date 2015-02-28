@@ -48,7 +48,7 @@
           </FontInfo>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="this.order.getDate().toString()" type="code"/>
+          <Connection code="GenerateComponentsUtilities.getNameFromDate(this.order.getDate())" type="code"/>
         </Property>
       </Properties>
       <Events>

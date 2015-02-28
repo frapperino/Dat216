@@ -120,8 +120,8 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        this.historyPanel.validate();
-        this.jPanel1.validate();
-        this.jScrollPane1.validate();
+        this.historyPanel.revalidate();
+        this.jPanel1.revalidate();
+        this.jScrollPane1.revalidate();
     }
 }

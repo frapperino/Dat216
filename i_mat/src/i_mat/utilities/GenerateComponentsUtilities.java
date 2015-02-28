@@ -7,7 +7,11 @@ package i_mat.utilities;
 
 import i_mat.center_stage.ProductThumbnail;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -50,6 +54,18 @@ public class GenerateComponentsUtilities {
                 s += ", ";
             }
         }
+        return s;
+    }
+    
+    public static String getNameFromDate(Date d) {
+        Calendar c = new GregorianCalendar();
+        c.setTime(d);
+        String s = ""; 
+        s += c.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+        s += " " + c.get(Calendar.DAY_OF_MONTH);
+        s += " " + c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
+        s += " " + c.get(Calendar.YEAR);
+       
         return s;
     }
 }

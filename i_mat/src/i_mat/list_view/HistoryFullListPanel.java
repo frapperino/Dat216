@@ -5,14 +5,21 @@
  */
 package i_mat.list_view;
 
+import i_mat.model.Model;
+import i_mat.utilities.ColorScheme;
+import i_mat.utilities.GUIConstants;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.PopupMenu;
 import net.miginfocom.swing.MigLayout;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -29,17 +36,45 @@ public class HistoryFullListPanel extends javax.swing.JPanel {
     
     public HistoryFullListPanel(Order o) {
         initComponents();
-        this.setLayout(new MigLayout());
+        this.setLayout(new GridLayout(0, 1, 0, 0));
         int total = 0;
+        boolean striped = false;
         for (ShoppingItem item : o.getItems()) {
-            this.add(new JLabel(item.getProduct().getName()));
-            this.add(new JLabel(Double.toString(item.getAmount()) 
-            + item.getProduct().getUnitSuffix()));
-            this.add(new JLabel(item.getTotal() + " kr"), "wrap 0");
+            total += item.getTotal();
+            JLabel image = new JLabel();
+            image.setIcon(Model.getImageIconForProduct(item.getProduct(), GUIConstants.MICRO_THUMBNAIL_SIZE));
+            JLabel nameL = new JLabel(item.getProduct().getName());
+            JLabel amountL = new JLabel(Integer.toString((int)item.getAmount()) 
+            + " " + item.getProduct().getUnitSuffix());
+            JLabel costL = new JLabel(item.getTotal() + " kr");
+            JPanel rowPanel = new JPanel();
+            GridLayout gl = new GridLayout(1,4, 0, 0);
+            rowPanel.setLayout(gl);
+            rowPanel.setAlignmentX(SwingConstants.LEFT);
+            Color bgColor = striped ? ColorScheme.rowStripingDark() : ColorScheme.rowStripingLight();
+            striped = !striped;
+            rowPanel.setBackground(bgColor);
+            rowPanel.add(image);
+            rowPanel.add(nameL);
+            rowPanel.add(amountL);
+            rowPanel.add(costL);
+            this.add(rowPanel);
         }
-        JLabel totalLabel = new JLabel(Integer.toString(total) + " kr");
-        totalLabel.setAlignmentX(RIGHT_ALIGNMENT);
-        this.add(totalLabel,  "span 3");
+        JPanel rowPanel = new JPanel();
+        GridLayout gl = new GridLayout(1,4, 0, 10);
+        rowPanel.setLayout(gl);
+        rowPanel.setAlignmentX(SwingConstants.RIGHT);
+        Color bgColor = striped ? ColorScheme.rowStripingDark() : ColorScheme.rowStripingLight();
+        rowPanel.setBackground(bgColor);
+        JLabel totalLabel1 = new JLabel("Totalt:");
+        totalLabel1.setFont(totalLabel1.getFont().deriveFont(Font.BOLD));
+        JLabel totalLabel2 = new JLabel(Integer.toString(total) + " kr");
+        totalLabel2.setFont(totalLabel2.getFont().deriveFont(Font.BOLD));
+        rowPanel.add(new JLabel(""));
+        rowPanel.add(new JLabel(""));
+        rowPanel.add(totalLabel1);
+        rowPanel.add(totalLabel2);
+        this.add(rowPanel);
     }
 
     /**
@@ -50,8 +85,6 @@ public class HistoryFullListPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        setBackground(new java.awt.Color(0, 255, 204));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
