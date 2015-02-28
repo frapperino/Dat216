@@ -38,11 +38,6 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
             panel.addPropertyChangeListener(this);
             this.historyPanel.add(panel);
         }
-        this.jPanel1.validate();
-    }
-    
-    private void sortHistory(List<Order> list) {
-        
     }
     
     /**
@@ -120,8 +115,6 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        this.historyPanel.revalidate();
-        this.jPanel1.revalidate();
-        this.jScrollPane1.revalidate();
+        this.revalidate();
     }
 }
