@@ -41,6 +41,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         jRadioButton2 = new javax.swing.JRadioButton();
         cardNumber = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         addressButtonGroup.add(oldAdressButton);
         oldAdressButton.setText("Skicka till");
@@ -81,6 +82,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         paymentButtonGroup.add(jRadioButton2);
         jRadioButton2.setText("Nytt kort...");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         cardNumber.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1234 1234 1234 1234", "5678 5678 5678 5678" }));
         cardNumber.addActionListener(new java.awt.event.ActionListener() {
@@ -96,6 +102,17 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 287, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 37, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,6 +120,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newAddressPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newAdressButton)
                     .addGroup(layout.createSequentialGroup()
@@ -135,9 +153,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
                     .addComponent(cardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioButton2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -163,6 +183,12 @@ public class CheckoutPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+        this.jPanel1 = new NewCardPanel();
+        this.validate();
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
     private int getCardNumber(){
         return (Integer) cardNumber.getSelectedItem();
     }
@@ -176,6 +202,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox cardNumber;
     private javax.swing.ButtonGroup deliveryButtonGroup;
     private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JPanel newAddressPanel;
