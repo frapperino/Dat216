@@ -40,7 +40,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         cardNumber = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        purchase = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
 
         addressButtonGroup.add(oldAdressButton);
@@ -95,10 +95,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Genomför köp");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        purchase.setText("Genomför köp");
+        purchase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                purchaseActionPerformed(evt);
             }
         });
 
@@ -129,7 +129,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                         .addComponent(selectedAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jRadioButton2)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1)
+                        .addComponent(purchase)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jRadioButton1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -153,11 +153,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
                     .addComponent(cardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(purchase)
+                .addGap(66, 66, 66))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -179,9 +179,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_cardNumberActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseActionPerformed
+        IMat.setCenterStage(new ThankYouPanel());        
+    }//GEN-LAST:event_purchaseActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
@@ -201,7 +201,6 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup addressButtonGroup;
     private javax.swing.JComboBox cardNumber;
     private javax.swing.ButtonGroup deliveryButtonGroup;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
@@ -209,6 +208,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton newAdressButton;
     private javax.swing.JRadioButton oldAdressButton;
     private javax.swing.ButtonGroup paymentButtonGroup;
+    private javax.swing.JButton purchase;
     private javax.swing.JComboBox selectedAddress;
     // End of variables declaration//GEN-END:variables
 }
