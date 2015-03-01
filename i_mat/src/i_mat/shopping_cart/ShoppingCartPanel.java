@@ -7,12 +7,16 @@ package i_mat.shopping_cart;
 
 import i_mat.IMat;
 import i_mat.center_stage.checkout.CheckoutPanel;
+import se.chalmers.ait.dat215.project.ShoppingItem;
+import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 
 /**
  *
  * @author Hjort
  */
 public class ShoppingCartPanel extends javax.swing.JPanel {
+    private static final IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
     /**
      * Creates new form ShoppingCartPanel
@@ -76,6 +80,11 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
 
         jButton1.setText("X");
         jButton1.setToolTipText("show on hover");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout FirstItemLayout = new javax.swing.GroupLayout(FirstItem);
         FirstItem.setLayout(FirstItemLayout);
@@ -296,6 +305,27 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
         System.out.println("click!");
     }//GEN-LAST:event_CheckoutButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //test
+        setJLabel1();
+        setJTextField1();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    //exempel på produkt1 eftersom det inte finns produkter här än
+    public void setJLabel1(){
+        jLabel1.setText(iMatDataHandler.getProduct(1).getName());
+    }
+    public double getSpinner1Value(){
+        return (double) jSpinner1.getValue();
+    }
+ 
+    public void setJTextField1(){
+       jTextField1.setText("spinner1 * getproduct"); 
+    }
+    public String getJTextField1(){
+        return jTextField1.getText();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CheckoutButton;

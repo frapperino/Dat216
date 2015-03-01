@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package i_mat.center_stage.checkout;
-
+import i_mat.IMat;
+import java.time.Clock;
+import javax.swing.*;
+import i_mat.controllers.CheckoutController;      
 /**
  *
  * @author Hjort
  */
 public class CheckoutPanel extends javax.swing.JPanel {
-
+    
     /**
      * Creates new form CheckoutPanel
      */
@@ -32,8 +35,12 @@ public class CheckoutPanel extends javax.swing.JPanel {
         deliveryButtonGroup = new javax.swing.ButtonGroup();
         oldAdressButton = new javax.swing.JRadioButton();
         newAdressButton = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox();
+        selectedAddress = new javax.swing.JComboBox();
         newAddressPanel = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        cardNumber = new javax.swing.JComboBox();
+        jButton1 = new javax.swing.JButton();
 
         addressButtonGroup.add(oldAdressButton);
         oldAdressButton.setText("Skicka till");
@@ -51,10 +58,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gatvägen 7" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        selectedAddress.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gatvägen 7" }));
+        selectedAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                selectedAddressActionPerformed(evt);
             }
         });
 
@@ -62,31 +69,54 @@ public class CheckoutPanel extends javax.swing.JPanel {
         newAddressPanel.setLayout(newAddressPanelLayout);
         newAddressPanelLayout.setHorizontalGroup(
             newAddressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 211, Short.MAX_VALUE)
+            .addGap(0, 289, Short.MAX_VALUE)
         );
         newAddressPanelLayout.setVerticalGroup(
             newAddressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
+
+        paymentButtonGroup.add(jRadioButton1);
+        jRadioButton1.setText("Mitt Visakort med nummer: ");
+
+        paymentButtonGroup.add(jRadioButton2);
+        jRadioButton2.setText("Nytt kort...");
+
+        cardNumber.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1234 1234 1234 1234", "5678 5678 5678 5678" }));
+        cardNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cardNumberActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Genomför köp");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(newAddressPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newAdressButton)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newAdressButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(oldAdressButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(newAddressPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(259, Short.MAX_VALUE))
+                        .addComponent(oldAdressButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(selectedAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jRadioButton2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jRadioButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,12 +124,20 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(oldAdressButton)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(selectedAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newAdressButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newAddressPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton1)
+                    .addComponent(cardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -108,23 +146,42 @@ public class CheckoutPanel extends javax.swing.JPanel {
         this.validate();
     }//GEN-LAST:event_oldAdressButtonActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void selectedAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedAddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_selectedAddressActionPerformed
 
     private void newAdressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAdressButtonActionPerformed
         this.newAddressPanel = new NewAdressPanel();
         this.validate();
     }//GEN-LAST:event_newAdressButtonActionPerformed
 
+    private void cardNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardNumberActionPerformed
+        
+    }//GEN-LAST:event_cardNumberActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private int getCardNumber(){
+        return (Integer) cardNumber.getSelectedItem();
+    }
+    private String getSelectedAddress(){
+        return selectedAddress.getSelectedItem().toString();
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup addressButtonGroup;
+    private javax.swing.JComboBox cardNumber;
     private javax.swing.ButtonGroup deliveryButtonGroup;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JPanel newAddressPanel;
     private javax.swing.JRadioButton newAdressButton;
     private javax.swing.JRadioButton oldAdressButton;
     private javax.swing.ButtonGroup paymentButtonGroup;
+    private javax.swing.JComboBox selectedAddress;
     // End of variables declaration//GEN-END:variables
 }
