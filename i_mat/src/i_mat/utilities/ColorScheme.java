@@ -26,4 +26,8 @@ public class ColorScheme {
     public static Color disabledButtonForeground() {
         return Color.gray;
     }
+    
+    public static Color getSelectedProductBorderColor() {
+        return Color.blue;
+    }
 }
