@@ -82,7 +82,7 @@ public class ProductThumbnail extends javax.swing.JPanel {
         jLabel2.setFont(jLabel2.getFont().deriveFont((jLabel2.getFont().getStyle() | java.awt.Font.ITALIC) & ~java.awt.Font.BOLD, jLabel2.getFont().getSize()-2));
         jLabel2.setText(this.product.getPrice() + " kr");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), null, null, Integer.valueOf(1)));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(0), null, Integer.valueOf(1)));
 
         jLabel4.setText(this.product.getUnitSuffix());
 
