@@ -108,7 +108,13 @@ public class cartItemPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
-
+        Object o = jSpinner1.getValue();
+        Number value = new Double(1);
+        if (o instanceof Number) {
+            value = (Number)o;
+            item.setAmount(value.doubleValue());
+        }
+        update();
     }//GEN-LAST:event_jSpinner1StateChanged
 
 
