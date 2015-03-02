@@ -8,12 +8,20 @@ import i_mat.IMat;
 import java.time.Clock;
 import javax.swing.*;
 import i_mat.controllers.CheckoutController;      
+import i_mat.model.Model;
+import i_mat.shopping_cart.ShoppingCartPanel2;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.ShoppingCart;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 /**
  *
  * @author Hjort
  */
 public class CheckoutPanel extends javax.swing.JPanel {
-    
+    private static final IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
+    ShoppingCart cart;
+    ThankYouPanel p1;
+
     /**
      * Creates new form CheckoutPanel
      */
@@ -79,6 +87,11 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         paymentButtonGroup.add(jRadioButton1);
         jRadioButton1.setText("Mitt Visakort med nummer: ");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         paymentButtonGroup.add(jRadioButton2);
         jRadioButton2.setText("Nytt kort...");
@@ -180,7 +193,14 @@ public class CheckoutPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cardNumberActionPerformed
 
     private void purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseActionPerformed
-        IMat.setCenterStage(new ThankYouPanel());        
+        p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true));
+        IMat.setCenterStage(p1);
+        
+        /*
+        for (ShoppingItem i:Model.getShoppingCart().getItems()){
+            cart.removeItem(i);
+        }
+        */
     }//GEN-LAST:event_purchaseActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -188,6 +208,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
         this.jPanel1 = new NewCardPanel();
         this.validate();
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private int getCardNumber(){
         return (Integer) cardNumber.getSelectedItem();

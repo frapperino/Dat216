@@ -45,7 +45,7 @@ public class ShoppingCartPanel2 extends JScrollPane implements ShoppingCartListe
         this.cip.remove(cip);
         mainPanel.remove(cip);
         this.updateUI();
-        this.validate();
+        this.validate();        
     }
     
     @Override

@@ -50,6 +50,11 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
         CollapseButton.setText(">");
 
         jButton5.setText("KASSA");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText(".");
 
@@ -97,6 +102,13 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        IMat.setCenterStage(new CheckoutPanel());        
+
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
 

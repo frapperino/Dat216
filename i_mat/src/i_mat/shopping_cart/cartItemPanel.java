@@ -20,7 +20,6 @@ public class cartItemPanel extends javax.swing.JPanel {
     
     private ShoppingItem item;
     private ShoppingCartPanel2 scp;
-
     /**
      * Creates new form cartItemPanel
      */

@@ -21,6 +21,7 @@ import java.util.List;
  */
 public class CheckoutController {
     
+    //Gamla, ska tas bort 
     public CheckoutController(){
         
     }
