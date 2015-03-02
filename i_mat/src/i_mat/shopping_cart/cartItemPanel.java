@@ -72,7 +72,7 @@ public class cartItemPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText(""+item.getProduct().getPrice());
+        jLabel2.setText(""+item.getTotal());
 
         jLabel3.setText("kr");
 
