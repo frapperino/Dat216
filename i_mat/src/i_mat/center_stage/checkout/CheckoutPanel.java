@@ -132,6 +132,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Förnamn:");
 
+        jTextField1.setText("Jonas");
         jTextField1.setEnabled(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +142,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Efternamn:");
 
+        jTextField2.setText("Petterson");
         jTextField2.setEnabled(false);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,14 +152,17 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Adress:");
 
+        jTextField3.setText("Nånstansibergen 2");
         jTextField3.setEnabled(false);
 
         jLabel4.setText("Postkod:");
 
+        jTextField4.setText("441 22");
         jTextField4.setEnabled(false);
 
         jLabel5.setText("Stad:");
 
+        jTextField5.setText("Göteborg");
         jTextField5.setEnabled(false);
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,8 +174,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         jLabel7.setText("Telefon:");
 
+        jTextField6.setText("087658472");
         jTextField6.setEnabled(false);
 
+        jTextField7.setText("0705869632");
         jTextField7.setEnabled(false);
 
         jLabel8.setText("Korttyp:");

@@ -283,6 +283,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField1">
       <Properties>
+        <Property name="text" type="java.lang.String" value="Jonas"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -296,6 +297,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField2">
       <Properties>
+        <Property name="text" type="java.lang.String" value="Petterson"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -311,6 +313,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField3">
       <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xe5;nstansibergen 2"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
@@ -321,6 +324,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField4">
       <Properties>
+        <Property name="text" type="java.lang.String" value="441 22"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
@@ -331,6 +335,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField5">
       <Properties>
+        <Property name="text" type="java.lang.String" value="G&#xf6;teborg"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -349,11 +354,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField6">
       <Properties>
+        <Property name="text" type="java.lang.String" value="087658472"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField7">
       <Properties>
+        <Property name="text" type="java.lang.String" value="0705869632"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
