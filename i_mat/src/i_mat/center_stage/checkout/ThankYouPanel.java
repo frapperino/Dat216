@@ -6,6 +6,7 @@
 package i_mat.center_stage.checkout;
 
 
+import i_mat.utilities.GenerateComponentsUtilities;
 import java.util.ArrayList;
 import javax.swing.JList;
 import se.chalmers.ait.dat215.project.Order;
@@ -37,7 +38,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
         //set receipt
         //TODO: fixa antal i panelen bredvid, fixa customer uppgifter
         orderNrL.setText(""+ order.getOrderNumber());
-        orderDateL.setText("" + order.getDate()); //kan parsas ner
+        orderDateL.setText(GenerateComponentsUtilities.getNameFromDate(order.getDate()));
         shoppingCartList.setText(arrayParse(orderItems));
         
     }
@@ -144,7 +145,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -188,9 +189,9 @@ public class ThankYouPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(firstNameL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lastNameL)
-                            .addComponent(jLabel3))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lastNameL))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jlabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
