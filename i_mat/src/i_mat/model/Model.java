@@ -138,6 +138,7 @@ public class Model {
             if (i.getProduct().equals(item.getProduct())) {
                 item.setAmount(item.getAmount() + i.getAmount());
                 containsItem = true;
+                dataHandler.getShoppingCart().fireShoppingCartChanged(item, containsItem);
             }
         }
         if (!containsItem) {
