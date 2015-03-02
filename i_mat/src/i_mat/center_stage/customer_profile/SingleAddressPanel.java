@@ -5,6 +5,8 @@
  */
 package i_mat.center_stage.customer_profile;
 
+import i_mat.controllers.AddressController;
+import i_mat.model.DeliveryAddress;
 import i_mat.model.Model;
 import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.Customer;
@@ -15,29 +17,27 @@ import se.chalmers.ait.dat215.project.Customer;
  */
 public class SingleAddressPanel extends javax.swing.JPanel {
 
-    private Customer customer;
+    private DeliveryAddress deliveryAddress;
     
     private EditAddressPanel expandedAddressPanel;
-    private JPanel collapsedAddressPanel;
     
     /**
      * Creates new form SingleAddress
      */
     public SingleAddressPanel() {
-        this(Model.getTestCustomer());
+        this(Model.getTestDeliveryAddress());
     }
 
-    public SingleAddressPanel(Customer c) {
-        setCustomer(c);
+    public SingleAddressPanel(DeliveryAddress da) {
+        setDeliveryAddress(da);
         initComponents();
         validate();
         repaint();
     }
     
-    protected void setCustomer(Customer c) {
-        customer = c;
-        expandedAddressPanel = new EditAddressPanel(customer);
-        collapsedAddressPanel = new DeliveryAddressPanel(customer);
+    protected void setDeliveryAddress(DeliveryAddress da) {
+        deliveryAddress = da;
+        expandedAddressPanel = new EditAddressPanel(deliveryAddress);
         validate();
         repaint();
     }
@@ -54,6 +54,8 @@ public class SingleAddressPanel extends javax.swing.JPanel {
         jToggleButton1 = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         deliveryAddressPanel1 = new i_mat.center_stage.customer_profile.DeliveryAddressPanel();
+        deliveryAddressPanel1.setDeliveryAddress(deliveryAddress);
+        jToggleButton2 = new javax.swing.JToggleButton();
 
         jToggleButton1.setText("►");
         jToggleButton1.setBorderPainted(false);
@@ -69,9 +71,18 @@ public class SingleAddressPanel extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(263, 263));
+        jPanel1.setSize(new java.awt.Dimension(263, 263));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
+            }
+        });
+
+        jToggleButton2.setText("Förval");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
             }
         });
 
@@ -80,14 +91,21 @@ public class SingleAddressPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(deliveryAddressPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(deliveryAddressPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton2)
+                .addGap(12, 12, 12))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jToggleButton2)
+                .addGap(0, 234, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(deliveryAddressPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -96,19 +114,16 @@ public class SingleAddressPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jToggleButton1))
-                .addGap(0, 0, 0))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -129,6 +144,7 @@ public class SingleAddressPanel extends javax.swing.JPanel {
             jToggleButton1.setText("►");
             jPanel1.removeAll();
             jPanel1.add(deliveryAddressPanel1);
+            jPanel1.add(jToggleButton2);
         }
         jPanel1.validate();
         jPanel1.revalidate();
@@ -138,10 +154,17 @@ public class SingleAddressPanel extends javax.swing.JPanel {
         repaint();
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        if (jToggleButton2.isSelected()) {
+            AddressController.getInstance().setDefault(deliveryAddress);
+        }
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private i_mat.center_stage.customer_profile.DeliveryAddressPanel deliveryAddressPanel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
 }

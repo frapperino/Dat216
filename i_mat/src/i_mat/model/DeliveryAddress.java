@@ -5,6 +5,7 @@
  */
 package i_mat.model;
 
+import java.util.UUID;
 import se.chalmers.ait.dat215.project.Customer;
 
 /**
@@ -14,7 +15,7 @@ import se.chalmers.ait.dat215.project.Customer;
  */
 public class DeliveryAddress extends Customer {
     
-    private int id;
+    private final String id;
     
     protected DeliveryAddress(Customer c) {
         this(c.getFirstName(),c.getLastName(),c.getAddress(),c.getPostCode(),
@@ -24,6 +25,19 @@ public class DeliveryAddress extends Customer {
     protected DeliveryAddress(String firstName, String lastName, String address,
                               String postCode, String postAddress, String phoneNumber,
                               String mobilePhoneNumber, String email) {
+        this(firstName, lastName, address, postCode, postAddress, phoneNumber,
+             mobilePhoneNumber, email, UUID.randomUUID().toString());
+    }
+    
+    private DeliveryAddress(Customer c, String id) {
+        this(c.getFirstName(), c.getLastName(), c.getAddress(), c.getPostCode(),
+             c.getPostAddress(), c.getPhoneNumber(), c.getMobilePhoneNumber(),
+             c.getEmail(), id);
+    }
+    
+    private DeliveryAddress(String firstName, String lastName, String address,
+                              String postCode, String postAddress, String phoneNumber,
+                              String mobilePhoneNumber, String email, String id) {
         super();
         setFirstName(firstName);
         setLastName(lastName);
@@ -33,14 +47,15 @@ public class DeliveryAddress extends Customer {
         setPhoneNumber(phoneNumber);
         setMobilePhoneNumber(mobilePhoneNumber);
         setEmail(email);
+        this.id = id;
+    }
+    
+    public DeliveryAddress copy() {
+        return new DeliveryAddress(this, this.id);
     }
     
     public boolean equals(Object o) {
-        /*if (o instanceof DeliveryAddress) {
-            DeliveryAddress da = (DeliveryAddress) o;
-            
-            return d
-        } else*/ if (o instanceof Customer) {
+        if (o instanceof Customer) {
             Customer c = (Customer) o;
             
             return getFirstName().equals(c.getFirstName())
@@ -53,5 +68,21 @@ public class DeliveryAddress extends Customer {
         } else {
             return false;
         }
+    }
+    
+    public String getID() {
+        return id;
+    }
+    
+    @Override
+    public String toString() {
+        return "Address {" +
+                "\n\t ID: " + getID() +
+                "\n\t Name: " + getFirstName() + getLastName() + 
+                "\n\t Address: " + getAddress() + 
+                "\n\t Postcode: " + getPostCode() + 
+                "\n\t Postaddress: " + getPostAddress() + 
+                "\n\t Phone: " + getPhoneNumber() +
+                "\n }";
     }
 }

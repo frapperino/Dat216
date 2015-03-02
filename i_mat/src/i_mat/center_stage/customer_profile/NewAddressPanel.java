@@ -7,32 +7,24 @@ package i_mat.center_stage.customer_profile;
 
 import i_mat.model.DeliveryAddress;
 import i_mat.model.Model;
+import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.Customer;
 
 /**
  *
  * @author weeeeeew
  */
-public class DeliveryAddressPanel extends javax.swing.JPanel {
-
-    private DeliveryAddress deliveryAddress;
+public class NewAddressPanel extends javax.swing.JPanel {
+    
+    private JPanel expandedAddressPanel;
+    private JPanel collapsedAddressPanel;
     
     /**
-     * Creates new form DeliveryAddressPanel
+     * Creates new form SingleAddress
      */
-    public DeliveryAddressPanel() {
-        this(Model.getTestDeliveryAddress());
-    }
-
-    public DeliveryAddressPanel(DeliveryAddress da) {
-        setDeliveryAddress(da);
+    public NewAddressPanel() {
         initComponents();
-    }
-    
-    public void setDeliveryAddress(DeliveryAddress da) {
-        deliveryAddress = da;
-        removeAll();
-        initComponents();
+        expandedAddressPanel = new InputNewAddressPanel();
     }
     
     /**
@@ -44,16 +36,33 @@ public class DeliveryAddressPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButton1 = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
+        jToggleButton1.setText("+");
+        jToggleButton1.setBorderPainted(false);
+        jToggleButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton1MouseClicked(evt);
+            }
+        });
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(263, 263));
+        jPanel1.setSize(new java.awt.Dimension(263, 263));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
             }
         });
 
-        jLabel1.setText(deliveryAddress.getAddress());
+        jLabel1.setText("Lägg till ny");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,13 +70,13 @@ public class DeliveryAddressPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(0, 175, Short.MAX_VALUE))
+                .addGap(0, 193, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 247, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -75,22 +84,50 @@ public class DeliveryAddressPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToggleButton1)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // perhaps the same as jToggleButton1MouseClicked(), i dunno lol?
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        // not needed anymore but can't remove due to Netbeans?
+        jToggleButton1MouseClicked(evt);
     }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+        if (jToggleButton1.isSelected()) {
+            jToggleButton1.setText("X");
+            jPanel1.removeAll();
+            jPanel1.add(expandedAddressPanel);
+        } else {
+            jToggleButton1.setText("+");
+            jPanel1.removeAll();
+            jPanel1.add(jLabel1);
+        }
+        jPanel1.validate();
+        jPanel1.revalidate();
+        jPanel1.repaint();
+        validate();
+        revalidate();
+        repaint();
+    }//GEN-LAST:event_jToggleButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

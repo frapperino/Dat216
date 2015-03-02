@@ -8,6 +8,7 @@ package i_mat.model;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import javax.swing.Icon;
@@ -33,7 +34,7 @@ public class Model {
      * procedures here...
      */
     static {
-        
+        deliveryAddresses.add(new DeliveryAddress(dataHandler.getCustomer()));
     }
     
     /*
@@ -68,31 +69,107 @@ public class Model {
     
     /**
      * Changes the default delivery address.
-     * @param deliveryAddress The new default address.
+     * @param id The id of the new default address.
      */
-    public static void setDefaultDeliveryAddress(DeliveryAddress deliveryAddress) {
+    public static void setDefaultDeliveryAddress(DeliveryAddress externalAddress) {
         Customer backendCustomer = dataHandler.getCustomer();
+        DeliveryAddress newDefault = null;
         
-        deliveryAddresses.add(new DeliveryAddress(backendCustomer));
-        deliveryAddresses.remove(deliveryAddress);
+        for (DeliveryAddress deliveryAddress : deliveryAddresses) {
+            if (deliveryAddress.getID().equals(externalAddress.getID())) {
+                newDefault = deliveryAddress;
+                break;
+            }
+        }
         
-        backendCustomer.setFirstName(deliveryAddress.getFirstName());
-        backendCustomer.setLastName(deliveryAddress.getLastName());
-        backendCustomer.setAddress(deliveryAddress.getAddress());
-        backendCustomer.setPostCode(deliveryAddress.getPostCode());
-        backendCustomer.setPostAddress(deliveryAddress.getPostAddress());
-        backendCustomer.setPhoneNumber(deliveryAddress.getPhoneNumber());
-        backendCustomer.setMobilePhoneNumber(deliveryAddress.getMobilePhoneNumber());
-        backendCustomer.setEmail(deliveryAddress.getEmail());
+        if (newDefault != null) {
+            deliveryAddresses.remove(newDefault);
+            deliveryAddresses.add(0,newDefault);
+            
+            backendCustomer.setFirstName(newDefault.getFirstName());
+            backendCustomer.setLastName(newDefault.getLastName());
+            backendCustomer.setAddress(newDefault.getAddress());
+            backendCustomer.setPostCode(newDefault.getPostCode());
+            backendCustomer.setPostAddress(newDefault.getPostAddress());
+            backendCustomer.setPhoneNumber(newDefault.getPhoneNumber());
+            backendCustomer.setMobilePhoneNumber(newDefault.getMobilePhoneNumber());
+            backendCustomer.setEmail(newDefault.getEmail());
+        }
     }
     
-//TODO fix this    public static void editDeliveryAddress() 
+    public static void deleteDeliveryAddress(DeliveryAddress deliveryAddress) {
+        deliveryAddresses.remove(deliveryAddress);
+        
+        if (!deliveryAddresses.isEmpty()) {
+            if (!deliveryAddresses.get(0).equals(dataHandler.getCustomer())) {
+                setDefaultDeliveryAddress(deliveryAddresses.get(0));
+            }
+        } else {
+            Customer backendCustomer = dataHandler.getCustomer();
+            
+            backendCustomer.setFirstName("");
+            backendCustomer.setLastName("");
+            backendCustomer.setAddress("");
+            backendCustomer.setPostAddress("");
+            backendCustomer.setPostCode("");
+            backendCustomer.setEmail("");
+            backendCustomer.setPhoneNumber("");
+            backendCustomer.setMobilePhoneNumber("");
+        }
+    }
+    
+    public static void editDeliveryAddress(DeliveryAddress externalAddress) {
+        DeliveryAddress internalAddress = null;
+        System.out.println(externalAddress);
+        
+        for (DeliveryAddress deliveryAddress : deliveryAddresses) {
+            System.out.println(deliveryAddress);
+            if (deliveryAddress.getID().equals(externalAddress.getID())) {
+                internalAddress = deliveryAddress;
+                break;
+            }
+        }
+        
+        internalAddress.setFirstName(externalAddress.getFirstName());
+        internalAddress.setLastName(externalAddress.getLastName());
+        internalAddress.setAddress(externalAddress.getAddress());
+        internalAddress.setPostCode(externalAddress.getPostCode());
+        internalAddress.setPostAddress(externalAddress.getPostAddress());
+        internalAddress.setPhoneNumber(externalAddress.getPhoneNumber());
+        internalAddress.setMobilePhoneNumber(externalAddress.getMobilePhoneNumber());
+        internalAddress.setEmail(externalAddress.getEmail());
+        
+        if (deliveryAddresses.indexOf(internalAddress) == 0) {
+            setDefaultDeliveryAddress(internalAddress);
+        }
+    }
+    
+    public static DeliveryAddress getDefaultAddress() {
+        return deliveryAddresses.get(0).copy();
+    }
+    
+    public static void addDeliveryAddress(String firstName, String lastName, String address, String postCode, String postAddress, String phone) {
+        DeliveryAddress newAddress = new DeliveryAddress(firstName, lastName, address, postCode, postAddress, phone, phone, null);
+        deliveryAddresses.add(newAddress);
+    }
+    
+    
+    public static List<DeliveryAddress> getDeliveryAddresses() {
+        List<DeliveryAddress> externalAddresses = new LinkedList<DeliveryAddress>();
+        
+        for (DeliveryAddress da : deliveryAddresses) {
+            externalAddresses.add(da.copy());
+        }
+        
+        return externalAddresses;
+    }
+    
     
     /**
      * Return a customer from the database for testing.
      * @return 
      */
-    public static Customer getTestCustomer() {
+    public static DeliveryAddress getTestDeliveryAddress() {
         return new DeliveryAddress("Test", "Testsson", "Testgatan 42", "123 45",
                     "Testberga", "031-420420", "070-312 1337", "test@test.test");
     }

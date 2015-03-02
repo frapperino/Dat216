@@ -5,6 +5,7 @@
  */
 package i_mat.center_stage.customer_profile;
 
+import i_mat.model.DeliveryAddress;
 import i_mat.model.Model;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,18 +17,22 @@ import se.chalmers.ait.dat215.project.Customer;
  */
 public class AddressesPanel extends javax.swing.JPanel {
 
-    private List<Customer> deliveryAddresses;
+    private List<DeliveryAddress> deliveryAddresses;
     
     /**
      * Creates new form AdressesPanel
      */
     public AddressesPanel() {
-        this(new ArrayList<Customer>());
+        this(Model.getDeliveryAddresses());
     }
 
-    public AddressesPanel(List<Customer> deliveryAddresses) {
+    public AddressesPanel(List<DeliveryAddress> deliveryAddresses) {
         this.deliveryAddresses = deliveryAddresses;
         initComponents();
+        
+        for (DeliveryAddress deliveryAddress : deliveryAddresses) {
+            add(new SingleAddressPanel(deliveryAddress));
+        }
         
         validate();
         repaint();
@@ -42,38 +47,14 @@ public class AddressesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        singleAddressPanel1 = new i_mat.center_stage.customer_profile.SingleAddressPanel();
+        newAddressPanel1 = new i_mat.center_stage.customer_profile.NewAddressPanel();
 
-        jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD, jLabel1.getFont().getSize()+7));
-        jLabel1.setText("Leveransadresser");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(212, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(singleAddressPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(singleAddressPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(228, Short.MAX_VALUE))
-        );
+        setLayout(new java.awt.GridLayout(0, 1, 0, 10));
+        add(newAddressPanel1);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private i_mat.center_stage.customer_profile.SingleAddressPanel singleAddressPanel1;
+    private i_mat.center_stage.customer_profile.NewAddressPanel newAddressPanel1;
     // End of variables declaration//GEN-END:variables
 }
