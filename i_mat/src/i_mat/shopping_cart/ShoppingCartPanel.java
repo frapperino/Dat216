@@ -7,6 +7,7 @@ package i_mat.shopping_cart;
 
 import i_mat.IMat;
 import i_mat.center_stage.checkout.CheckoutPanel;
+import java.awt.Dimension;
 
 /**
  *
@@ -19,6 +20,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
      */
     public ShoppingCartPanel() {
         initComponents();
+        this.setPreferredSize(new Dimension(290,300));
     }
 
     /**

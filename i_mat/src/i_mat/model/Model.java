@@ -16,6 +16,7 @@ import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
@@ -142,5 +143,9 @@ public class Model {
         if (!containsItem) {
             dataHandler.getShoppingCart().addItem(i);
         }
+    }
+    
+    public static ShoppingCart getShoppingCart() {
+        return dataHandler.getShoppingCart();
     }
 }
