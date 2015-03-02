@@ -5,6 +5,8 @@
  */
 package i_mat.center_stage.checkout;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author Hjort
@@ -16,7 +18,9 @@ public class NewAdressPanel extends javax.swing.JPanel {
      */
     public NewAdressPanel() {
         initComponents();
+        this.setPreferredSize(new Dimension(200,200));
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
