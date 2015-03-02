@@ -22,6 +22,8 @@ public class ThankYouPanel extends javax.swing.JPanel {
      */
     Order order;
     ArrayList<String> orderItems;
+    ArrayList<Integer> orderItemsAmount;
+    int amount;
     
     public ThankYouPanel() {
         initComponents();
@@ -30,17 +32,22 @@ public class ThankYouPanel extends javax.swing.JPanel {
         initComponents();
         this.order = o;
         orderItems = new ArrayList<String>();
+        orderItemsAmount = new ArrayList<Integer>();
         
         for (int i = 0; i < order.getItems().size(); i++){
             orderItems.add(order.getItems().get(i).getProduct().getName());
+            amount = (int) Math.floor(order.getItems().get(i).getAmount());
+            orderItemsAmount.add(amount);
         }
-  
+        
+        itemNumberField.setText(arrayParse(orderItemsAmount));
+        
         //set receipt
         //TODO: fixa antal i panelen bredvid, fixa customer uppgifter
         orderNrL.setText(""+ order.getOrderNumber());
         orderDateL.setText(GenerateComponentsUtilities.getNameFromDate(order.getDate()));
         shoppingCartList.setText(arrayParse(orderItems));
-        
+      
     }
     
     
@@ -75,14 +82,14 @@ public class ThankYouPanel extends javax.swing.JPanel {
         phoneNumber = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cellNumber = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         orderNrL = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         orderDateL = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        shoppingCartList1 = new javax.swing.JTextArea();
+        itemNumberField = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Tack för ditt köp!");
@@ -131,9 +138,9 @@ public class ThankYouPanel extends javax.swing.JPanel {
 
         orderDateL.setText("\"ändras\"");
 
-        shoppingCartList1.setColumns(20);
-        shoppingCartList1.setRows(5);
-        jScrollPane2.setViewportView(shoppingCartList1);
+        itemNumberField.setColumns(20);
+        itemNumberField.setRows(5);
+        jScrollPane2.setViewportView(itemNumberField);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Antal:");
@@ -149,7 +156,6 @@ public class ThankYouPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jlabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(custAddress, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,19 +168,18 @@ public class ThankYouPanel extends javax.swing.JPanel {
                                 .addComponent(orderNrL, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(orderDateL, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel2)
+                            .addComponent(lastNameL)
                             .addComponent(firstNameL)
-                            .addComponent(lastNameL))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1))
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
+                            .addComponent(jLabel9)))
+                    .addComponent(jLabel2))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -182,17 +187,20 @@ public class ThankYouPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel2)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(firstNameL)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(firstNameL)
+                        .addComponent(lastNameL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lastNameL))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)
                         .addComponent(jlabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(custAddress)
@@ -209,24 +217,16 @@ public class ThankYouPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cellNumber)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(orderNrL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(orderDateL)
-                        .addGap(95, 95, 95))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                        .addComponent(orderDateL))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -235,6 +235,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
     private javax.swing.JLabel cellNumber;
     private javax.swing.JLabel custAddress;
     private javax.swing.JLabel firstNameL;
+    private javax.swing.JTextArea itemNumberField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -246,7 +247,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel jlabel5;
     private javax.swing.JLabel lastNameL;
     private javax.swing.JLabel orderDateL;
@@ -254,6 +255,5 @@ public class ThankYouPanel extends javax.swing.JPanel {
     private javax.swing.JLabel phoneNumber;
     private javax.swing.JLabel postCode;
     private javax.swing.JTextArea shoppingCartList;
-    private javax.swing.JTextArea shoppingCartList1;
     // End of variables declaration//GEN-END:variables
 }
