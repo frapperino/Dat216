@@ -51,7 +51,7 @@ public class Model {
     }
     
     public static List<Product> getPromoProducts() {
-        return dataHandler.getProducts();
+        return dataHandler.getProducts().subList(0, 10);
     }
     
     /**
@@ -102,6 +102,10 @@ public class Model {
     }
     
     public static List<Order> getOrderHistory() {
+        
+        //Commented code below was for adding when testing only, not actual functionlity.
+        /*
+        
         Random r = new Random();
         int nbrOfProducts = r.nextInt(29) + 1;
         //Only for testing: fills shopping cart with up to 30 random products and places order.
@@ -109,7 +113,7 @@ public class Model {
             Product p = dataHandler.getProducts().get((r.nextInt(dataHandler.getProducts().size())));            
             addShoppingItem(new ShoppingItem(p));
         }
-        dataHandler.placeOrder();
+        dataHandler.placeOrder();*/
         return dataHandler.getOrders();
     }
     
