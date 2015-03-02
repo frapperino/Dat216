@@ -38,6 +38,7 @@ public class cartItemPanel extends javax.swing.JPanel {
     public void update() {
         jSpinner1.setValue(item.getAmount());
         jSpinner1.updateUI();
+        jLabel2.setText(""+item.getTotal());
     }
 
     /**
