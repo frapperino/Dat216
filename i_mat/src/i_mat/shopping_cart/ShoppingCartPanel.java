@@ -7,6 +7,9 @@ package i_mat.shopping_cart;
 
 import i_mat.IMat;
 import i_mat.center_stage.checkout.CheckoutPanel;
+import se.chalmers.ait.dat215.project.ShoppingItem;
+import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import java.awt.Dimension;
 
 /**
@@ -14,6 +17,7 @@ import java.awt.Dimension;
  * @author Hjort
  */
 public class ShoppingCartPanel extends javax.swing.JPanel {
+    private static final IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
     /**
      * Creates new form ShoppingCartPanel
@@ -93,6 +97,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
