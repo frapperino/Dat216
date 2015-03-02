@@ -9,6 +9,7 @@ package i_mat.center_stage.checkout;
 import i_mat.utilities.GenerateComponentsUtilities;
 import java.util.ArrayList;
 import javax.swing.JList;
+import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -21,6 +22,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
      * Creates new form ThankYouPanel
      */
     Order order;
+    Customer cust;
     ArrayList<String> orderItems;
     ArrayList<Integer> orderItemsAmount;
     int amount;
@@ -28,9 +30,12 @@ public class ThankYouPanel extends javax.swing.JPanel {
     public ThankYouPanel() {
         initComponents();
     }
-    public ThankYouPanel(Order o ){
+    
+    //konstruktorn ska även ta en deliveryadress samt ett kreditkort
+    public ThankYouPanel(Order o, Customer c ){
         initComponents();
         this.order = o;
+        this.cust = c;
         orderItems = new ArrayList<String>();
         orderItemsAmount = new ArrayList<Integer>();
         
@@ -47,6 +52,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
         orderNrL.setText(""+ order.getOrderNumber());
         orderDateL.setText(GenerateComponentsUtilities.getNameFromDate(order.getDate()));
         shoppingCartList.setText(arrayParse(orderItems));
+        firstNameL.setText("test");
       
     }
     

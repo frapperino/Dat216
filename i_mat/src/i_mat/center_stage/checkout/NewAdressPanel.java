@@ -16,6 +16,8 @@ public class NewAdressPanel extends javax.swing.JPanel {
     /**
      * Creates new form NewAdressPanel
      */
+    
+    //obsolete nu
     public NewAdressPanel() {
         initComponents();
         this.setPreferredSize(new Dimension(200,200));
