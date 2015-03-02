@@ -51,7 +51,7 @@ public class Model {
     }
     
     public static List<Product> getPromoProducts() {
-        return promoProducts;
+        return dataHandler.getProducts();
     }
     
     /**
