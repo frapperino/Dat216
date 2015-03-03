@@ -192,7 +192,11 @@ public class Model {
         return externalAddresses;
     }
 
-    
+    /**
+     * Returns the address with the ID, if it exists. Otherwise null.
+     * @param id The ID of the address.
+     * @return The address.
+     */
     public static DeliveryAddress getAddress(String id) {
         DeliveryAddress externalAddress = null;
         
