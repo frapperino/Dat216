@@ -40,6 +40,17 @@ public class HistoryFullListPanel extends javax.swing.JPanel {
     public HistoryFullListPanel(Order o) {
         initComponents();
         this.setLayout(new GridLayout(0, 1, 0, 0));
+        this.o = o;
+        new Thread(new Runnable() {
+           @Override
+           public void run() {
+               addAllItems();
+           }
+        }).start();
+    }
+    
+    private void addAllItems(){
+        
         int total = 0;
         boolean striped = false;
         for (ShoppingItem item : o.getItems()) {
@@ -78,6 +89,7 @@ public class HistoryFullListPanel extends javax.swing.JPanel {
         rowPanel.add(totalLabel1);
         rowPanel.add(totalLabel2);
         this.add(rowPanel);
+        this.revalidate();
     }
 
     /**
