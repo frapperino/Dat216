@@ -10,6 +10,7 @@ import i_mat.utilities.ColorScheme;
 import i_mat.utilities.GUIConstants;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -84,8 +85,12 @@ public class ProductThumbnail extends javax.swing.JPanel {
         imageButton.setIcon(Model.getImageIconForProduct(this.product, GUIConstants.THUMBNAIL_SIZE)
         );
         imageButton.setToolTipText("");
-        imageButton.setBorder(null);
         imageButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        imageButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                imageButtonMousePressed(evt);
+            }
+        });
         imageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imageButtonActionPerformed(evt);
@@ -178,7 +183,6 @@ public class ProductThumbnail extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void imageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageButtonActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_imageButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -186,14 +190,7 @@ public class ProductThumbnail extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        this.isSelected = !this.isSelected;       
-        if (this.isSelected) {
-            this.setBorder(this.selectedBorder);
-        }
-        else {
-            this.setBorder(this.unselectedBorder);
-        }
-        this.revalidate();
+        
     }//GEN-LAST:event_formMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -205,6 +202,43 @@ public class ProductThumbnail extends javax.swing.JPanel {
         Model.addShoppingItem(new ShoppingItem(product, value.doubleValue()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void imageButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageButtonMousePressed
+        if (evt.getClickCount() == 2) {
+            this.setSelected();
+            this.openProductView();
+        } else if (evt.getClickCount() == 1) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(100);
+                        switchSelectedStatus();
+                    } catch(InterruptedException e) {}                    
+                 }
+            }).start();
+        }
+    }//GEN-LAST:event_imageButtonMousePressed
+
+    public void openProductView() {
+        //TODO: Implement code that gives you the product's view.
+    }
+    
+    private void switchSelectedStatus(){
+        if (this.isSelected) this.setUnselected();
+        else this.setSelected();
+    }
+    
+    private void setUnselected() {
+        this.isSelected = false;       
+        this.setBorder(this.unselectedBorder);
+        this.revalidate();  
+    }
+    
+    private void setSelected() {
+        this.isSelected = true;       
+        this.setBorder(this.selectedBorder);
+        this.revalidate();
+    }
 
     public boolean isSelected() {
         return this.isSelected;
