@@ -11,9 +11,11 @@ import java.time.Clock;
 import javax.swing.*;
 import i_mat.model.Model;
 import static i_mat.model.Model.addDeliveryAddress;
+import static i_mat.model.Model.getAddress;
 import static i_mat.model.Model.getDeliveryAddresses;
 import i_mat.shopping_cart.ShoppingCartPanel2;
 import java.awt.event.ActionListener;
+import java.util.List;
 import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -25,6 +27,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 
 public class CheckoutPanel extends javax.swing.JPanel {
+    
     private static final IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
     ShoppingCart cart;
     ThankYouPanel p1;
@@ -33,10 +36,20 @@ public class CheckoutPanel extends javax.swing.JPanel {
     /**
      * Creates new form CheckoutPanel
      */
-    public CheckoutPanel() {
+    public CheckoutPanel(List<DeliveryAddress> deliveryAddresses) {
         initComponents();
+        
+        String[] idArray = new String[deliveryAddresses.size()];
+        for(int i = 0; i < deliveryAddresses.size();i++){
+            idArray[i] = deliveryAddresses.get(i).getID();
+        }
+        
+        selectedAddress.setModel(new DefaultComboBoxModel(idArray));
+        setShowingAddress();
+
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -234,6 +247,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         jLabel14.setText("Email:");
 
         jTextField11.setText("Jonas@testmail.com");
+        jTextField11.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -393,17 +407,22 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
     private void oldAdressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldAdressButtonActionPerformed
         //this.newAddressPanel = null;
+        selectedAddress.setEnabled(true);
+        setShowingAddress();
         setTextEnabled(false,1);
         this.validate();
     }//GEN-LAST:event_oldAdressButtonActionPerformed
 
     private void selectedAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedAddressActionPerformed
         // TODO add your handling code here:
+        setShowingAddress();
     }//GEN-LAST:event_selectedAddressActionPerformed
 
     private void newAdressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAdressButtonActionPerformed
+        selectedAddress.setEnabled(false);
+        clearShowingAddress();
         setTextEnabled(true,1);
-
+        
         this.validate();
     }//GEN-LAST:event_newAdressButtonActionPerformed
 
@@ -415,9 +434,19 @@ public class CheckoutPanel extends javax.swing.JPanel {
         //TODO if ett fält är tomt lr inte tillräckligt ifyllt(text substring av numret), be att fylla i innan gå vidare
         if (newAdressButton.isSelected() && newCardButton.isSelected()){
             
+            if (jCheckBox1.isSelected()){
+                //in progress
+                DeliveryAddress test = new DeliveryAddress(jTextField1.getText(),jTextField2.getText(),
+                    jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),
+                    jTextField6.getText(),jTextField7.getText(),jTextField11.getText(), "test");
+                
+                p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true),test , createTempCard() );
             
+            }
             
-            p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), createTempAdress(), createTempCard() );
+            else {
+                p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), createTempAdress(), createTempCard() );
+            }
             IMat.setCenterStage(p1);
             System.out.println(getDeliveryAddresses());
         }
@@ -426,10 +455,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
             
             //DeliveryAddress dsss = getDeliveryAddresses().get(1);
             
-            /*
-            p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), getByID(selectedAddress.getText()), createTempCard() );
+            
+            p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), getAddress(selectedAddress.getSelectedItem().toString()), createTempCard() );
             IMat.setCenterStage(p1);
-*/
+
         }
     }//GEN-LAST:event_purchaseActionPerformed
 
@@ -460,8 +489,29 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
-
-
+    private void clearShowingAddress(){
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField7.setText("");
+        jTextField6.setText("");
+        jTextField11.setText("");
+    }
+    
+    private void setShowingAddress(){
+        String id1 = selectedAddress.getSelectedItem().toString();
+        jTextField1.setText(getAddress(id1).getFirstName());
+        jTextField2.setText(getAddress(id1).getLastName());
+        jTextField3.setText(getAddress(id1).getAddress());
+        jTextField4.setText(getAddress(id1).getPostCode());
+        jTextField5.setText(getAddress(id1).getPostAddress());
+        jTextField7.setText(getAddress(id1).getMobilePhoneNumber());
+        jTextField6.setText(getAddress(id1).getPhoneNumber());
+        jTextField11.setText(getAddress(id1).getEmail());
+        
+    }
     private DeliveryAddress createTempAdress(){
         DeliveryAddress d = new DeliveryAddress(jTextField1.getText(),jTextField2.getText(),
                     jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),
@@ -486,6 +536,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 jTextField5.setEnabled(true);
                 jTextField6.setEnabled(true);
                 jTextField7.setEnabled(true);
+                jTextField11.setEnabled(true);
                 jCheckBox1.setEnabled(true);
             }
             else if (!t){
@@ -496,6 +547,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 jTextField5.setEnabled(false);
                 jTextField6.setEnabled(false);
                 jTextField7.setEnabled(false);
+                jTextField11.setEnabled(false);
                 jCheckBox1.setEnabled(false);
             }
         }
