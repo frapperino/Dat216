@@ -27,7 +27,6 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class Model {
     private static final IMatDataHandler dataHandler = IMatDataHandler.getInstance();
-    private static final List<Product> promoProducts = Arrays.asList(dataHandler.getProduct(1), dataHandler.getProduct(2));
     private static final List<DeliveryAddress> deliveryAddresses = new ArrayList<DeliveryAddress>();
     
     /* 
@@ -249,9 +248,9 @@ public class Model {
                 //comboList.addAll(dataHandler.getProducts(ProductCategory.));
                 
                // return dataHandler.getProducts(ProductCategory.);
-                 return Model.promoProducts;   
+                 return comboList;  
             default :
-                return Model.promoProducts;
+                return Model.getProductsInCategory("Bakartiklar");
         }
         
     }

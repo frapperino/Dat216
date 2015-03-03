@@ -13,10 +13,13 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.util.Enumeration;
+import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import se.chalmers.ait.dat215.project.Product;
 
@@ -164,18 +167,38 @@ public class BrowsePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void browseTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_browseTreeValueChanged
-        final List<Product> prodList;
-        if (browseTree.getModel().isLeaf(browseTree.getLastSelectedPathComponent())) 
-            prodList = Model.getProductsInCategory(browseTree.getLastSelectedPathComponent().toString());
-        else prodList = Model.getPromoProducts();
+        this.setCenterStageFromList(this.getProductListFromSelection(browseTree.getLastSelectedPathComponent()));
+        
+    }//GEN-LAST:event_browseTreeValueChanged
+
+    private List<Product> getProductListFromSelection(Object node) {
+        //If this is a leaf, just get the contents for it
+        if (browseTree.getModel().isLeaf(node)) {
+            return Model.getProductsInCategory(node.toString());
+        }
+        //Else look through the nodes and get all their products/
+        else { 
+            TreeNode n = (TreeNode)node;
+            Enumeration children = n.children();
+            List<Product> list = getProductListFromSelection(children.nextElement());
+            while(children.hasMoreElements()) {
+                for(Product p : getProductListFromSelection(children.nextElement())) {
+                    list.add(p);
+                }
+            }
+            return list;
+        }
+    }
+    
+    private void setCenterStageFromList(final List<Product> l) {
+        //set the center stage. Thread ensures program doesn't get hung up.
         new Thread(new Runnable() {
             @Override
             public void run() {
-                IMat.setCenterStage(new DisplayResultsPanel(new ThumbsPanel(prodList)));
+                IMat.setCenterStage(new DisplayResultsPanel(new ThumbsPanel(l)));
             }
         }).start();
-    }//GEN-LAST:event_browseTreeValueChanged
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane browseScrollPane;
