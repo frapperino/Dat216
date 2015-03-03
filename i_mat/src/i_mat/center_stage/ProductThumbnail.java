@@ -11,8 +11,15 @@ import i_mat.utilities.GUIConstants;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -194,7 +201,7 @@ public class ProductThumbnail extends javax.swing.JPanel {
     }//GEN-LAST:event_formMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Model.addShoppingItem(this.getShoppingItem());
+        this.addThisToShoppingCart();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void imageButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageButtonMousePressed
@@ -214,6 +221,10 @@ public class ProductThumbnail extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_imageButtonMousePressed
 
+    public void addThisToShoppingCart() {
+         Model.addShoppingItem(this.getShoppingItem());
+    }
+    
     public void openProductView() {
         //TODO: Implement code that gives you the product's view.
     }

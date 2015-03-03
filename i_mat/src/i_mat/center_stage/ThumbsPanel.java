@@ -9,10 +9,16 @@ import i_mat.model.Model;
 import i_mat.utilities.Filter;
 import i_mat.utilities.GenerateComponentsUtilities;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.util.Comparator;
 import java.util.List;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.KeyStroke;
 import se.chalmers.ait.dat215.project.Product;
 
 /**
@@ -30,6 +36,16 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
     public ThumbsPanel(List<Product> prodList) {
         this.mainPanel = new InternalMainPanel(prodList, this);
         this.getViewport().add(mainPanel);
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).
+                put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, InputEvent.SHIFT_DOWN_MASK), "putInCart");
+            this.getActionMap().put("putInCart", new AbstractAction() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                   for (ProductThumbnail thumb : mainPanel.displayList)
+                       if (thumb.isSelected()) thumb.addThisToShoppingCart();
+                    };
+                });
         
     }
 

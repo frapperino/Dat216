@@ -30,7 +30,12 @@ public class BrowsePanel extends javax.swing.JPanel {
                                                         boolean leaf,
                                                         int row,
                                                         boolean hasFocus) {
-                // Allow the original renderer to set up the label
+                //Put arrow in the text of the tree node
+                if(expanded) {
+                    value = "▼ " + value.toString();
+                } else if (!leaf)value = "▶ " + value.toString();
+                
+                //Use the standard tree cell renderer
                 Component c = super.getTreeCellRendererComponent(
                       tree, value, selected,
                       expanded, leaf, row,
