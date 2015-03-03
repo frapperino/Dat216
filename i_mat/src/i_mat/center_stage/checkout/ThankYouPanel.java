@@ -8,6 +8,7 @@ package i_mat.center_stage.checkout;
 
 import i_mat.model.CreditCardInstance;
 import i_mat.model.DeliveryAddress;
+import static i_mat.model.Model.getDeliveryAddresses;
 import i_mat.utilities.GenerateComponentsUtilities;
 import java.util.ArrayList;
 import javax.swing.JList;
@@ -88,6 +89,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
         jLabel18.setText(returnString);
         jLabel22.setText(card.getHolder());
         jLabel20.setText(card.getCardType());
+        
     }
     
     
