@@ -167,10 +167,15 @@ public class BrowsePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void browseTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_browseTreeValueChanged
-        this.setCenterStageFromList(this.getProductListFromSelection(browseTree.getLastSelectedPathComponent()));
-        
+        loadProducts();
     }//GEN-LAST:event_browseTreeValueChanged
 
+    private void loadProducts() {
+        IMat.setLoadingCenterStage();
+        this.setCenterStageFromList(this.getProductListFromSelection(browseTree.getLastSelectedPathComponent()));
+
+    }
+    
     private List<Product> getProductListFromSelection(Object node) {
         //If this is a leaf, just get the contents for it
         if (browseTree.getModel().isLeaf(node)) {
@@ -192,12 +197,14 @@ public class BrowsePanel extends javax.swing.JPanel {
     
     private void setCenterStageFromList(final List<Product> l) {
         //set the center stage. Thread ensures program doesn't get hung up.
-        new Thread(new Runnable() {
+        Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 IMat.setCenterStage(new DisplayResultsPanel(new ThumbsPanel(l)));
             }
-        }).start();
+        });
+        t.setPriority(Thread.MAX_PRIORITY);
+        t.start();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
