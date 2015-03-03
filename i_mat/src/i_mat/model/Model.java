@@ -59,9 +59,7 @@ public class Model {
             } catch (IOException ex) {
                 System.out.println("Unable to close input stream.");
                 ex.printStackTrace();
-            } catch (NullPointerException ex) {
-                
-            }
+            } catch (NullPointerException ex) {}
         }
     }
     

@@ -5,6 +5,7 @@
  */
 package i_mat.center_stage.customer_profile;
 
+import i_mat.IMat;
 import i_mat.controllers.AddressController;
 import i_mat.model.DeliveryAddress;
 import i_mat.model.Model;
@@ -127,6 +128,8 @@ public class EditAddressPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         AddressController.getInstance().remove(deliveryAddress);
+        IMat.setCenterStage(new CustomerProfilePanel());
+        //TODO the line above is ugly as fuck
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
