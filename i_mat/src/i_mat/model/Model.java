@@ -265,4 +265,8 @@ public class Model {
     public static ShoppingCart getShoppingCart() {
         return dataHandler.getShoppingCart();
     }
+    
+    public static List<PaymentMethod> getPaymentMethods() {
+        throw new UnsupportedOperationException();
+    }
 }

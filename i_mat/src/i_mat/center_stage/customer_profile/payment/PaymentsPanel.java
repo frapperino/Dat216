@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package i_mat.center_stage.customer_profile;
+package i_mat.center_stage.customer_profile.payment;
 
+import i_mat.center_stage.customer_profile.address.*;
 import i_mat.model.DeliveryAddress;
 import i_mat.model.Model;
+import i_mat.model.PaymentMethod;
 import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.Customer;
@@ -15,23 +17,23 @@ import se.chalmers.ait.dat215.project.Customer;
  *
  * @author weeeeeew
  */
-public class AddressesPanel extends javax.swing.JPanel {
+public class PaymentsPanel extends javax.swing.JPanel {
 
-    private List<DeliveryAddress> deliveryAddresses;
+    private List<PaymentMethod> paymentMethods;
     
     /**
      * Creates new form AdressesPanel
      */
-    public AddressesPanel() {
-        this(Model.getDeliveryAddresses());
+    public PaymentsPanel() {
+        this(Model.getPaymentMethods());
     }
 
-    public AddressesPanel(List<DeliveryAddress> deliveryAddresses) {
-        this.deliveryAddresses = deliveryAddresses;
+    public PaymentsPanel(List<PaymentMethod> paymentMethods) {
+        this.paymentMethods = paymentMethods;
         initComponents();
         
-        for (DeliveryAddress deliveryAddress : deliveryAddresses) {
-            add(new SingleAddressPanel(deliveryAddress));
+        for (PaymentMethod paymentMethod : paymentMethods) {
+            add(new SinglePaymentPanel(paymentMethod));
         }
         
         validate();
@@ -47,7 +49,7 @@ public class AddressesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        newAddressPanel2 = new i_mat.center_stage.customer_profile.NewAddressPanel();
+        newAddressPanel2 = new i_mat.center_stage.customer_profile.address.NewAddressPanel();
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
         add(newAddressPanel2);
@@ -55,6 +57,6 @@ public class AddressesPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private i_mat.center_stage.customer_profile.NewAddressPanel newAddressPanel2;
+    private i_mat.center_stage.customer_profile.address.NewAddressPanel newAddressPanel2;
     // End of variables declaration//GEN-END:variables
 }

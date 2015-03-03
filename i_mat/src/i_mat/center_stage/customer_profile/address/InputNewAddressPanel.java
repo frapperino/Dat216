@@ -3,30 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package i_mat.center_stage.customer_profile;
+package i_mat.center_stage.customer_profile.address;
 
+import i_mat.center_stage.customer_profile.CustomerProfilePanel;
 import i_mat.IMat;
 import i_mat.controllers.AddressController;
-import i_mat.model.DeliveryAddress;
-import i_mat.model.Model;
 
 /**
  *
  * @author weeeeeew
  */
-public class EditAddressPanel extends javax.swing.JPanel {
+public class InputNewAddressPanel extends javax.swing.JPanel {
 
-    private DeliveryAddress deliveryAddress;
-    
     /**
-     * Creates new form AddressPanel
+     * Creates new form NewDeliveryAddressPanel
      */
-    public EditAddressPanel() {
-        this(Model.getTestDeliveryAddress());
-    }
-
-    EditAddressPanel(DeliveryAddress deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
+    public InputNewAddressPanel() {
         initComponents();
     }
 
@@ -39,86 +31,92 @@ public class EditAddressPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        setMinimumSize(new java.awt.Dimension(250, 193));
         setSize(new java.awt.Dimension(250, 193));
 
-        jTextField2.setText(deliveryAddress.getLastName());
+        jPanel1.setMinimumSize(new java.awt.Dimension(250, 193));
+        jPanel1.setSize(new java.awt.Dimension(250, 193));
 
-        jTextField1.setText(deliveryAddress.getFirstName());
+        jTextField2.setText("Efternamn");
+
+        jTextField1.setText("Förnamn");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jTextField6.setText(deliveryAddress.getPhoneNumber());
+        jTextField6.setText("Telefon");
 
-        jTextField5.setText(deliveryAddress.getPostAddress());
+        jTextField5.setText("Ort");
 
-        jTextField4.setText(deliveryAddress.getPostCode());
+        jTextField4.setText("Postnr");
 
-        jTextField3.setText(deliveryAddress.getAddress());
+        jTextField3.setText("Adress");
 
-        jButton2.setText("Ta bort");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Ändra");
+        jButton1.setText("Spara");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTextField1)
             .addComponent(jTextField2)
             .addComponent(jTextField3)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
             .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
                 .addComponent(jButton1)
-                .addGap(0, 0, 0)
-                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)))
+                .addComponent(jButton1))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -126,33 +124,24 @@ public class EditAddressPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AddressController.getInstance().remove(deliveryAddress);
-        IMat.setCenterStage(new CustomerProfilePanel());
-        //TODO the line above is ugly as fuck
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println(deliveryAddress);
+        AddressController addressController = AddressController.getInstance();
         
-        deliveryAddress.setFirstName(jTextField1.getText());
-        deliveryAddress.setLastName(jTextField2.getText());
-        deliveryAddress.setAddress(jTextField3.getText());
-        deliveryAddress.setPostCode(jTextField4.getText());
-        deliveryAddress.setPostAddress(jTextField5.getText());
-        deliveryAddress.setPhoneNumber(jTextField6.getText());
+        String firstName = jTextField1.getText();
+        String lastName = jTextField2.getText();
+        String address = jTextField3.getText();
+        String postCode = jTextField4.getText();
+        String postAddress = jTextField5.getText();
+        String phone = jTextField6.getText();
         
-        System.out.println(deliveryAddress);
-        System.out.println(deliveryAddress.copy());
-        
-        
-        AddressController.getInstance().editAddress(deliveryAddress);
+        addressController.newAddress(firstName, lastName, address, postCode, postAddress, phone);
+        IMat.setCenterStage(new CustomerProfilePanel()); //TODO <- this is extremely ugly but I don't remember anything about listeners/events and just want it to work atm :(
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package i_mat.center_stage.customer_profile;
+package i_mat.center_stage.customer_profile.address;
 
 import i_mat.model.DeliveryAddress;
 import i_mat.model.Model;

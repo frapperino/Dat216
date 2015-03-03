@@ -28,7 +28,7 @@ public class CustomerProfilePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        addressesPanel1 = new i_mat.center_stage.customer_profile.AddressesPanel();
+        addressesPanel1 = new i_mat.center_stage.customer_profile.address.AddressesPanel();
 
         jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD, jLabel1.getFont().getSize()+7));
         jLabel1.setText("Leveransadresser");
@@ -43,7 +43,7 @@ public class CustomerProfilePanel extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(addressesPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addressesPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -59,7 +59,7 @@ public class CustomerProfilePanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private i_mat.center_stage.customer_profile.AddressesPanel addressesPanel1;
+    private i_mat.center_stage.customer_profile.address.AddressesPanel addressesPanel1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
