@@ -326,8 +326,9 @@ public class Model {
     }
     
     public static List<Product> getProductsInCategory(String name) {
-        List <Product> l = getPromoProducts();
+        List <Product> l = new LinkedList<>();
         List<Product> theirList;
+        Product p;
         switch (name) {
             //BAKARTIKLAR
             case ("Mjöl") :
@@ -338,15 +339,14 @@ public class Model {
             case ("Salt") :
                 theirList = dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
                 l = theirList.subList(0, theirList.size());
-                l.clear();
-                l.addAll(dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT));
                 l.retainAll(dataHandler.findProducts("salt"));
                 return l;
-            case ("Socker") :
+            case ("Socker & Kakao") :
                 theirList = dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
                 l = theirList.subList(0, theirList.size());
                 l.addAll(dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT));
                 l.retainAll(dataHandler.findProducts("socker"));
+                l.add(dataHandler.getProduct(27));
                 return l;
             
             //BRÖD
@@ -385,13 +385,49 @@ public class Model {
             case ("Nötter & Frön") :
                 return dataHandler.getProducts(ProductCategory.NUTS_AND_SEEDS);
             case ("Potatis") :
-                theirList = dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
+                theirList = dataHandler.getProducts(ProductCategory.POTATO_RICE);
                 l = theirList.subList(0, theirList.size());
-                l.clear();
-                l.addAll(dataHandler.getProducts(ProductCategory.POTATO_RICE));
                 l.retainAll(dataHandler.findProducts("potatis"));
                 l.removeAll(dataHandler.findProducts("potatispur"));
-                return l;    
+                return l;  
+            case ("Övriga rotfrukter") :
+                return dataHandler.getProducts(ProductCategory.ROOT_VEGETABLE);
+            case ("Kaffe & Te") :
+                theirList = dataHandler.getProducts(ProductCategory.HOT_DRINKS);
+                l = theirList.subList(0, theirList.size());
+                l.remove(dataHandler.getProduct(27));
+                return l;
+            case ("Kalla drycker") :
+                return dataHandler.getProducts(ProductCategory.COLD_DRINKS) ;
+            case ("Fisk") :
+                return dataHandler.getProducts(ProductCategory.FISH) ;
+            case ("Kött") :
+                return dataHandler.getProducts(ProductCategory.MEAT) ;
+            case ("Fil & Yoghurt") :
+                l = dataHandler.findProducts("Filmjölk");
+                l.addAll(dataHandler.findProducts("Yoghurt"));
+                return l;  
+            case ("Mjölk") :
+                p = dataHandler.getProduct(80);
+                l.add(p);
+                return l;  
+            case ("Ost") :
+                l.add(dataHandler.getProduct(77));
+                l.add(dataHandler.getProduct(79));
+                l.add(dataHandler.getProduct(81));
+                l.add(dataHandler.getProduct(82));
+                return l;  
+            case ("Pasta") :
+                return dataHandler.getProducts(ProductCategory.PASTA);
+            case ("Ris") :
+                theirList = dataHandler.getProducts(ProductCategory.POTATO_RICE);
+                l = theirList.subList(0, theirList.size());
+                l.removeAll(dataHandler.findProducts("potatis"));
+                return l; 
+            case ("Snacks") :
+                return dataHandler.getProducts(ProductCategory.SWEET);
+            case ("Ägg") :
+                return dataHandler.findProducts("Ägg");
             default :
                 return new LinkedList<>();
         }

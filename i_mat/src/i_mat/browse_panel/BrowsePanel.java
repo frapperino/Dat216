@@ -79,7 +79,7 @@ public class BrowsePanel extends javax.swing.JPanel {
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Salt");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Socker");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Socker & Kakao");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bröd");
@@ -115,7 +115,7 @@ public class BrowsePanel extends javax.swing.JPanel {
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dryck");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kaffe & te");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kaffe & Te");
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kalla drycker");
         treeNode2.add(treeNode3);
@@ -137,6 +137,8 @@ public class BrowsePanel extends javax.swing.JPanel {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Ris");
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Snacks");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Ägg");
         treeNode1.add(treeNode2);
         browseTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         browseTree.setName(""); // NOI18N
