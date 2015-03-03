@@ -17,6 +17,7 @@ import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ProductCategory;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -229,5 +230,29 @@ public class Model {
     
     public static ShoppingCart getShoppingCart() {
         return dataHandler.getShoppingCart();
+    }
+    
+    public static List<Product> getProductsInCategory(String name) {
+        switch (name) {
+            case ("Bakartiklar") :
+                return dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
+            case("Bröd") :
+                return dataHandler.getProducts(ProductCategory.BREAD);
+            case("Bönor, Ärtor & Linser") :
+                return dataHandler.getProducts(ProductCategory.POD);
+            case("Frukt & Grönt") :
+                List<Product> comboList = getProductsInCategory("Kål");
+                comboList.addAll(getProductsInCategory("Bär"));
+                comboList.addAll(getProductsInCategory("Citrus"));
+                comboList.addAll(getProductsInCategory("Bär"));
+                comboList.addAll(dataHandler.getProducts(ProductCategory.FRUIT));
+                //comboList.addAll(dataHandler.getProducts(ProductCategory.));
+                
+               // return dataHandler.getProducts(ProductCategory.);
+                 return Model.promoProducts;   
+            default :
+                return Model.promoProducts;
+        }
+        
     }
 }

@@ -47,8 +47,10 @@ public class PromoPanel extends JScrollPane {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                   for (ProductThumbnail thumb : mainPanel.displayList)
+                   for (ProductThumbnail thumb : mainPanel.displayList) {
                        if (thumb.isSelected()) thumb.addThisToShoppingCart();
+                       thumb.setUnselected();
+                   }
                     };
                 });
     }
