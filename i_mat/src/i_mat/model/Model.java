@@ -190,6 +190,18 @@ public class Model {
         return externalAddresses;
     }
     
+    public static DeliveryAddress getAddress(String id) {
+        DeliveryAddress externalAddress = null;
+        
+        for (DeliveryAddress internalAddress : deliveryAddresses) {
+            if (internalAddress.getID().equals(id)) {
+                externalAddress = internalAddress.copy();
+                break;
+            }
+        }
+        
+        return externalAddress;
+    }
     
     /**
      * Return a customer from the database for testing.
