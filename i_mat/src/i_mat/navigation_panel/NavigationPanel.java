@@ -34,14 +34,15 @@ public class NavigationPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        autoSuggest1 = new i_mat.navigation_panel.SearchBoxPanel();
         navigationBar = new javax.swing.JToolBar();
         homeButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
         backwardButton = new javax.swing.JButton();
         forwardButton = new javax.swing.JButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        autoSuggest2 = new i_mat.navigation_panel.SearchBoxPanel();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
-        searchField = new javax.swing.JTextField();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
         listsButton = new javax.swing.JButton();
@@ -87,12 +88,8 @@ public class NavigationPanel extends javax.swing.JPanel {
         });
         navigationBar.add(forwardButton);
         navigationBar.add(filler2);
+        navigationBar.add(autoSuggest2);
         navigationBar.add(filler6);
-
-        searchField.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        searchField.setText("Sök produkter och kategorier");
-        searchField.setToolTipText("");
-        navigationBar.add(searchField);
         navigationBar.add(filler4);
         navigationBar.add(filler5);
 
@@ -173,6 +170,8 @@ public class NavigationPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private i_mat.navigation_panel.SearchBoxPanel autoSuggest1;
+    private i_mat.navigation_panel.SearchBoxPanel autoSuggest2;
     private javax.swing.JButton backwardButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
@@ -185,6 +184,5 @@ public class NavigationPanel extends javax.swing.JPanel {
     private javax.swing.JButton listsButton;
     private javax.swing.JToolBar navigationBar;
     private javax.swing.JButton profileButton;
-    private javax.swing.JTextField searchField;
     // End of variables declaration//GEN-END:variables
 }

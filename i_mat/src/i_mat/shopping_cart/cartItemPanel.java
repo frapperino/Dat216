@@ -96,6 +96,7 @@ public class cartItemPanel extends javax.swing.JPanel {
         if (o instanceof Number) {
             value = (Number)o;
             item.setAmount(value.doubleValue());
+            Model.fireShoppingCartChanged(item, true);
         }
         update();
     }//GEN-LAST:event_jSpinner1StateChanged

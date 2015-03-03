@@ -50,6 +50,16 @@ public class Model {
         readCreditCards();
     }
 
+    public static Product getProduct(String name) {
+        List<Product> s = getAllProducts();
+        for (Product p: s) {
+            if (p.getName().equals(name)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
     /*
      * ... but *do not* add them here.
      */
@@ -313,12 +323,21 @@ public class Model {
             if (i.getProduct().equals(item.getProduct())) {
                 item.setAmount(item.getAmount() + i.getAmount());
                 containsItem = true;
-                dataHandler.getShoppingCart().fireShoppingCartChanged(item, containsItem);
+                fireShoppingCartChanged(item, containsItem);
             }
         }
         if (!containsItem) {
             dataHandler.getShoppingCart().addItem(i);
         }
+    }
+    
+    /**
+     * Fires a ShoppingCartChangedEvent
+     * @param item
+     * @param containsItem 
+     */
+    public static void fireShoppingCartChanged(ShoppingItem item, boolean containsItem) {
+        dataHandler.getShoppingCart().fireShoppingCartChanged(item, containsItem);
     }
 
     public static ShoppingCart getShoppingCart() {
