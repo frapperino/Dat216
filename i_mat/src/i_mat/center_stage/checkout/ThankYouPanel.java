@@ -6,6 +6,7 @@
 package i_mat.center_stage.checkout;
 
 
+import i_mat.model.DeliveryAddress;
 import i_mat.utilities.GenerateComponentsUtilities;
 import java.util.ArrayList;
 import javax.swing.JList;
@@ -22,7 +23,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
      * Creates new form ThankYouPanel
      */
     Order order;
-    Customer cust;
+    DeliveryAddress delivery;
     ArrayList<String> orderItems;
     ArrayList<Integer> orderItemsAmount;
     int amount;
@@ -32,10 +33,10 @@ public class ThankYouPanel extends javax.swing.JPanel {
     }
     
     //konstruktorn ska även ta en deliveryadress samt ett kreditkort
-    public ThankYouPanel(Order o, Customer c ){
+    public ThankYouPanel(Order o, DeliveryAddress d ){
         initComponents();
         this.order = o;
-        this.cust = c;
+        this.delivery = d;
         orderItems = new ArrayList<String>();
         orderItemsAmount = new ArrayList<Integer>();
         
@@ -52,8 +53,16 @@ public class ThankYouPanel extends javax.swing.JPanel {
         orderNrL.setText(""+ order.getOrderNumber());
         orderDateL.setText(GenerateComponentsUtilities.getNameFromDate(order.getDate()));
         shoppingCartList.setText(arrayParse(orderItems));
-        firstNameL.setText("test");
-      
+        firstNameL.setText(delivery.getFirstName());
+        lastNameL.setText(delivery.getLastName());
+        custAddress.setText(delivery.getAddress());
+        jLabel11.setText(delivery.getPostAddress());
+        postCode.setText(delivery.getPostCode());
+        phoneNumber.setText(delivery.getPhoneNumber());
+        cellNumber.setText(delivery.getMobilePhoneNumber());
+        jLabel13.setText(delivery.getEmail());
+        
+        
     }
     
     
@@ -96,6 +105,10 @@ public class ThankYouPanel extends javax.swing.JPanel {
         itemNumberField = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Tack för ditt köp!");
@@ -151,6 +164,16 @@ public class ThankYouPanel extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Antal:");
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setText("Stad:");
+
+        jLabel11.setText("\"ändras\"");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setText("Email:");
+
+        jLabel13.setText("\"ändras\"");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -176,7 +199,11 @@ public class ThankYouPanel extends javax.swing.JPanel {
                                 .addComponent(orderDateL, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(lastNameL)
                             .addComponent(firstNameL)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -201,15 +228,19 @@ public class ThankYouPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lastNameL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(custAddress)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -223,6 +254,10 @@ public class ThankYouPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cellNumber)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(orderNrL)
@@ -230,9 +265,9 @@ public class ThankYouPanel extends javax.swing.JPanel {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(orderDateL))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -243,6 +278,10 @@ public class ThankYouPanel extends javax.swing.JPanel {
     private javax.swing.JLabel firstNameL;
     private javax.swing.JTextArea itemNumberField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

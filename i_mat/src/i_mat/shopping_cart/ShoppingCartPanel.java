@@ -7,16 +7,19 @@ package i_mat.shopping_cart;
 
 import i_mat.IMat;
 import i_mat.center_stage.checkout.CheckoutPanel;
+import i_mat.model.Model;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import java.awt.Dimension;
+import se.chalmers.ait.dat215.project.CartEvent;
+import se.chalmers.ait.dat215.project.ShoppingCartListener;
 
 /**
  *
  * @author Hjort
  */
-public class ShoppingCartPanel extends javax.swing.JPanel {
+public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCartListener {
     private static final IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
     /**
@@ -43,6 +46,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane1 = new ShoppingCartPanel2();
+        jLabel1 = new javax.swing.JLabel();
 
         HeaderLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         HeaderLabel.setText("Kundvagn");
@@ -57,6 +61,9 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
         });
 
         jButton6.setText(".");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText(Model.getShoppingCart().getTotal()+" kr");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,6 +88,10 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING))
                         .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,8 +103,10 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -117,8 +130,14 @@ public class ShoppingCartPanel extends javax.swing.JPanel {
     private javax.swing.JLabel HeaderLabel;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void shoppingCartChanged(CartEvent ce) {
+        jLabel1.setText(Model.getShoppingCart().getTotal()+" kr");
+    }
 }

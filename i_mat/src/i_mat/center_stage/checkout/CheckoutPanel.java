@@ -9,6 +9,7 @@ import i_mat.model.DeliveryAddress;
 import java.time.Clock;
 import javax.swing.*;
 import i_mat.model.Model;
+import static i_mat.model.Model.addDeliveryAddress;
 import i_mat.shopping_cart.ShoppingCartPanel2;
 import java.awt.event.ActionListener;
 import se.chalmers.ait.dat215.project.Customer;
@@ -190,7 +191,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         jLabel8.setText("Korttyp:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Visa", "MasterCard" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Välj", "Visa", "MasterCard" }));
         jComboBox1.setEnabled(false);
 
         jLabel9.setText("Kortnummer:");
@@ -201,11 +202,19 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mån", "Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Juli", "Aug", "Sep", "Okt", "Nov", "Dec" }));
         jComboBox2.setEnabled(false);
+        jComboBox2.setPreferredSize(new java.awt.Dimension(40, 20));
 
         jLabel11.setText("/");
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "År", "2015", "2016", "2017", "2018", "2019", "2020" }));
         jComboBox3.setEnabled(false);
+        jComboBox3.setMinimumSize(new java.awt.Dimension(45, 20));
+        jComboBox3.setPreferredSize(new java.awt.Dimension(40, 20));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Cvc kod:");
 
@@ -285,8 +294,8 @@ public class CheckoutPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(3, 3, 3)
                                         .addComponent(jLabel11)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -301,7 +310,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addGap(76, 76, 76)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jRadioButton2)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jRadioButton1)
@@ -405,12 +414,17 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private void purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseActionPerformed
         if (newAdressButton.isSelected()){
             
-            //skapa temporär deliveryAddress
+            
+           DeliveryAddress d;
+            d = new DeliveryAddress(jTextField1.getText(),jTextField2.getText(),
+                    jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),
+                    jTextField6.getText(),jTextField7.getText(),jTextField11.getText());
            
+            
             //behöver documentlistener för att läsa av textfields?
             //jTextField1.getDocument().addDocumentListener(new MyDocumentListener());
            
-            String nameCust = jTextField1.getText();
+            //String nameCust = jTextField1.getText();
             
             //tempCust.setFirstName(nameCust);
             /*
@@ -424,7 +438,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             */
             
             
-            p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), tempCust);
+            p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), d );
             IMat.setCenterStage(p1);
             System.out.println(jTextField1.getText());
         }
@@ -459,6 +473,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private int getCardNumber(){
         return (Integer) cardNumber.getSelectedItem();
