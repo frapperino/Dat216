@@ -6,6 +6,7 @@
 package i_mat;
 
 import i_mat.model.Model;
+import java.awt.BorderLayout;
 import java.util.Stack;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -45,7 +46,7 @@ public class IMat {
         }));
     }
     
-    public static void setCenterStage(javax.swing.JPanel panel) {
+    public synchronized static void setCenterStage(javax.swing.JPanel panel) {
         backwardStack.push(topFrame.getCenterStage());
         forwardStack.clear();
         topFrame.setCenterStage(panel); 
@@ -75,6 +76,6 @@ public class IMat {
     
     //For setting a loadpanel which does not go on the stack.
     public static void setLoadingCenterStage() {
-        topFrame.setCenterStage(new LoadPanel());
+        topFrame.setLoading();
     }
 }

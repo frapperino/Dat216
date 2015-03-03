@@ -15,7 +15,8 @@ import javax.swing.JPanel;
  * @author Hjort
  */
 public class TopFrame extends javax.swing.JFrame {
-
+    
+    private JPanel loadPanel = new LoadPanel();
     /**
      * Creates new form TopFrame
      */
@@ -80,6 +81,7 @@ public class TopFrame extends javax.swing.JFrame {
     
     void setCenterStage(JPanel panel) {
         this.topPanel.remove(this.centerStagePanel);
+        this.topPanel.remove(this.loadPanel);
         this.centerStagePanel = panel;
         this.topPanel.add(this.centerStagePanel, BorderLayout.CENTER);
         this.revalidate();
@@ -89,6 +91,12 @@ public class TopFrame extends javax.swing.JFrame {
     
     JPanel getCenterStage() {
         return this.centerStagePanel;
+    }
+    
+    void setLoading() {
+        this.topPanel.remove(this.centerStagePanel);
+        this.topPanel.add(this.loadPanel, BorderLayout.CENTER);
+        this.topPanel.validate();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

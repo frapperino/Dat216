@@ -324,27 +324,76 @@ public class Model {
     public static ShoppingCart getShoppingCart() {
         return dataHandler.getShoppingCart();
     }
-
+    
     public static List<Product> getProductsInCategory(String name) {
+        List <Product> l = getPromoProducts();
+        List<Product> theirList;
         switch (name) {
-            case ("Bakartiklar") :
-                return dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
+            //BAKARTIKLAR
+            case ("Mjöl") :
+                theirList = dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
+                l = theirList.subList(0, theirList.size());
+                l.retainAll(dataHandler.findProducts("mjöl"));
+                return l;
+            case ("Salt") :
+                theirList = dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
+                l = theirList.subList(0, theirList.size());
+                l.clear();
+                l.addAll(dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT));
+                l.retainAll(dataHandler.findProducts("salt"));
+                return l;
+            case ("Socker") :
+                theirList = dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
+                l = theirList.subList(0, theirList.size());
+                l.addAll(dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT));
+                l.retainAll(dataHandler.findProducts("socker"));
+                return l;
+            
+            //BRÖD
             case("Bröd") :
                 return dataHandler.getProducts(ProductCategory.BREAD);
+                
+            //BÖNOR, ÄRTOR LINSER
             case("Bönor, Ärtor & Linser") :
                 return dataHandler.getProducts(ProductCategory.POD);
-            case("Frukt & Grönt") :
-                List<Product> comboList = getProductsInCategory("Kål");
-                comboList.addAll(getProductsInCategory("Bär"));
-                comboList.addAll(getProductsInCategory("Citrus"));
-                comboList.addAll(getProductsInCategory("Bär"));
-                comboList.addAll(dataHandler.getProducts(ProductCategory.FRUIT));
-                //comboList.addAll(dataHandler.getProducts(ProductCategory.));
-
-               // return dataHandler.getProducts(ProductCategory.);
-                 return comboList;
+            
+            //FRUKT OCH GÖNT
+                //Bär
+            case("Bär") :
+                return dataHandler.getProducts(ProductCategory.BERRY);
+                //Berry does not return any values. Why? Backend problem?
+                
+                //Frukt
+            case ("Citrus") :
+                return dataHandler.getProducts(ProductCategory.CITRUS_FRUIT);
+            case ("Exotiskt") :
+                return dataHandler.getProducts(ProductCategory.EXOTIC_FRUIT);
+            case ("Meloner") :
+                return dataHandler.getProducts(ProductCategory.MELONS);
+            case ("Stenfrukter") :
+                return dataHandler.getProducts(ProductCategory.FRUIT);
+                //
+            case ("Grönsaker") :
+                return dataHandler.getProducts(ProductCategory.VEGETABLE_FRUIT);
+                //
+            case ("Kryddväxter") :
+                return dataHandler.getProducts(ProductCategory.HERB);
+            //
+            case ("Kål") :
+                return dataHandler.getProducts(ProductCategory.CABBAGE);
+            //
+            case ("Nötter & Frön") :
+                return dataHandler.getProducts(ProductCategory.NUTS_AND_SEEDS);
+            case ("Potatis") :
+                theirList = dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
+                l = theirList.subList(0, theirList.size());
+                l.clear();
+                l.addAll(dataHandler.getProducts(ProductCategory.POTATO_RICE));
+                l.retainAll(dataHandler.findProducts("potatis"));
+                l.removeAll(dataHandler.findProducts("potatispur"));
+                return l;    
             default :
-                return Model.getProductsInCategory("Bakartiklar");
+                return new LinkedList<>();
         }
     }
 }

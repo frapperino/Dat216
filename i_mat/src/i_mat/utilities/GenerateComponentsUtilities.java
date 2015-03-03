@@ -27,13 +27,18 @@ public class GenerateComponentsUtilities {
      * @param products
      * @return 
      */
-    public static List<ProductThumbnail> generateThumbnailsFromProducts(List<Product> products) {
+    public synchronized static List<ProductThumbnail> generateThumbnailsFromProducts(List<Product> products) {
         List<ProductThumbnail> returnList = new ArrayList<>();
-        
-        for(Product p : products) {
-            returnList.add(new ProductThumbnail(p));
+        List<Product> prodList = products.subList(0, products.size());
+        try {
+            for(Product p : prodList) {
+                returnList.add(new ProductThumbnail(p));
+            }
+        } catch (java.util.ConcurrentModificationException e) {
+            
+        } finally {
+            return returnList;
         }
-        return returnList;
     }
     
     public static String getProductsString(List<ShoppingItem> items) {

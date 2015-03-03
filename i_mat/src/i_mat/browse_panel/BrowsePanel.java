@@ -28,7 +28,8 @@ import se.chalmers.ait.dat215.project.Product;
  * @author weeeeeew
  */
 public class BrowsePanel extends javax.swing.JPanel {
-
+    
+    private List<Thread> threadList = new LinkedList<>();
     /**
      * Creates new form BrowsePanel
      */
@@ -76,9 +77,9 @@ public class BrowsePanel extends javax.swing.JPanel {
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bakartiklar");
         javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Mjöl");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Socker");
-        treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Salt");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Socker");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bröd");
@@ -109,8 +110,8 @@ public class BrowsePanel extends javax.swing.JPanel {
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Rotfrukter");
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Potatis");
         treeNode3.add(treeNode4);
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Övriga");
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Övriga rotfrukter");
+        treeNode3.add(treeNode4);
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dryck");
@@ -171,7 +172,6 @@ public class BrowsePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_browseTreeValueChanged
 
     private void loadProducts() {
-        IMat.setLoadingCenterStage();
         this.setCenterStageFromList(this.getProductListFromSelection(browseTree.getLastSelectedPathComponent()));
 
     }
@@ -196,17 +196,28 @@ public class BrowsePanel extends javax.swing.JPanel {
     }
     
     private void setCenterStageFromList(final List<Product> l) {
-        //set the center stage. Thread ensures program doesn't get hung up.
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                IMat.setCenterStage(new DisplayResultsPanel(new ThumbsPanel(l)));
-            }
-        });
+        Thread t = new SetStageThread(l);
         t.setPriority(Thread.MAX_PRIORITY);
+        t.setDaemon(true);
         t.start();
     }
+    
 
+    private class SetStageThread extends Thread {
+        private List<Product> l;
+        
+        public SetStageThread(List<Product> l) {
+            this.l = l;
+        }
+        
+        @Override
+        public void run() {
+            if (!this.getName().equals("kill")) {
+                IMat.setLoadingCenterStage();
+                IMat.setCenterStage(new DisplayResultsPanel(new ThumbsPanel(l)));
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane browseScrollPane;
     private javax.swing.JTree browseTree;
