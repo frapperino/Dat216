@@ -22,7 +22,7 @@ public class DeliveryAddress extends Customer {
              c.getPostAddress(),c.getPhoneNumber(),c.getMobilePhoneNumber(),c.getEmail());
     }
     
-    protected DeliveryAddress(String firstName, String lastName, String address,
+    public DeliveryAddress(String firstName, String lastName, String address,
                               String postCode, String postAddress, String phoneNumber,
                               String mobilePhoneNumber, String email) {
         this(firstName, lastName, address, postCode, postAddress, phoneNumber,
