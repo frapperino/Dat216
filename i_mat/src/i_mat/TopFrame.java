@@ -96,7 +96,7 @@ public class TopFrame extends javax.swing.JFrame {
     void setLoading() {
         this.topPanel.remove(this.centerStagePanel);
         this.topPanel.add(this.loadPanel, BorderLayout.CENTER);
-        this.topPanel.validate();
+        this.topPanel.revalidate();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
