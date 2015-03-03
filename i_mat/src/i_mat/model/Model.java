@@ -216,8 +216,8 @@ public class Model {
         return deliveryAddresses.get(0).copy();
     }
 
-    public static void addDeliveryAddress(String firstName, String lastName, String address, String postCode, String postAddress, String phone) {
-        DeliveryAddress newAddress = new DeliveryAddress(firstName, lastName, address, postCode, postAddress, phone, phone, null);
+    public static void addDeliveryAddress(String firstName, String lastName, String address, String postCode, String postAddress, String phone, String cell, String email, String id) {
+        DeliveryAddress newAddress = new DeliveryAddress(firstName, lastName, address, postCode, postAddress, phone, cell, email, id);
         deliveryAddresses.add(newAddress);
     }
 
