@@ -194,12 +194,7 @@ public class ProductThumbnail extends javax.swing.JPanel {
     }//GEN-LAST:event_formMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Object o = jSpinner1.getValue();
-        Number value = new Double(1);
-        if (o instanceof Number) {
-            value = (Number)o;
-        }
-        Model.addShoppingItem(new ShoppingItem(product, value.doubleValue()));
+        Model.addShoppingItem(this.getShoppingItem());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void imageButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageButtonMousePressed
@@ -243,6 +238,15 @@ public class ProductThumbnail extends javax.swing.JPanel {
     public boolean isSelected() {
         return this.isSelected;
     }    
+    
+    public ShoppingItem getShoppingItem() {
+        Object o = jSpinner1.getValue();
+        Number value = new Double(1);
+        if (o instanceof Number) {
+            value = (Number)o;
+        }
+        return new ShoppingItem(product, value.doubleValue());
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
