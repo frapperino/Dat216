@@ -143,24 +143,29 @@ public class Model {
         }
     }
 
-    public static void editDeliveryAddress(DeliveryAddress externalAddress) {
+    /**
+     * Edits the address stored in the backend so that it matches the parameter.
+     * @param newAddress The new address. Should be a modified version of an address
+     *                   that was previously returned by the Model.
+     */
+    public static void editDeliveryAddress(DeliveryAddress newAddress) {
         DeliveryAddress internalAddress = null;
 
         for (DeliveryAddress deliveryAddress : deliveryAddresses) {
-            if (deliveryAddress.getID().equals(externalAddress.getID())) {
+            if (deliveryAddress.getID().equals(newAddress.getID())) {
                 internalAddress = deliveryAddress;
                 break;
             }
         }
 
-        internalAddress.setFirstName(externalAddress.getFirstName());
-        internalAddress.setLastName(externalAddress.getLastName());
-        internalAddress.setAddress(externalAddress.getAddress());
-        internalAddress.setPostCode(externalAddress.getPostCode());
-        internalAddress.setPostAddress(externalAddress.getPostAddress());
-        internalAddress.setPhoneNumber(externalAddress.getPhoneNumber());
-        internalAddress.setMobilePhoneNumber(externalAddress.getMobilePhoneNumber());
-        internalAddress.setEmail(externalAddress.getEmail());
+        internalAddress.setFirstName(newAddress.getFirstName());
+        internalAddress.setLastName(newAddress.getLastName());
+        internalAddress.setAddress(newAddress.getAddress());
+        internalAddress.setPostCode(newAddress.getPostCode());
+        internalAddress.setPostAddress(newAddress.getPostAddress());
+        internalAddress.setPhoneNumber(newAddress.getPhoneNumber());
+        internalAddress.setMobilePhoneNumber(newAddress.getMobilePhoneNumber());
+        internalAddress.setEmail(newAddress.getEmail());
 
         if (deliveryAddresses.indexOf(internalAddress) == 0) {
             setDefaultDeliveryAddress(internalAddress);
