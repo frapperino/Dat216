@@ -38,6 +38,7 @@ public class ShoppingCartPanel2 extends JScrollPane implements ShoppingCartListe
         }
         this.getViewport().add(mainPanel);
         this.validate();
+        this.repaint();
         this.updateUI();
     }
         

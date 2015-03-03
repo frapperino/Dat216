@@ -16,7 +16,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="browseScrollPane" pref="144" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="browseScrollPane" min="-2" pref="215" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -35,12 +39,18 @@
       <SubComponents>
         <Component class="javax.swing.JTree" name="browseTree">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
+              <FontInfo relative="true">
+                <Font component="browseTree" property="font" relativeSize="true" size="5"/>
+              </FontInfo>
+            </Property>
             <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-              <TreeModel code="JTree&#xa; Br&#xf6;d&#xa; B&#xf6;nor, &#xc4;rtor &amp; Linser&#xa; Frukt &amp; Gr&#xf6;nt&#xa;  B&#xe4;r&#xa;  Citrus&#xa;  Exotiskt&#xa;  Meloner&#xa; Dryck&#xa;  Kaffe &amp; te&#xa;  Kalla drycker&#xa; Fisk&#xa;  "/>
+              <TreeModel code="JTree&#xa; Bakartiklar&#xa;  M&#xf6;l&#xa;  Socker&#xa;  Salt&#xa; Br&#xf6;d&#xa; B&#xf6;nor, &#xc4;rtor &amp; Linser&#xa; Frukt &amp; Gr&#xf6;nt&#xa;  B&#xe4;r&#xa;  Frukt&#xa;   Citrus&#xa;   Exotiskt&#xa;   Meloner&#xa;   Stenfrukter&#xa;  Gr&#xf6;nsaker&#xa;  Kryddv&#xe4;xter&#xa;  K&#xe5;l&#xa;  N&#xf6;tter &amp; Fr&#xf6;n&#xa;  Rotfrukter&#xa;   Potatis&#xa;  &#xd6;vriga&#xa; Dryck&#xa;  Kaffe &amp; te&#xa;  Kalla drycker&#xa; Fisk&#xa; K&#xf6;tt&#xa; Mejeri&#xa;  Fil &amp; Yoghurt&#xa;  Mj&#xf6;lk&#xa;  Ost&#xa; Pasta&#xa; Ris&#xa; Snacks"/>
             </Property>
             <Property name="name" type="java.lang.String" value="" noResource="true"/>
             <Property name="rootVisible" type="boolean" value="false"/>
-            <Property name="scrollsOnExpand" type="boolean" value="true"/>
+            <Property name="showsRootHandles" type="boolean" value="true"/>
+            <Property name="toggleClickCount" type="int" value="1"/>
           </Properties>
         </Component>
       </SubComponents>

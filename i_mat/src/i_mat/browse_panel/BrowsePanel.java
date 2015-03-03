@@ -31,19 +31,21 @@ public class BrowsePanel extends javax.swing.JPanel {
                                                         boolean leaf,
                                                         int row,
                                                         boolean hasFocus) {
-                //Put arrow in the text of the tree node
-                if(expanded) {
-                    value = "▼ " + value.toString();
-                } else if (!leaf)value = "▶ " + value.toString();
-                
+                             
                 //Use the standard tree cell renderer
                 Component c = super.getTreeCellRendererComponent(
                       tree, value, selected,
                       expanded, leaf, row,
                       hasFocus); 
+                c.setFont(c.getFont().deriveFont(1000));
                 return c; 
             }
         });
+        DefaultTreeCellRenderer rend = (DefaultTreeCellRenderer)browseTree.getCellRenderer();
+        rend.setClosedIcon(null);
+        rend.setOpenIcon(null);
+        rend.setLeafIcon(null);
+        rend.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -58,19 +60,46 @@ public class BrowsePanel extends javax.swing.JPanel {
         browseScrollPane = new javax.swing.JScrollPane();
         browseTree = new javax.swing.JTree();
 
+        browseTree.setFont(browseTree.getFont().deriveFont(browseTree.getFont().getSize()+5f));
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("JTree");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bröd");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bakartiklar");
+        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Möl");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Socker");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Salt");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bröd");
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bönor, Ärtor & Linser");
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Frukt & Grönt");
-        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Bär");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Bär");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Citrus");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Frukt");
+        javax.swing.tree.DefaultMutableTreeNode treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Citrus");
+        treeNode3.add(treeNode4);
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Exotiskt");
+        treeNode3.add(treeNode4);
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Meloner");
+        treeNode3.add(treeNode4);
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Stenfrukter");
+        treeNode3.add(treeNode4);
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Exotiskt");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Grönsaker");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Meloner");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kryddväxter");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kål");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Nötter & Frön");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Rotfrukter");
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Potatis");
+        treeNode3.add(treeNode4);
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Övriga");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dryck");
@@ -81,17 +110,37 @@ public class BrowsePanel extends javax.swing.JPanel {
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Fisk");
         treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Kött");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Mejeri");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Fil & Yoghurt");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Mjölk");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Ost");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Pasta");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Ris");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Snacks");
+        treeNode1.add(treeNode2);
         browseTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         browseTree.setName(""); // NOI18N
         browseTree.setRootVisible(false);
-        browseTree.setScrollsOnExpand(true);
+        browseTree.setShowsRootHandles(true);
+        browseTree.setToggleClickCount(1);
         browseScrollPane.setViewportView(browseTree);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(browseScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(browseScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
