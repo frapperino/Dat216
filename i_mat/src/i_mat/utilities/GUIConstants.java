@@ -16,5 +16,6 @@ public class GUIConstants {
     public final static Dimension THUMBNAIL_SIZE = new Dimension(180,180);
     public final static Dimension PRODUCT_THUMBNAIL_SIZE = new Dimension(182,247);
     public final static Dimension MICRO_THUMBNAIL_SIZE = new Dimension(30,30);
+    public final static Dimension FULL_VIEW_IMAGE = new Dimension(220, 220);
  // TODO: Pick a standard font for titles  public final static Font titleFont1 = new Font('')
 }

@@ -5,6 +5,7 @@
  */
 package i_mat.center_stage;
 
+import i_mat.IMat;
 import i_mat.model.Model;
 import i_mat.utilities.ColorScheme;
 import i_mat.utilities.GUIConstants;
@@ -226,7 +227,7 @@ public class ProductThumbnail extends javax.swing.JPanel {
     }
     
     public void openProductView() {
-        //TODO: Implement code that gives you the product's view.
+        IMat.setCenterStage(new ProductFullView(this.product));
     }
     
     private void switchSelectedStatus(){
