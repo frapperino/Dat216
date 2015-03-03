@@ -46,3 +46,5 @@ lib/
 ehthumbs.db
 Thumbs.db
 /i_mat/nbproject/private/
+
+*.imat

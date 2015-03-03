@@ -6,11 +6,19 @@
 package i_mat.model;
 
 import java.awt.Dimension;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.Customer;
@@ -27,14 +35,34 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class Model {
     private static final IMatDataHandler dataHandler = IMatDataHandler.getInstance();
     private static final List<Product> promoProducts = Arrays.asList(dataHandler.getProduct(1), dataHandler.getProduct(2));
-    private static final List<DeliveryAddress> deliveryAddresses = new ArrayList<DeliveryAddress>();
+    private static List<DeliveryAddress> deliveryAddresses = new ArrayList<DeliveryAddress>();
     
-    /* 
-     * Analogous to the constructor of an instantiatable class. Add any set-up
-     * procedures here...
-     */
+    private static final String ADDRESSES_FILENAME = "addresses.imat";
+
+    /*
+    * Analogous to the constructor of an instantiatable class. Add any set-up
+    * procedures here...
+    */ 
     static {
-        deliveryAddresses.add(new DeliveryAddress(dataHandler.getCustomer()));
+        ObjectInputStream ois = null;
+        try {
+            ois = new ObjectInputStream(new FileInputStream(ADDRESSES_FILENAME));
+            Object o = ois.readObject();
+            if(o instanceof List) {
+                deliveryAddresses = (List) o;
+            }
+        } catch (ClassNotFoundException | IOException ex) {
+            deliveryAddresses.add(new DeliveryAddress(dataHandler.getCustomer()));
+        } finally {
+            try {
+                ois.close();
+            } catch (IOException ex) {
+                System.out.println("Unable to close input stream.");
+                ex.printStackTrace();
+            } catch (NullPointerException ex) {
+                
+            }
+        }
     }
     
     /*
@@ -176,6 +204,15 @@ public class Model {
     
     public static void save() {
         dataHandler.shutDown();
+        
+        try {            
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ADDRESSES_FILENAME));
+            oos.writeObject((Serializable) deliveryAddresses);
+            oos.close();
+        } catch (IOException ex) {
+            System.out.println("Could not save delivery addresses to file.");
+            ex.printStackTrace();
+        }
     }
     
     public static List<Order> getOrderHistory() {

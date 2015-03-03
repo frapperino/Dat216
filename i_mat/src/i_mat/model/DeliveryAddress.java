@@ -5,6 +5,7 @@
  */
 package i_mat.model;
 
+import java.io.Serializable;
 import java.util.UUID;
 import se.chalmers.ait.dat215.project.Customer;
 
@@ -13,9 +14,75 @@ import se.chalmers.ait.dat215.project.Customer;
  * addresses, and we are not allowed to create multiple customers... 
  * @author weeeeeew
  */
-public class DeliveryAddress extends Customer {
+public class DeliveryAddress implements Serializable {
     
     private final String id;
+    private String firstName, lastName, address, postCode, postAddress,
+                   phoneNumber, mobilePhoneNumber, email;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public void setPostAddress(String postAddress) {
+        this.postAddress = postAddress;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setMobilePhoneNumber(String mobilePhoneNumber) {
+        this.mobilePhoneNumber = mobilePhoneNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public String getPostAddress() {
+        return postAddress;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getMobilePhoneNumber() {
+        return mobilePhoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
     
     protected DeliveryAddress(Customer c) {
         this(c.getFirstName(),c.getLastName(),c.getAddress(),c.getPostCode(),
@@ -33,6 +100,12 @@ public class DeliveryAddress extends Customer {
         this(c.getFirstName(), c.getLastName(), c.getAddress(), c.getPostCode(),
              c.getPostAddress(), c.getPhoneNumber(), c.getMobilePhoneNumber(),
              c.getEmail(), id);
+    }
+    
+    private DeliveryAddress(DeliveryAddress da, String id) {
+        this(da.getFirstName(), da.getLastName(), da.getAddress(), da.getPostCode(),
+             da.getPostAddress(), da.getPhoneNumber(), da.getMobilePhoneNumber(),
+             da.getEmail(), id);
     }
     
     private DeliveryAddress(String firstName, String lastName, String address,
@@ -65,6 +138,10 @@ public class DeliveryAddress extends Customer {
                  & getPostAddress().equals(c.getPostAddress())
                  & getPhoneNumber().equals(c.getPhoneNumber())
                  & getMobilePhoneNumber().equals(c.getMobilePhoneNumber());
+        } else if (o instanceof DeliveryAddress) {
+            DeliveryAddress da = (DeliveryAddress) o;
+            
+            return this.id.equals(da.getID());
         } else {
             return false;
         }
