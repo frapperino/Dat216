@@ -8,7 +8,6 @@ package i_mat.center_stage.customer_profile;
 import i_mat.controllers.AddressController;
 import i_mat.model.DeliveryAddress;
 import i_mat.model.Model;
-import se.chalmers.ait.dat215.project.Customer;
 
 /**
  *
