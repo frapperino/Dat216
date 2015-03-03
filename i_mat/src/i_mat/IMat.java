@@ -68,4 +68,13 @@ public class IMat {
     public static boolean moveForwardPossible() {
         return !forwardStack.empty();
     }
+    
+    public static JPanel getCenterStage() {
+        return topFrame.getCenterStage();
+    }
+    
+    //For setting a loadpanel which does not go on the stack.
+    public static void setLoadingCenterStage() {
+        topFrame.setCenterStage(new LoadPanel());
+    }
 }

@@ -5,11 +5,23 @@
  */
 package i_mat.browse_panel;
 
+import i_mat.IMat;
+import i_mat.center_stage.DisplayResultsPanel;
+import i_mat.center_stage.ThumbsPanel;
+import i_mat.model.Model;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Font;
+import java.util.Enumeration;
+import java.util.LinkedList;
+import java.util.List;
 import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
+import se.chalmers.ait.dat215.project.Product;
 
 /**
  *
@@ -37,7 +49,6 @@ public class BrowsePanel extends javax.swing.JPanel {
                       tree, value, selected,
                       expanded, leaf, row,
                       hasFocus); 
-                c.setFont(c.getFont().deriveFont(1000));
                 return c; 
             }
         });
@@ -45,6 +56,7 @@ public class BrowsePanel extends javax.swing.JPanel {
         rend.setClosedIcon(null);
         rend.setOpenIcon(null);
         rend.setLeafIcon(null);
+        rend.setOpaque(false);
         rend.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
@@ -60,10 +72,9 @@ public class BrowsePanel extends javax.swing.JPanel {
         browseScrollPane = new javax.swing.JScrollPane();
         browseTree = new javax.swing.JTree();
 
-        browseTree.setFont(browseTree.getFont().deriveFont(browseTree.getFont().getSize()+5f));
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("JTree");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bakartiklar");
-        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Möl");
+        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Mjöl");
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Socker");
         treeNode2.add(treeNode3);
@@ -131,6 +142,11 @@ public class BrowsePanel extends javax.swing.JPanel {
         browseTree.setRootVisible(false);
         browseTree.setShowsRootHandles(true);
         browseTree.setToggleClickCount(1);
+        browseTree.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
+            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
+                browseTreeValueChanged(evt);
+            }
+        });
         browseScrollPane.setViewportView(browseTree);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -150,6 +166,46 @@ public class BrowsePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void browseTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_browseTreeValueChanged
+        loadProducts();
+    }//GEN-LAST:event_browseTreeValueChanged
+
+    private void loadProducts() {
+        IMat.setLoadingCenterStage();
+        this.setCenterStageFromList(this.getProductListFromSelection(browseTree.getLastSelectedPathComponent()));
+
+    }
+    
+    private List<Product> getProductListFromSelection(Object node) {
+        //If this is a leaf, just get the contents for it
+        if (browseTree.getModel().isLeaf(node)) {
+            return Model.getProductsInCategory(node.toString());
+        }
+        //Else look through the nodes and get all their products/
+        else { 
+            TreeNode n = (TreeNode)node;
+            Enumeration children = n.children();
+            List<Product> list = getProductListFromSelection(children.nextElement());
+            while(children.hasMoreElements()) {
+                for(Product p : getProductListFromSelection(children.nextElement())) {
+                    list.add(p);
+                }
+            }
+            return list;
+        }
+    }
+    
+    private void setCenterStageFromList(final List<Product> l) {
+        //set the center stage. Thread ensures program doesn't get hung up.
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                IMat.setCenterStage(new DisplayResultsPanel(new ThumbsPanel(l)));
+            }
+        });
+        t.setPriority(Thread.MAX_PRIORITY);
+        t.start();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane browseScrollPane;
