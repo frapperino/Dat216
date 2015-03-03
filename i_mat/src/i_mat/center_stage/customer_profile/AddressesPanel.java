@@ -47,14 +47,14 @@ public class AddressesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        newAddressPanel1 = new i_mat.center_stage.customer_profile.NewAddressPanel();
+        newAddressPanel2 = new i_mat.center_stage.customer_profile.NewAddressPanel();
 
-        setLayout(new java.awt.GridLayout(0, 1, 0, 10));
-        add(newAddressPanel1);
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
+        add(newAddressPanel2);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private i_mat.center_stage.customer_profile.NewAddressPanel newAddressPanel1;
+    private i_mat.center_stage.customer_profile.NewAddressPanel newAddressPanel2;
     // End of variables declaration//GEN-END:variables
 }

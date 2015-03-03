@@ -7,6 +7,7 @@ package i_mat.center_stage.customer_profile;
 
 import i_mat.model.DeliveryAddress;
 import i_mat.model.Model;
+import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.Customer;
 
@@ -17,7 +18,6 @@ import se.chalmers.ait.dat215.project.Customer;
 public class NewAddressPanel extends javax.swing.JPanel {
     
     private JPanel expandedAddressPanel;
-    private JPanel collapsedAddressPanel;
     
     /**
      * Creates new form SingleAddress
@@ -54,30 +54,18 @@ public class NewAddressPanel extends javax.swing.JPanel {
             }
         });
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(263, 263));
-        jPanel1.setSize(new java.awt.Dimension(263, 263));
+        jPanel1.setMinimumSize(new java.awt.Dimension(263, 26));
+        jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(263, 26));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
             }
         });
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setText("Lägg till ny");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 193, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 247, Short.MAX_VALUE))
-        );
+        jPanel1.add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -85,16 +73,19 @@ public class NewAddressPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToggleButton1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToggleButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(215, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -102,19 +93,14 @@ public class NewAddressPanel extends javax.swing.JPanel {
         // perhaps the same as jToggleButton1MouseClicked(), i dunno lol?
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        jToggleButton1MouseClicked(evt);
-    }//GEN-LAST:event_jPanel1MouseClicked
-
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
         if (jToggleButton1.isSelected()) {
             jToggleButton1.setText("X");
-            jPanel1.removeAll();
-            jPanel1.add(expandedAddressPanel);
+            jPanel1.add(expandedAddressPanel,BorderLayout.CENTER);
         } else {
             jToggleButton1.setText("+");
             jPanel1.removeAll();
-            jPanel1.add(jLabel1);
+            jPanel1.add(jLabel1,BorderLayout.NORTH);
         }
         jPanel1.validate();
         jPanel1.revalidate();
@@ -123,6 +109,10 @@ public class NewAddressPanel extends javax.swing.JPanel {
         revalidate();
         repaint();
     }//GEN-LAST:event_jToggleButton1MouseClicked
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        jToggleButton1MouseClicked(evt);
+    }//GEN-LAST:event_jPanel1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
