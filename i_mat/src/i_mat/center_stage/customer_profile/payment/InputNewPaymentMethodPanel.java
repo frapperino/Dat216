@@ -13,12 +13,12 @@ import i_mat.controllers.PaymentController;
  *
  * @author weeeeeew
  */
-public class CardNumber extends javax.swing.JPanel {
+public class InputNewPaymentMethodPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form NewDeliveryAddressPanel
      */
-    public CardNumber() {
+    public InputNewPaymentMethodPanel() {
         initComponents();
     }
 

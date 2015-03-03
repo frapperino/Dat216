@@ -35,14 +35,27 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class Model {
     private static final IMatDataHandler dataHandler = IMatDataHandler.getInstance();
-    private static List<DeliveryAddress> deliveryAddresses = new ArrayList<DeliveryAddress>();
-    private static final String ADDRESSES_FILENAME = "addresses.imat";
+    private static List<DeliveryAddress> deliveryAddresses;
+    private static List<CreditCardInstance> creditCards;
+    private static final String ADDRESSES_FILENAME = "addresses.imat",
+                                CREDITCARDS_FILENAME = "cards.imat";
+    
 
     /*
     * Analogous to the constructor of an instantiatable class. Add any set-up
     * procedures here...
     */
     static {
+        readAddresses();
+        readCreditCards();
+    }
+
+    /*
+     * ... but *do not* add them here.
+     */
+    private Model() {};
+    
+    private static void readAddresses() {
         ObjectInputStream ois = null;
         try {
             ois = new ObjectInputStream(new FileInputStream(ADDRESSES_FILENAME));
@@ -51,6 +64,7 @@ public class Model {
                 deliveryAddresses = (List) o;
             }
         } catch (ClassNotFoundException | IOException ex) {
+            deliveryAddresses = new ArrayList<>();
             deliveryAddresses.add(new DeliveryAddress(dataHandler.getCustomer()));
         } finally {
             try {
@@ -62,10 +76,26 @@ public class Model {
         }
     }
 
-    /*
-     * ... but *do not* add them here.
-     */
-    private Model() {};
+    private static void readCreditCards() {
+        ObjectInputStream ois = null;
+        try {
+            ois = new ObjectInputStream(new FileInputStream(CREDITCARDS_FILENAME));
+            Object o = ois.readObject();
+            if(o instanceof List) {
+                creditCards = (List) o;
+            }
+        } catch (ClassNotFoundException | IOException ex) {
+            creditCards = new ArrayList<>();
+            creditCards.add(new CreditCardInstance(dataHandler.getCreditCard()));
+        } finally {
+            try {
+                ois.close();
+            } catch (IOException ex) {
+                System.out.println("Unable to close input stream.");
+                ex.printStackTrace();
+            } catch (NullPointerException ex) {}
+        }
+    }
 
     /**
     * The standard way to get all products.
@@ -191,6 +221,16 @@ public class Model {
 
         return externalAddresses;
     }
+    
+    public static List<CreditCardInstance> getCreditCards() {
+        List<CreditCardInstance> externalCards = new LinkedList<>();
+
+        for (CreditCardInstance cc : creditCards) {
+            externalCards.add(cc.copy());
+        }
+
+        return externalCards;
+    }
 
     /**
      * Returns the address with the ID, if it exists. Otherwise null.
@@ -283,10 +323,6 @@ public class Model {
 
     public static ShoppingCart getShoppingCart() {
         return dataHandler.getShoppingCart();
-    }
-    
-    public static List<PaymentMethod> getPaymentMethods() {
-        throw new UnsupportedOperationException();
     }
 
     public static List<Product> getProductsInCategory(String name) {

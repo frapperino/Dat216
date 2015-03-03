@@ -18,7 +18,7 @@
     <Property name="axis" type="int" value="1"/>
   </Layout>
   <SubComponents>
-    <Component class="i_mat.center_stage.customer_profile.address.NewAddressPanel" name="newAddressPanel2">
+    <Component class="i_mat.center_stage.customer_profile.payment.NewPaymentPanel" name="newPaymentPanel1">
     </Component>
   </SubComponents>
 </Form>

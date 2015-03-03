@@ -8,7 +8,7 @@ package i_mat.center_stage.customer_profile.payment;
 import i_mat.center_stage.customer_profile.address.*;
 import i_mat.model.DeliveryAddress;
 import i_mat.model.Model;
-import i_mat.model.PaymentMethod;
+import i_mat.model.CreditCardInstance;
 import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.Customer;
@@ -19,21 +19,21 @@ import se.chalmers.ait.dat215.project.Customer;
  */
 public class PaymentsPanel extends javax.swing.JPanel {
 
-    private List<PaymentMethod> paymentMethods;
+    private List<CreditCardInstance> creditCards;
     
     /**
      * Creates new form AdressesPanel
      */
     public PaymentsPanel() {
-        this(Model.getPaymentMethods());
+        this(Model.getCreditCards());
     }
 
-    public PaymentsPanel(List<PaymentMethod> paymentMethods) {
-        this.paymentMethods = paymentMethods;
+    public PaymentsPanel(List<CreditCardInstance> creditCards) {
+        this.creditCards = creditCards;
         initComponents();
         
-        for (PaymentMethod paymentMethod : paymentMethods) {
-            add(new SinglePaymentPanel(paymentMethod));
+        for (CreditCardInstance creditCard : creditCards) {
+            add(new SinglePaymentPanel(creditCard));
         }
         
         validate();
@@ -49,14 +49,14 @@ public class PaymentsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        newAddressPanel2 = new i_mat.center_stage.customer_profile.address.NewAddressPanel();
+        newPaymentPanel1 = new i_mat.center_stage.customer_profile.payment.NewPaymentPanel();
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
-        add(newAddressPanel2);
+        add(newPaymentPanel1);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private i_mat.center_stage.customer_profile.address.NewAddressPanel newAddressPanel2;
+    private i_mat.center_stage.customer_profile.payment.NewPaymentPanel newPaymentPanel1;
     // End of variables declaration//GEN-END:variables
 }
