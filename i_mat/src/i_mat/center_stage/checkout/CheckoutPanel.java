@@ -11,6 +11,7 @@ import java.time.Clock;
 import javax.swing.*;
 import i_mat.model.Model;
 import static i_mat.model.Model.addDeliveryAddress;
+import static i_mat.model.Model.getDeliveryAddresses;
 import i_mat.shopping_cart.ShoppingCartPanel2;
 import java.awt.event.ActionListener;
 import se.chalmers.ait.dat215.project.CreditCard;
@@ -51,7 +52,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         oldAdressButton = new javax.swing.JRadioButton();
         newAdressButton = new javax.swing.JRadioButton();
         selectedAddress = new javax.swing.JComboBox();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        oldCardButton = new javax.swing.JRadioButton();
         newCardButton = new javax.swing.JRadioButton();
         cardNumber = new javax.swing.JComboBox();
         purchase = new javax.swing.JButton();
@@ -110,12 +111,12 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
-        paymentButtonGroup.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Mitt kort med nummer: ");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        paymentButtonGroup.add(oldCardButton);
+        oldCardButton.setSelected(true);
+        oldCardButton.setText("Mitt kort med nummer: ");
+        oldCardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                oldCardButtonActionPerformed(evt);
             }
         });
 
@@ -249,7 +250,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                                 .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(newCardButton)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(oldCardButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -357,7 +358,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
+                    .addComponent(oldCardButton)
                     .addComponent(cardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newCardButton)
@@ -411,42 +412,38 @@ public class CheckoutPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cardNumberActionPerformed
 
     private void purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseActionPerformed
+        //TODO if ett fält är tomt lr inte tillräckligt ifyllt(text substring av numret), be att fylla i innan gå vidare
         if (newAdressButton.isSelected() && newCardButton.isSelected()){
             
             
-           
-            DeliveryAddress d = new DeliveryAddress(jTextField1.getText(),jTextField2.getText(),
-                    jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),
-                    jTextField6.getText(),jTextField7.getText(),jTextField11.getText());
-           
-            CreditCardInstance c = new CreditCardInstance(jTextField8.getText(), 
-                    jComboBox1.getSelectedItem().toString(), jTextField10.getText(), 
-                    Integer.parseInt(jComboBox2.getSelectedItem().toString()), Integer.parseInt(jComboBox3.getSelectedItem().toString()),
-                    Integer.parseInt(jTextField9.getText()));
-            //if ett fält är tomt, be att fylla i innan gå vidare
             
-            p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), d, c );
+            p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), createTempAdress(), createTempCard() );
             IMat.setCenterStage(p1);
+            System.out.println(getDeliveryAddresses());
         }
-        else if(oldAdressButton.isSelected()){
-            //använd deliveryaddress från comboboxen (data ska läsas in i fälten nedan också)
-            //p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true));//konstruktor inte klar
-            //IMat.setCenterStage(p1);
+        else if(oldAdressButton.isSelected() && newCardButton.isSelected()){
+            
+            
+            //DeliveryAddress dsss = getDeliveryAddresses().get(1);
+            
+            /*
+            p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), getByID(selectedAddress.getText()), createTempCard() );
+            IMat.setCenterStage(p1);
+*/
         }
     }//GEN-LAST:event_purchaseActionPerformed
 
     private void newCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCardButtonActionPerformed
         // TODO add your handling code here:
-        //this.jPanel1 = new NewCardPanel();
         setTextEnabled(true,2);
         this.validate();
     }//GEN-LAST:event_newCardButtonActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void oldCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldCardButtonActionPerformed
         // TODO add your handling code here:
         setTextEnabled(false,2);
         this.validate();
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_oldCardButtonActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -464,11 +461,19 @@ public class CheckoutPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
-    private int getCardNumber(){
-        return (Integer) cardNumber.getSelectedItem();
+
+    private DeliveryAddress createTempAdress(){
+        DeliveryAddress d = new DeliveryAddress(jTextField1.getText(),jTextField2.getText(),
+                    jTextField3.getText(),jTextField4.getText(),jTextField5.getText(),
+                    jTextField6.getText(),jTextField7.getText(),jTextField11.getText());
+        return d;
     }
-    private String getSelectedAddress(){
-        return selectedAddress.getSelectedItem().toString();
+    private CreditCardInstance createTempCard(){
+        CreditCardInstance c = new CreditCardInstance(jTextField8.getText(), 
+                    jComboBox1.getSelectedItem().toString(), jTextField10.getText(), 
+                    Integer.parseInt(jComboBox2.getSelectedItem().toString()), Integer.parseInt(jComboBox3.getSelectedItem().toString()),
+                    Integer.parseInt(jTextField9.getText()));
+        return c;
     }
     
     private void setTextEnabled(Boolean t, int i){
@@ -537,7 +542,6 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
@@ -553,6 +557,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton newAdressButton;
     private javax.swing.JRadioButton newCardButton;
     private javax.swing.JRadioButton oldAdressButton;
+    private javax.swing.JRadioButton oldCardButton;
     private javax.swing.ButtonGroup paymentButtonGroup;
     private javax.swing.JButton purchase;
     private javax.swing.JComboBox selectedAddress;

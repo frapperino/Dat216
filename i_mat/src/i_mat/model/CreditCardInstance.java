@@ -23,7 +23,9 @@ public class CreditCardInstance extends CreditCard {
         setValidYear(year);
         setVerificationCode(cvc);
     }
-    
+    public CreditCardInstance(String number, String type, String name, int month, int year, int cvc, String id){
+        
+    }
     
     
 }
