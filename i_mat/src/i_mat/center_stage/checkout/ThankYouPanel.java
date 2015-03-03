@@ -6,6 +6,7 @@
 package i_mat.center_stage.checkout;
 
 
+import i_mat.model.CreditCardInstance;
 import i_mat.model.DeliveryAddress;
 import i_mat.utilities.GenerateComponentsUtilities;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
      */
     Order order;
     DeliveryAddress delivery;
-    CreditCard card;
+    CreditCardInstance card;
     ArrayList<String> orderItems;
     ArrayList<Integer> orderItemsAmount;
     int amount;
@@ -42,7 +43,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
     }
     
     //konstruktorn ska även ta en deliveryadress samt ett kreditkort
-    public ThankYouPanel(Order o, DeliveryAddress d, CreditCard c ){
+    public ThankYouPanel(Order o, DeliveryAddress d, CreditCardInstance c ){
         initComponents();
         this.order = o;
         this.delivery = d;
@@ -85,7 +86,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
         cellNumber.setText(delivery.getMobilePhoneNumber());
         jLabel13.setText(delivery.getEmail());
         jLabel18.setText(returnString);
-        jLabel22.setText(card.getHoldersName());
+        jLabel22.setText(card.getHolder());
         jLabel20.setText(card.getCardType());
     }
     
