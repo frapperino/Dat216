@@ -27,7 +27,7 @@ public class NewPaymentPanel extends javax.swing.JPanel {
      */
     public NewPaymentPanel() {
         initComponents();
-        expandedAddressPanel = new InputNewAddressPanel();
+        expandedAddressPanel = new InputNewPaymentMethodPanel();
         leftFiller = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(60, 0), new java.awt.Dimension(60, 32767));
     }
     
