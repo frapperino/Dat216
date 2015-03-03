@@ -7,6 +7,7 @@ package i_mat.browse_panel;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
@@ -21,7 +22,7 @@ public class BrowsePanel extends javax.swing.JPanel {
      */
     public BrowsePanel() {
         initComponents();
-        BrowseTree.setCellRenderer(new DefaultTreeCellRenderer() {
+        browseTree.setCellRenderer(new DefaultTreeCellRenderer() {
             @Override
             public Component getTreeCellRendererComponent(JTree tree,
                                                         Object value,
@@ -40,11 +41,6 @@ public class BrowsePanel extends javax.swing.JPanel {
                       tree, value, selected,
                       expanded, leaf, row,
                       hasFocus); 
-
-                if (leaf) { 
-                    c.setBackground(Color.BLUE);
-                } 
-
                 return c; 
             }
         });
@@ -59,31 +55,55 @@ public class BrowsePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BrowseScrollPane = new javax.swing.JScrollPane();
-        BrowseTree = new javax.swing.JTree();
+        browseScrollPane = new javax.swing.JScrollPane();
+        browseTree = new javax.swing.JTree();
 
-        BrowseTree.setName(""); // NOI18N
-        BrowseTree.setRootVisible(false);
-        BrowseTree.setScrollsOnExpand(true);
-        BrowseScrollPane.setViewportView(BrowseTree);
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("JTree");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bröd");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bönor, Ärtor & Linser");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Frukt & Grönt");
+        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Bär");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Citrus");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Exotiskt");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Meloner");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Dryck");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kaffe & te");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Kalla drycker");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Fisk");
+        treeNode1.add(treeNode2);
+        browseTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        browseTree.setName(""); // NOI18N
+        browseTree.setRootVisible(false);
+        browseTree.setScrollsOnExpand(true);
+        browseScrollPane.setViewportView(browseTree);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BrowseScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+            .addComponent(browseScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(BrowseScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                .addComponent(browseScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane BrowseScrollPane;
-    private javax.swing.JTree BrowseTree;
+    private javax.swing.JScrollPane browseScrollPane;
+    private javax.swing.JTree browseTree;
     // End of variables declaration//GEN-END:variables
 }
