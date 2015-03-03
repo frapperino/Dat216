@@ -234,13 +234,13 @@ public class ProductThumbnail extends javax.swing.JPanel {
         else this.setSelected();
     }
     
-    private void setUnselected() {
+    public void setUnselected() {
         this.isSelected = false;       
         this.setBorder(this.unselectedBorder);
         this.revalidate();  
     }
     
-    private void setSelected() {
+    public void setSelected() {
         this.isSelected = true;       
         this.setBorder(this.selectedBorder);
         this.revalidate();
