@@ -363,7 +363,6 @@ public class Model {
             case ("Socker & Kakao") :
                 theirList = dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);
                 l = theirList.subList(0, theirList.size());
-                l.addAll(dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT));
                 l.retainAll(dataHandler.findProducts("socker"));
                 l.add(dataHandler.getProduct(27));
                 return l;

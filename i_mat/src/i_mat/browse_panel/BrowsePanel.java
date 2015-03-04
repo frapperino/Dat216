@@ -141,6 +141,7 @@ public class BrowsePanel extends javax.swing.JPanel {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Ägg");
         treeNode1.add(treeNode2);
         browseTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        browseTree.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         browseTree.setName(""); // NOI18N
         browseTree.setRootVisible(false);
         browseTree.setShowsRootHandles(true);

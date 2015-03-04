@@ -71,6 +71,9 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
             this.displayList = GenerateComponentsUtilities.generateThumbnailsFromProducts(prodList);
             for (ProductThumbnail thumb : this.displayList) {
                 this.add(thumb);
+                this.revalidate();
+                this.repaint();
+                this.updateUI();
             }
         }
     }
