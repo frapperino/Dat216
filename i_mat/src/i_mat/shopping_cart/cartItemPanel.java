@@ -59,6 +59,9 @@ public class cartItemPanel extends javax.swing.JPanel {
         setLayout(new java.awt.GridLayout(1, 0));
 
         jButton1.setText("x");
+        jButton1.setMaximumSize(new java.awt.Dimension(50, 29));
+        jButton1.setMinimumSize(new java.awt.Dimension(50, 29));
+        jButton1.setPreferredSize(new java.awt.Dimension(40, 29));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -67,6 +70,10 @@ public class cartItemPanel extends javax.swing.JPanel {
         add(jButton1);
 
         jLabel1.setText(item.getProduct().getName());
+        jLabel1.setToolTipText(item.getProduct().getName());
+        jLabel1.setMaximumSize(new java.awt.Dimension(200, 16));
+        jLabel1.setMinimumSize(new java.awt.Dimension(200, 16));
+        jLabel1.setPreferredSize(new java.awt.Dimension(200, 16));
         add(jLabel1);
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), null, null, Integer.valueOf(1)));
