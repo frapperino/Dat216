@@ -28,7 +28,11 @@ public class ColorScheme {
     }
     
     public static Color getSelectedProductBorderColor() {
-        return Color.blue;
+        return new Color(217,175,191);
+    }
+    
+    public static Color selectedThumbnailBackground() {
+        return new Color(247,205,221);
     }
     
     public static Color getAddItemBlinkColor() {
@@ -43,7 +47,4 @@ public class ColorScheme {
         return new Color(222,185,106);
     }
     
-    public static Color selectedThumbnailBackground() {
-        return new Color(247,205,221);
-    }
 }
