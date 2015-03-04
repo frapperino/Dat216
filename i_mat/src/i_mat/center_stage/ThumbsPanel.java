@@ -49,7 +49,6 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
                            thumb.addThisToShoppingCart();
                            thumb.setUnselected();
                        }
-                       
                     };
                 });
         

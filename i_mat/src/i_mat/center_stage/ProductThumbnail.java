@@ -85,6 +85,9 @@ public class ProductThumbnail extends javax.swing.JPanel {
         setOpaque(false);
         setPreferredSize(GUIConstants.PRODUCT_THUMBNAIL_SIZE);
         addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
             }
@@ -206,21 +209,21 @@ public class ProductThumbnail extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void imageButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageButtonMousePressed
-        if (evt.getClickCount() == 2) {
-            this.setSelected();
+        //Check that Cmd is pressed (or Ctrl on Windows)
+        if ((evt.getModifiers() & Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())
+        == Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()) {
+            this.switchSelectedStatus();
+        }    
+        else {
             this.openProductView();
-        } else if (evt.getClickCount() == 1) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Thread.sleep(100);
-                        switchSelectedStatus();
-                    } catch(InterruptedException e) {}                    
-                 }
-            }).start();
         }
     }//GEN-LAST:event_imageButtonMousePressed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        if (evt.getModifiers() == InputEvent.CTRL_DOWN_MASK) {
+            this.switchSelectedStatus();
+        }        
+    }//GEN-LAST:event_formMousePressed
 
     public void addThisToShoppingCart() {
          Model.addShoppingItem(this.getShoppingItem());
