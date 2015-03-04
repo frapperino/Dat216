@@ -33,6 +33,10 @@ public class ShoppingCartPanel2 extends JScrollPane implements ShoppingCartListe
         Model.getShoppingCart().addShoppingCartListener(this);
         mainPanel = new JPanel(new WrapLayout(FlowLayout.LEFT));
         this.getVerticalScrollBar().setUnitIncrement(GUIConstants.SCROLL_INCREMENT);
+        this.addAllItemsInCart();
+    }
+        
+    private void addAllItemsInCart() {
         for (ShoppingItem i:Model.getShoppingCart().getItems()) {
             cartItemPanel c = new cartItemPanel(i, this);
             cip.add(c);
@@ -43,7 +47,6 @@ public class ShoppingCartPanel2 extends JScrollPane implements ShoppingCartListe
         this.repaint();
         this.updateUI();
     }
-        
     public void removeCartItem(cartItemPanel cip) {
         this.cip.remove(cip);
         mainPanel.remove(cip);
@@ -65,6 +68,11 @@ public class ShoppingCartPanel2 extends JScrollPane implements ShoppingCartListe
             mainPanel.add(c);
             mainPanel.validate();
             mainPanel.updateUI();
+        }
+        else {
+            cip.clear();
+            mainPanel.removeAll();
+            addAllItemsInCart();
         }
     }
 

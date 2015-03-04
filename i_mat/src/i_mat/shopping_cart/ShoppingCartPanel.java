@@ -30,8 +30,6 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
     public ShoppingCartPanel() {
         Model.getShoppingCart().addShoppingCartListener(this);
         initComponents();
-        this.setPreferredSize(new Dimension(290,300));
-        jScrollPane1.getViewport().getView().setBackground(ColorScheme.getShoppingCartBackgroundColor());
     }
 
     /**
@@ -118,6 +116,8 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
+        this.setPreferredSize(new Dimension(290,300));
+        jScrollPane1.getViewport().getView().setBackground(ColorScheme.getShoppingCartBackgroundColor());
     }// </editor-fold>                        
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -135,7 +135,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private ShoppingCartPanel2 jScrollPane1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     // End of variables declaration                   
@@ -152,6 +152,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
                 jScrollPane1.getViewport().getView().setBackground(ColorScheme.getShoppingCartBackgroundColor());
             }
         }).start();
+        this.jScrollPane1.shoppingCartChanged(ce);
         jLabel1.setText(Model.getShoppingCart().getTotal()+" kr");
     }
 }
