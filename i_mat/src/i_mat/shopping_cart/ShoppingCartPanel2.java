@@ -7,6 +7,7 @@ package i_mat.shopping_cart;
 
 import i_mat.center_stage.WrapLayout;
 import i_mat.model.Model;
+import i_mat.utilities.GUIConstants;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ public class ShoppingCartPanel2 extends JScrollPane implements ShoppingCartListe
         cip = new ArrayList<cartItemPanel>();
         Model.getShoppingCart().addShoppingCartListener(this);
         mainPanel = new JPanel(new WrapLayout(FlowLayout.LEFT));
+        this.getVerticalScrollBar().setUnitIncrement(GUIConstants.SCROLL_INCREMENT);
         for (ShoppingItem i:Model.getShoppingCart().getItems()) {
             cartItemPanel c = new cartItemPanel(i, this);
             cip.add(c);

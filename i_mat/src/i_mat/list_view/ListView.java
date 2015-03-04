@@ -6,6 +6,7 @@
 package i_mat.list_view;
 
 import i_mat.model.Model;
+import i_mat.utilities.GUIConstants;
 import java.awt.Component;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -25,6 +26,7 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
      */
     public ListView() {
         initComponents();
+        this.jScrollPane1.getVerticalScrollBar().setUnitIncrement(GUIConstants.SCROLL_INCREMENT);
         this.history = Model.getOrderHistory();
         this.history.sort(new Comparator<Order>() {
             @Override

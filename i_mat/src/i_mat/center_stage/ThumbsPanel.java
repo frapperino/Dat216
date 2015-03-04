@@ -7,6 +7,7 @@ package i_mat.center_stage;
 
 import i_mat.model.Model;
 import i_mat.utilities.Filter;
+import i_mat.utilities.GUIConstants;
 import i_mat.utilities.GenerateComponentsUtilities;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -35,6 +36,7 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
     
     public ThumbsPanel(List<Product> prodList) {
         this.mainPanel = new InternalMainPanel(prodList, this);
+        this.getVerticalScrollBar().setUnitIncrement(GUIConstants.SCROLL_INCREMENT);
         this.getViewport().add(mainPanel);
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).
                 put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, InputEvent.SHIFT_DOWN_MASK), "putInCart");
