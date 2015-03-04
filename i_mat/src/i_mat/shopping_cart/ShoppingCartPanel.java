@@ -124,7 +124,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         // TODO add your handling code here:
         IMat.setCenterStage(new CheckoutPanel(getDeliveryAddresses()));        
         System.out.println(getDeliveryAddresses());
-        
+
     }                                        
 
 

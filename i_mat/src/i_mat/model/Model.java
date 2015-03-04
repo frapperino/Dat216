@@ -251,6 +251,22 @@ public class Model {
 
         return externalCards;
     }
+    
+    public static CreditCardInstance getCreditCardByNum(String num) {
+        CreditCardInstance cardIns = null;
+        
+        for (CreditCardInstance c : getCreditCards()) {
+            if (c.getCardNumber().equals(num)) {
+                cardIns = c.copy();
+                break;
+            }
+        }
+        
+        return cardIns;
+    }
+    
+    
+    
 
     /**
      * Returns the address with the ID, if it exists. Otherwise null.
@@ -269,6 +285,20 @@ public class Model {
         
         return externalAddress;
     }
+    //hahahah sry för paste-koden, behövde bara den här lite snabbt :D (används i checkoutpanel)
+    public static DeliveryAddress getAddressByAddress(String address) {
+        DeliveryAddress externalAddress2 = null;
+        
+        for (DeliveryAddress internalAddress : deliveryAddresses) {
+            if (internalAddress.getAddress().equals(address)) {
+                externalAddress2 = internalAddress.copy();
+                break;
+            }
+        }
+        
+        return externalAddress2;
+    }
+    
     
     /**
      * Return a customer from the database for testing.

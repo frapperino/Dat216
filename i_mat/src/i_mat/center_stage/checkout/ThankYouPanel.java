@@ -61,6 +61,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
         itemNumberField.setText(arrayParse(orderItemsAmount));
         
         sub = card.getCardNumber();
+        /*
         rev = new StringBuilder(sub).reverse().toString();
         mask = rev.substring(4);
         sb = new StringBuilder();
@@ -72,9 +73,9 @@ public class ThankYouPanel extends javax.swing.JPanel {
         
         rev2 = new StringBuilder(rev.substring(0, 4)).reverse().toString();
         returnString = s + rev2;
-        
+        */
         //set receipt
-        //TODO: fixa antal i panelen bredvid, fixa customer uppgifter
+        //leveransens info
         orderNrL.setText(""+ order.getOrderNumber());
         orderDateL.setText(GenerateComponentsUtilities.getNameFromDate(order.getDate()));
         shoppingCartList.setText(arrayParse(orderItems));
@@ -86,7 +87,9 @@ public class ThankYouPanel extends javax.swing.JPanel {
         phoneNumber.setText(delivery.getPhoneNumber());
         cellNumber.setText(delivery.getMobilePhoneNumber());
         jLabel13.setText(delivery.getEmail());
-        jLabel18.setText(returnString);
+        
+        //kortets info
+        jLabel18.setText(sub); //returnString här sen
         jLabel22.setText(card.getHolder());
         jLabel20.setText(card.getCardType());
         

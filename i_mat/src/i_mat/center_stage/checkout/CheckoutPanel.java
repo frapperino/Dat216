@@ -12,6 +12,8 @@ import javax.swing.*;
 import i_mat.model.Model;
 import static i_mat.model.Model.addDeliveryAddress;
 import static i_mat.model.Model.getAddress;
+import static i_mat.model.Model.getAddressByAddress;
+import static i_mat.model.Model.getCreditCardByNum;
 import static i_mat.model.Model.getDeliveryAddresses;
 import i_mat.shopping_cart.ShoppingCartPanel2;
 import java.awt.event.ActionListener;
@@ -30,7 +32,7 @@ import java.util.UUID;
 
 public class CheckoutPanel extends javax.swing.JPanel {
     
-    private static final IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
+    //private static final IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
     ShoppingCart cart;
     ThankYouPanel p1;
     DeliveryAddress deliv;
@@ -39,18 +41,26 @@ public class CheckoutPanel extends javax.swing.JPanel {
     String uuid;
     /**
      * Creates new form CheckoutPanel
+     * @param deliveryAddresses
      */
     public CheckoutPanel(List<DeliveryAddress> deliveryAddresses) {
         initComponents();
         
         String[] idArray = new String[deliveryAddresses.size()];
         for(int i = 0; i < deliveryAddresses.size();i++){
-            idArray[i] = deliveryAddresses.get(i).getID();
+            idArray[i] = deliveryAddresses.get(i).getAddress();
         }
         //gör samma sak som nedan fast för creditkorten, måste finnas en getCreditCard(lista)
         selectedAddress.setModel(new DefaultComboBoxModel(idArray));
         setShowingAddress();
-        //getAddress(selectedAddress.getSelectedIndex());
+        
+        String[] cardArray = new String[Model.getCreditCards().size()];
+        for(int i = 0; i < Model.getCreditCards().size();i++){
+            cardArray[i] = Model.getCreditCards().get(i).getCardNumber();
+        }
+        cardNumber.setModel(new DefaultComboBoxModel(cardArray));
+        setShowingCard();
+        
     }
 
     
@@ -122,7 +132,6 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
-        selectedAddress.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gatvägen 7" }));
         selectedAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectedAddressActionPerformed(evt);
@@ -146,7 +155,6 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
         });
 
-        cardNumber.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1234 1234 1234 1234", "5678 5678 5678 5678" }));
         cardNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cardNumberActionPerformed(evt);
@@ -455,7 +463,6 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private void purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseActionPerformed
         //TODO om ett fält är tomt lr inte tillräckligt ifyllt(text substring av numret), be att fylla i innan man går vidare
         //även fixa så det är adressen och inte id:t som visas i comboboxen
-        //imat handlern
         //getcard metoden på en customer
         
         if (newAdressButton.isSelected() && newCardButton.isSelected()){
@@ -467,7 +474,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                     AddressLabel.getText(),postCodeLab.getText(),cityLabel.getText(),
                     phoneLabel.getText(),cellLabel.getText(), emailLabel.getText(), uuid);
                 
-                p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), getAddress(uuid), createTempCard() );
+                p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), getAddress(uuid), createTempCard() );
             
             }
             else if (!jCheckBox1.isSelected() && jCheckBox2.isSelected()){
@@ -477,7 +484,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                     Integer.parseInt(jComboBox2.getSelectedItem().toString()), Integer.parseInt(jComboBox3.getSelectedItem().toString()),
                     Integer.parseInt(jTextField9.getText()), uuid);
                                 
-                p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), createTempAdress(), newCard );
+                p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), createTempAdress(), newCard );
             }
             
             else if(jCheckBox1.isSelected() && jCheckBox2.isSelected()){
@@ -491,10 +498,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
                     Integer.parseInt(jComboBox2.getSelectedItem().toString()), Integer.parseInt(jComboBox3.getSelectedItem().toString()),
                     Integer.parseInt(jTextField9.getText()), uuid);
                 
-                p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), getAddress(uuid), newCard );
+                p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), getAddress(uuid), newCard );
             }
             else {
-                p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), createTempAdress(), createTempCard() );
+                p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), createTempAdress(), createTempCard() );
             }
             IMat.setCenterStage(p1);
         }
@@ -504,14 +511,20 @@ public class CheckoutPanel extends javax.swing.JPanel {
             //DeliveryAddress dsss = getDeliveryAddresses().get(1);
             
             
-            p1 = new ThankYouPanel(iMatDataHandler.placeOrder(true), getAddress(selectedAddress.getSelectedItem().toString()), createTempCard() );
+            p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), getAddressByAddress(selectedAddress.getSelectedItem().toString()), createTempCard() );
             IMat.setCenterStage(p1);
 
+        }
+        else if(oldAdressButton.isSelected() && oldCardButton.isSelected()){
+            
+            p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), getAddressByAddress(selectedAddress.getSelectedItem().toString()), Model.getCreditCardByNum(cardNumber.getSelectedItem().toString()) );
+            IMat.setCenterStage(p1);
         }
     }//GEN-LAST:event_purchaseActionPerformed
 
     private void newCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCardButtonActionPerformed
         // TODO add your handling code here:
+        clearShowingCard();
         setTextEnabled(true,2);
         this.validate();
     }//GEN-LAST:event_newCardButtonActionPerformed
@@ -541,7 +554,17 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
-    
+    private void clearShowingCard(){
+        
+        jTextField8.setText("");
+        jTextField10.setText("");
+        jTextField9.setText("");
+        String[] active = {"1","2","3","4","5","6","7","8","9","10","11","12"};
+        jComboBox2.setModel(new DefaultComboBoxModel(active));
+        String[] active2 = {"2015","2016","2017","2018","2019","2020"};
+        jComboBox3.setModel(new DefaultComboBoxModel(active2));
+        
+    }
     private void clearShowingAddress(){
         firstNL.setText("");
         lastNL.setText("");
@@ -553,16 +576,35 @@ public class CheckoutPanel extends javax.swing.JPanel {
         emailLabel.setText("");
     }
     
+    private void setShowingCard(){
+        String id2 = cardNumber.getSelectedItem().toString();
+        jTextField8.setText(getCreditCardByNum(id2).getCardNumber());
+        jTextField10.setText(getCreditCardByNum(id2).getHolder());
+        jTextField9.setText(Integer.toString(getCreditCardByNum(id2).getCVC()));
+        String[] active = new String[1];
+        active[0] = (String) Integer.toString(Model.getCreditCardByNum(id2).getExpiryMonth());
+        jComboBox2.setModel(new DefaultComboBoxModel(active));
+        
+        String[] active2 = new String[1];
+        active2[0] = (String) Integer.toString(Model.getCreditCardByNum(id2).getExpiryYear());
+        jComboBox3.setModel(new DefaultComboBoxModel(active2));
+        
+        String[] active3 = new String[1];
+        active3[0] = Model.getCreditCardByNum(id2).getCardType();
+        jComboBox3.setModel(new DefaultComboBoxModel(active2));
+
+    }
+    
     private void setShowingAddress(){
         String id1 = selectedAddress.getSelectedItem().toString();
-        firstNL.setText(getAddress(id1).getFirstName());
-        lastNL.setText(getAddress(id1).getLastName());
-        AddressLabel.setText(getAddress(id1).getAddress());
-        postCodeLab.setText(getAddress(id1).getPostCode());
-        cityLabel.setText(getAddress(id1).getPostAddress());
-        cellLabel.setText(getAddress(id1).getMobilePhoneNumber());
-        phoneLabel.setText(getAddress(id1).getPhoneNumber());
-        emailLabel.setText(getAddress(id1).getEmail());
+        firstNL.setText(getAddressByAddress(id1).getFirstName());
+        lastNL.setText(getAddressByAddress(id1).getLastName());
+        AddressLabel.setText(getAddressByAddress(id1).getAddress());
+        postCodeLab.setText(getAddressByAddress(id1).getPostCode());
+        cityLabel.setText(getAddressByAddress(id1).getPostAddress());
+        cellLabel.setText(getAddressByAddress(id1).getMobilePhoneNumber());
+        phoneLabel.setText(getAddressByAddress(id1).getPhoneNumber());
+        emailLabel.setText(getAddressByAddress(id1).getEmail());
         
     }
     private DeliveryAddress createTempAdress(){

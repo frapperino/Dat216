@@ -255,9 +255,7 @@
     <Component class="javax.swing.JComboBox" name="selectedAddress">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Gatv&#xe4;gen 7"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>
@@ -290,10 +288,7 @@
     <Component class="javax.swing.JComboBox" name="cardNumber">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="1234 1234 1234 1234"/>
-            <StringItem index="1" value="5678 5678 5678 5678"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>
