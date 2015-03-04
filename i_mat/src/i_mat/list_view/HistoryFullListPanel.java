@@ -91,7 +91,7 @@ public class HistoryFullListPanel extends javax.swing.JPanel {
         this.add(rowPanel);
         this.revalidate();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,7 +113,7 @@ public class HistoryFullListPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

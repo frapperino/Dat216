@@ -57,21 +57,33 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         headLabel = new javax.swing.JLabel();
         subPanel = new javax.swing.JPanel();
         subLabel = new javax.swing.JLabel();
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0));
+        jMenuItem1.setText("Radera");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
+
         setBackground(new java.awt.Color(0, 255, 0));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setOpaque(false);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rightClicked(evt);
+            }
+        });
 
         headLabel.setFont(headLabel.getFont().deriveFont(headLabel.getFont().getStyle() | java.awt.Font.BOLD, headLabel.getFont().getSize()+5));
         headLabel.setText(GenerateComponentsUtilities.getNameFromDate(this.order.getDate()));
         headLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        headLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                headLabelMouseClicked(evt);
-            }
-        });
 
         subPanel.setOpaque(false);
         subPanel.setLayout(new java.awt.BorderLayout());
@@ -106,12 +118,33 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
     }// </editor-fold>//GEN-END:initComponents
 
     private void headLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headLabelMouseClicked
-        this.switchView();
+        
+        
     }//GEN-LAST:event_headLabelMouseClicked
-       
+
+    private void rightClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightClicked
+         if (evt.isPopupTrigger()) {
+            this.popupMenu(evt);
+        } else {
+             this.switchView();
+         }
+    }//GEN-LAST:event_rightClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Model.ereaseOrderFromHistory(this.order);
+        this.revalidate();
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+      
+    
+    private void popupMenu(java.awt.event.MouseEvent evt){
+        this.jPopupMenu1.show(this, evt.getX(), evt.getY());
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel headLabel;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JLabel subLabel;
     private javax.swing.JPanel subPanel;
     // End of variables declaration//GEN-END:variables

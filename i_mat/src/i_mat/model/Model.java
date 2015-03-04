@@ -460,4 +460,8 @@ public class Model {
                 return new LinkedList<>();
         }
     }
+    
+    public static void ereaseOrderFromHistory(Order order) {
+        dataHandler.getOrders().remove(order);
+    }
 }
