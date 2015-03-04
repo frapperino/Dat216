@@ -76,7 +76,7 @@ public class cartItemPanel extends javax.swing.JPanel {
         jLabel1.setPreferredSize(new java.awt.Dimension(200, 16));
         add(jLabel1);
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), null, null, Integer.valueOf(1)));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1.0d), Double.valueOf(1.0d), null, Double.valueOf(1.0d)));
         jSpinner1.setValue(item.getAmount());
         jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
