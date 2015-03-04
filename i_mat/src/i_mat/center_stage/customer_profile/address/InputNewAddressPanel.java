@@ -134,7 +134,7 @@ public class InputNewAddressPanel extends javax.swing.JPanel {
         String postAddress = jTextField5.getText();
         String phone = jTextField6.getText();
         
-        addressController.newAddress(firstName, lastName, address, postCode, postAddress, phone);
+        addressController.newAddress(firstName, lastName, address, postCode, postAddress, phone, null, null, null);
         IMat.setCenterStage(new CustomerProfilePanel()); //TODO <- this is extremely ugly but I don't remember anything about listeners/events and just want it to work atm :(
     }//GEN-LAST:event_jButton1ActionPerformed
 
