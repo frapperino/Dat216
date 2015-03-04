@@ -78,7 +78,7 @@ public class ProductThumbnail extends javax.swing.JPanel {
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 5), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 5));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(32767, 20));
 
-        setBackground(new java.awt.Color(51, 51, 255));
+        setBackground(ColorScheme.selectedThumbnailBackground());
         setBorder(this.unselectedBorder);
         setMaximumSize(GUIConstants.PRODUCT_THUMBNAIL_SIZE);
         setMinimumSize(GUIConstants.PRODUCT_THUMBNAIL_SIZE);
@@ -240,14 +240,14 @@ public class ProductThumbnail extends javax.swing.JPanel {
     
     public void setUnselected() {
         this.isSelected = false;       
-        this.setBorder(this.unselectedBorder);
-        this.revalidate();  
+        this.setOpaque(false);
+        this.repaint();
     }
     
     public void setSelected() {
         this.isSelected = true;       
-        this.setBorder(this.selectedBorder);
-        this.revalidate();
+        this.setOpaque(true);
+        this.repaint();
     }
 
     public boolean isSelected() {

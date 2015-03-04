@@ -42,4 +42,8 @@ public class ColorScheme {
     public static Color getDescriptionBackground() {
         return new Color(222,185,106);
     }
+    
+    public static Color selectedThumbnailBackground() {
+        return new Color(247,205,221);
+    }
 }
