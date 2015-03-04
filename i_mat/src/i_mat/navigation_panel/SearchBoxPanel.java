@@ -133,7 +133,7 @@ public class SearchBoxPanel extends JPanel{
     private static DefaultComboBoxModel getSuggestedModel(java.util.List<String> list, String text) {
         DefaultComboBoxModel m = new DefaultComboBoxModel();
         for(String s: list) {
-            if(s.startsWith(text)) m.addElement(s);
+            if(s.toLowerCase().startsWith(text.toLowerCase())) m.addElement(s);
         }
         return m;
     }

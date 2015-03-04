@@ -53,7 +53,7 @@ public class Model {
     public static Product getProduct(String name) {
         List<Product> s = getAllProducts();
         for (Product p: s) {
-            if (p.getName().equals(name)) {
+            if ((p.getName().toLowerCase()).equals(name.toLowerCase())) {
                 return p;
             }
         }
