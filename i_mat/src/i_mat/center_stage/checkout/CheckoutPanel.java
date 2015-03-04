@@ -454,6 +454,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
     private void purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseActionPerformed
         //TODO om ett fält är tomt lr inte tillräckligt ifyllt(text substring av numret), be att fylla i innan man går vidare
+        //även fixa så det är adressen och inte id:t som visas i comboboxen
+        //imat handlern
+        //getcard metoden på en customer
         
         if (newAdressButton.isSelected() && newCardButton.isSelected()){
             
