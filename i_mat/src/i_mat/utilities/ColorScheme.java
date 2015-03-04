@@ -38,4 +38,8 @@ public class ColorScheme {
     public static Color getShoppingCartBackgroundColor() {
         return Color.white;
     }
+    
+    public static Color getDescriptionBackground() {
+        return new Color(222,185,106);
+    }
 }
