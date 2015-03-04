@@ -131,6 +131,16 @@ public class Model {
     public static ImageIcon getImageIconForProduct(Product p, Dimension d) {
         return Model.dataHandler.getImageIcon(p, d);
     }
+    
+    /**
+     * Gives a List of all products returned by search function findProducts in 
+     * the IMatDataHandler.
+     * @param s String to be searched for.
+     * @return A list containing all the products found.
+     */
+    public static List<Product> getSearchResults(String s) {
+        return dataHandler.findProducts(s);
+    }
 
     /**
      * Changes the default delivery address.

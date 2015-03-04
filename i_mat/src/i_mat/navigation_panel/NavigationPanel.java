@@ -88,6 +88,8 @@ public class NavigationPanel extends javax.swing.JPanel {
         });
         navigationBar.add(forwardButton);
         navigationBar.add(filler2);
+
+        autoSuggest2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         navigationBar.add(autoSuggest2);
         navigationBar.add(filler6);
         navigationBar.add(filler4);

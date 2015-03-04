@@ -20,7 +20,8 @@ import javax.swing.plaf.basic.BasicComboBoxUI;
 public class SearchBoxPanel extends JPanel{
     private final JTextField tf;
     private final JComboBox combo = new JComboBox();
-    private final Vector<String> v = new Vector<>(); //All the products
+    private final Vector<String> productNames = new Vector<>(); //All the products
+    private final Vector<String> productMatchNames = new Vector<>();
     private boolean hide_flag = false; //Indicates the popup should hide/show
     
     
@@ -66,9 +67,9 @@ public class SearchBoxPanel extends JPanel{
                         String text = tf.getText();
                         if (text.length()==0) {
                             combo.hidePopup();
-                            setModel(new DefaultComboBoxModel(v), "");
+                            setModel(new DefaultComboBoxModel(productNames), "");
                         } else {
-                            DefaultComboBoxModel m = getSuggestedModel(v, text);
+                            DefaultComboBoxModel m = getSuggestedModel(productNames, text);
                             if (m.getSize()==0 || hide_flag) {
                                 combo.hidePopup();
                                 hide_flag = false;
@@ -89,10 +90,10 @@ public class SearchBoxPanel extends JPanel{
                 int code = e.getKeyCode();
                 if (code==KeyEvent.VK_ENTER) {
                     String productName = tf.getText();
-                    if (v.contains(productName)) {
-                        if (SearchController.getProduct(productName) != null) {
-                            SearchController.addShoppingItem(SearchController.getProduct(productName));
-                        }
+                    if (productMatchNames.contains(productName.toLowerCase())) {
+                        SearchController.openProductPage(tf.getText());
+                    } else {
+                        SearchController.performSearch(tf.getText());
                     }
                     hide_flag = true; 
                 } else if (code==KeyEvent.VK_ESCAPE) {
@@ -103,12 +104,14 @@ public class SearchBoxPanel extends JPanel{
         
         String[] products = SearchController.getAllProducts();
         for (String product : products) {
-            v.addElement(product);
+            productNames.addElement(product);
+            productMatchNames.addElement(product.toLowerCase());
         }
         
         //init combobox and add combobox to panel.
-        setModel(new DefaultComboBoxModel(v), "");
+        setModel(new DefaultComboBoxModel(productNames), "");
         add(combo, BorderLayout.CENTER);
+        tf.setFont(new java.awt.Font("Tahoma", 0, 18));
     }
     
     /**
