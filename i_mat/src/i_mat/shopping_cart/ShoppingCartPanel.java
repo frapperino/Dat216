@@ -9,6 +9,8 @@ import i_mat.IMat;
 import i_mat.center_stage.checkout.CheckoutPanel;
 import i_mat.model.Model;
 import static i_mat.model.Model.getDeliveryAddresses;
+import i_mat.utilities.ColorScheme;
+import java.awt.Color;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -21,7 +23,6 @@ import se.chalmers.ait.dat215.project.ShoppingCartListener;
  * @author Hjort
  */
 public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCartListener {
-    private static final IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
     /**
      * Creates new form ShoppingCartPanel
@@ -30,6 +31,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         Model.getShoppingCart().addShoppingCartListener(this);
         initComponents();
         this.setPreferredSize(new Dimension(290,300));
+        jScrollPane1.getViewport().getView().setBackground(ColorScheme.getShoppingCartBackgroundColor());
     }
 
     /**
@@ -140,6 +142,16 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
 
     @Override
     public void shoppingCartChanged(CartEvent ce) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                jScrollPane1.getViewport().getView().setBackground(ColorScheme.getAddItemBlinkColor());
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {}
+                jScrollPane1.getViewport().getView().setBackground(ColorScheme.getShoppingCartBackgroundColor());
+            }
+        }).start();
         jLabel1.setText(Model.getShoppingCart().getTotal()+" kr");
     }
 }

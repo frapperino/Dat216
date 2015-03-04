@@ -30,4 +30,12 @@ public class ColorScheme {
     public static Color getSelectedProductBorderColor() {
         return Color.blue;
     }
+    
+    public static Color getAddItemBlinkColor() {
+        return new Color(250, 230, 250);
+    }
+    
+    public static Color getShoppingCartBackgroundColor() {
+        return Color.white;
+    }
 }

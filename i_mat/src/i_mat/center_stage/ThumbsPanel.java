@@ -43,7 +43,11 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                    for (ProductThumbnail thumb : mainPanel.displayList)
-                       if (thumb.isSelected()) thumb.addThisToShoppingCart();
+                       if (thumb.isSelected()) {
+                           thumb.addThisToShoppingCart();
+                           thumb.setUnselected();
+                       }
+                       
                     };
                 });
         

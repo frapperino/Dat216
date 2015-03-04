@@ -55,7 +55,8 @@ public class cartItemPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        setLayout(new java.awt.GridLayout());
+        setOpaque(false);
+        setLayout(new java.awt.GridLayout(1, 0));
 
         jButton1.setText("x");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
