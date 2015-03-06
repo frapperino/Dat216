@@ -66,6 +66,9 @@ public class ProductThumbnail extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         imageButton = new javax.swing.JButton();
         nameLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -77,6 +80,12 @@ public class ProductThumbnail extends javax.swing.JPanel {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 5), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 5));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(32767, 20));
+
+        jMenuItem1.setText("Lägg till markerade i favoriter");
+        jPopupMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Lägg till markerade i kundvagn");
+        jPopupMenu1.add(jMenuItem2);
 
         setBackground(ColorScheme.selectedThumbnailBackground());
         setBorder(this.unselectedBorder);
@@ -160,9 +169,9 @@ public class ProductThumbnail extends javax.swing.JPanel {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(imageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +186,6 @@ public class ProductThumbnail extends javax.swing.JPanel {
                                 .addComponent(nameLabel)
                                 .addComponent(jButton2))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(filler3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -214,6 +222,8 @@ public class ProductThumbnail extends javax.swing.JPanel {
         if ((evt.getModifiers() & Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())
         == Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()) {
             this.switchSelectedStatus();
+        } if (evt.getModifiers() == Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()) {
+            this.jPopupMenu1.show(this, evt.getX(), evt.getY());
         }    
         else {
             this.openProductView();
@@ -275,6 +285,9 @@ public class ProductThumbnail extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel nameLabel;
     // End of variables declaration//GEN-END:variables
