@@ -67,13 +67,14 @@ public class SearchBoxPanel extends JPanel{
                         String text = tf.getText();
                         if (text.length()==0) {
                             combo.hidePopup();
-                            setModel(new DefaultComboBoxModel(productNames), "");
+                            //setModel(new DefaultComboBoxModel(productNames), "");
                         } else {
-                            DefaultComboBoxModel m = getSuggestedModel(productNames, text);
+                            DefaultComboBoxModel m = getSuggestedModel(SearchController.findProductsAsString(text), text);
                             if (m.getSize()==0 || hide_flag) {
                                 combo.hidePopup();
                                 hide_flag = false;
                             } else {
+                                System.out.println("yelo");
                                 setModel(m, text);
                                 combo.showPopup();
                             }
@@ -136,7 +137,7 @@ public class SearchBoxPanel extends JPanel{
     private static DefaultComboBoxModel getSuggestedModel(java.util.List<String> list, String text) {
         DefaultComboBoxModel m = new DefaultComboBoxModel();
         for(String s: list) {
-            if(s.toLowerCase().startsWith(text.toLowerCase())) m.addElement(s);
+            m.addElement(s);
         }
         return m;
     }

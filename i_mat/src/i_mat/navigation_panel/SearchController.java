@@ -5,6 +5,7 @@ import i_mat.center_stage.DisplayResultsPanel;
 import i_mat.center_stage.ProductFullView;
 import i_mat.center_stage.ThumbsPanel;
 import i_mat.model.Model;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.Product;
@@ -25,6 +26,18 @@ public class SearchController {
             i++;
         }
         return s;
+    }
+    
+    /**
+     * Wrapper for findProducts
+     * @return 
+     */
+    public static List<String> findProductsAsString(String str) {
+        List<String> results = new ArrayList<String>();
+        for (Product p: Model.findProducts(str)) {
+            results.add(p.getName());
+        }
+        return results;
     }
     
     public static Product getProduct(String name) {

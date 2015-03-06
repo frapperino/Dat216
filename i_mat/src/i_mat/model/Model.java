@@ -491,6 +491,15 @@ public class Model {
         }
     }
     
+    /**
+     * Wrapper for function findProducts in dataHandler
+     * @param str
+     * @return 
+     */
+    public static List<Product> findProducts(String str) {
+        return dataHandler.findProducts(str);
+    }
+    
     public static void ereaseOrderFromHistory(Order order) {
         dataHandler.getOrders().remove(order);
     }
