@@ -350,6 +350,18 @@ public class Model {
     public static void reset() {
         dataHandler.reset();
     }
+    
+    public static void addToFavorites(Product p) {
+        dataHandler.addFavorite(p);
+    }
+    
+    public static void removeFromFavorites(Product p) {
+        dataHandler.removeFavorite(p);
+    }
+    
+    public static boolean isFavorite(Product p) {
+        return dataHandler.isFavorite(p);
+    }
 
     /*
     Use this for adding products to shopping cart. It first checks whether the

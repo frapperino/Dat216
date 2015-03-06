@@ -67,8 +67,7 @@ public class ProductThumbnail extends javax.swing.JPanel {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        makeFavoriteMenuItem = new javax.swing.JMenuItem();
         imageButton = new javax.swing.JButton();
         nameLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -81,11 +80,15 @@ public class ProductThumbnail extends javax.swing.JPanel {
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 5), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 5));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(32767, 20));
 
-        jMenuItem1.setText("Lägg till markerade i favoriter");
-        jPopupMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Lägg till markerade i kundvagn");
-        jPopupMenu1.add(jMenuItem2);
+        makeFavoriteMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.META_MASK));
+        makeFavoriteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.gif"))); // NOI18N
+        makeFavoriteMenuItem.setText(favoriteMenueItemText());
+        makeFavoriteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                makeFavoriteMenuItemActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(makeFavoriteMenuItem);
 
         setBackground(ColorScheme.selectedThumbnailBackground());
         setBorder(this.unselectedBorder);
@@ -219,12 +222,13 @@ public class ProductThumbnail extends javax.swing.JPanel {
 
     private void imageButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageButtonMousePressed
         //Check that Cmd is pressed (or Ctrl on Windows)
+        if (evt.getModifiers() == Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()) {
+            this.jPopupMenu1.show(this, evt.getX(), evt.getY());
+        } else 
         if ((evt.getModifiers() & Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())
         == Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()) {
             this.switchSelectedStatus();
-        } if (evt.getModifiers() == Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()) {
-            this.jPopupMenu1.show(this, evt.getX(), evt.getY());
-        }    
+        }
         else {
             this.openProductView();
         }
@@ -236,6 +240,18 @@ public class ProductThumbnail extends javax.swing.JPanel {
         }        
     }//GEN-LAST:event_formMousePressed
 
+    private void makeFavoriteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeFavoriteMenuItemActionPerformed
+           if (Model.isFavorite(this.product)) Model.removeFromFavorites(this.product);
+           else Model.addToFavorites(this.product);
+           this.setUnselected();
+           this.makeFavoriteMenuItem.setText(this.favoriteMenueItemText());
+    }//GEN-LAST:event_makeFavoriteMenuItemActionPerformed
+
+    private String favoriteMenueItemText() {
+        String s = Model.isFavorite(this.product) ? "Ta bort från favoriter" : "Gör till favorit";
+        return s;
+    }
+    
     public void addThisToShoppingCart() {
          Model.addShoppingItem(this.getShoppingItem());
     }
@@ -285,10 +301,9 @@ public class ProductThumbnail extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JMenuItem makeFavoriteMenuItem;
     private javax.swing.JLabel nameLabel;
     // End of variables declaration//GEN-END:variables
 }
