@@ -21,6 +21,7 @@ public class SearchBoxPanel extends JPanel{
     private final JTextField tf;
     private final JComboBox combo = new JComboBox();
     private final Vector<String> productNames = new Vector<>(); //All the products
+    private java.util.List<String> currentResults = new ArrayList<String>();
     private final Vector<String> productMatchNames = new Vector<>();
     private boolean hide_flag = false; //Indicates the popup should hide/show
     
@@ -69,14 +70,17 @@ public class SearchBoxPanel extends JPanel{
                             combo.hidePopup();
                             //setModel(new DefaultComboBoxModel(productNames), "");
                         } else {
-                            DefaultComboBoxModel m = getSuggestedModel(SearchController.findProductsAsString(text), text);
+                            java.util.List<String> results = SearchController.findProductsAsString(text);
+                            DefaultComboBoxModel m = getSuggestedModel(results, text);
                             if (m.getSize()==0 || hide_flag) {
                                 combo.hidePopup();
                                 hide_flag = false;
                             } else {
-                                System.out.println("yelo");
-                                setModel(m, text);
-                                combo.showPopup();
+                                if (!results.equals(currentResults)) {
+                                    setModel(m, text);
+                                    combo.showPopup();
+                                    currentResults = results;
+                                }
                             }
                         }
                     }
