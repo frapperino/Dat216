@@ -47,4 +47,11 @@ public class ColorScheme {
         return new Color(222,185,106);
     }
     
+    public static Color getSelectedBrowseItemBackground() {
+        return Color.blue;
+    }
+    
+   public static Color getSelectedBrowseItemForeground() {
+        return Color.white;
+    } 
 }

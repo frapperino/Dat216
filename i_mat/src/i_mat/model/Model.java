@@ -393,6 +393,10 @@ public class Model {
         List<Product> theirList;
         Product p;
         switch (name) {
+            case("Alla produkter") :
+                return dataHandler.getProducts();
+            case("Favoriter") :
+                return dataHandler.favorites();
             //BAKARTIKLAR
             case ("Mjöl") :
                 theirList = dataHandler.getProducts(ProductCategory.FLOUR_SUGAR_SALT);

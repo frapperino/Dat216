@@ -9,7 +9,7 @@ import i_mat.IMat;
 import i_mat.center_stage.DisplayResultsPanel;
 import i_mat.center_stage.ThumbsPanel;
 import i_mat.model.Model;
-import java.awt.Color;
+import i_mat.utilities.ColorScheme;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -34,6 +34,7 @@ import se.chalmers.ait.dat215.project.Product;
 public class BrowsePanel extends javax.swing.JPanel {
     
     private List<Thread> threadList = new LinkedList<>();
+    private Object divisor = null;
     /**
      * Creates new form BrowsePanel
      */
@@ -49,16 +50,36 @@ public class BrowsePanel extends javax.swing.JPanel {
                                                         int row,
                                                         boolean hasFocus) {
                 Component c;     
-                if (value.toString().equals("Favoriter")) {
-                   JLabel l =  new JLabel("Favoriter");
-                   l.setIcon(new ImageIcon("star.gif"));
-                   c = l;
-                } else {             
-                //Use the standard tree cell renderer
-                    c = super.getTreeCellRendererComponent(
-                    tree, value, selected,
-                    expanded, leaf, row,
-                    hasFocus); 
+                switch (value.toString()) {
+                    case "Alla produkter":
+                        JLabel k = new JLabel("Alla produkter");
+                        if (selected) {
+                            k.setBackground(ColorScheme.getSelectedBrowseItemBackground());
+                            k.setForeground(ColorScheme.getSelectedBrowseItemForeground());
+                            k.setOpaque(true);
+                        }
+                        c = k;
+                        break;
+                    case "Favoriter":
+                        JLabel l =  new JLabel("Favoriter");
+                        l.setIcon(new ImageIcon("star.gif"));
+                        if (selected) {
+                            l.setBackground(ColorScheme.getSelectedBrowseItemBackground());
+                            l.setForeground(ColorScheme.getSelectedBrowseItemForeground());
+                            l.setOpaque(true);
+                        }    c = l;
+                        break;
+                    case "<divisor>":
+                        divisor = value;
+                        c = new JLabel("̶ ̶ ̶ ̶ ̶ ̶̶ ̶ ̶ ̶ ̶ ̶ ̶ ̶ ̶ ̶ ̶ ̶");
+                        break;
+                    default:
+                        //Use the standard tree cell renderer
+                        c = super.getTreeCellRendererComponent(
+                                tree, value, selected,
+                                expanded, leaf, row,
+                                hasFocus);
+                        break; 
                 }
                 return c; 
             }
@@ -69,6 +90,7 @@ public class BrowsePanel extends javax.swing.JPanel {
         rend.setOpenIcon(null);
         rend.setLeafIcon(null);
         rend.setOpaque(false);
+        rend.setBackgroundSelectionColor(ColorScheme.getSelectedBrowseItemBackground());
         rend.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
@@ -88,6 +110,8 @@ public class BrowsePanel extends javax.swing.JPanel {
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Alla produkter");
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Favoriter");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("<divisor>");
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bakartiklar");
         javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Mjöl");
@@ -173,9 +197,8 @@ public class BrowsePanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(browseScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(browseScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,6 +209,7 @@ public class BrowsePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void browseTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_browseTreeValueChanged
+        if(!browseTree.getLastSelectedPathComponent().equals(divisor))
         loadProducts();
     }//GEN-LAST:event_browseTreeValueChanged
 
