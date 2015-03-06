@@ -5,17 +5,22 @@
  */
 package i_mat.center_stage;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Comparator;
+
 /**
  *
  * @author Hjort
  */
-public class FilterSortViewPanel extends javax.swing.JPanel {
+public class FilterSortViewPanel extends javax.swing.JPanel implements PropertyChangeListener {
 
     /**
      * Creates new form FIlterSortViewPanel
      */
     public FilterSortViewPanel() {
         initComponents();
+        this.sortSearchPanel1.addPropertyChangeListener(this);
     }
 
     /**
@@ -27,7 +32,6 @@ public class FilterSortViewPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        filterSearchPanel1 = new i_mat.center_stage.FilterSearchPanel();
         filterSearchPanel2 = new i_mat.center_stage.FilterSearchPanel();
         viewSearchPanel2 = new i_mat.center_stage.ViewSearchPanel();
         sortSearchPanel1 = new i_mat.center_stage.SortSearchPanel();
@@ -39,11 +43,19 @@ public class FilterSortViewPanel extends javax.swing.JPanel {
         add(sortSearchPanel1, java.awt.BorderLayout.WEST);
     }// </editor-fold>//GEN-END:initComponents
 
+    Comparator getSorting() {
+        return this.sortSearchPanel1.getSorting();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private i_mat.center_stage.FilterSearchPanel filterSearchPanel1;
     private i_mat.center_stage.FilterSearchPanel filterSearchPanel2;
     private i_mat.center_stage.SortSearchPanel sortSearchPanel1;
     private i_mat.center_stage.ViewSearchPanel viewSearchPanel2;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (evt.getPropertyName().equals("Sort")) 
+            this.firePropertyChange("Sort", null, evt); 
+    }
 }

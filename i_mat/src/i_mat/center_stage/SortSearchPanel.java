@@ -5,6 +5,9 @@
  */
 package i_mat.center_stage;
 
+import java.util.Comparator;
+import se.chalmers.ait.dat215.project.Product;
+
 /**
  *
  * @author Hjort
@@ -18,6 +21,48 @@ public class SortSearchPanel extends javax.swing.JPanel {
         initComponents();
     }
 
+    Comparator<Product> getSorting() {
+        int i = this.jComboBox1.getSelectedIndex();
+        switch(i) {
+            //Namn A-Ö
+            case 1 :
+                return new Comparator<Product>() {
+                    @Override
+                    public int compare(Product p1, Product p2) {
+                        return p1.getName().compareTo(p2.getName());
+                    }
+                };
+            
+            case 2 :
+                return new Comparator<Product>() {
+                    @Override
+                    public int compare(Product p1, Product p2) {
+                        return -p1.getName().compareTo(p2.getName());
+                    }
+                };
+            case 3:
+                return new Comparator<Product>() {
+                    @Override
+                    public int compare(Product p1, Product p2) {
+                        return Double.compare(p1.getPrice(), p2.getPrice());
+                    }
+                };
+            case 4:
+                return new Comparator<Product>() {
+                    @Override
+                    public int compare(Product p1, Product p2) {
+                        return -Double.compare(p1.getPrice(), p2.getPrice());
+                    }
+                };
+        }
+        return new Comparator<Product>() {
+            @Override
+            public int compare(Product p1, Product p2) {
+                return p1.getProductId()-p2.getProductId();
+            }
+        };
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,12 +87,21 @@ public class SortSearchPanel extends javax.swing.JPanel {
                 jComboBox1ActionPerformed(evt);
             }
         });
+        jComboBox1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jComboBox1PropertyChange(evt);
+            }
+        });
         add(jComboBox1);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+         this.firePropertyChange("Sort", null, evt);
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBox1PropertyChange
+        
+    }//GEN-LAST:event_jComboBox1PropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

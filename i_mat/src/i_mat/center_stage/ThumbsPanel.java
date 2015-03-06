@@ -32,14 +32,14 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
     private List<Product> prodList;
     
     public ThumbsPanel() {
-        this(Model.getAllProducts());
+        this(Model.getPromoProducts());
     }
     
     public ThumbsPanel(List<Product> prodList) {
-        this.prodList = prodList;
-        this.mainPanel = new InternalMainPanel(prodList, this);
+        //Copies product list so that stuff does not get rearranged/sorted
+        this.prodList = prodList.subList(0, prodList.size());
         this.getVerticalScrollBar().setUnitIncrement(GUIConstants.SCROLL_INCREMENT);
-        this.getViewport().add(mainPanel);
+        this.redoFromNewProdList(prodList);
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).
                 put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, InputEvent.SHIFT_DOWN_MASK), "putInCart");
         this.getActionMap().put("putInCart", new AbstractAction() {
@@ -50,7 +50,14 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
             }
         });
     }
-        
+     
+    private void redoFromNewProdList(List<Product> prodList) {
+        this.getViewport().removeAll();
+        this.mainPanel = new InternalMainPanel(prodList, this);
+        this.getViewport().add(mainPanel);
+        this.revalidate();
+        this.getViewport().repaint();
+    }
 
     public void putSelectedInCart() {
         for (ProductThumbnail thumb : mainPanel.displayList) {
@@ -63,7 +70,9 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
 
     @Override
     public void sortBy(Comparator<Product> c) {
-        
+        System.out.println("Sort by");
+        this.prodList.sort(c);
+        this.redoFromNewProdList(this.prodList);
     }
 
     @Override

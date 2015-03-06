@@ -6,13 +6,15 @@
 package i_mat.center_stage;
 
 import java.awt.BorderLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 
 /**
  *
  * @author Hjort
  */
-public class DisplayResultsPanel extends javax.swing.JPanel {
+public class DisplayResultsPanel extends javax.swing.JPanel implements PropertyChangeListener {
 
     private ResultsPanel resultsPanel;
     /**
@@ -28,7 +30,13 @@ public class DisplayResultsPanel extends javax.swing.JPanel {
 
         if (this.resultsPanel instanceof java.awt.Component) {
             this.add((java.awt.Component)resultsPanel, BorderLayout.CENTER);
-        }   
+         }   
+        this.filterSortViewPanel2.addPropertyChangeListener(this);
+    }
+    
+    private void filterOrSort() {
+        this.resultsPanel.sortBy(this.filterSortViewPanel2.getSorting());
+        //Add filtering
     }
 
     /**
@@ -55,4 +63,11 @@ public class DisplayResultsPanel extends javax.swing.JPanel {
     private i_mat.center_stage.FilterSortViewPanel filterSortViewPanel2;
     private i_mat.center_stage.ThumbsPanel thumbsPanel1;
     // End of variables declaration//GEN-END:variables
+
+    
+    
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (evt.getPropertyName().equals("Sort")) this.filterOrSort();
+    }
 }
