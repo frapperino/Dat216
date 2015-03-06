@@ -29,35 +29,41 @@ import se.chalmers.ait.dat215.project.Product;
 public class ThumbsPanel extends JScrollPane implements ResultsPanel {
 
     private InternalMainPanel mainPanel;
+    private List<Product> prodList;
     
     public ThumbsPanel() {
         this(Model.getAllProducts());
     }
     
     public ThumbsPanel(List<Product> prodList) {
+        this.prodList = prodList;
         this.mainPanel = new InternalMainPanel(prodList, this);
         this.getVerticalScrollBar().setUnitIncrement(GUIConstants.SCROLL_INCREMENT);
         this.getViewport().add(mainPanel);
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).
                 put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, InputEvent.SHIFT_DOWN_MASK), "putInCart");
-            this.getActionMap().put("putInCart", new AbstractAction() {
+        this.getActionMap().put("putInCart", new AbstractAction() {
 
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                   for (ProductThumbnail thumb : mainPanel.displayList)
-                       if (thumb.isSelected()) {
-                           thumb.addThisToShoppingCart();
-                           thumb.setUnselected();
-                       }
-                    };
-                });
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               putSelectedInCart();
+            }
+        });
+    }
         
+
+    public void putSelectedInCart() {
+        for (ProductThumbnail thumb : mainPanel.displayList) {
+            if (thumb.isSelected()) {
+                thumb.addThisToShoppingCart();
+                thumb.setUnselected();
+            }
+        }
     }
 
-    
     @Override
     public void sortBy(Comparator<Product> c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
