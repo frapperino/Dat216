@@ -12,10 +12,14 @@ import i_mat.model.Model;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
@@ -44,14 +48,21 @@ public class BrowsePanel extends javax.swing.JPanel {
                                                         boolean leaf,
                                                         int row,
                                                         boolean hasFocus) {
-                             
+                Component c;     
+                if (value.toString().equals("Favoriter")) {
+                   JLabel l =  new JLabel("Favoriter");
+                   l.setIcon(new ImageIcon("star.gif"));
+                   c = l;
+                } else {             
                 //Use the standard tree cell renderer
-                Component c = super.getTreeCellRendererComponent(
-                      tree, value, selected,
-                      expanded, leaf, row,
-                      hasFocus); 
+                    c = super.getTreeCellRendererComponent(
+                    tree, value, selected,
+                    expanded, leaf, row,
+                    hasFocus); 
+                }
                 return c; 
             }
+            
         });
         DefaultTreeCellRenderer rend = (DefaultTreeCellRenderer)browseTree.getCellRenderer();
         rend.setClosedIcon(null);
@@ -73,8 +84,12 @@ public class BrowsePanel extends javax.swing.JPanel {
         browseScrollPane = new javax.swing.JScrollPane();
         browseTree = new javax.swing.JTree();
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("JTree");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bakartiklar");
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Alla produkter");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Favoriter");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bakartiklar");
         javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Mjöl");
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Salt");
@@ -165,8 +180,8 @@ public class BrowsePanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(browseScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(browseScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
