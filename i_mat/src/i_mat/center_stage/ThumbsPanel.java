@@ -6,6 +6,7 @@
 package i_mat.center_stage;
 
 import i_mat.model.Model;
+import i_mat.utilities.ColorScheme;
 import i_mat.utilities.Filter;
 import i_mat.utilities.GUIConstants;
 import i_mat.utilities.GenerateComponentsUtilities;
@@ -106,7 +107,18 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
                 this.repaint();
                 this.updateUI();
             }
+            this.setBackground(ColorScheme.getThumbsPanelBackground());
+            addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                for(ProductThumbnail prod: displayList) {
+                    prod.setUnselected();
+                }
+            
+            }
+        });
         }
+        
+        
     }
     
 }

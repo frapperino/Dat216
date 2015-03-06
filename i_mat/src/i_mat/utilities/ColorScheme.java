@@ -54,4 +54,8 @@ public class ColorScheme {
    public static Color getSelectedBrowseItemForeground() {
         return Color.white;
     } 
+   
+   public static Color getThumbsPanelBackground() {
+       return Color.white;
+   }
 }
