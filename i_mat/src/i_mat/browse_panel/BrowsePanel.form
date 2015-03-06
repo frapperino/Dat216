@@ -39,7 +39,7 @@
               <TreeModel code=" Alla produkter        &#xa; Favoriter&#xa; &lt;divisor&gt;&#xa; Bakartiklar&#xa;  Mj&#xf6;l&#xa;  Salt&#xa;  Socker &amp; Kakao&#xa; Br&#xf6;d&#xa; B&#xf6;nor, &#xc4;rtor &amp; Linser&#xa; Frukt &amp; Gr&#xf6;nt&#xa;  B&#xe4;r&#xa;  Frukt&#xa;   Citrus&#xa;   Exotiskt&#xa;   Meloner&#xa;   Stenfrukter&#xa;  Gr&#xf6;nsaker&#xa;  Kryddv&#xe4;xter&#xa;  K&#xe5;l&#xa;  N&#xf6;tter &amp; Fr&#xf6;n&#xa;  Rotfrukter&#xa;   Potatis&#xa;   &#xd6;vriga rotfrukter&#xa; Dryck&#xa;  Kaffe &amp; Te&#xa;  Kalla drycker&#xa; Fisk&#xa; K&#xf6;tt&#xa; Mejeri&#xa;  Fil &amp; Yoghurt&#xa;  Mj&#xf6;lk&#xa;  Ost&#xa; Pasta&#xa; Ris&#xa; Snacks&#xa; &#xc4;gg"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Handmark&#xf6;r"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
             <Property name="name" type="java.lang.String" value="" noResource="true"/>
             <Property name="rootVisible" type="boolean" value="false"/>

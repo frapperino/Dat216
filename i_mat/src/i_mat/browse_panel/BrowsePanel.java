@@ -10,6 +10,7 @@ import i_mat.center_stage.DisplayResultsPanel;
 import i_mat.center_stage.ThumbsPanel;
 import i_mat.model.Model;
 import i_mat.utilities.ColorScheme;
+import i_mat.utilities.GenerateComponentsUtilities;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -180,7 +181,7 @@ public class BrowsePanel extends javax.swing.JPanel {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Ägg");
         treeNode1.add(treeNode2);
         browseTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        browseTree.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        browseTree.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         browseTree.setName(""); // NOI18N
         browseTree.setRootVisible(false);
         browseTree.setShowsRootHandles(true);
@@ -254,7 +255,7 @@ public class BrowsePanel extends javax.swing.JPanel {
         public void run() {
             if (!this.getName().equals("kill")) {
                 IMat.setLoadingCenterStage();
-                IMat.setCenterStage(new DisplayResultsPanel(new ThumbsPanel(l)));
+                IMat.setCenterStage(GenerateComponentsUtilities.getDisplayResultsPanel(GenerateComponentsUtilities.getThumbsPanel(l)));
             }
         }
     }

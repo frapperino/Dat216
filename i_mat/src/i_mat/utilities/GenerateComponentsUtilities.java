@@ -5,13 +5,17 @@
  */
 package i_mat.utilities;
 
+import i_mat.center_stage.DisplayResultsPanel;
 import i_mat.center_stage.ProductThumbnail;
+import i_mat.center_stage.ResultsPanel;
+import i_mat.center_stage.ThumbsPanel;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
+import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -72,5 +76,13 @@ public class GenerateComponentsUtilities {
         s += " " + c.get(Calendar.YEAR);
        
         return s;
+    }
+    
+    public static synchronized DisplayResultsPanel getDisplayResultsPanel(ResultsPanel t) {
+        return new DisplayResultsPanel(t);
+    }
+            
+    public static synchronized ResultsPanel getThumbsPanel(List<Product> l) {
+        return new ThumbsPanel(l);
     }
 }
