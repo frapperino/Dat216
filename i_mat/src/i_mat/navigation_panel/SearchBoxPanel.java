@@ -51,6 +51,25 @@ public class SearchBoxPanel extends JPanel{
         combo.setEditable(true);
         tf = (JTextField) combo.getEditor().getEditorComponent();
         
+        /**
+         * Makes the textfield add a text Sök... grayed out when the 
+         * SearchBoxPanel is not focused.
+         */
+        tf.addFocusListener(new FocusListener() {
+            private String text = "Sök...";
+            
+            @Override
+            public void focusGained(FocusEvent fe) {
+                tf.setForeground(Color.BLACK);
+                tf.setText("");
+            }
+
+            @Override
+            public void focusLost(FocusEvent fe) {
+                tf.setForeground(Color.GRAY);
+                tf.setText(text);
+            }
+        });
        /**
         * Adds a keyListener to the textField and defines all of the behaviors
         * of the textField. There among hiding the combobox-popup if no text has
