@@ -384,6 +384,10 @@ public class Model {
         return dataHandler.getShoppingCart();
     }
     
+    public static List<Product> getProductsInCategory(ProductCategory category) { 
+        return dataHandler.getProducts(category);
+    }
+    
     public static List<Product> getProductsInCategory(String name) {
         List <Product> l = new LinkedList<>();
         List<Product> theirList;
