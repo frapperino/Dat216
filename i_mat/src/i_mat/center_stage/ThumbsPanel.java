@@ -49,8 +49,23 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
                putSelectedInCart();
             }
         });
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).
+                put(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.META_DOWN_MASK), "selectAll");
+        this.getActionMap().put("selectAll", new AbstractAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               selectAll();
+            }
+        });
     }
-     
+    
+    private void selectAll() {
+        for (ProductThumbnail thumb : mainPanel.displayList) {
+            thumb.setSelected();
+        } 
+    }
+    
     private void redoFromNewProdList(List<Product> prodList) {
         this.getViewport().removeAll();
         this.mainPanel = new InternalMainPanel(prodList, this);

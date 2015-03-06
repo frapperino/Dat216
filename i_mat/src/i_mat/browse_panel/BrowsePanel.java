@@ -15,13 +15,19 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.AbstractAction;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTree;
+import javax.swing.KeyStroke;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeNode;
@@ -93,6 +99,15 @@ public class BrowsePanel extends javax.swing.JPanel {
         rend.setOpaque(false);
         rend.setBackgroundSelectionColor(ColorScheme.getSelectedBrowseItemBackground());
         rend.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.browseTree.getInputMap(JComponent.WHEN_FOCUSED).
+                put(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.META_DOWN_MASK), "killSelect");
+        this.getActionMap().put("killSelect", new AbstractAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              
+            }
+        });
     }
 
     /**
