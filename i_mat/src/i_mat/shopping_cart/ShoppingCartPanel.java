@@ -8,6 +8,7 @@ package i_mat.shopping_cart;
 import i_mat.IMat;
 import i_mat.center_stage.checkout.CheckoutPanel;
 import i_mat.model.Model;
+import static i_mat.model.Model.getCreditCards;
 import static i_mat.model.Model.getDeliveryAddresses;
 import i_mat.utilities.ColorScheme;
 import java.awt.Color;
@@ -122,9 +123,9 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        IMat.setCenterStage(new CheckoutPanel(getDeliveryAddresses()));        
+        IMat.setCenterStage(new CheckoutPanel(getDeliveryAddresses(), getCreditCards()));        
         System.out.println(getDeliveryAddresses());
-
+        
     }                                        
 
 

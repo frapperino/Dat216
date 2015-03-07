@@ -241,6 +241,10 @@ public class Model {
 
         return externalAddresses;
     }
+    public static void addCreditCard(String number, String type, String name, int month, int year, int cvc, String id) {
+        CreditCardInstance newCard = new CreditCardInstance(number, type, name, month, year, cvc, id);
+        creditCards.add(newCard);
+    }
     
     public static List<CreditCardInstance> getCreditCards() {
         List<CreditCardInstance> externalCards = new LinkedList<>();

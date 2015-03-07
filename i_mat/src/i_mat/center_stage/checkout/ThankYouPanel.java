@@ -8,6 +8,7 @@ package i_mat.center_stage.checkout;
 
 import i_mat.model.CreditCardInstance;
 import i_mat.model.DeliveryAddress;
+import i_mat.model.Model;
 import static i_mat.model.Model.getDeliveryAddresses;
 import i_mat.utilities.GenerateComponentsUtilities;
 import java.util.ArrayList;
@@ -31,24 +32,59 @@ public class ThankYouPanel extends javax.swing.JPanel {
     ArrayList<String> orderItems;
     ArrayList<Integer> orderItemsAmount;
     int amount;
-    String sub;
-    String rev;
-    String rev2;
-    String returnString;
-    String mask;
+    String sub, rev, rev2, mask, returnString, s, sum;
     StringBuilder sb;
-    String s;
-    
+    String cType, cName, cNum;
+            
     public ThankYouPanel() {
         initComponents();
     }
     
-    //konstruktorn ska även ta en deliveryadress samt ett kreditkort
-    public ThankYouPanel(Order o, DeliveryAddress d, CreditCardInstance c ){
+    /* behövs inte
+    public ThankYouPanel(Order o, DeliveryAddress d, String cType, String cName, String cNum){
+        initComponents();
+        this.order = o;
+        this.delivery = d;
+        this.cType = cType;
+        this.cName = cName;
+        this.cNum = cNum;
+                
+        orderItems = new ArrayList<String>();
+        orderItemsAmount = new ArrayList<Integer>();
+        
+        for (int i = 0; i < order.getItems().size(); i++){
+            orderItems.add(order.getItems().get(i).getProduct().getName());
+            amount = (int) Math.floor(order.getItems().get(i).getAmount());
+            orderItemsAmount.add(amount);
+        }
+        
+        itemNumberField.setText(arrayParse(orderItemsAmount));
+        
+        orderNrL.setText(""+ order.getOrderNumber());
+        orderDateL.setText(GenerateComponentsUtilities.getNameFromDate(order.getDate()));
+        shoppingCartList.setText(arrayParse(orderItems));
+        firstNameL.setText(delivery.getFirstName());
+        lastNameL.setText(delivery.getLastName());
+        custAddress.setText(delivery.getAddress());
+        jLabel11.setText(delivery.getPostAddress());
+        postCode.setText(delivery.getPostCode());
+        phoneNumber.setText(delivery.getPhoneNumber());
+        cellNumber.setText(delivery.getMobilePhoneNumber());
+        jLabel13.setText(delivery.getEmail());
+        
+        jLabel18.setText(cNum);
+        jLabel22.setText(cName);
+        jLabel20.setText(cType);
+        
+    }
+    */
+    
+    public ThankYouPanel(Order o, DeliveryAddress d, CreditCardInstance c, String sum ){
         initComponents();
         this.order = o;
         this.delivery = d;
         this.card = c;
+        this.sum = sum;
         orderItems = new ArrayList<String>();
         orderItemsAmount = new ArrayList<Integer>();
         
@@ -61,7 +97,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
         itemNumberField.setText(arrayParse(orderItemsAmount));
         
         sub = card.getCardNumber();
-        /*
+        /* denna var för att maska kortet med **** men ändras nu med flera input-fields (todo)
         rev = new StringBuilder(sub).reverse().toString();
         mask = rev.substring(4);
         sb = new StringBuilder();
@@ -74,7 +110,8 @@ public class ThankYouPanel extends javax.swing.JPanel {
         rev2 = new StringBuilder(rev.substring(0, 4)).reverse().toString();
         returnString = s + rev2;
         */
-        //set receipt
+        
+        //kvittot
         //leveransens info
         orderNrL.setText(""+ order.getOrderNumber());
         orderDateL.setText(GenerateComponentsUtilities.getNameFromDate(order.getDate()));
@@ -92,7 +129,7 @@ public class ThankYouPanel extends javax.swing.JPanel {
         jLabel18.setText(sub); //returnString här sen
         jLabel22.setText(card.getHolder());
         jLabel20.setText(card.getCardType());
-        
+        jLabel24.setText(sum);
     }
     
     
@@ -147,6 +184,8 @@ public class ThankYouPanel extends javax.swing.JPanel {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Tack för ditt köp!");
@@ -236,6 +275,11 @@ public class ThankYouPanel extends javax.swing.JPanel {
 
         jLabel22.setText("\"ändras\"");
 
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel23.setText("Totalt: ");
+
+        jLabel24.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -243,9 +287,11 @@ public class ThankYouPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel14)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -304,12 +350,18 @@ public class ThankYouPanel extends javax.swing.JPanel {
                                 .addGap(136, 136, 136)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel23)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel24)))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
-                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,56 +381,61 @@ public class ThankYouPanel extends javax.swing.JPanel {
                         .addComponent(firstNameL)
                         .addComponent(lastNameL)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(custAddress)
-                            .addComponent(jlabel5))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(postCode))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(phoneNumber))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(cellNumber))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(orderNrL))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(orderDateL))
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel15)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel22))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel18))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel20))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(custAddress)
+                                .addComponent(jlabel5))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel10)
+                                .addComponent(jLabel11))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4)
+                                .addComponent(postCode))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel6)
+                                .addComponent(phoneNumber))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel8)
+                                .addComponent(cellNumber))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel12)
+                                .addComponent(jLabel13))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel5)
+                                .addComponent(orderNrL))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel7)
+                                .addComponent(orderDateL))
+                            .addGap(45, 45, 45)
+                            .addComponent(jLabel15)
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel21)
+                                .addComponent(jLabel22))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel19)
+                                .addComponent(jLabel18)))
+                        .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel17)
+                        .addComponent(jLabel20))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel23)
+                        .addComponent(jLabel24)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -403,6 +460,8 @@ public class ThankYouPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
