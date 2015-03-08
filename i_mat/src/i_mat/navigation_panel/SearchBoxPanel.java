@@ -119,6 +119,7 @@ public class SearchBoxPanel extends JPanel{
                     } else {
                         SearchController.performSearch(tf.getText());
                     }
+                    tf.selectAll();
                     hide_flag = true; 
                 } else if (code==KeyEvent.VK_ESCAPE) {
                     hide_flag = true; 

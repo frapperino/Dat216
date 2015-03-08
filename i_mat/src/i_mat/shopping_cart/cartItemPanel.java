@@ -37,7 +37,7 @@ public class cartItemPanel extends javax.swing.JPanel {
     public void update() {
         jSpinner1.setValue(item.getAmount());
         jSpinner1.updateUI();
-        jLabel2.setText(""+item.getTotal());
+        jLabel2.setText(item.getTotal()+" kr");
     }
 
     /**
@@ -53,7 +53,6 @@ public class cartItemPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new java.awt.GridLayout(1, 0));
@@ -86,11 +85,8 @@ public class cartItemPanel extends javax.swing.JPanel {
         add(jSpinner1);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText(""+item.getTotal());
+        jLabel2.setText(item.getTotal()+" kr");
         add(jLabel2);
-
-        jLabel3.setText("kr");
-        add(jLabel3);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -114,7 +110,6 @@ public class cartItemPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
 
