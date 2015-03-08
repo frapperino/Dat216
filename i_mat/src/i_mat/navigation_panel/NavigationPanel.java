@@ -10,7 +10,12 @@ import i_mat.center_stage.customer_profile.CustomerProfilePanel;
 import i_mat.center_stage.home.ViewHomePanel;
 import i_mat.list_view.ListView;
 import i_mat.utilities.ColorScheme;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JToolBar;
 
 /**
  *
@@ -22,6 +27,17 @@ public class NavigationPanel extends javax.swing.JPanel {
      * Creates new form SearchPanel
      */
     public NavigationPanel() {
+        /*super(new BorderLayout());
+        JToolBar tb = new JToolBar();
+        tb.setLayout(new BorderLayout());
+        tb.add(new HomeButtonGroup(), BorderLayout.WEST);
+        JPanel p = new JPanel(new BorderLayout());
+        p.add(new SearchBoxPanel(), BorderLayout.CENTER);
+        tb.add(p, BorderLayout.CENTER);
+        tb.add(new ListButtonGroup(), BorderLayout.EAST);
+        tb.setFloatable(false);
+        this.add(tb, BorderLayout.PAGE_START);
+        */
         initComponents();
     }
 
@@ -36,108 +52,143 @@ public class NavigationPanel extends javax.swing.JPanel {
 
         autoSuggest1 = new i_mat.navigation_panel.SearchBoxPanel();
         navigationBar = new javax.swing.JToolBar();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         homeButton = new javax.swing.JButton();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0));
         backwardButton = new javax.swing.JButton();
         forwardButton = new javax.swing.JButton();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        autoSuggest2 = new i_mat.navigation_panel.SearchBoxPanel();
-        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
-        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
+        jPanel3 = new javax.swing.JPanel();
+        searchBoxPanel1 = new i_mat.navigation_panel.SearchBoxPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        profileButton = new javax.swing.JButton();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
         listsButton = new javax.swing.JButton();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
-        profileButton = new javax.swing.JButton();
 
+        navigationBar.setBackground(new java.awt.Color(204, 51, 0));
         navigationBar.setFloatable(false);
         navigationBar.setRollover(true);
 
-        homeButton.setText("Hem");
+        jPanel5.setOpaque(false);
+        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.Y_AXIS));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 0, 10));
+        jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
+
+        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Home.png"))); // NOI18N
+        homeButton.setBorder(null);
         homeButton.setFocusable(false);
         homeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        homeButton.setOpaque(false);
+        homeButton.setPreferredSize(new java.awt.Dimension(53, 30));
         homeButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeButtonActionPerformed(evt);
             }
         });
-        navigationBar.add(homeButton);
-        navigationBar.add(filler1);
+        jPanel1.add(homeButton);
+        jPanel1.add(filler1);
 
         backwardButton.setForeground(this.decideBackwardEnabledColor());
-        backwardButton.setText("Bakåt");
+        backwardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Back-nonsolid.png"))); // NOI18N
+        backwardButton.setBorder(null);
         backwardButton.setFocusable(false);
         backwardButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        backwardButton.setOpaque(false);
         backwardButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         backwardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backwardButtonActionPerformed(evt);
             }
         });
-        navigationBar.add(backwardButton);
+        jPanel1.add(backwardButton);
 
         forwardButton.setForeground(this.decideForwardEnabledColor());
-        forwardButton.setText("Framåt");
+        forwardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Forward-nonsolid.png"))); // NOI18N
+        forwardButton.setBorder(null);
         forwardButton.setFocusable(false);
         forwardButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        forwardButton.setOpaque(false);
         forwardButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         forwardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 forwardButtonActionPerformed(evt);
             }
         });
-        navigationBar.add(forwardButton);
-        navigationBar.add(filler2);
+        jPanel1.add(forwardButton);
 
-        autoSuggest2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        navigationBar.add(autoSuggest2);
-        navigationBar.add(filler6);
-        navigationBar.add(filler4);
-        navigationBar.add(filler5);
+        jPanel5.add(jPanel1);
 
-        listsButton.setText("Inköpslistor");
-        listsButton.setFocusable(false);
-        listsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        listsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        listsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listsButtonActionPerformed(evt);
-            }
-        });
-        navigationBar.add(listsButton);
-        navigationBar.add(filler3);
+        navigationBar.add(jPanel5);
 
-        profileButton.setText("Mina sidor");
+        jPanel3.setMaximumSize(new java.awt.Dimension(300000, 45));
+        jPanel3.setOpaque(false);
+        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
+
+        searchBoxPanel1.setMaximumSize(new java.awt.Dimension(350, 45));
+        searchBoxPanel1.setMinimumSize(new java.awt.Dimension(50, 30));
+        searchBoxPanel1.setPreferredSize(new java.awt.Dimension(400, 45));
+        jPanel3.add(searchBoxPanel1);
+
+        navigationBar.add(jPanel3);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 30, 0, 0));
+        jPanel2.setMaximumSize(new java.awt.Dimension(250, 31));
+        jPanel2.setOpaque(false);
+        jPanel2.setPreferredSize(new java.awt.Dimension(290, 30));
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
+
+        jPanel4.setOpaque(false);
+        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
+
+        profileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MyPages.png"))); // NOI18N
+        profileButton.setBorder(null);
         profileButton.setFocusable(false);
         profileButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        profileButton.setOpaque(false);
         profileButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         profileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 profileButtonActionPerformed(evt);
             }
         });
-        navigationBar.add(profileButton);
+        jPanel4.add(profileButton);
+        jPanel4.add(filler2);
+
+        listsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/List.png"))); // NOI18N
+        listsButton.setBorder(null);
+        listsButton.setFocusable(false);
+        listsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        listsButton.setOpaque(false);
+        listsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        listsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listsButtonActionPerformed(evt);
+            }
+        });
+        jPanel4.add(listsButton);
+        jPanel4.add(filler3);
+
+        jPanel2.add(jPanel4);
+
+        navigationBar.add(jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(navigationBar, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+            .addComponent(navigationBar, javax.swing.GroupLayout.DEFAULT_SIZE, 963, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(navigationBar, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+            .addComponent(navigationBar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backwardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backwardButtonActionPerformed
-        if (IMat.moveBackwardPossible())
-            IMat.moveBackward();
-    }//GEN-LAST:event_backwardButtonActionPerformed
-
-    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        IMat.setCenterStage(new ViewHomePanel());
-    }//GEN-LAST:event_homeButtonActionPerformed
 
     private void listsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listsButtonActionPerformed
         IMat.setCenterStage(new ListView());
@@ -149,12 +200,32 @@ public class NavigationPanel extends javax.swing.JPanel {
 
     private void forwardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwardButtonActionPerformed
         if (IMat.moveForwardPossible())
-            IMat.moveForward();
+        IMat.moveForward();
     }//GEN-LAST:event_forwardButtonActionPerformed
 
+    private void backwardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backwardButtonActionPerformed
+        if (IMat.moveBackwardPossible())
+        IMat.moveBackward();
+    }//GEN-LAST:event_backwardButtonActionPerformed
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        IMat.setCenterStage(new ViewHomePanel());
+    }//GEN-LAST:event_homeButtonActionPerformed
+
     public void setNavButtonsColor() {
-        this.backwardButton.setForeground(decideBackwardEnabledColor());
-        this.forwardButton.setForeground(decideForwardEnabledColor());
+        //this.backwardButton.setForeground(decideBackwardEnabledColor());
+        if (IMat.moveBackwardPossible()) {
+            backwardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Back-solid.png")));
+        } else {
+            backwardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Back-nonsolid.png")));
+        }
+        
+        if (IMat.moveForwardPossible()) {
+            forwardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Forward-solid.png")));
+        } else {
+            forwardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Forward-nonsolid.png")));
+        }
+        //this.forwardButton.setForeground(decideForwardEnabledColor());
     }
     
     private Color decideBackwardEnabledColor() {
@@ -173,18 +244,20 @@ public class NavigationPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private i_mat.navigation_panel.SearchBoxPanel autoSuggest1;
-    private i_mat.navigation_panel.SearchBoxPanel autoSuggest2;
     private javax.swing.JButton backwardButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
-    private javax.swing.Box.Filler filler4;
-    private javax.swing.Box.Filler filler5;
-    private javax.swing.Box.Filler filler6;
     private javax.swing.JButton forwardButton;
     private javax.swing.JButton homeButton;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JButton listsButton;
     private javax.swing.JToolBar navigationBar;
     private javax.swing.JButton profileButton;
+    private i_mat.navigation_panel.SearchBoxPanel searchBoxPanel1;
     // End of variables declaration//GEN-END:variables
 }
