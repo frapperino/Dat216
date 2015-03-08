@@ -45,6 +45,15 @@ public class SearchBoxPanel extends JPanel{
             }
         });
         
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.CTRL_DOWN_MASK), "SelectSearch");
+        this.getActionMap().put("SelectSearch", new AbstractAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                tf.requestFocus();
+            }
+        });
+        
         /**
          * Sets the TextField as the editor for the combobox.
          */
