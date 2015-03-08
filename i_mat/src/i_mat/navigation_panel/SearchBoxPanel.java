@@ -45,12 +45,16 @@ public class SearchBoxPanel extends JPanel{
             }
         });
         
+        /**
+         * Makes ctrl+f select the textfield
+         */
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.CTRL_DOWN_MASK), "SelectSearch");
         this.getActionMap().put("SelectSearch", new AbstractAction() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
                 tf.requestFocus();
+                tf.selectAll();
             }
         });
         
@@ -79,6 +83,7 @@ public class SearchBoxPanel extends JPanel{
                 tf.setText(text);
             }
         });
+        
        /**
         * Adds a keyListener to the textField and defines all of the behaviors
         * of the textField. There among hiding the combobox-popup if no text has
@@ -136,6 +141,10 @@ public class SearchBoxPanel extends JPanel{
             }
         });
         
+        /**
+         * The SearchBoxPanel must know all the product names to determine if it
+         * should go to product page or perform a search.
+         */
         String[] products = SearchController.getAllProducts();
         for (String product : products) {
             productNames.addElement(product);
