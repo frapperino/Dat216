@@ -142,15 +142,17 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
     // End of variables declaration                   
 
     @Override
-    public void shoppingCartChanged(CartEvent ce) {
+    public void shoppingCartChanged(final CartEvent ce) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                jScrollPane1.getViewport().getView().setBackground(ColorScheme.getAddItemBlinkColor());
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {}
-                jScrollPane1.getViewport().getView().setBackground(ColorScheme.getShoppingCartBackgroundColor());
+                if (ce.isAddEvent()) {
+                    jScrollPane1.getViewport().getView().setBackground(ColorScheme.getAddItemBlinkColor());
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {}
+                    jScrollPane1.getViewport().getView().setBackground(ColorScheme.getShoppingCartBackgroundColor());
+                }
             }
         }).start();
         this.jScrollPane1.shoppingCartChanged(ce);

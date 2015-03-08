@@ -65,7 +65,7 @@ public class NavigationPanel extends javax.swing.JPanel {
         listsButton = new javax.swing.JButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
         profileButton = new javax.swing.JButton();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0));
 
         navigationBar.setBackground(new java.awt.Color(204, 51, 0));
         navigationBar.setFloatable(false);
@@ -140,7 +140,7 @@ public class NavigationPanel extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 30, 0, 0));
         jPanel2.setMaximumSize(new java.awt.Dimension(250, 31));
         jPanel2.setOpaque(false);
-        jPanel2.setPreferredSize(new java.awt.Dimension(290, 30));
+        jPanel2.setPreferredSize(new java.awt.Dimension(280, 30));
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
 
         jPanel4.setOpaque(false);
@@ -172,7 +172,7 @@ public class NavigationPanel extends javax.swing.JPanel {
             }
         });
         jPanel4.add(profileButton);
-        jPanel4.add(filler3);
+        jPanel4.add(filler4);
 
         jPanel2.add(jPanel4);
 
@@ -247,7 +247,7 @@ public class NavigationPanel extends javax.swing.JPanel {
     private javax.swing.JButton backwardButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
-    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
     private javax.swing.JButton forwardButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JPanel jPanel1;
