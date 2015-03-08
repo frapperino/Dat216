@@ -62,9 +62,9 @@ public class NavigationPanel extends javax.swing.JPanel {
         searchBoxPanel1 = new i_mat.navigation_panel.SearchBoxPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        profileButton = new javax.swing.JButton();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
         listsButton = new javax.swing.JButton();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
+        profileButton = new javax.swing.JButton();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0));
 
         navigationBar.setBackground(new java.awt.Color(204, 51, 0));
@@ -146,20 +146,6 @@ public class NavigationPanel extends javax.swing.JPanel {
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
 
-        profileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MyPages.png"))); // NOI18N
-        profileButton.setBorder(null);
-        profileButton.setFocusable(false);
-        profileButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        profileButton.setOpaque(false);
-        profileButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        profileButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                profileButtonActionPerformed(evt);
-            }
-        });
-        jPanel4.add(profileButton);
-        jPanel4.add(filler2);
-
         listsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/List.png"))); // NOI18N
         listsButton.setBorder(null);
         listsButton.setFocusable(false);
@@ -172,6 +158,20 @@ public class NavigationPanel extends javax.swing.JPanel {
             }
         });
         jPanel4.add(listsButton);
+        jPanel4.add(filler2);
+
+        profileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MyPages.png"))); // NOI18N
+        profileButton.setBorder(null);
+        profileButton.setFocusable(false);
+        profileButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        profileButton.setOpaque(false);
+        profileButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        profileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profileButtonActionPerformed(evt);
+            }
+        });
+        jPanel4.add(profileButton);
         jPanel4.add(filler3);
 
         jPanel2.add(jPanel4);

@@ -199,10 +199,10 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="profileButton">
+                <Component class="javax.swing.JButton" name="listsButton">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/resources/MyPages.png"/>
+                      <Image iconType="3" name="/resources/List.png"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -213,7 +213,7 @@
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profileButtonActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listsButtonActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.Box$Filler" name="filler2">
@@ -232,10 +232,10 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.RigidArea"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="listsButton">
+                <Component class="javax.swing.JButton" name="profileButton">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/resources/List.png"/>
+                      <Image iconType="3" name="/resources/MyPages.png"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -246,7 +246,7 @@
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listsButtonActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profileButtonActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.Box$Filler" name="filler3">
