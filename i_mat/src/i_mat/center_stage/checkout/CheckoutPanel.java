@@ -55,16 +55,15 @@ public class CheckoutPanel extends javax.swing.JPanel {
             idArray[i] = deliveryAddresses.get(i).getAddress();
         }
         selectedAddress.setModel(new DefaultComboBoxModel(idArray));
-        setShowingAddress();
         
         String[] cardArray = new String[creditCards.size()];
         for(int i = 0; i < creditCards.size();i++){
             cardArray[i] = creditCards.get(i).getCardNumber();
         }
         cardNumber.setModel(new DefaultComboBoxModel(cardArray));
-        setShowingCard();
         
-        
+        this.setEnabledDeliveryAdresses(deliveryAddresses.size());
+        this.setEnabledCardAdresses(creditCards.size());
     }
 
     
@@ -897,4 +896,32 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.JButton purchase;
     private javax.swing.JComboBox selectedAddress;
     // End of variables declaration//GEN-END:variables
+
+    private void setEnabledDeliveryAdresses(int numOfAdresses) {
+        if (numOfAdresses == 0) {
+            oldAdressButton.setEnabled(false);
+            selectedAddress.setEnabled(false);
+            newAdressButton.setEnabled(true);
+            newAdressButton.setSelected(true);
+            clearShowingAddress();
+            setTextEnabled(true,1);
+            this.validate();
+        } else {
+            setShowingAddress();   
+        }
+    }
+    
+    private void setEnabledCardAdresses(int numOfCards) {
+        if (numOfCards == 0) {
+            oldCardButton.setEnabled(false);
+            newCardButton.setEnabled(true);
+            newCardButton.setSelected(true);
+            cardNumber.setEnabled(false);
+            clearShowingCard();
+            setTextEnabled(true,2);
+            this.validate();
+        } else {
+            setShowingCard();
+        }
+    }
 }
