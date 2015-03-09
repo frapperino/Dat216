@@ -9,7 +9,13 @@ import i_mat.model.Model;
 import i_mat.utilities.ColorScheme;
 import i_mat.utilities.GUIConstants;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.util.List;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -29,8 +35,24 @@ public class ProductFullView extends javax.swing.JPanel {
     public ProductFullView(Product p) {
         this.product = p;
         this.initComponents();
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).
+                put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, InputEvent.SHIFT_DOWN_MASK), "putInCart");
+        this.getActionMap().put("putInCart", new AbstractAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               putThisInCart();
+            }
+        });
+        this.jScrollPane3.getVerticalScrollBar().setUnitIncrement(GUIConstants.SCROLL_INCREMENT);
+        this.jScrollPane2.getVerticalScrollBar().setUnitIncrement(GUIConstants.SCROLL_INCREMENT);
+
     }
     
+    private void putThisInCart() {
+        Number i = (Number)this.nbrOfProductsSpinner1.getValue();
+        Model.addShoppingItem(new ShoppingItem(this.product, i.doubleValue()));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,7 +62,6 @@ public class ProductFullView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -64,17 +85,6 @@ public class ProductFullView extends javax.swing.JPanel {
         p = p.subList(0, size);
         thumbsPanel1 = thumbsPanel1 = new ThumbsPanel(p);
         jLabel1 = new javax.swing.JLabel();
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         jLabel9.setIcon(Model.getImageIconForProduct(this.product, GUIConstants.FULL_VIEW_IMAGE));
 
@@ -125,6 +135,7 @@ public class ProductFullView extends javax.swing.JPanel {
         jLabel13.setText(this.product.getCategory().toString());
 
         jButton3.setText("K");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -132,6 +143,7 @@ public class ProductFullView extends javax.swing.JPanel {
         });
 
         nbrOfProductsSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        nbrOfProductsSpinner1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel14.setText(this.product.getUnitSuffix());
 
@@ -144,6 +156,7 @@ public class ProductFullView extends javax.swing.JPanel {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ej implementerad lista 1", "Ej implementerad lista 2", "derpList 9000" }));
 
         jButton4.setText("L");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -271,7 +284,6 @@ public class ProductFullView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
