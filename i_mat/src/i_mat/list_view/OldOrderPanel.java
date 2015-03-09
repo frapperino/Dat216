@@ -77,7 +77,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         setOpaque(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                rightClicked(evt);
+                headLabelMousePressed(evt);
             }
         });
 
@@ -93,6 +93,9 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         subLabel.setText(GenerateComponentsUtilities.getProductsString(this.order.getItems()));
         subLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         subLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                subLabelMousePressed(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 headLabelMouseClicked(evt);
             }
@@ -122,19 +125,23 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         
     }//GEN-LAST:event_headLabelMouseClicked
 
-    private void rightClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightClicked
+    private void headLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headLabelMousePressed
          if (evt.isPopupTrigger()) {
             this.popupMenu(evt);
         } else {
              this.switchView();
          }
-    }//GEN-LAST:event_rightClicked
+    }//GEN-LAST:event_headLabelMousePressed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         Model.ereaseOrderFromHistory(this.order);
         this.revalidate();
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void subLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subLabelMousePressed
+        headLabelMousePressed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_subLabelMousePressed
       
     
     private void popupMenu(java.awt.event.MouseEvent evt){
