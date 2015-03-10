@@ -6,6 +6,7 @@
 package i_mat.model;
 
 import java.awt.Dimension;
+import java.io.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -39,7 +40,9 @@ public class Model {
     private static List<DeliveryAddress> deliveryAddresses;
     private static List<CreditCardInstance> creditCards;
     private static final String ADDRESSES_FILENAME = "addresses.imat",
-                                CREDITCARDS_FILENAME = "cards.imat";
+                                CREDITCARDS_FILENAME = "cards.imat",
+                                LISTS_FILENAME = "lists.imat";
+    private static List<Order> shoppingLists;
     
 
     /*
@@ -65,6 +68,22 @@ public class Model {
      * ... but *do not* add them here.
      */
     private Model() {};
+    
+    private static void readShoppingLists() {
+        DataInputStream dis = null;
+        try {
+            dis = new DataInputStream(new FileInputStream(LISTS_FILENAME));
+        } catch (FileNotFoundException ex) {
+            shoppingLists = new ArrayList<>();
+        } 
+        try {
+            if (dis != null)
+                dis.close();
+        } catch (IOException ex) {
+            System.out.println("Unable to close input stream");
+            ex.printStackTrace();
+        }
+    }
     
     private static void readAddresses() {
         ObjectInputStream ois = null;
