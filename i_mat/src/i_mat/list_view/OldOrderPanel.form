@@ -81,6 +81,9 @@
           <Color id="Handmark&#xf6;r"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="headLabelMousePressed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="subPanel">
       <Properties>

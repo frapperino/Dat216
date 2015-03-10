@@ -84,6 +84,11 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         headLabel.setFont(headLabel.getFont().deriveFont(headLabel.getFont().getStyle() | java.awt.Font.BOLD, headLabel.getFont().getSize()+5));
         headLabel.setText(GenerateComponentsUtilities.getNameFromDate(this.order.getDate()));
         headLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        headLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                headLabelMousePressed(evt);
+            }
+        });
 
         subPanel.setOpaque(false);
         subPanel.setLayout(new java.awt.BorderLayout());
