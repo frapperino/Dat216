@@ -67,7 +67,7 @@ public class NavigationPanel extends javax.swing.JPanel {
         profileButton = new javax.swing.JButton();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0));
 
-        navigationBar.setBackground(new java.awt.Color(204, 51, 0));
+        navigationBar.setBackground(ColorScheme.getNavbarBackground());
         navigationBar.setFloatable(false);
         navigationBar.setRollover(true);
 
@@ -162,9 +162,10 @@ public class NavigationPanel extends javax.swing.JPanel {
 
         profileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MyPages.png"))); // NOI18N
         profileButton.setBorder(null);
+        profileButton.setContentAreaFilled(false);
         profileButton.setFocusable(false);
         profileButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        profileButton.setOpaque(false);
+        profileButton.setOpaque(true);
         profileButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         profileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
