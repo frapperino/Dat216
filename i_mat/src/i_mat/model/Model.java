@@ -5,6 +5,7 @@
  */
 package i_mat.model;
 
+import i_mat.utilities.ListOrder;
 import java.awt.Dimension;
 import java.io.*;
 import java.io.FileInputStream;
@@ -42,7 +43,7 @@ public class Model {
     private static final String ADDRESSES_FILENAME = "addresses.imat",
                                 CREDITCARDS_FILENAME = "cards.imat",
                                 LISTS_FILENAME = "lists.imat";
-    private static List<Order> shoppingLists;
+    private static List<ListOrder> shoppingLists;
     
 
     /*
@@ -70,15 +71,19 @@ public class Model {
     private Model() {};
     
     private static void readShoppingLists() {
-        DataInputStream dis = null;
+        ObjectInputStream ois = null;
         try {
-            dis = new DataInputStream(new FileInputStream(LISTS_FILENAME));
-        } catch (FileNotFoundException ex) {
+            ois = new ObjectInputStream(new FileInputStream(LISTS_FILENAME));
+            Object o = ois.readObject();
+            if (o instanceof List) {
+                shoppingLists = (List<ListOrder>)o;
+            }  
+        } catch (ClassNotFoundException | IOException ex) {
             shoppingLists = new ArrayList<>();
         } 
         try {
-            if (dis != null)
-                dis.close();
+            if (ois != null)
+                ois.close();
         } catch (IOException ex) {
             System.out.println("Unable to close input stream");
             ex.printStackTrace();
