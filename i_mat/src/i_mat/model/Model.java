@@ -367,6 +367,14 @@ public class Model {
     public static void deleteOrderByOrder(ListOrder ord) {
         shoppingLists.remove(ord);
     }
+    
+    public static ListOrder getTestShoppingList() {
+        ListOrder o = new ListOrder("Test");
+        List<ShoppingItem> l = new ArrayList<>();
+        l.add(new ShoppingItem(getTestProduct(), 4.0));
+        o.setItems(l);
+        return o;
+    }
 
     public static void save() {
         dataHandler.shutDown();
