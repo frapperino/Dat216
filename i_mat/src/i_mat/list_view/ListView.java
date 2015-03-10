@@ -7,10 +7,13 @@ package i_mat.list_view;
 
 import i_mat.model.Model;
 import i_mat.utilities.GUIConstants;
+import i_mat.utilities.ListOrder;
 import java.awt.Component;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import net.miginfocom.swing.MigLayout;
 import se.chalmers.ait.dat215.project.Order;
@@ -40,6 +43,20 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
             panel.addPropertyChangeListener(this);
             this.historyPanel.add(panel);
         }
+        
+        this.shoppingListsPanel.setLayout(new MigLayout("wrap 1"));
+        
+        //Code for testing, remove before relaease
+        List<ListOrder> l = new ArrayList<>();
+        ListOrder lo = Model.getTestShoppingList();
+        lo.setDate(new Date());
+        l.add(lo);
+        //
+        for (ListOrder o : l) {
+            OldOrderPanel panel = new OldOrderPanel(o);
+            panel.addPropertyChangeListener(this);
+            this.shoppingListsPanel.add(panel);
+        }
     }
     
     /**
@@ -55,6 +72,8 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         historyPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        shoppingListsPanel = new javax.swing.JPanel();
 
         jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD, jLabel1.getFont().getSize()+10));
         jLabel1.setText("Historik");
@@ -70,25 +89,49 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
             .addGap(0, 208, Short.MAX_VALUE)
         );
 
+        jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getStyle() | java.awt.Font.BOLD, jLabel2.getFont().getSize()+10));
+        jLabel2.setText("Mina listor");
+
+        javax.swing.GroupLayout shoppingListsPanelLayout = new javax.swing.GroupLayout(shoppingListsPanel);
+        shoppingListsPanel.setLayout(shoppingListsPanelLayout);
+        shoppingListsPanelLayout.setHorizontalGroup(
+            shoppingListsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        shoppingListsPanelLayout.setVerticalGroup(
+            shoppingListsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 147, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel1)
-                .addContainerGap(546, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(520, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(historyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(historyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel1))
+                    .addComponent(shoppingListsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(shoppingListsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(historyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -111,8 +154,10 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel historyPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel shoppingListsPanel;
     // End of variables declaration//GEN-END:variables
 
     @Override
