@@ -53,7 +53,7 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
         l.add(lo);
         //
         for (ListOrder o : l) {
-            OldOrderPanel panel = new OldOrderPanel(o);
+            ShoppingListPanel panel = new ShoppingListPanel(o);
             panel.addPropertyChangeListener(this);
             this.shoppingListsPanel.add(panel);
         }
