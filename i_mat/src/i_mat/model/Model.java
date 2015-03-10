@@ -89,7 +89,7 @@ public class Model {
             ex.printStackTrace();
         }
     }
-    
+        
     private static void readAddresses() {
         ObjectInputStream ois = null;
         try {
@@ -354,6 +354,18 @@ public class Model {
     public static DeliveryAddress getTestDeliveryAddress() {
         return new DeliveryAddress("Test", "Testsson", "Testgatan 42", "123 45",
                     "Testberga", "031-420420", "070-312 1337", "test@test.test");
+    }
+    
+    public static List<ListOrder> getShoppingLists() {
+        return new ArrayList<>(shoppingLists);
+    }
+    
+    public static void addShoppingList(ListOrder ord) {
+        shoppingLists.add(ord);
+    }
+    
+    public static void deleteOrderByOrder(ListOrder ord) {
+        shoppingLists.remove(ord);
     }
 
     public static void save() {

@@ -17,11 +17,16 @@ public class ListOrder extends Order implements Serializable {
     private String name = "";
     
     public ListOrder(String name) {
+        super();
         this.name = name;
     }
     
     public String getName(){ 
         return this.name;
+    }
+    
+    public void setName(String newName) {
+        this.name = newName;
     }
     
 }
