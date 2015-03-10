@@ -515,6 +515,10 @@ public class Model {
         }
     }
     
+    public static void removeProductForever(Product p ) {
+        dataHandler.removeProduct(p);
+    }
+    
     /**
      * Wrapper for function findProducts in dataHandler
      * @param str

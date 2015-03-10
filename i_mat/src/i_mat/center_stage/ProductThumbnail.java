@@ -68,6 +68,7 @@ public class ProductThumbnail extends javax.swing.JPanel {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         makeFavoriteMenuItem = new javax.swing.JMenuItem();
+        removeForeverMenuItem = new javax.swing.JMenuItem();
         imageButton = new javax.swing.JButton();
         nameLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -89,6 +90,14 @@ public class ProductThumbnail extends javax.swing.JPanel {
             }
         });
         jPopupMenu1.add(makeFavoriteMenuItem);
+
+        removeForeverMenuItem.setText("Visa aldrig varan igen");
+        removeForeverMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeForeverMenuItemActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(removeForeverMenuItem);
 
         setBackground(ColorScheme.selectedThumbnailBackground());
         setBorder(this.unselectedBorder);
@@ -247,6 +256,10 @@ public class ProductThumbnail extends javax.swing.JPanel {
            this.makeFavoriteMenuItem.setText(this.favoriteMenueItemText());
     }//GEN-LAST:event_makeFavoriteMenuItemActionPerformed
 
+    private void removeForeverMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeForeverMenuItemActionPerformed
+        Model.removeProductForever(this.product);        // TODO add your handling code here:
+    }//GEN-LAST:event_removeForeverMenuItemActionPerformed
+
     private String favoriteMenueItemText() {
         String s = Model.isFavorite(this.product) ? "Ta bort från favoriter" : "Gör till favorit";
         return s;
@@ -305,5 +318,6 @@ public class ProductThumbnail extends javax.swing.JPanel {
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JMenuItem makeFavoriteMenuItem;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JMenuItem removeForeverMenuItem;
     // End of variables declaration//GEN-END:variables
 }
