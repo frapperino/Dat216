@@ -48,6 +48,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         this.collapseButton.setText(null);
         this.collapseButton.addActionListener(this);
         initComponents();
+        this.jButton1.setVisible(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +64,8 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         headLabel = new javax.swing.JLabel();
         subPanel = new javax.swing.JPanel();
         subLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0));
         jMenuItem1.setText("Radera");
@@ -80,6 +83,12 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 headLabelMousePressed(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
         });
 
         headLabel.setFont(headLabel.getFont().deriveFont(headLabel.getFont().getStyle() | java.awt.Font.BOLD, headLabel.getFont().getSize()+5));
@@ -89,6 +98,12 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         headLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 headLabelMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
             }
         });
 
@@ -106,24 +121,78 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 headLabelMouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
         });
-        subPanel.add(subLabel, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setMinimumSize(new java.awt.Dimension(30, 30));
+        jPanel1.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                subLabelMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/List.png"))); // NOI18N
+        jButton1.setMinimumSize(new java.awt.Dimension(40, 40));
+        jButton1.setPreferredSize(new java.awt.Dimension(40, 40));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(headLabel)
-                .addGap(0, 280, Short.MAX_VALUE))
-            .addComponent(subPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(subPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(subLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(headLabel))
+                .addGap(563, 563, 563))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(headLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(subPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(subPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(subLabel)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -158,6 +227,14 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
     private void subLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subLabelMousePressed
         headLabelMousePressed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_subLabelMousePressed
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        this.jButton1.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseEntered
+
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+        this.jButton1.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseExited
       
     
     private void popupMenu(java.awt.event.MouseEvent evt){
@@ -166,7 +243,9 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel headLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JLabel subLabel;
     private javax.swing.JPanel subPanel;
