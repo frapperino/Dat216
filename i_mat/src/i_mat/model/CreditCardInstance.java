@@ -15,9 +15,8 @@ import se.chalmers.ait.dat215.project.CreditCard;
  */
 public class CreditCardInstance implements Serializable {
     
-    private String cardNumber, cardType, holder;
-    private int expiryMonth, expiryYear, cvc;
-    private final String id;
+    private final String cardNumber, cardType, holder, id;
+    private final int expiryMonth, expiryYear, cvc;
 
     public CreditCardInstance(String number, String type, String name, int month, int year, int cvc) {
         this(number,type,name,month,year,cvc, UUID.randomUUID().toString());
@@ -38,37 +37,13 @@ public class CreditCardInstance implements Serializable {
     }
     
     private CreditCardInstance(String number, String type, String name, int month, int year, int cvc, String id) {
-        setCardNumber(number);
-        setCardType(type);
-        setHolder(name);
-        setExpiryMonth(month);
-        setExpiryYear(year);
-        setCVC(cvc);
-        this.id = id;
-    }
-    
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-
-    public void setCardType(String cardType) {
-        this.cardType = cardType;
-    }
-
-    public void setHolder(String holder) {
-        this.holder = holder;
-    }
-
-    public void setExpiryMonth(int expiryMonth) {
-        this.expiryMonth = expiryMonth;
-    }
-
-    public void setExpiryYear(int expiryYear) {
-        this.expiryYear = expiryYear;
-    }
-
-    public void setCVC(int cvc) {
+        this.cardNumber = number;
+        this.cardType = type;
+        this.holder = name;
+        this.expiryMonth = month;
+        this.expiryYear = year;
         this.cvc = cvc;
+        this.id = id;
     }
 
     public String getCardNumber() {
