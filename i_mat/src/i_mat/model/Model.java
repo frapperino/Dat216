@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
@@ -75,7 +76,6 @@ public class Model {
             }
         } catch (ClassNotFoundException | IOException ex) {
             deliveryAddresses = new ArrayList<>();
-            deliveryAddresses.add(new DeliveryAddress(dataHandler.getCustomer()));
         } finally {
             try {
                 ois.close();
@@ -96,7 +96,6 @@ public class Model {
             }
         } catch (ClassNotFoundException | IOException ex) {
             creditCards = new ArrayList<>();
-            creditCards.add(new CreditCardInstance(dataHandler.getCreditCard()));
         } finally {
             try {
                 ois.close();
@@ -144,10 +143,9 @@ public class Model {
 
     /**
      * Changes the default delivery address.
-     * @param id The id of the new default address.
+     * @param externalAddress the address that should be the new default.
      */
     public static void setDefaultDeliveryAddress(DeliveryAddress externalAddress) {
-        Customer backendCustomer = dataHandler.getCustomer();
         DeliveryAddress newDefault = null;
 
         for (DeliveryAddress deliveryAddress : deliveryAddresses) {
@@ -161,14 +159,7 @@ public class Model {
             deliveryAddresses.remove(newDefault);
             deliveryAddresses.add(0,newDefault);
 
-            backendCustomer.setFirstName(newDefault.getFirstName());
-            backendCustomer.setLastName(newDefault.getLastName());
-            backendCustomer.setAddress(newDefault.getAddress());
-            backendCustomer.setPostCode(newDefault.getPostCode());
-            backendCustomer.setPostAddress(newDefault.getPostAddress());
-            backendCustomer.setPhoneNumber(newDefault.getPhoneNumber());
-            backendCustomer.setMobilePhoneNumber(newDefault.getMobilePhoneNumber());
-            backendCustomer.setEmail(newDefault.getEmail());
+            setBackendAddress(newDefault);
         }
     }
 
@@ -180,16 +171,7 @@ public class Model {
                 setDefaultDeliveryAddress(deliveryAddresses.get(0));
             }
         } else {
-            Customer backendCustomer = dataHandler.getCustomer();
-
-            backendCustomer.setFirstName("");
-            backendCustomer.setLastName("");
-            backendCustomer.setAddress("");
-            backendCustomer.setPostAddress("");
-            backendCustomer.setPostCode("");
-            backendCustomer.setEmail("");
-            backendCustomer.setPhoneNumber("");
-            backendCustomer.setMobilePhoneNumber("");
+            clearBackendAddress();
         }
     }
 
@@ -208,14 +190,7 @@ public class Model {
             }
         }
 
-        internalAddress.setFirstName(newAddress.getFirstName());
-        internalAddress.setLastName(newAddress.getLastName());
-        internalAddress.setAddress(newAddress.getAddress());
-        internalAddress.setPostCode(newAddress.getPostCode());
-        internalAddress.setPostAddress(newAddress.getPostAddress());
-        internalAddress.setPhoneNumber(newAddress.getPhoneNumber());
-        internalAddress.setMobilePhoneNumber(newAddress.getMobilePhoneNumber());
-        internalAddress.setEmail(newAddress.getEmail());
+        internalAddress.update(newAddress);
 
         if (deliveryAddresses.indexOf(internalAddress) == 0) {
             setDefaultDeliveryAddress(internalAddress);
@@ -226,11 +201,18 @@ public class Model {
         return deliveryAddresses.get(0).copy();
     }
 
+    public static CreditCardInstance getDefaultCard() {
+        return creditCards.get(0).copy();
+    }
+    
     public static void addDeliveryAddress(String firstName, String lastName, String address, String postCode, String postAddress, String phone, String cell, String email) {
         DeliveryAddress newAddress = new DeliveryAddress(firstName, lastName, address, postCode, postAddress, phone, cell, email);
         deliveryAddresses.add(newAddress);
+        
+        if (isBackendAddressEmpty()) {
+            setBackendAddress(newAddress);
+        }
     }
-
 
     public static List<DeliveryAddress> getDeliveryAddresses() {
         List<DeliveryAddress> externalAddresses = new LinkedList<DeliveryAddress>();
@@ -245,6 +227,42 @@ public class Model {
     public static void addCreditCard(String number, String type, String name, int month, int year, int cvc) {
         CreditCardInstance newCard = new CreditCardInstance(number, type, name, month, year, cvc);
         creditCards.add(newCard);
+        
+        if (isBackendCardEmpty()) {
+            setBackendCard(newCard);
+        }
+    }
+    
+    public static void setDefaultCreditCard(CreditCardInstance externalCard) {
+        CreditCard backendCard = dataHandler.getCreditCard();
+        CreditCardInstance newDefault = null;
+        
+        for (CreditCardInstance creditCard : creditCards) {
+            if (creditCard.getID().equals(externalCard.getID())) {
+                newDefault = creditCard;
+                break;
+            }
+        }
+        
+        if (newDefault != null) {
+            creditCards.remove(newDefault);
+            creditCards.add(0, newDefault);
+            
+            setBackendCard(newDefault);
+        }
+    }
+    
+    
+    public static void deleteCreditCard(CreditCardInstance creditCard) {
+        creditCards.remove(creditCard);
+        
+        if (!creditCards.isEmpty()) {
+            if (!deliveryAddresses.get(0).equals(dataHandler.getCreditCard())) {
+                setDefaultCreditCard(creditCards.get(0));
+            }
+        } else {
+            clearBackendCard();
+        }
     }
     
     public static List<CreditCardInstance> getCreditCards() {
@@ -316,7 +334,11 @@ public class Model {
 
     public static void save() {
         dataHandler.shutDown();
+        saveAddresses();
+        saveCreditCards();
+    }
 
+    private static void saveAddresses() {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ADDRESSES_FILENAME));
             oos.writeObject((Serializable) deliveryAddresses);
@@ -326,7 +348,18 @@ public class Model {
             ex.printStackTrace();
         }
     }
-
+    
+    private static void saveCreditCards() {
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(CREDITCARDS_FILENAME));
+            oos.writeObject((Serializable) creditCards);
+            oos.close();
+        } catch (IOException ex) {
+            System.out.println("Could not save delivery addresses to file.");
+            ex.printStackTrace();
+        }
+    }
+    
     public static List<Order> getOrderHistory() {
 
         //Commented code below was for adding when testing only, not actual functionlity.
@@ -531,5 +564,77 @@ public class Model {
     
     public static void ereaseOrderFromHistory(Order order) {
         dataHandler.getOrders().remove(order);
+    }
+    
+    private static void setBackendAddress(DeliveryAddress address) {
+        Customer backendCustomer = dataHandler.getCustomer();
+        
+        backendCustomer.setFirstName(address.getFirstName());
+        backendCustomer.setLastName(address.getLastName());
+        backendCustomer.setAddress(address.getAddress());
+        backendCustomer.setPostCode(address.getPostCode());
+        backendCustomer.setPostAddress(address.getPostAddress());
+        backendCustomer.setPhoneNumber(address.getPhoneNumber());
+        backendCustomer.setMobilePhoneNumber(address.getMobilePhoneNumber());
+        backendCustomer.setEmail(address.getEmail());
+    }
+    
+    private static void setBackendCard(CreditCardInstance card) {
+        CreditCard backendCard = dataHandler.getCreditCard();
+        
+        backendCard.setCardNumber(card.getCardNumber());
+        backendCard.setCardType(card.getCardType());
+        backendCard.setHoldersName(card.getHolder());
+        backendCard.setValidMonth(card.getExpiryMonth());
+        backendCard.setValidYear(card.getExpiryYear());
+        backendCard.setVerificationCode(card.getCVC());
+    }
+    
+    private static void clearBackendAddress() {
+        Customer backendCustomer = dataHandler.getCustomer();
+
+        backendCustomer.setFirstName("");
+        backendCustomer.setLastName("");
+        backendCustomer.setAddress("");
+        backendCustomer.setPostAddress("");
+        backendCustomer.setPostCode("");
+        backendCustomer.setEmail("");
+        backendCustomer.setPhoneNumber("");
+        backendCustomer.setMobilePhoneNumber("");
+    }
+    
+    private static void clearBackendCard() {
+        CreditCard backendCard = dataHandler.getCreditCard();
+
+        backendCard.setHoldersName("");
+        backendCard.setCardNumber("");
+        backendCard.setCardType("");
+        backendCard.setValidMonth(-1);
+        backendCard.setValidYear(-1);
+        backendCard.setVerificationCode(-1);
+    }
+    
+    private static boolean isBackendAddressEmpty() {
+        Customer backend = dataHandler.getCustomer();
+        
+        return backend.getAddress().equals("")
+            && backend.getFirstName().equals("")
+            && backend.getLastName().equals("")
+            && backend.getEmail().equals("")
+            && backend.getMobilePhoneNumber().equals("")
+            && backend.getPhoneNumber().equals("")
+            && backend.getPostAddress().equals("")
+            && backend.getPostCode().equals("");
+    }
+    
+    private static boolean isBackendCardEmpty() {
+        CreditCard backend = dataHandler.getCreditCard();
+        
+        return backend.getCardNumber().equals("")
+            && backend.getCardType().equals("")
+            && backend.getHoldersName().equals("")
+            && backend.getValidMonth() == -1
+            && backend.getValidYear() == -1
+            && backend.getVerificationCode() == -1;
     }
 }

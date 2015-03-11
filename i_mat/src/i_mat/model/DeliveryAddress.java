@@ -123,6 +123,17 @@ public class DeliveryAddress implements Serializable {
         this.id = id;
     }
     
+    public void update(DeliveryAddress newAddress) {
+        setFirstName(newAddress.getFirstName());
+        setLastName(newAddress.getLastName());
+        setAddress(newAddress.getAddress());
+        setPostCode(newAddress.getPostCode());
+        setPostAddress(newAddress.getPostAddress());
+        setPhoneNumber(newAddress.getPhoneNumber());
+        setMobilePhoneNumber(newAddress.getMobilePhoneNumber());
+        setEmail(newAddress.getEmail());
+    }
+    
     public DeliveryAddress copy() {
         return new DeliveryAddress(this, this.id);
     }
