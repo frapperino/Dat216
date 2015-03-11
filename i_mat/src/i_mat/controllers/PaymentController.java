@@ -25,25 +25,25 @@ public class PaymentController {
         return instance;
     }
     
-    public boolean validCardNumber(String cardNumber) {
+    public boolean isCardNumberValid(String cardNumber) {
         return cardNumber.matches("\\d{16}");
     }
     
-    public boolean validExpiryMonth(String expiryMonth) {
+    public boolean isExpiryMonthValid(String expiryMonth) {
         return expiryMonth.matches("\\d{1,2}");
     }
     
-    public boolean validExpiryYear(String expiryYear) {
+    public boolean isExpiryYearValid(String expiryYear) {
         return expiryYear.matches("\\d{4}|\\d{2}");
     }
     
-    public boolean validCVC(String cvc) {
+    public boolean isCVCValid(String cvc) {
         return cvc.matches("\\d{3}");
     }
 
     public void newCard(String cardType, String cardNumber, String cardHolder, String expiryMonth, String expiryYear, String cvcCode) {
-        if (!validCardNumber(cardNumber) || !validExpiryMonth(expiryMonth)
-               || !validExpiryYear(expiryYear) || !validCVC(cvcCode)) {
+        if (!isCardNumberValid(cardNumber) || !isExpiryMonthValid(expiryMonth)
+               || !isExpiryYearValid(expiryYear) || !isCVCValid(cvcCode)) {
             throw new IllegalArgumentException("Invalid card!");
         }
         
@@ -60,9 +60,9 @@ public class PaymentController {
     }
 
     public boolean validCard(String cardNumber, String expiryMonth, String expiryYear, String cvcCode) {
-        return validCardNumber(cardNumber)
-            && validExpiryMonth(expiryMonth)
-            && validExpiryYear(expiryYear)
-            && validCVC(cvcCode);
+        return isCardNumberValid(cardNumber)
+            && isExpiryMonthValid(expiryMonth)
+            && isExpiryYearValid(expiryYear)
+            && isCVCValid(cvcCode);
     }
 }

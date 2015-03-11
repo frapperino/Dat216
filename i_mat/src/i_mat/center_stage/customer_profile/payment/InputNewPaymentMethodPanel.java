@@ -152,24 +152,24 @@ public class InputNewPaymentMethodPanel extends javax.swing.JPanel {
             paymentController.newCard(cardType,cardNumber,cardHolder,expiryMonth,expiryYear,cvcCode);
             IMat.setCenterStage(new CustomerProfilePanel()); //TODO <- this is extremely ugly but I don't remember anything about listeners/events and just want it to work atm :(
         } else {
-            if (!paymentController.validCardNumber(cardNumber)) {
+            if (!paymentController.isCardNumberValid(cardNumber)) {
                 cardNumberErrorLabel.setText("Ogiltigt kortnummer!");
             } else {
                 cardNumberErrorLabel.setText("");
             }
             
-            if (!paymentController.validExpiryMonth(expiryMonth) && !paymentController.validExpiryYear(expiryYear)) {
+            if (!paymentController.isExpiryMonthValid(expiryMonth) && !paymentController.isExpiryYearValid(expiryYear)) {
                 expiryErrorLabel.setText("Ogiltiga datum!");
-            } else if (!paymentController.validExpiryMonth(expiryMonth)) {
+            } else if (!paymentController.isExpiryMonthValid(expiryMonth)) {
                 expiryErrorLabel.setText("Ogiltig månad!");
-            } else if (!paymentController.validExpiryYear(expiryYear)) {
+            } else if (!paymentController.isExpiryYearValid(expiryYear)) {
                 expiryErrorLabel.setText("Ogiltigt år!");
             } else {
                 expiryErrorLabel.setText("");
             }
             
             
-            if (!paymentController.validCVC(cvcCode)) {
+            if (!paymentController.isCVCValid(cvcCode)) {
                 cvcErrorLabel.setText("Ogiltig CVC-kod!");
             } else {
                 cvcErrorLabel.setText("");
