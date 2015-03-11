@@ -16,6 +16,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 import javax.swing.plaf.metal.MetalIconFactory;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -80,6 +81,11 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         jPopupMenu1.add(jMenuItem1);
 
         changeNameMenuItem.setText("Ändra namn");
+        changeNameMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeNameMenuItemActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(changeNameMenuItem);
 
         setBackground(new java.awt.Color(0, 255, 0));
@@ -268,7 +274,21 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.addWholeOrderToShoppingCart();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void changeNameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeNameMenuItemActionPerformed
+        this.startNameChange();        // TODO add your handling code here:
+    }//GEN-LAST:event_changeNameMenuItemActionPerformed
       
+    private void startNameChange() {
+        this.headPanel.remove(this.headLabel);
+        JTextField tf = new JTextField();
+        tf.setText(this.headLabel.getText());
+        tf.setFont(this.headLabel.getFont());
+        tf.requestFocus();
+        this.headPanel.add(tf);
+        this.headPanel.revalidate();
+    }
+    
     private void addWholeOrderToShoppingCart() {
         for (ShoppingItem item : this.order.getItems()) {
             Model.addShoppingItem(item);
