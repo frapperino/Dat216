@@ -623,6 +623,7 @@ public class Model {
     
     public static void ereaseOrderFromHistory(Order order) {
         dataHandler.getOrders().remove(order);
+        shoppingLists.remove(order);
     }
     
     private static void setBackendAddress(DeliveryAddress address) {
