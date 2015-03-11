@@ -10,9 +10,13 @@ import i_mat.center_stage.checkout.CheckoutPanel;
 import i_mat.model.Model;
 import static i_mat.model.Model.getCreditCards;
 import static i_mat.model.Model.getDeliveryAddresses;
+import static i_mat.model.Model.getShoppingCart;
 import i_mat.utilities.ColorScheme;
+import i_mat.utilities.ListOrder;
+import java.util.List;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -72,6 +76,11 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/List.png"))); // NOI18N
         jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -120,6 +129,13 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Model.getShoppingCart().clear();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        List<ShoppingItem> list = Model.getShoppingCart().getItems();
+        ListOrder order = new ListOrder();
+        order.setItems(list);
+        Model.addShoppingList(order);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

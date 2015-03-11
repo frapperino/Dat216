@@ -361,10 +361,12 @@ public class Model {
     }
     
     public static void addShoppingList(ListOrder ord) {
+        if (shoppingLists == null) readShoppingLists();
         shoppingLists.add(ord);
     }
     
     public static void deleteOrderByOrder(ListOrder ord) {
+        if (shoppingLists == null) readShoppingLists();
         shoppingLists.remove(ord);
     }
     

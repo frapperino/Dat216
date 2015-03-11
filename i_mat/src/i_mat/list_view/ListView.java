@@ -47,10 +47,10 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
         this.shoppingListsPanel.setLayout(new MigLayout("wrap 1"));
         
         //Code for testing, remove before relaease
-        List<ListOrder> l = new ArrayList<>();
-        ListOrder lo = Model.getTestShoppingList();
-        lo.setDate(new Date());
-        l.add(lo);
+        List<ListOrder> l = Model.getShoppingLists();
+      //  ListOrder lo = Model.getTestShoppingList();
+        //lo.setDate(new Date());
+        //l.add(lo);
         //
         for (ListOrder o : l) {
             ShoppingListPanel panel = new ShoppingListPanel(o);
