@@ -99,6 +99,7 @@ public class NewPaymentPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        jToggleButton1.setSelected(!jToggleButton1.isSelected());
         jToggleButton1MouseClicked(evt);
     }//GEN-LAST:event_jPanel1MouseClicked
 

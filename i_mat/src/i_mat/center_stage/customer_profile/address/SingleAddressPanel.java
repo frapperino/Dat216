@@ -51,6 +51,7 @@ public class SingleAddressPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
@@ -65,6 +66,13 @@ public class SingleAddressPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.X_AXIS));
+
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.X_AXIS));
 
         jToggleButton1.setText("►");
         jToggleButton1.setBorderPainted(false);
@@ -82,11 +90,13 @@ public class SingleAddressPanel extends javax.swing.JPanel {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton1);
+        jPanel2.add(jToggleButton1);
 
         jLabel1.setText(deliveryAddress.getAddress());
-        jPanel1.add(jLabel1);
-        jPanel1.add(filler1);
+        jPanel2.add(jLabel1);
+        jPanel2.add(filler1);
+
+        jPanel1.add(jPanel2);
 
         jToggleButton2.setText("Förval");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -126,14 +136,20 @@ public class SingleAddressPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        jToggleButton1MouseClicked(evt);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        jToggleButton1.setSelected(!jToggleButton1.isSelected());
+        jToggleButton1MouseClicked(evt);
+    }//GEN-LAST:event_jPanel2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
