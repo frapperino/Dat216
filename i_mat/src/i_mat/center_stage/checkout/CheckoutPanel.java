@@ -6,6 +6,7 @@
 package i_mat.center_stage.checkout;
 import i_mat.IMat;
 import i_mat.center_stage.home.ViewHomePanel;
+import i_mat.controllers.PaymentController;
 import i_mat.model.CreditCardInstance;
 import i_mat.model.DeliveryAddress;
 import javax.swing.*;
@@ -36,6 +37,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     Customer tempCust;
     String genId, uuid, uuid2, cardNum,id1,id2;
     String[] active, active2, active3, numArr,idArray, cardArray;
+    PaymentController paymentController = PaymentController.getInstance();
     /**
      * Creates new form CheckoutPanel
      * @param deliveryAddresses
@@ -127,6 +129,8 @@ public class CheckoutPanel extends javax.swing.JPanel {
         jLabel25 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel26 = new javax.swing.JLabel();
+        cardNumberErrorLabel = new javax.swing.JLabel();
+        cvcErrorLabel = new javax.swing.JLabel();
 
         jLabel24.setText("(required)");
         jLabel24.setEnabled(false);
@@ -333,13 +337,28 @@ public class CheckoutPanel extends javax.swing.JPanel {
         jLabel26.setText("Field marked with * are required ");
         jLabel26.setEnabled(false);
 
+        cvcErrorLabel.setSize(new java.awt.Dimension(53, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jCheckBox2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(purchase)))
+                        .addGap(170, 170, 170))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
@@ -352,7 +371,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
                                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField9))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel21))
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cvcErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -372,7 +393,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel19)
-                                    .addComponent(jLabel18)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cardNumberErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(72, 72, 72)
                                 .addComponent(jLabel11)
@@ -422,19 +446,6 @@ public class CheckoutPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel22)
                             .addComponent(jLabel23)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jCheckBox2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(purchase)))
-                        .addGap(13, 13, 13))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -451,7 +462,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                                 .addComponent(lastNL, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel25)))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,7 +524,8 @@ public class CheckoutPanel extends javax.swing.JPanel {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18))
+                    .addComponent(jLabel18)
+                    .addComponent(cardNumberErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -528,11 +540,12 @@ public class CheckoutPanel extends javax.swing.JPanel {
                         .addComponent(jLabel20))
                     .addComponent(jLabel10))
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel21))
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel12)
+                    .addComponent(cvcErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -572,14 +585,24 @@ public class CheckoutPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cardNumberActionPerformed
 
     private void purchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseActionPerformed
+               
         System.out.println(IMatDataHandler.getInstance().getCreditCard().getCardType());
         String sum = Model.getShoppingCart().getTotal() + " kr";
         
         if (Model.getShoppingCart().getTotal() != 0) {
             if (newAdressButton.isSelected() && newCardButton.isSelected()){
-
+                
+                cardNum = jTextField1.getText() + jTextField2.getText() + 
+                            jTextField3.getText() + jTextField4.getText();
+                String cardExpiryMonth = jComboBox2.getSelectedItem().toString(); 
+                String cardExpiryYear = jComboBox3.getSelectedItem().toString();
+                String cardCVC = jTextField9.getText();
+                
+                if (!validateCard(cardNum, cardExpiryMonth, cardExpiryYear, cardCVC)) {
+                    return;
+                }
+                
                 if (jCheckBox1.isSelected() && !jCheckBox2.isSelected()){
-
                     addDeliveryAddress(firstNL.getText(),lastNL.getText(),
                         AddressLabel.getText(),postCodeLab.getText(),cityLabel.getText(),
                         phoneLabel.getText(),cellLabel.getText(), emailLabel.getText());
@@ -593,14 +616,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
                             getAddress(uuid), createTempCard(), sum);
                 }
                 else if (!jCheckBox1.isSelected() && jCheckBox2.isSelected()){
-                   //skapar ett kort
-                    cardNum = jTextField1.getText() + jTextField2.getText() + 
-                            jTextField3.getText() + jTextField4.getText();
-                    addCreditCard(cardNum, 
-                        jComboBox1.getSelectedItem().toString(), jTextField10.getText(), 
-                        Integer.parseInt(jComboBox2.getSelectedItem().toString()), 
-                        Integer.parseInt(jComboBox3.getSelectedItem().toString()),
-                        Integer.parseInt(jTextField9.getText()));
+                    //skapar ett kort
+                    paymentController.newCard(jComboBox1.getSelectedItem().toString(), cardNum,
+                            jTextField10.getText(), cardExpiryMonth, cardExpiryYear, cardCVC);
                     /*
                     uuid = UUID.randomUUID().toString();
                     String cardNum = jTextField1.getText() + jTextField2.getText() + jTextField3.getText() + jTextField4.getText();
@@ -617,14 +635,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
                     addDeliveryAddress(firstNL.getText(),lastNL.getText(),
                         AddressLabel.getText(),postCodeLab.getText(),cityLabel.getText(),
                         phoneLabel.getText(),cellLabel.getText(), emailLabel.getText());
-                    cardNum = jTextField1.getText() + jTextField2.getText() + jTextField3.getText() 
-                            + jTextField4.getText();
                     
-                    addCreditCard(cardNum, 
-                        jComboBox1.getSelectedItem().toString(), jTextField10.getText(), 
-                        Integer.parseInt(jComboBox2.getSelectedItem().toString()), 
-                        Integer.parseInt(jComboBox3.getSelectedItem().toString()),
-                        Integer.parseInt(jTextField9.getText()));
+                    paymentController.newCard(jComboBox1.getSelectedItem().toString(), cardNum,
+                            jTextField10.getText(), cardExpiryMonth, cardExpiryYear, cardCVC);
 
                     p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), 
                             getAddress(uuid), getCreditCardByNum(cardNum), sum );
@@ -637,13 +650,21 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
             else if(oldAdressButton.isSelected() && newCardButton.isSelected()){
 
+                cardNum = jTextField1.getText() + jTextField2.getText() + 
+                            jTextField3.getText() + jTextField4.getText();
+                String cardExpiryMonth = jComboBox2.getSelectedItem().toString(); 
+                String cardExpiryYear = jComboBox3.getSelectedItem().toString();
+                String cardCVC = jTextField9.getText();
+                
+                if (!validateCard(cardNum, cardExpiryMonth, cardExpiryYear, cardCVC)) {
+                    return;
+                }
+                
                 if(jCheckBox2.isSelected()){
-                    cardNum = jTextField1.getText() + jTextField2.getText() + jTextField3.getText() + jTextField4.getText();
-                    addCreditCard(cardNum, 
-                        jComboBox1.getSelectedItem().toString(), jTextField10.getText(), 
-                        Integer.parseInt(jComboBox2.getSelectedItem().toString()), 
-                        Integer.parseInt(jComboBox3.getSelectedItem().toString()),
-                        Integer.parseInt(jTextField9.getText()));
+                    
+                    paymentController.newCard(jComboBox1.getSelectedItem().toString(), cardNum,
+                            jTextField10.getText(), cardExpiryMonth, cardExpiryYear, cardCVC);
+                    
                     p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), 
                             getAddressByAddress(selectedAddress.getSelectedItem().toString()), 
                             getCreditCardByNum(cardNum), sum);
@@ -682,6 +703,41 @@ public class CheckoutPanel extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_purchaseActionPerformed
+
+    private boolean validateCard(String cardNum, String cardExpiryMonth, String cardExpiryYear, String cardCVC) {
+        boolean success = true;
+        
+        if (!paymentController.isCardNumberValid(cardNum)) {
+            cardNumberErrorLabel.setText("Ogiltigt kortnummer!");
+            success = false;
+        } else {
+            cardNumberErrorLabel.setText("");
+        }
+        
+        if (!paymentController.isExpiryMonthValid(cardExpiryMonth)) {
+            System.out.println("ogiltig månad");
+            success = false;
+        } else {
+            //remove error output
+        }
+        
+        if (!paymentController.isExpiryYearValid(cardExpiryYear)) {
+            System.out.println("ogiltigt år");
+            success = false;
+        } else {
+            //remove error output
+        }
+        
+        if (!paymentController.isCVCValid(cardCVC)) {
+            cvcErrorLabel.setText("Ogiltig CVC-kod!");
+            success = false;
+        } else {
+            cvcErrorLabel.setText("");
+        }
+        repaint();
+        revalidate();
+        return success;
+    }
 
     private void newCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCardButtonActionPerformed
         // TODO add your handling code here:
@@ -870,8 +926,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.JTextField AddressLabel;
     private javax.swing.ButtonGroup addressButtonGroup;
     private javax.swing.JComboBox cardNumber;
+    private javax.swing.JLabel cardNumberErrorLabel;
     private javax.swing.JTextField cellLabel;
     private javax.swing.JTextField cityLabel;
+    private javax.swing.JLabel cvcErrorLabel;
     private javax.swing.ButtonGroup deliveryButtonGroup;
     private javax.swing.JTextField emailLabel;
     private javax.swing.JTextField firstNL;
