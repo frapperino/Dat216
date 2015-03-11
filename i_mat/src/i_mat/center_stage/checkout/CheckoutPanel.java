@@ -7,6 +7,7 @@ package i_mat.center_stage.checkout;
 import i_mat.IMat;
 import i_mat.center_stage.home.ViewHomePanel;
 import i_mat.controllers.PaymentController;
+import i_mat.controllers.AddressController;
 import i_mat.model.CreditCardInstance;
 import i_mat.model.DeliveryAddress;
 import javax.swing.*;
@@ -38,6 +39,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     String genId, uuid, uuid2, cardNum,id1,id2;
     String[] active, active2, active3, numArr,idArray, cardArray;
     PaymentController paymentController = PaymentController.getInstance();
+    AddressController addressController = AddressController.getInstance();
     /**
      * Creates new form CheckoutPanel
      * @param deliveryAddresses
@@ -602,7 +604,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 }
                 
                 if (jCheckBox1.isSelected() && !jCheckBox2.isSelected()){
-                    addDeliveryAddress(firstNL.getText(),lastNL.getText(),
+                    addressController.newAddress(firstNL.getText(),lastNL.getText(),
                         AddressLabel.getText(),postCodeLab.getText(),cityLabel.getText(),
                         phoneLabel.getText(),cellLabel.getText(), emailLabel.getText());
                     /*
@@ -631,7 +633,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 }
 
                 else if(jCheckBox1.isSelected() && jCheckBox2.isSelected()){
-                    addDeliveryAddress(firstNL.getText(),lastNL.getText(),
+                    addressController.newAddress(firstNL.getText(),lastNL.getText(),
                         AddressLabel.getText(),postCodeLab.getText(),cityLabel.getText(),
                         phoneLabel.getText(),cellLabel.getText(), emailLabel.getText());
                     
@@ -686,7 +688,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
             else if(newAdressButton.isSelected() && oldCardButton.isSelected()){
                 if(jCheckBox1.isSelected()){
-                    addDeliveryAddress(firstNL.getText(),lastNL.getText(),
+                    addressController.newAddress(firstNL.getText(),lastNL.getText(),
                         AddressLabel.getText(),postCodeLab.getText(),cityLabel.getText(),
                         phoneLabel.getText(),cellLabel.getText(), emailLabel.getText());
                     p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), 
