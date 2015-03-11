@@ -19,6 +19,7 @@ import se.chalmers.ait.dat215.project.Customer;
 public class NewAddressPanel extends javax.swing.JPanel {
     
     private JPanel expandedAddressPanel;
+    private boolean isSelected = true;
     private Filler leftFiller;
     
     /**
@@ -88,9 +89,11 @@ public class NewAddressPanel extends javax.swing.JPanel {
             jToggleButton1.setText("X");
             add(leftFiller,BorderLayout.WEST);
             add(expandedAddressPanel,BorderLayout.CENTER);
+            isSelected = false;
         } else {
             jToggleButton1.setText("+");
             remove(expandedAddressPanel);
+            isSelected = true;
         }
         validate();
         revalidate();
@@ -98,7 +101,16 @@ public class NewAddressPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        jToggleButton1MouseClicked(evt);
+        if (this.isSelected) {
+            jToggleButton1.setSelected(isSelected);
+            jToggleButton1MouseClicked(evt);
+            isSelected = false;
+        } else {
+            jToggleButton1.setSelected(isSelected);
+            jToggleButton1MouseClicked(evt);
+            isSelected = true;
+        }
+        
     }//GEN-LAST:event_jPanel1MouseClicked
 
 
