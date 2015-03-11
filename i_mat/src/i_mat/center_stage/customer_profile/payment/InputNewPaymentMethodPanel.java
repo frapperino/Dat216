@@ -40,11 +40,15 @@ public class InputNewPaymentMethodPanel extends javax.swing.JPanel {
         cvcCodeField = new javax.swing.JTextField();
         cardHolderField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        expiryErrorLabel = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        cardNumberErrorLabel = new javax.swing.JLabel();
+        cvcErrorLabel = new javax.swing.JLabel();
 
         setSize(new java.awt.Dimension(250, 193));
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.X_AXIS));
 
         jPanel1.setMinimumSize(new java.awt.Dimension(250, 193));
-        jPanel1.setSize(new java.awt.Dimension(250, 193));
 
         cardNumberField.setText("Kortnummer");
 
@@ -67,6 +71,8 @@ public class InputNewPaymentMethodPanel extends javax.swing.JPanel {
 
         jLabel1.setText("/");
 
+        expiryErrorLabel.setSize(new java.awt.Dimension(45, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -76,14 +82,16 @@ public class InputNewPaymentMethodPanel extends javax.swing.JPanel {
                 .addGap(82, 82, 82)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(cardTypeComboBox, 0, 263, Short.MAX_VALUE)
+            .addComponent(cardTypeComboBox, 0, 299, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(expiryMonthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel1)
                 .addGap(0, 0, 0)
                 .addComponent(expiryYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(expiryErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cvcCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(cardHolderField)
         );
@@ -98,27 +106,36 @@ public class InputNewPaymentMethodPanel extends javax.swing.JPanel {
                     .addComponent(expiryMonthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(expiryYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cvcCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(expiryErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(cardHolderField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jButton1))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+        add(jPanel1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(cardNumberErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 5, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(cvcErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(cardNumberErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cvcErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
         );
+
+        add(jPanel2);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -131,20 +148,49 @@ public class InputNewPaymentMethodPanel extends javax.swing.JPanel {
         String expiryYear = expiryYearField.getText();
         String cvcCode = cvcCodeField.getText();
         
-        paymentController.newCard(cardType,cardNumber,cardHolder,expiryMonth,expiryYear,cvcCode);
-        IMat.setCenterStage(new CustomerProfilePanel()); //TODO <- this is extremely ugly but I don't remember anything about listeners/events and just want it to work atm :(
+        if (paymentController.validCard(cardNumber,expiryMonth,expiryYear,cvcCode)) {
+            paymentController.newCard(cardType,cardNumber,cardHolder,expiryMonth,expiryYear,cvcCode);
+            IMat.setCenterStage(new CustomerProfilePanel()); //TODO <- this is extremely ugly but I don't remember anything about listeners/events and just want it to work atm :(
+        } else {
+            if (!paymentController.validCardNumber(cardNumber)) {
+                cardNumberErrorLabel.setText("Ogiltigt kortnummer!");
+            } else {
+                cardNumberErrorLabel.setText("");
+            }
+            
+            if (!paymentController.validExpiryMonth(expiryMonth) && !paymentController.validExpiryYear(expiryYear)) {
+                expiryErrorLabel.setText("Ogiltiga datum!");
+            } else if (!paymentController.validExpiryMonth(expiryMonth)) {
+                expiryErrorLabel.setText("Ogiltig månad!");
+            } else if (!paymentController.validExpiryYear(expiryYear)) {
+                expiryErrorLabel.setText("Ogiltigt år!");
+            } else {
+                expiryErrorLabel.setText("");
+            }
+            
+            
+            if (!paymentController.validCVC(cvcCode)) {
+                cvcErrorLabel.setText("Ogiltig CVC-kod!");
+            } else {
+                cvcErrorLabel.setText("");
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cardHolderField;
+    private javax.swing.JLabel cardNumberErrorLabel;
     private javax.swing.JTextField cardNumberField;
     private javax.swing.JComboBox cardTypeComboBox;
     private javax.swing.JTextField cvcCodeField;
+    private javax.swing.JLabel cvcErrorLabel;
+    private javax.swing.JLabel expiryErrorLabel;
     private javax.swing.JTextField expiryMonthField;
     private javax.swing.JTextField expiryYearField;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,8 +24,29 @@ public class PaymentController {
         
         return instance;
     }
+    
+    public boolean validCardNumber(String cardNumber) {
+        return cardNumber.matches("\\d{16}");
+    }
+    
+    public boolean validExpiryMonth(String expiryMonth) {
+        return expiryMonth.matches("\\d{1,2}");
+    }
+    
+    public boolean validExpiryYear(String expiryYear) {
+        return expiryYear.matches("\\d{4}|\\d{2}");
+    }
+    
+    public boolean validCVC(String cvc) {
+        return cvc.matches("\\d{3}");
+    }
 
     public void newCard(String cardType, String cardNumber, String cardHolder, String expiryMonth, String expiryYear, String cvcCode) {
+        if (!validCardNumber(cardNumber) || !validExpiryMonth(expiryMonth)
+               || !validExpiryYear(expiryYear) || !validCVC(cvcCode)) {
+            throw new IllegalArgumentException("Invalid card!");
+        }
+        
         Model.addCreditCard(cardNumber, cardType, cardHolder, Integer.parseInt(expiryMonth),
                             Integer.parseInt(expiryYear), Integer.parseInt(cvcCode));
     }
@@ -36,5 +57,12 @@ public class PaymentController {
 
     public void delete(CreditCardInstance creditCard) {
         Model.deleteCreditCard(creditCard);
+    }
+
+    public boolean validCard(String cardNumber, String expiryMonth, String expiryYear, String cvcCode) {
+        return validCardNumber(cardNumber)
+            && validExpiryMonth(expiryMonth)
+            && validExpiryYear(expiryYear)
+            && validCVC(cvcCode);
     }
 }
