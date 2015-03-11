@@ -59,7 +59,7 @@ public class PaymentController {
         Model.deleteCreditCard(creditCard);
     }
 
-    public boolean validCard(String cardNumber, String expiryMonth, String expiryYear, String cvcCode) {
+    public boolean isCardValid(String cardNumber, String expiryMonth, String expiryYear, String cvcCode) {
         return isCardNumberValid(cardNumber)
             && isExpiryMonthValid(expiryMonth)
             && isExpiryYearValid(expiryYear)

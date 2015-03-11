@@ -148,7 +148,7 @@ public class InputNewPaymentMethodPanel extends javax.swing.JPanel {
         String expiryYear = expiryYearField.getText();
         String cvcCode = cvcCodeField.getText();
         
-        if (paymentController.validCard(cardNumber,expiryMonth,expiryYear,cvcCode)) {
+        if (paymentController.isCardValid(cardNumber,expiryMonth,expiryYear,cvcCode)) {
             paymentController.newCard(cardType,cardNumber,cardHolder,expiryMonth,expiryYear,cvcCode);
             IMat.setCenterStage(new CustomerProfilePanel()); //TODO <- this is extremely ugly but I don't remember anything about listeners/events and just want it to work atm :(
         } else {
