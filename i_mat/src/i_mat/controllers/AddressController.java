@@ -27,8 +27,8 @@ public class AddressController {
     private AddressController() {}
     
     public void newAddress(String firstName, String lastName, String address,
-                                    String postCode, String postAddress, String phone, String cell, String email, String id) {
-        Model.addDeliveryAddress(firstName,lastName,address,postCode,postAddress,phone, cell, email, id);
+                                    String postCode, String postAddress, String phone, String cell, String email) {
+        Model.addDeliveryAddress(firstName,lastName,address,postCode,postAddress,phone, cell, email);
     }
     
     public void setDefault(DeliveryAddress deliveryAddress) {

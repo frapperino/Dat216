@@ -37,7 +37,7 @@ public class CreditCardInstance implements Serializable {
              c.getValidMonth(), c.getValidYear(), c.getVerificationCode(), id);
     }
     
-    public CreditCardInstance(String number, String type, String name, int month, int year, int cvc, String id) {
+    private CreditCardInstance(String number, String type, String name, int month, int year, int cvc, String id) {
         setCardNumber(number);
         setCardType(type);
         setHolder(name);

@@ -580,10 +580,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
                 if (jCheckBox1.isSelected() && !jCheckBox2.isSelected()){
 
-                    uuid = UUID.randomUUID().toString();
                     addDeliveryAddress(firstNL.getText(),lastNL.getText(),
                         AddressLabel.getText(),postCodeLab.getText(),cityLabel.getText(),
-                        phoneLabel.getText(),cellLabel.getText(), emailLabel.getText(), uuid);
+                        phoneLabel.getText(),cellLabel.getText(), emailLabel.getText());
                     /*
                     String cType = jComboBox1.getSelectedItem().toString();
                     String cName = jTextField10.getText();
@@ -595,14 +594,13 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 }
                 else if (!jCheckBox1.isSelected() && jCheckBox2.isSelected()){
                    //skapar ett kort
-                    uuid = UUID.randomUUID().toString();
                     cardNum = jTextField1.getText() + jTextField2.getText() + 
                             jTextField3.getText() + jTextField4.getText();
                     addCreditCard(cardNum, 
                         jComboBox1.getSelectedItem().toString(), jTextField10.getText(), 
                         Integer.parseInt(jComboBox2.getSelectedItem().toString()), 
                         Integer.parseInt(jComboBox3.getSelectedItem().toString()),
-                        Integer.parseInt(jTextField9.getText()), uuid);
+                        Integer.parseInt(jTextField9.getText()));
                     /*
                     uuid = UUID.randomUUID().toString();
                     String cardNum = jTextField1.getText() + jTextField2.getText() + jTextField3.getText() + jTextField4.getText();
@@ -616,11 +614,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 }
 
                 else if(jCheckBox1.isSelected() && jCheckBox2.isSelected()){
-                    uuid = UUID.randomUUID().toString();
                     addDeliveryAddress(firstNL.getText(),lastNL.getText(),
                         AddressLabel.getText(),postCodeLab.getText(),cityLabel.getText(),
-                        phoneLabel.getText(),cellLabel.getText(), emailLabel.getText(), uuid);
-                    uuid2 = UUID.randomUUID().toString();
+                        phoneLabel.getText(),cellLabel.getText(), emailLabel.getText());
                     cardNum = jTextField1.getText() + jTextField2.getText() + jTextField3.getText() 
                             + jTextField4.getText();
                     
@@ -628,7 +624,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                         jComboBox1.getSelectedItem().toString(), jTextField10.getText(), 
                         Integer.parseInt(jComboBox2.getSelectedItem().toString()), 
                         Integer.parseInt(jComboBox3.getSelectedItem().toString()),
-                        Integer.parseInt(jTextField9.getText()), uuid2);
+                        Integer.parseInt(jTextField9.getText()));
 
                     p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), 
                             getAddress(uuid), getCreditCardByNum(cardNum), sum );
@@ -642,13 +638,12 @@ public class CheckoutPanel extends javax.swing.JPanel {
             else if(oldAdressButton.isSelected() && newCardButton.isSelected()){
 
                 if(jCheckBox2.isSelected()){
-                    uuid = UUID.randomUUID().toString();
                     cardNum = jTextField1.getText() + jTextField2.getText() + jTextField3.getText() + jTextField4.getText();
                     addCreditCard(cardNum, 
                         jComboBox1.getSelectedItem().toString(), jTextField10.getText(), 
                         Integer.parseInt(jComboBox2.getSelectedItem().toString()), 
                         Integer.parseInt(jComboBox3.getSelectedItem().toString()),
-                        Integer.parseInt(jTextField9.getText()), uuid);
+                        Integer.parseInt(jTextField9.getText()));
                     p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), 
                             getAddressByAddress(selectedAddress.getSelectedItem().toString()), 
                             getCreditCardByNum(cardNum), sum);
@@ -671,10 +666,9 @@ public class CheckoutPanel extends javax.swing.JPanel {
             }
             else if(newAdressButton.isSelected() && oldCardButton.isSelected()){
                 if(jCheckBox1.isSelected()){
-                    uuid = UUID.randomUUID().toString();
                     addDeliveryAddress(firstNL.getText(),lastNL.getText(),
                         AddressLabel.getText(),postCodeLab.getText(),cityLabel.getText(),
-                        phoneLabel.getText(),cellLabel.getText(), emailLabel.getText(), uuid);
+                        phoneLabel.getText(),cellLabel.getText(), emailLabel.getText());
                     p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), 
                             getAddress(uuid), getCreditCardByNum(cardNumber.getSelectedItem().toString()), sum);
                 }
@@ -805,7 +799,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private DeliveryAddress createTempAdress(){
         DeliveryAddress d = new DeliveryAddress(firstNL.getText(),lastNL.getText(),
                     AddressLabel.getText(),postCodeLab.getText(),cityLabel.getText(),
-                    phoneLabel.getText(),cellLabel.getText(),emailLabel.getText(),"test");
+                    phoneLabel.getText(),cellLabel.getText(),emailLabel.getText());
         return d;
     }
     private CreditCardInstance createTempCard(){

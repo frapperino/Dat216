@@ -226,8 +226,8 @@ public class Model {
         return deliveryAddresses.get(0).copy();
     }
 
-    public static void addDeliveryAddress(String firstName, String lastName, String address, String postCode, String postAddress, String phone, String cell, String email, String id) {
-        DeliveryAddress newAddress = new DeliveryAddress(firstName, lastName, address, postCode, postAddress, phone, cell, email, id);
+    public static void addDeliveryAddress(String firstName, String lastName, String address, String postCode, String postAddress, String phone, String cell, String email) {
+        DeliveryAddress newAddress = new DeliveryAddress(firstName, lastName, address, postCode, postAddress, phone, cell, email);
         deliveryAddresses.add(newAddress);
     }
 
@@ -241,8 +241,9 @@ public class Model {
 
         return externalAddresses;
     }
-    public static void addCreditCard(String number, String type, String name, int month, int year, int cvc, String id) {
-        CreditCardInstance newCard = new CreditCardInstance(number, type, name, month, year, cvc, id);
+    
+    public static void addCreditCard(String number, String type, String name, int month, int year, int cvc) {
+        CreditCardInstance newCard = new CreditCardInstance(number, type, name, month, year, cvc);
         creditCards.add(newCard);
     }
     

@@ -108,7 +108,7 @@ public class DeliveryAddress implements Serializable {
              da.getEmail(), id);
     }
     
-    public DeliveryAddress(String firstName, String lastName, String address,
+    private DeliveryAddress(String firstName, String lastName, String address,
                               String postCode, String postAddress, String phoneNumber,
                               String mobilePhoneNumber, String email, String id) {
         super();
