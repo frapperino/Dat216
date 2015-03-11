@@ -111,8 +111,10 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        IMat.setCenterStage(new CheckoutPanel(getDeliveryAddresses(), getCreditCards()));        
-        System.out.println(getDeliveryAddresses());
+        if (Model.getShoppingCart().getItems().size() > 0) {
+            IMat.setCenterStage(new CheckoutPanel(getDeliveryAddresses(), getCreditCards()));        
+            System.out.println(getDeliveryAddresses());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -145,5 +147,31 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         }).start();
         this.shoppingCartPanel21.shoppingCartChanged(ce);
         jLabel2.setText(Model.getShoppingCart().getTotal()+" kr");
+    }
+    
+    /**
+     * Disable interaction with shoppingCart 
+     */
+    public void disableInteraktion() {
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+        jButton1.setVisible(false);
+        jButton2.setVisible(false);
+        jButton3.setVisible(false);
+        shoppingCartPanel21.disableProducts();
+    }
+    
+    /**
+     * Enable interaction with shoppingCart
+     */
+    public void enableInteraction() {
+        jButton1.setEnabled(true);
+        jButton2.setEnabled(true);
+        jButton3.setEnabled(true);
+        jButton1.setVisible(true);
+        jButton2.setVisible(true);
+        jButton3.setVisible(true);
+        shoppingCartPanel21.enableProducts();
     }
 }

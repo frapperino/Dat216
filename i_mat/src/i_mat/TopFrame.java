@@ -87,6 +87,7 @@ public class TopFrame extends javax.swing.JFrame {
         this.centerStagePanel = panel;
         this.topPanel.add(this.centerStagePanel, BorderLayout.CENTER);
         this.showCartIfNeeded();
+        this.configureCheckout();
         this.revalidate();
         this.repaint();
         this.navigationPanel.setNavButtonsColor();
@@ -116,6 +117,19 @@ public class TopFrame extends javax.swing.JFrame {
             this.shoppingCartPanel1.setVisible(false);
         } else {
             this.shoppingCartPanel1.setVisible(true);
+        }
+    }
+    
+    
+    /**
+     * Sets the shoppingCartPanel to be interactive or not depending on if 
+     * checkoutPanel is shown or not.
+     */
+    public void configureCheckout() {
+        if (this.centerStagePanel.getClass() == CheckoutPanel.class) {
+            shoppingCartPanel1.disableInteraktion();
+        } else {
+            shoppingCartPanel1.enableInteraction();
         }
     }
 }

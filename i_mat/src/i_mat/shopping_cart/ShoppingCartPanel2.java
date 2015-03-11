@@ -99,4 +99,22 @@ public class ShoppingCartPanel2 extends JScrollPane implements ShoppingCartListe
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Disable interaction with the products in this panel
+     */
+    void disableProducts() {
+        for (cartItemPanel p: cip) {
+            p.disableInteraction();
+        }
+    }
+
+    /**
+     * Enable interaction with the products in this panel
+     */
+    void enableProducts() {
+        for (cartItemPanel p: cip) {
+            p.enableInteraction();
+        }
+    }
 }

@@ -125,4 +125,24 @@ public class cartItemPanel extends javax.swing.JPanel {
     private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Enable interaction with this panel
+     */
+    void enableInteraction() {
+        jButton1.setEnabled(true);
+        jSpinner1.setEnabled(true);
+        jButton1.setVisible(true);
+        jSpinner1.setVisible(true);
+    }
+
+    /**
+     * Disable interaction with this panel
+     */
+    void disableInteraction() {
+        jButton1.setEnabled(false);
+        jSpinner1.setEnabled(false);
+        jButton1.setVisible(false);
+        jSpinner1.setVisible(false);
+    }
+
 }
