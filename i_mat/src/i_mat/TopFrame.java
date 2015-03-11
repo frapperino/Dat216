@@ -7,6 +7,7 @@ package i_mat;
 
 import i_mat.center_stage.DisplayResultsPanel;
 import i_mat.center_stage.checkout.CheckoutPanel;
+import i_mat.center_stage.checkout.ThankYouPanel;
 import i_mat.center_stage.home.ViewHomePanel;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -111,7 +112,7 @@ public class TopFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void showCartIfNeeded() {
-        if (this.centerStagePanel.getClass() == CheckoutPanel.class) {
+        if (this.centerStagePanel.getClass() == ThankYouPanel.class) {
             this.shoppingCartPanel1.setVisible(false);
         } else {
             this.shoppingCartPanel1.setVisible(true);
