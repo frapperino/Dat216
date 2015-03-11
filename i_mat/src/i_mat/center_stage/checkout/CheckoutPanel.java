@@ -614,7 +614,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                     p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), getAddress(uuid), cType, cName, cNum);
                     */
                     p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), 
-                            getAddress(uuid), createTempCard(), sum);
+                            getAddress(getAddressByAddress(AddressLabel.getText()).getID()), createTempCard(), sum);
                 }
                 else if (!jCheckBox1.isSelected() && jCheckBox2.isSelected()){
                     //skapar ett kort
@@ -641,7 +641,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                             jTextField10.getText(), cardExpiryMonth, cardExpiryYear, cardCVC);
 
                     p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), 
-                            getAddress(uuid), getCreditCardByNum(cardNum), sum );
+                            getAddress(getAddressByAddress(AddressLabel.getText()).getID()), getCreditCardByNum(cardNum), sum );
                 }
                 else {
                     p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), 
@@ -692,7 +692,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
                         AddressLabel.getText(),postCodeLab.getText(),cityLabel.getText(),
                         phoneLabel.getText(),cellLabel.getText(), emailLabel.getText());
                     p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), 
-                            getAddress(uuid), getCreditCardByNum(cardNumber.getSelectedItem().toString()), sum);
+                            getAddress(getAddressByAddress(AddressLabel.getText()).getID()), getCreditCardByNum(cardNumber.getSelectedItem().toString()), sum);
                 }
                 else{
                     p1 = new ThankYouPanel(IMatDataHandler.getInstance().placeOrder(true), 
