@@ -62,6 +62,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        changeNameMenuItem = new javax.swing.JMenuItem();
         subPanel = new javax.swing.JPanel();
         subLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -77,6 +78,9 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
             }
         });
         jPopupMenu1.add(jMenuItem1);
+
+        changeNameMenuItem.setText("Ändra namn");
+        jPopupMenu1.add(changeNameMenuItem);
 
         setBackground(new java.awt.Color(0, 255, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -155,7 +159,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,8 +195,8 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -216,7 +220,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
                 .addComponent(subPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -276,6 +280,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem changeNameMenuItem;
     private javax.swing.JLabel headLabel;
     private javax.swing.JPanel headPanel;
     private javax.swing.JButton jButton1;
