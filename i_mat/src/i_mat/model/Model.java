@@ -5,7 +5,9 @@
  */
 package i_mat.model;
 
+import i_mat.utilities.ListOrder;
 import java.awt.Dimension;
+import java.io.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -39,7 +41,9 @@ public class Model {
     private static List<DeliveryAddress> deliveryAddresses;
     private static List<CreditCardInstance> creditCards;
     private static final String ADDRESSES_FILENAME = "addresses.imat",
-                                CREDITCARDS_FILENAME = "cards.imat";
+                                CREDITCARDS_FILENAME = "cards.imat",
+                                LISTS_FILENAME = "lists.imat";
+    private static List<ListOrder> shoppingLists;
     
 
     /*
@@ -66,6 +70,26 @@ public class Model {
      */
     private Model() {};
     
+    private static void readShoppingLists() {
+        ObjectInputStream ois = null;
+        try {
+            ois = new ObjectInputStream(new FileInputStream(LISTS_FILENAME));
+            Object o = ois.readObject();
+            if (o instanceof List) {
+                shoppingLists = (List<ListOrder>)o;
+            }  
+        } catch (ClassNotFoundException | IOException ex) {
+            shoppingLists = new ArrayList<>();
+        } 
+        try {
+            if (ois != null)
+                ois.close();
+        } catch (IOException ex) {
+            System.out.println("Unable to close input stream");
+            ex.printStackTrace();
+        }
+    }
+        
     private static void readAddresses() {
         ObjectInputStream ois = null;
         try {
@@ -331,13 +355,54 @@ public class Model {
         return new DeliveryAddress("Test", "Testsson", "Testgatan 42", "123 45",
                     "Testberga", "031-420420", "070-312 1337", "test@test.test");
     }
+    
+    public static List<ListOrder> getShoppingLists() {
+        if (shoppingLists == null) readShoppingLists();
+        return new ArrayList<>(shoppingLists);
+    }
+    
+    public static void addShoppingList(ListOrder ord) {
+        if (shoppingLists == null) readShoppingLists();
+        shoppingLists.add(ord);
+    }
+    
+    public static void deleteOrderByOrder(ListOrder ord) {
+        if (shoppingLists == null) readShoppingLists();
+        shoppingLists.remove(ord);
+    }
+    
+    public static void addItemToShoppingList(ListOrder order, ShoppingItem item) {
+        List<ShoppingItem> i = order.getItems();
+        i.add(item);
+        order.setItems(i);
+    }
+    
+    public static ListOrder getTestShoppingList() {
+        ListOrder o = new ListOrder("Test");
+        List<ShoppingItem> l = new ArrayList<>();
+        l.add(new ShoppingItem(getTestProduct(), 4.0));
+        o.setItems(l);
+        return o;
+    }
 
     public static void save() {
         dataHandler.shutDown();
         saveAddresses();
         saveCreditCards();
+        saveLists();
     }
 
+    private static void saveLists() {
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(LISTS_FILENAME));
+            oos.writeObject((Serializable) shoppingLists);
+            oos.close();
+        } catch (IOException ex) {
+            System.out.println("Could not save delivery addresses to file.");
+            ex.printStackTrace();
+        }
+    }
+    
     private static void saveAddresses() {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ADDRESSES_FILENAME));
@@ -564,6 +629,7 @@ public class Model {
     
     public static void ereaseOrderFromHistory(Order order) {
         dataHandler.getOrders().remove(order);
+        shoppingLists.remove(order);
     }
     
     private static void setBackendAddress(DeliveryAddress address) {
