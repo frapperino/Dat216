@@ -24,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
-          <Component id="shoppingCartPanel21" alignment="0" pref="273" max="32767" attributes="0"/>
+          <Component id="shoppingCartPanel21" alignment="0" pref="288" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jButton2" max="-2" attributes="0"/>
