@@ -24,6 +24,7 @@ import se.chalmers.ait.dat215.project.Order;
  */
 public class ListView extends javax.swing.JPanel implements PropertyChangeListener {
     private final List<Order> history;
+    private final List<ListOrder> shoppingLists;
     /**
      * Creates new form ListView
      */
@@ -47,12 +48,18 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
         this.shoppingListsPanel.setLayout(new MigLayout("wrap 1"));
         
         //Code for testing, remove before relaease
-        List<ListOrder> l = Model.getShoppingLists();
+        this.shoppingLists = Model.getShoppingLists();
+        this.shoppingLists.sort(new Comparator<ListOrder>() {
+            @Override
+            public int compare(ListOrder o1, ListOrder o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
       //  ListOrder lo = Model.getTestShoppingList();
         //lo.setDate(new Date());
         //l.add(lo);
         //
-        for (ListOrder o : l) {
+        for (ListOrder o : shoppingLists) {
             ShoppingListPanel panel = new ShoppingListPanel(o);
             panel.addPropertyChangeListener(this);
             this.shoppingListsPanel.add(panel);

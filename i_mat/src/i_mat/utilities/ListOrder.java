@@ -19,10 +19,12 @@ public class ListOrder extends Order implements Serializable {
     
     private String name = "";
     private List<ShoppingItem> items;
+    private Date date;
     
     public ListOrder(String name) {
         super();
         this.name = name;
+        this.date = new Date();
     }
 
     public ListOrder() {
@@ -45,6 +47,11 @@ public class ListOrder extends Order implements Serializable {
     @Override
     public List<ShoppingItem> getItems() {
         return this.items;
+    }
+    
+    @Override
+    public Date getDate() {
+        return this.date;
     }
     
     @Override

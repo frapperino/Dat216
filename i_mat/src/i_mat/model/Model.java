@@ -383,8 +383,20 @@ public class Model {
         dataHandler.shutDown();
         saveAddresses();
         saveCreditCards();
+        saveLists();
     }
 
+    private static void saveLists() {
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(LISTS_FILENAME));
+            oos.writeObject((Serializable) shoppingLists);
+            oos.close();
+        } catch (IOException ex) {
+            System.out.println("Could not save delivery addresses to file.");
+            ex.printStackTrace();
+        }
+    }
+    
     private static void saveAddresses() {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ADDRESSES_FILENAME));
