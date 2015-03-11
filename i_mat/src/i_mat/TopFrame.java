@@ -6,6 +6,7 @@
 package i_mat;
 
 import i_mat.center_stage.DisplayResultsPanel;
+import i_mat.center_stage.checkout.CheckoutPanel;
 import i_mat.center_stage.home.ViewHomePanel;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -84,6 +85,7 @@ public class TopFrame extends javax.swing.JFrame {
         this.topPanel.remove(this.loadPanel);
         this.centerStagePanel = panel;
         this.topPanel.add(this.centerStagePanel, BorderLayout.CENTER);
+        this.showCartIfNeeded();
         this.revalidate();
         this.repaint();
         this.navigationPanel.setNavButtonsColor();
@@ -107,4 +109,12 @@ public class TopFrame extends javax.swing.JFrame {
     private javax.swing.JPanel topPanel;
     private i_mat.center_stage.home.ViewHomePanel viewHomePanel1;
     // End of variables declaration//GEN-END:variables
+
+    private void showCartIfNeeded() {
+        if (this.centerStagePanel.getClass() == CheckoutPanel.class) {
+            this.shoppingCartPanel1.setVisible(false);
+        } else {
+            this.shoppingCartPanel1.setVisible(true);
+        }
+    }
 }
