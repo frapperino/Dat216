@@ -78,7 +78,7 @@ public class EditAddressPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Ändra");
+        jButton1.setText("Spara");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -101,18 +101,14 @@ public class EditAddressPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton1)))
+                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addContainerGap())
-                    .addComponent(jTextField7)))
+                .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
             .addComponent(jTextField8)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,8 +146,6 @@ public class EditAddressPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println(deliveryAddress);
-        
         deliveryAddress.setFirstName(jTextField1.getText());
         deliveryAddress.setLastName(jTextField2.getText());
         deliveryAddress.setAddress(jTextField3.getText());
@@ -160,12 +154,10 @@ public class EditAddressPanel extends javax.swing.JPanel {
         deliveryAddress.setPhoneNumber(jTextField6.getText());
         deliveryAddress.setMobilePhoneNumber(jTextField7.getText());
         deliveryAddress.setEmail(jTextField8.getText());
-        
-        System.out.println(deliveryAddress);
-        System.out.println(deliveryAddress.copy());
-        
-        
+       
         AddressController.getInstance().editAddress(deliveryAddress);
+        
+        IMat.setCenterStage(new CustomerProfilePanel());
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

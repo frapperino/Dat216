@@ -5,6 +5,8 @@
  */
 package i_mat.center_stage.customer_profile.payment;
 
+import i_mat.IMat;
+import i_mat.center_stage.customer_profile.CustomerProfilePanel;
 import i_mat.center_stage.customer_profile.address.*;
 import i_mat.controllers.AddressController;
 import i_mat.controllers.PaymentController;
@@ -101,6 +103,7 @@ public class SinglePaymentPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         PaymentController.getInstance().delete(creditCard);
+        IMat.setCenterStage(new CustomerProfilePanel());
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
