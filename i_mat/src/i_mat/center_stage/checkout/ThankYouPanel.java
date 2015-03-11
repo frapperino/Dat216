@@ -8,15 +8,9 @@ package i_mat.center_stage.checkout;
 
 import i_mat.model.CreditCardInstance;
 import i_mat.model.DeliveryAddress;
-import i_mat.model.Model;
-import static i_mat.model.Model.getDeliveryAddresses;
 import i_mat.utilities.GenerateComponentsUtilities;
 import java.util.ArrayList;
-import javax.swing.JList;
-import se.chalmers.ait.dat215.project.CreditCard;
-import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.Order;
-import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -39,45 +33,6 @@ public class ThankYouPanel extends javax.swing.JPanel {
     public ThankYouPanel() {
         initComponents();
     }
-    
-    /* behövs inte
-    public ThankYouPanel(Order o, DeliveryAddress d, String cType, String cName, String cNum){
-        initComponents();
-        this.order = o;
-        this.delivery = d;
-        this.cType = cType;
-        this.cName = cName;
-        this.cNum = cNum;
-                
-        orderItems = new ArrayList<String>();
-        orderItemsAmount = new ArrayList<Integer>();
-        
-        for (int i = 0; i < order.getItems().size(); i++){
-            orderItems.add(order.getItems().get(i).getProduct().getName());
-            amount = (int) Math.floor(order.getItems().get(i).getAmount());
-            orderItemsAmount.add(amount);
-        }
-        
-        itemNumberField.setText(arrayParse(orderItemsAmount));
-        
-        orderNrL.setText(""+ order.getOrderNumber());
-        orderDateL.setText(GenerateComponentsUtilities.getNameFromDate(order.getDate()));
-        shoppingCartList.setText(arrayParse(orderItems));
-        firstNameL.setText(delivery.getFirstName());
-        lastNameL.setText(delivery.getLastName());
-        custAddress.setText(delivery.getAddress());
-        jLabel11.setText(delivery.getPostAddress());
-        postCode.setText(delivery.getPostCode());
-        phoneNumber.setText(delivery.getPhoneNumber());
-        cellNumber.setText(delivery.getMobilePhoneNumber());
-        jLabel13.setText(delivery.getEmail());
-        
-        jLabel18.setText(cNum);
-        jLabel22.setText(cName);
-        jLabel20.setText(cType);
-        
-    }
-    */
     
     public ThankYouPanel(Order o, DeliveryAddress d, CreditCardInstance c, String sum ){
         initComponents();
