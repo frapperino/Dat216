@@ -7,6 +7,7 @@ package i_mat.list_view;
 
 import i_mat.model.Model;
 import i_mat.utilities.GenerateComponentsUtilities;
+import i_mat.utilities.ListOrder;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -81,6 +82,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         jPopupMenu1.add(jMenuItem1);
 
         changeNameMenuItem.setText("Ändra namn");
+        changeNameMenuItem.setEnabled(this.order instanceof ListOrder);
         changeNameMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 changeNameMenuItemActionPerformed(evt);
@@ -175,6 +177,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        headPanel.setMinimumSize(new java.awt.Dimension(123, 300));
         headPanel.setOpaque(false);
         headPanel.setLayout(new java.awt.BorderLayout());
 
@@ -276,17 +279,35 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void changeNameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeNameMenuItemActionPerformed
-        this.startNameChange();        // TODO add your handling code here:
+        if(this.order instanceof ListOrder)
+            this.startNameChange();        // TODO add your handling code here:
     }//GEN-LAST:event_changeNameMenuItemActionPerformed
       
     private void startNameChange() {
         this.headPanel.remove(this.headLabel);
-        JTextField tf = new JTextField();
+        final JTextField tf = new JTextField();
         tf.setText(this.headLabel.getText());
         tf.setFont(this.headLabel.getFont());
         tf.requestFocus();
         this.headPanel.add(tf);
         this.headPanel.revalidate();
+        tf.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                finishNameChange(tf.getText()); 
+            }
+        });
+    }
+    
+    private void finishNameChange(String name) {
+        headLabel.setText(name);
+        headPanel.removeAll();
+        headPanel.add(headLabel);
+        if (this.order instanceof ListOrder) {
+            ((ListOrder)this.order).setName(name);
+        }
+        headPanel.setPreferredSize(this.headLabel.getPreferredSize());
+        headPanel.revalidate();
     }
     
     private void addWholeOrderToShoppingCart() {

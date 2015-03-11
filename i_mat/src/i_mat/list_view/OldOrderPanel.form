@@ -22,6 +22,9 @@
         <MenuItem class="javax.swing.JMenuItem" name="changeNameMenuItem">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xc4;ndra namn"/>
+            <Property name="enabled" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="this.order instanceof ListOrder" type="code"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeNameMenuItemActionPerformed"/>
@@ -193,6 +196,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="headPanel">
       <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[123, 300]"/>
+        </Property>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
 
