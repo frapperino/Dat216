@@ -24,6 +24,11 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="makeFavoriteMenuItemActionPerformed"/>
           </Events>
         </MenuItem>
+        <Menu class="javax.swing.JMenu" name="addToListMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="L&#xe4;gg i lista&#x2026;"/>
+          </Properties>
+        </Menu>
         <MenuItem class="javax.swing.JMenuItem" name="removeForeverMenuItem">
           <Properties>
             <Property name="text" type="java.lang.String" value="Visa aldrig varan igen"/>

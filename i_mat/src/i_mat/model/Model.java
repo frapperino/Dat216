@@ -371,6 +371,12 @@ public class Model {
         shoppingLists.remove(ord);
     }
     
+    public static void addItemToShoppingList(ListOrder order, ShoppingItem item) {
+        List<ShoppingItem> i = order.getItems();
+        i.add(item);
+        order.setItems(i);
+    }
+    
     public static ListOrder getTestShoppingList() {
         ListOrder o = new ListOrder("Test");
         List<ShoppingItem> l = new ArrayList<>();

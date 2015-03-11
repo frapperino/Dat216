@@ -9,6 +9,7 @@ import i_mat.IMat;
 import i_mat.model.Model;
 import i_mat.utilities.ColorScheme;
 import i_mat.utilities.GUIConstants;
+import i_mat.utilities.ListOrder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -20,6 +21,7 @@ import javax.swing.Action;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
+import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -51,6 +53,15 @@ public class ProductThumbnail extends javax.swing.JPanel {
         this.product = p;
         initComponents();
         this.validate();
+        for (final ListOrder l : Model.getShoppingLists()) {
+            AddToListMenuItem m = new AddToListMenuItem(l);
+            m.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addItemToList(l);
+            }
+        });
+            this.addToListMenu.add(m);
+        }
     }
     
     public Product getProduct() {
@@ -68,6 +79,7 @@ public class ProductThumbnail extends javax.swing.JPanel {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         makeFavoriteMenuItem = new javax.swing.JMenuItem();
+        addToListMenu = new javax.swing.JMenu();
         removeForeverMenuItem = new javax.swing.JMenuItem();
         imageButton = new javax.swing.JButton();
         nameLabel = new javax.swing.JLabel();
@@ -90,6 +102,9 @@ public class ProductThumbnail extends javax.swing.JPanel {
             }
         });
         jPopupMenu1.add(makeFavoriteMenuItem);
+
+        addToListMenu.setText("Lägg i lista…");
+        jPopupMenu1.add(addToListMenu);
 
         removeForeverMenuItem.setText("Visa aldrig varan igen");
         removeForeverMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -260,6 +275,10 @@ public class ProductThumbnail extends javax.swing.JPanel {
         Model.removeProductForever(this.product);        // TODO add your handling code here:
     }//GEN-LAST:event_removeForeverMenuItemActionPerformed
 
+    private void addItemToList(ListOrder l) {
+        Model.addItemToShoppingList(l, this.getShoppingItem());
+    }
+    
     private String favoriteMenueItemText() {
         String s = Model.isFavorite(this.product) ? "Ta bort från favoriter" : "Gör till favorit";
         return s;
@@ -305,6 +324,7 @@ public class ProductThumbnail extends javax.swing.JPanel {
         return new ShoppingItem(product, value.doubleValue());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu addToListMenu;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
