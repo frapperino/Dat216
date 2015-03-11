@@ -88,7 +88,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
                 .addComponent(jLabel2)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
+                .addGap(97, 97, 97)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
