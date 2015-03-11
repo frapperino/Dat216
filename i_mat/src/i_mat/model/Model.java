@@ -357,6 +357,7 @@ public class Model {
     }
     
     public static List<ListOrder> getShoppingLists() {
+        if (shoppingLists == null) readShoppingLists();
         return new ArrayList<>(shoppingLists);
     }
     

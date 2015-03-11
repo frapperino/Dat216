@@ -122,7 +122,6 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (Model.getShoppingCart().getItems().size() > 0) {
             IMat.setCenterStage(new CheckoutPanel(getDeliveryAddresses(), getCreditCards()));        
-            System.out.println(getDeliveryAddresses());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

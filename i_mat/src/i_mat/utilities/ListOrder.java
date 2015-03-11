@@ -7,7 +7,9 @@ package i_mat.utilities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import se.chalmers.ait.dat215.project.Order;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -16,6 +18,7 @@ import se.chalmers.ait.dat215.project.Order;
 public class ListOrder extends Order implements Serializable {
     
     private String name = "";
+    private List<ShoppingItem> items;
     
     public ListOrder(String name) {
         super();
@@ -32,6 +35,21 @@ public class ListOrder extends Order implements Serializable {
     
     public void setName(String newName) {
         this.name = newName;
+    }
+    
+    @Override
+    public void setItems(List<ShoppingItem> items) {
+        this.items = items;
+    }
+    
+    @Override
+    public List<ShoppingItem> getItems() {
+        return this.items;
+    }
+    
+    @Override
+    public String toString() {
+        return this.name + this.getItems();
     }
     
 }
