@@ -92,6 +92,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
 
         setBackground(new java.awt.Color(0, 255, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setMinimumSize(new java.awt.Dimension(600, 0));
         setOpaque(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -126,6 +127,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
                 formMouseEntered(evt);
             }
         });
+        subPanel.add(subLabel, java.awt.BorderLayout.CENTER);
 
         jPanel1.setMinimumSize(jButton1.minimumSize());
         jPanel1.setOpaque(false);
@@ -208,12 +210,8 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(subLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(headPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(406, 415, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(subPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -224,8 +222,6 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
                 .addContainerGap()
                 .addComponent(headPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(subLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(subPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -340,6 +336,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
     private void switchView() {
         if (this.clicked) {
             this.subPanel.removeAll();
+            this.subLabel.setText(GenerateComponentsUtilities.getProductsString(this.order.getItems()));
             this.subPanel.add(this.subLabel);
         }
         else {
@@ -348,6 +345,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
             this.subPanel.add(this.collapseButton, BorderLayout.SOUTH);
         }
         this.clicked = !this.clicked;
+        this.revalidate();
         this.firePropertyChange("Changed value", !clicked, clicked);
     }
 }
