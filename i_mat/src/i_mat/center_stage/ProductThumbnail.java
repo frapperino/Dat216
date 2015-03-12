@@ -34,7 +34,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class ProductThumbnail extends javax.swing.JPanel {
     
     private Border selectedBorder = BorderFactory.createLineBorder(ColorScheme.getSelectedProductBorderColor(), 1, true);
-    private Border unselectedBorder = BorderFactory.createEmptyBorder(1,1,1,1);
+    private Border unselectedBorder = BorderFactory.createEtchedBorder(1);
     private boolean isSelected = false;
     
     private final Product product;
@@ -321,7 +321,7 @@ public class ProductThumbnail extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JMenuItem makeFavoriteMenuItem;
     private javax.swing.JLabel nameLabel;
