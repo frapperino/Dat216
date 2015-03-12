@@ -5,6 +5,8 @@
  */
 package i_mat;
 
+import i_mat.utilities.ColorScheme;
+
 /**
  *
  * @author Hjort
@@ -28,6 +30,8 @@ public class LoadPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jProgressBar2 = new javax.swing.JProgressBar();
+
+        setBackground(ColorScheme.getStandardPanelBackground());
 
         jProgressBar2.setIndeterminate(true);
 

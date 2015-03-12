@@ -45,10 +45,12 @@ public class InputNewPaymentMethodPanel extends javax.swing.JPanel {
         cardNumberErrorLabel = new javax.swing.JLabel();
         cvcErrorLabel = new javax.swing.JLabel();
 
+        setOpaque(false);
         setSize(new java.awt.Dimension(250, 193));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.X_AXIS));
 
         jPanel1.setMinimumSize(new java.awt.Dimension(250, 193));
+        jPanel1.setOpaque(false);
 
         cardNumberField.setText("Kortnummer");
 
@@ -116,6 +118,8 @@ public class InputNewPaymentMethodPanel extends javax.swing.JPanel {
         );
 
         add(jPanel1);
+
+        jPanel2.setOpaque(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

@@ -272,6 +272,7 @@ public class ProductThumbnail extends javax.swing.JPanel {
     
     public void addThisToShoppingCart() {
          Model.addShoppingItem(this.getShoppingItem());
+         this.jSpinner1.setValue(1);
     }
     
     public void openProductView() {

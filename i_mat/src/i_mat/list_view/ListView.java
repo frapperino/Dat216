@@ -6,6 +6,7 @@
 package i_mat.list_view;
 
 import i_mat.model.Model;
+import i_mat.utilities.ColorScheme;
 import i_mat.utilities.GUIConstants;
 import i_mat.utilities.ListOrder;
 import java.awt.Component;
@@ -82,8 +83,14 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
         jLabel2 = new javax.swing.JLabel();
         shoppingListsPanel = new javax.swing.JPanel();
 
+        setBackground(ColorScheme.getStandardPanelBackground());
+
+        jPanel1.setOpaque(false);
+
         jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD, jLabel1.getFont().getSize()+10));
         jLabel1.setText("Historik");
+
+        historyPanel.setOpaque(false);
 
         javax.swing.GroupLayout historyPanelLayout = new javax.swing.GroupLayout(historyPanel);
         historyPanel.setLayout(historyPanelLayout);
@@ -98,6 +105,8 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
 
         jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getStyle() | java.awt.Font.BOLD, jLabel2.getFont().getSize()+10));
         jLabel2.setText("Mina listor");
+
+        shoppingListsPanel.setOpaque(false);
 
         javax.swing.GroupLayout shoppingListsPanelLayout = new javax.swing.GroupLayout(shoppingListsPanel);
         shoppingListsPanel.setLayout(shoppingListsPanelLayout);

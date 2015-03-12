@@ -51,7 +51,10 @@ public class PaymentsPanel extends javax.swing.JPanel {
 
         newPaymentPanel1 = new i_mat.center_stage.customer_profile.payment.NewPaymentPanel();
 
+        setOpaque(false);
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
+
+        newPaymentPanel1.setOpaque(false);
         add(newPaymentPanel1);
     }// </editor-fold>//GEN-END:initComponents
 

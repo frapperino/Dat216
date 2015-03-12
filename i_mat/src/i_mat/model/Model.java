@@ -140,7 +140,7 @@ public class Model {
     }
 
     public static List<Product> getPromoProducts() {
-        return dataHandler.getProducts().subList(0, 10);
+        return dataHandler.getProducts().subList(0, 3);
     }
 
     /**

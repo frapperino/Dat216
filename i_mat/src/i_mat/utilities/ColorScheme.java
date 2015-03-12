@@ -62,4 +62,8 @@ public class ColorScheme {
    public static Color getNavbarBackground() {
        return new Color(204,51,0);
    }
+   
+   public static Color getStandardPanelBackground() {
+       return Color.white;
+   }
 }

@@ -43,9 +43,11 @@ public class InputNewAddressPanel extends javax.swing.JPanel {
         jTextField8 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
+        setOpaque(false);
         setSize(new java.awt.Dimension(250, 193));
 
         jPanel1.setMinimumSize(new java.awt.Dimension(250, 193));
+        jPanel1.setOpaque(false);
         jPanel1.setSize(new java.awt.Dimension(250, 193));
 
         jTextField2.setText("Efternamn");

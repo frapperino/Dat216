@@ -49,6 +49,7 @@ public class AddressesPanel extends javax.swing.JPanel {
 
         newAddressPanel2 = new i_mat.center_stage.customer_profile.address.NewAddressPanel();
 
+        setOpaque(false);
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
         add(newAddressPanel2);
     }// </editor-fold>//GEN-END:initComponents

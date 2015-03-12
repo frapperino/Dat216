@@ -52,6 +52,7 @@ public class EditAddressPanel extends javax.swing.JPanel {
         jTextField8 = new javax.swing.JTextField();
 
         setMinimumSize(new java.awt.Dimension(250, 193));
+        setOpaque(false);
         setSize(new java.awt.Dimension(250, 193));
 
         jTextField2.setText(deliveryAddress.getLastName());

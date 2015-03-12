@@ -43,6 +43,8 @@ public class NewCardPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
+        setOpaque(false);
+
         jTextField1.setText("**** **** **** ****");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

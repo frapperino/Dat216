@@ -17,6 +17,7 @@ import static i_mat.model.Model.addDeliveryAddress;
 import static i_mat.model.Model.getAddress;
 import static i_mat.model.Model.getAddressByAddress;
 import static i_mat.model.Model.getCreditCardByNum;
+import i_mat.utilities.ColorScheme;
 
 import java.util.List;
 import se.chalmers.ait.dat215.project.Customer;
@@ -136,6 +137,8 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
         jLabel24.setText("(required)");
         jLabel24.setEnabled(false);
+
+        setBackground(ColorScheme.getStandardPanelBackground());
 
         addressButtonGroup.add(oldAdressButton);
         oldAdressButton.setSelected(true);

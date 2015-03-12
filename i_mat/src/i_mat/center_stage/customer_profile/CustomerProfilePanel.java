@@ -5,6 +5,8 @@
  */
 package i_mat.center_stage.customer_profile;
 
+import i_mat.utilities.ColorScheme;
+
 /**
  *
  * @author weeeeeew
@@ -31,6 +33,8 @@ public class CustomerProfilePanel extends javax.swing.JPanel {
         addressesPanel1 = new i_mat.center_stage.customer_profile.address.AddressesPanel();
         jLabel2 = new javax.swing.JLabel();
         paymentsPanel1 = new i_mat.center_stage.customer_profile.payment.PaymentsPanel();
+
+        setBackground(ColorScheme.getStandardPanelBackground());
 
         jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD, jLabel1.getFont().getSize()+7));
         jLabel1.setText("Leveransadresser");

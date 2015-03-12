@@ -30,6 +30,8 @@ public class RecipiePanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
+        setOpaque(false);
+
         jLabel2.setText("Ingredienser");
 
         jButton1.setText("Bild");
