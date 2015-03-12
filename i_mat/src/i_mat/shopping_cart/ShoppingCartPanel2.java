@@ -7,6 +7,7 @@ package i_mat.shopping_cart;
 
 import i_mat.center_stage.WrapLayout;
 import i_mat.model.Model;
+import i_mat.utilities.ColorScheme;
 import i_mat.utilities.GUIConstants;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class ShoppingCartPanel2 extends JScrollPane implements ShoppingCartListe
         mainPanel = new JPanel(new WrapLayout(FlowLayout.LEFT));
         this.getVerticalScrollBar().setUnitIncrement(GUIConstants.SCROLL_INCREMENT);
         this.addAllItemsInCart();
+        this.mainPanel.setBackground(ColorScheme.getShoppingCartBackgroundColor());
     }
         
     private void addAllItemsInCart() {
