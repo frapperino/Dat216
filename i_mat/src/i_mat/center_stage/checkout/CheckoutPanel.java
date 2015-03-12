@@ -304,12 +304,35 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jTextField2.setEnabled(false);
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
 
         jTextField3.setEnabled(false);
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
 
         jTextField4.setEnabled(false);
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
         jLabel17.setText("*");
         jLabel17.setEnabled(false);
@@ -785,6 +808,26 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        if(this.jTextField1.getText().length() > 2)
+            this.jTextField2.requestFocus();      // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        if(this.jTextField2.getText().length() > 2)
+            this.jTextField3.requestFocus();        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        if(this.jTextField3.getText().length() > 2)
+            this.jTextField4.requestFocus();        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        if(this.jTextField4.getText().length() > 2)
+            this.jTextField10.requestFocus();        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4KeyTyped
     private void clearShowingCard(){
         jTextField1.setText("");
         jTextField2.setText("");
