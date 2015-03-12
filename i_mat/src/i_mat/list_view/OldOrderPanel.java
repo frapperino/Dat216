@@ -146,8 +146,9 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/cart.png"))); // NOI18N
         jButton1.setBorder(null);
-        jButton1.setMinimumSize(new java.awt.Dimension(50, 50));
-        jButton1.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton1.setMinimumSize(new java.awt.Dimension(60, 60));
+        jButton1.setPreferredSize(new java.awt.Dimension(60, 60));
+        jButton1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 formMouseExited(evt);
@@ -175,8 +176,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
 
         headPanel.setMinimumSize(new java.awt.Dimension(123, 300));
@@ -223,10 +223,8 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
                 .addComponent(headPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(subPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
