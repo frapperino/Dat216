@@ -123,8 +123,9 @@ public class BrowsePanel extends javax.swing.JPanel {
         browseTree = new javax.swing.JTree();
 
         setBackground(ColorScheme.getShoppingCartBackgroundColor());
+        setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
 
-        browseScrollPane.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
+        browseScrollPane.setBorder(null);
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Alla produkter");
