@@ -7,6 +7,7 @@ package i_mat.center_stage.home;
 
 import i_mat.center_stage.ThumbsPanel;
 import i_mat.model.Model;
+import javax.swing.BorderFactory;
 
 /**
  *

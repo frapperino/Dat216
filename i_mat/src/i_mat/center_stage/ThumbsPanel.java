@@ -17,6 +17,7 @@ import java.awt.event.KeyEvent;
 import java.util.Comparator;
 import java.util.List;
 import javax.swing.AbstractAction;
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -38,6 +39,7 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
     
     public ThumbsPanel(List<Product> prodList) {
         //Copies product list so that stuff does not get rearranged/sorted
+        this.setBorder(BorderFactory.createEmptyBorder());
         this.prodList = prodList.subList(0, prodList.size());
         this.getVerticalScrollBar().setUnitIncrement(GUIConstants.SCROLL_INCREMENT);
         this.redoFromNewProdList(prodList);
