@@ -8,14 +8,18 @@ package i_mat.list_view;
 import i_mat.model.Model;
 import i_mat.utilities.ColorScheme;
 import i_mat.utilities.GUIConstants;
+import i_mat.utilities.ListOrder;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.PopupMenu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 import javax.swing.JButton;
 import net.miginfocom.swing.MigLayout;
 import se.chalmers.ait.dat215.project.Order;
@@ -53,26 +57,62 @@ public class HistoryFullListPanel extends javax.swing.JPanel {
         
         int total = 0;
         boolean striped = false;
-        for (ShoppingItem item : o.getItems()) {
-            total += item.getTotal();
-            JLabel image = new JLabel();
-            image.setIcon(Model.getImageIconForProduct(item.getProduct(), GUIConstants.MICRO_THUMBNAIL_SIZE));
-            JLabel nameL = new JLabel(item.getProduct().getName());
-            JLabel amountL = new JLabel(Integer.toString((int)item.getAmount()) 
-            + " " + item.getProduct().getUnitSuffix());
-            JLabel costL = new JLabel(item.getTotal() + " kr");
-            JPanel rowPanel = new JPanel();
-            GridLayout gl = new GridLayout(1,4, 0, 0);
-            rowPanel.setLayout(gl);
-            rowPanel.setAlignmentX(SwingConstants.LEFT);
-            Color bgColor = striped ? ColorScheme.rowStripingDark() : ColorScheme.rowStripingLight();
-            striped = !striped;
-            rowPanel.setBackground(bgColor);
-            rowPanel.add(image);
-            rowPanel.add(nameL);
-            rowPanel.add(amountL);
-            rowPanel.add(costL);
-            this.add(rowPanel);
+        if (o instanceof ListOrder) {
+            System.out.println("listitem");
+            for (ShoppingItem item : o.getItems()) {
+                total += item.getTotal();
+                JLabel image = new JLabel();
+                image.setIcon(Model.getImageIconForProduct(item.getProduct(), GUIConstants.MICRO_THUMBNAIL_SIZE));
+                JLabel nameL = new JLabel(item.getProduct().getName());
+                JLabel amountL = new JLabel(Integer.toString((int)item.getAmount()) 
+                + " " + item.getProduct().getUnitSuffix());
+                JLabel costL = new JLabel(item.getTotal() + " kr");
+                JPanel rowPanel = new JPanel();
+                GridLayout gl = new GridLayout(1,5, 0, 0);
+                rowPanel.setLayout(gl);
+                rowPanel.setAlignmentX(SwingConstants.LEFT);
+                Color bgColor = striped ? ColorScheme.rowStripingDark() : ColorScheme.rowStripingLight();
+                striped = !striped;
+                RemoveProductButton button = new RemoveProductButton(item);
+                button.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        removeItem(((RemoveProductButton)e.getSource()).getItem());
+                    }
+
+                });
+                button.setText("Ta bort");
+                rowPanel.setBackground(bgColor);
+                rowPanel.add(button);
+                rowPanel.add(image);
+                rowPanel.add(nameL);
+                rowPanel.add(amountL);
+                rowPanel.add(costL);
+                this.add(rowPanel);
+            }
+        } else {
+            for (ShoppingItem item : o.getItems()) {
+                total += item.getTotal();
+                JLabel image = new JLabel();
+                image.setIcon(Model.getImageIconForProduct(item.getProduct(), GUIConstants.MICRO_THUMBNAIL_SIZE));
+                JLabel nameL = new JLabel(item.getProduct().getName());
+                JLabel amountL = new JLabel(Integer.toString((int)item.getAmount()) 
+                + " " + item.getProduct().getUnitSuffix());
+                JLabel costL = new JLabel(item.getTotal() + " kr");
+                JPanel rowPanel = new JPanel();
+                GridLayout gl = new GridLayout(1,4, 0, 0);
+                rowPanel.setLayout(gl);
+                rowPanel.setAlignmentX(SwingConstants.LEFT);
+                Color bgColor = striped ? ColorScheme.rowStripingDark() : ColorScheme.rowStripingLight();
+                striped = !striped;
+                rowPanel.setBackground(bgColor);
+                rowPanel.add(image);
+                rowPanel.add(nameL);
+                rowPanel.add(amountL);
+                rowPanel.add(costL);
+                this.add(rowPanel);
+            }
         }
         JPanel rowPanel = new JPanel();
         GridLayout gl = new GridLayout(1,4, 0, 10);
@@ -90,6 +130,15 @@ public class HistoryFullListPanel extends javax.swing.JPanel {
         rowPanel.add(totalLabel2);
         this.add(rowPanel);
         this.revalidate();
+    }
+    
+    private void removeItem(ShoppingItem item) {
+        List<ShoppingItem> l = o.getItems();
+        l.remove(item);
+        o.setItems(l);
+        this.removeAll();
+        this.addAllItems();
+        this.revalidate();                   
     }
     
     /**
