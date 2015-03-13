@@ -83,6 +83,7 @@ public class NavigationPanel extends javax.swing.JPanel {
         homeButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, ColorScheme.getNavbarBackground().darker()
             , ColorScheme.getNavbarBackground()
             , ColorScheme.getNavbarBackground().darker(), ColorScheme.getNavbarBackground().brighter()));
+    homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     homeButton.setFocusable(false);
     homeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
     homeButton.setPreferredSize(new java.awt.Dimension(53, 30));
@@ -100,6 +101,7 @@ public class NavigationPanel extends javax.swing.JPanel {
     backwardButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, ColorScheme.getNavbarBackground().darker()
         , ColorScheme.getNavbarBackground()
         , ColorScheme.getNavbarBackground().darker(), ColorScheme.getNavbarBackground().brighter()));
+backwardButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 backwardButton.setFocusable(false);
 backwardButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 backwardButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -115,6 +117,7 @@ backwardButton.addActionListener(new java.awt.event.ActionListener() {
     forwardButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, ColorScheme.getNavbarBackground().darker()
         , ColorScheme.getNavbarBackground()
         , ColorScheme.getNavbarBackground().darker(), ColorScheme.getNavbarBackground().brighter()));
+forwardButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 forwardButton.setFocusable(false);
 forwardButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 forwardButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -153,6 +156,7 @@ forwardButton.addActionListener(new java.awt.event.ActionListener() {
     listsButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, ColorScheme.getNavbarBackground().darker()
         , ColorScheme.getNavbarBackground()
         , ColorScheme.getNavbarBackground().darker(), ColorScheme.getNavbarBackground().brighter()));
+listsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 listsButton.setFocusable(false);
 listsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 listsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -168,6 +172,7 @@ listsButton.addActionListener(new java.awt.event.ActionListener() {
     profileButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, ColorScheme.getNavbarBackground().darker()
         , ColorScheme.getNavbarBackground()
         , ColorScheme.getNavbarBackground().darker(), ColorScheme.getNavbarBackground().brighter()));
+profileButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 profileButton.setFocusable(false);
 profileButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 profileButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
