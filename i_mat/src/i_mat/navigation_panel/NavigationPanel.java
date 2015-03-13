@@ -67,7 +67,7 @@ public class NavigationPanel extends javax.swing.JPanel {
         profileButton = new javax.swing.JButton();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0));
 
-        navigationBar.setBackground(ColorScheme.getNavbarBackground());
+        navigationBar.setBackground(new java.awt.Color(204, 51, 0));
         navigationBar.setFloatable(false);
         navigationBar.setRollover(true);
 
@@ -80,115 +80,119 @@ public class NavigationPanel extends javax.swing.JPanel {
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Home.png"))); // NOI18N
-        homeButton.setBorder(null);
-        homeButton.setFocusable(false);
-        homeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        homeButton.setOpaque(false);
-        homeButton.setPreferredSize(new java.awt.Dimension(53, 30));
-        homeButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        homeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(homeButton);
-        jPanel1.add(filler1);
+        homeButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, ColorScheme.getNavbarBackground().darker()
+            , ColorScheme.getNavbarBackground()
+            , ColorScheme.getNavbarBackground().darker(), ColorScheme.getNavbarBackground().brighter()));
+    homeButton.setFocusable(false);
+    homeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    homeButton.setPreferredSize(new java.awt.Dimension(53, 30));
+    homeButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    homeButton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            homeButtonActionPerformed(evt);
+        }
+    });
+    jPanel1.add(homeButton);
+    jPanel1.add(filler1);
 
-        backwardButton.setForeground(this.decideBackwardEnabledColor());
-        backwardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Back-nonsolid.png"))); // NOI18N
-        backwardButton.setBorder(null);
-        backwardButton.setFocusable(false);
-        backwardButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        backwardButton.setOpaque(false);
-        backwardButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        backwardButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backwardButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(backwardButton);
+    backwardButton.setForeground(this.decideBackwardEnabledColor());
+    backwardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Back-nonsolid.png"))); // NOI18N
+    backwardButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, ColorScheme.getNavbarBackground().darker()
+        , ColorScheme.getNavbarBackground()
+        , ColorScheme.getNavbarBackground().darker(), ColorScheme.getNavbarBackground().brighter()));
+backwardButton.setFocusable(false);
+backwardButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+backwardButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+backwardButton.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        backwardButtonActionPerformed(evt);
+    }
+    });
+    jPanel1.add(backwardButton);
 
-        forwardButton.setForeground(this.decideForwardEnabledColor());
-        forwardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Forward-nonsolid.png"))); // NOI18N
-        forwardButton.setBorder(null);
-        forwardButton.setFocusable(false);
-        forwardButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        forwardButton.setOpaque(false);
-        forwardButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        forwardButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                forwardButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(forwardButton);
+    forwardButton.setForeground(this.decideForwardEnabledColor());
+    forwardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Forward-nonsolid.png"))); // NOI18N
+    forwardButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, ColorScheme.getNavbarBackground().darker()
+        , ColorScheme.getNavbarBackground()
+        , ColorScheme.getNavbarBackground().darker(), ColorScheme.getNavbarBackground().brighter()));
+forwardButton.setFocusable(false);
+forwardButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+forwardButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+forwardButton.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        forwardButtonActionPerformed(evt);
+    }
+    });
+    jPanel1.add(forwardButton);
 
-        jPanel5.add(jPanel1);
+    jPanel5.add(jPanel1);
 
-        navigationBar.add(jPanel5);
+    navigationBar.add(jPanel5);
 
-        jPanel3.setMaximumSize(new java.awt.Dimension(300000, 45));
-        jPanel3.setOpaque(false);
-        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
+    jPanel3.setMaximumSize(new java.awt.Dimension(300000, 45));
+    jPanel3.setOpaque(false);
+    jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
 
-        searchBoxPanel1.setMaximumSize(new java.awt.Dimension(350, 45));
-        searchBoxPanel1.setMinimumSize(new java.awt.Dimension(50, 30));
-        searchBoxPanel1.setPreferredSize(new java.awt.Dimension(400, 45));
-        jPanel3.add(searchBoxPanel1);
+    searchBoxPanel1.setMaximumSize(new java.awt.Dimension(350, 45));
+    searchBoxPanel1.setMinimumSize(new java.awt.Dimension(50, 30));
+    searchBoxPanel1.setPreferredSize(new java.awt.Dimension(400, 45));
+    jPanel3.add(searchBoxPanel1);
 
-        navigationBar.add(jPanel3);
+    navigationBar.add(jPanel3);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 30, 0, 0));
-        jPanel2.setMaximumSize(new java.awt.Dimension(250, 31));
-        jPanel2.setOpaque(false);
-        jPanel2.setPreferredSize(new java.awt.Dimension(280, 30));
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
+    jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 30, 0, 0));
+    jPanel2.setMaximumSize(new java.awt.Dimension(250, 31));
+    jPanel2.setOpaque(false);
+    jPanel2.setPreferredSize(new java.awt.Dimension(280, 30));
+    jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel4.setOpaque(false);
-        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
+    jPanel4.setOpaque(false);
+    jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
 
-        listsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/List.png"))); // NOI18N
-        listsButton.setBorder(null);
-        listsButton.setFocusable(false);
-        listsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        listsButton.setOpaque(false);
-        listsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        listsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listsButtonActionPerformed(evt);
-            }
-        });
-        jPanel4.add(listsButton);
-        jPanel4.add(filler2);
+    listsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/List.png"))); // NOI18N
+    listsButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, ColorScheme.getNavbarBackground().darker()
+        , ColorScheme.getNavbarBackground()
+        , ColorScheme.getNavbarBackground().darker(), ColorScheme.getNavbarBackground().brighter()));
+listsButton.setFocusable(false);
+listsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+listsButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+listsButton.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        listsButtonActionPerformed(evt);
+    }
+    });
+    jPanel4.add(listsButton);
+    jPanel4.add(filler2);
 
-        profileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MyPages.png"))); // NOI18N
-        profileButton.setBorder(null);
-        profileButton.setContentAreaFilled(false);
-        profileButton.setFocusable(false);
-        profileButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        profileButton.setOpaque(true);
-        profileButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        profileButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                profileButtonActionPerformed(evt);
-            }
-        });
-        jPanel4.add(profileButton);
-        jPanel4.add(filler4);
+    profileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MyPages.png"))); // NOI18N
+    profileButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, ColorScheme.getNavbarBackground().darker()
+        , ColorScheme.getNavbarBackground()
+        , ColorScheme.getNavbarBackground().darker(), ColorScheme.getNavbarBackground().brighter()));
+profileButton.setFocusable(false);
+profileButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+profileButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+profileButton.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        profileButtonActionPerformed(evt);
+    }
+    });
+    jPanel4.add(profileButton);
+    jPanel4.add(filler4);
 
-        jPanel2.add(jPanel4);
+    jPanel2.add(jPanel4);
 
-        navigationBar.add(jPanel2);
+    navigationBar.add(jPanel2);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(navigationBar, javax.swing.GroupLayout.DEFAULT_SIZE, 963, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(navigationBar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+    this.setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(navigationBar, javax.swing.GroupLayout.DEFAULT_SIZE, 963, Short.MAX_VALUE)
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(navigationBar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+    );
     }// </editor-fold>//GEN-END:initComponents
 
     private void listsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listsButtonActionPerformed
