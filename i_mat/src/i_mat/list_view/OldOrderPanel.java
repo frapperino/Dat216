@@ -148,7 +148,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/cart.png"))); // NOI18N
-        jButton1.setBorder(null);
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 0), null, null));
         jButton1.setMinimumSize(new java.awt.Dimension(60, 60));
         jButton1.setPreferredSize(new java.awt.Dimension(60, 60));
         jButton1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
