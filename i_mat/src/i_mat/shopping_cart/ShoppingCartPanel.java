@@ -68,7 +68,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         jLabel2.setText(Model.getShoppingCart().getTotal()+ " kr");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/trashcan.png"))); // NOI18N
-        jButton2.setBorder(null);
+        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -76,7 +76,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/List.png"))); // NOI18N
-        jButton3.setBorder(null);
+        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -115,7 +115,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
                     .addComponent(jLabel1)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addComponent(shoppingCartPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                .addComponent(shoppingCartPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
