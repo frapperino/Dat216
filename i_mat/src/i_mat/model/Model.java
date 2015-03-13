@@ -503,7 +503,7 @@ public class Model {
         return dataHandler.getProducts(category);
     }
     
-    public static List<Product> getProductsInCategory(String name) {
+    public synchronized static List<Product> getProductsInCategory(String name) {
         List <Product> l = new LinkedList<>();
         List<Product> theirList;
         Product p;
