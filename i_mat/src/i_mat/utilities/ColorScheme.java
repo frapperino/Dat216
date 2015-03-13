@@ -48,11 +48,11 @@ public class ColorScheme {
     }
     
     public static Color getSelectedBrowseItemBackground() {
-        return Color.blue;
+        return selectedThumbnailBackground();
     }
     
    public static Color getSelectedBrowseItemForeground() {
-        return Color.white;
+        return Color.black;
     } 
    
    public static Color getThumbsPanelBackground() {

@@ -98,6 +98,8 @@ public class BrowsePanel extends javax.swing.JPanel {
         rend.setLeafIcon(null);
         rend.setOpaque(false);
         rend.setBackgroundSelectionColor(ColorScheme.getSelectedBrowseItemBackground());
+        rend.setBorderSelectionColor(ColorScheme.getSelectedBrowseItemBackground());
+        rend.setTextSelectionColor(ColorScheme.getSelectedBrowseItemForeground());
         rend.setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.browseTree.getInputMap(JComponent.WHEN_FOCUSED).
                 put(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.META_DOWN_MASK), "killSelect");
