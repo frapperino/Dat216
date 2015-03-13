@@ -86,6 +86,8 @@ public class ListView extends javax.swing.JPanel implements PropertyChangeListen
 
         setBackground(ColorScheme.getStandardPanelBackground());
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         jPanel1.setOpaque(false);
 
         jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD, jLabel1.getFont().getSize()+10));
