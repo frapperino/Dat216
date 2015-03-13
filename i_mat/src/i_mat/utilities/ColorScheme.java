@@ -46,7 +46,7 @@ public class ColorScheme {
     }
     
     public static Color getDescriptionBackground() {
-        return new Color(222,185,106);
+        return selectedThumbnailBackground();
     }
     
     public static Color getSelectedBrowseItemBackground() {
