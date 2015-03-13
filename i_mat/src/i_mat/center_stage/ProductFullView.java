@@ -52,6 +52,7 @@ public class ProductFullView extends javax.swing.JPanel {
     private void putThisInCart() {
         Number i = (Number)this.nbrOfProductsSpinner1.getValue();
         Model.addShoppingItem(new ShoppingItem(this.product, i.doubleValue()));
+        this.nbrOfProductsSpinner1.setValue(1);
     }
     /**
      * This method is called from within the constructor to initialize the form.
