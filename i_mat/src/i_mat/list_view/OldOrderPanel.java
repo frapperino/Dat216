@@ -6,6 +6,7 @@
 package i_mat.list_view;
 
 import i_mat.model.Model;
+import i_mat.utilities.ColorScheme;
 import i_mat.utilities.GenerateComponentsUtilities;
 import i_mat.utilities.ListOrder;
 import java.awt.BorderLayout;
@@ -69,6 +70,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         subLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(60, 0), new java.awt.Dimension(60, 32767));
         headPanel = new javax.swing.JPanel();
         headLabel = new javax.swing.JLabel();
 
@@ -91,7 +93,9 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         jPopupMenu1.add(changeNameMenuItem);
 
         setBackground(new java.awt.Color(0, 255, 0));
+        setBorder(ColorScheme.getSoftBorder());
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setMaximumSize(new java.awt.Dimension(600, 100000));
         setMinimumSize(new java.awt.Dimension(600, 0));
         setOpaque(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -131,7 +135,6 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
 
         jPanel1.setMinimumSize(jButton1.minimumSize());
         jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(jButton1.preferredSize());
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 subLabelMousePressed(evt);
@@ -170,13 +173,20 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         headPanel.setMinimumSize(new java.awt.Dimension(123, 300));
@@ -211,7 +221,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(headPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(406, 415, Short.MAX_VALUE))
+                        .addGap(393, 393, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(subPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -223,7 +233,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
                 .addComponent(headPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(subPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -316,6 +326,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem changeNameMenuItem;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel headLabel;
     private javax.swing.JPanel headPanel;
     private javax.swing.JButton jButton1;

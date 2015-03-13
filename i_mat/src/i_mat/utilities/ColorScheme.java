@@ -6,6 +6,8 @@
 package i_mat.utilities;
 
 import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 /**
  *
@@ -65,5 +67,9 @@ public class ColorScheme {
    
    public static Color getStandardPanelBackground() {
        return Color.white;
+   }
+   
+   public static Border getSoftBorder() {
+       return BorderFactory.createDashedBorder(ColorScheme.getSelectedProductBorderColor(), 1, 2.5f ,1,true);
    }
 }

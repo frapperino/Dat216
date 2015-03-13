@@ -34,7 +34,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class ProductThumbnail extends javax.swing.JPanel {
     
     private Border selectedBorder = BorderFactory.createLineBorder(ColorScheme.getSelectedProductBorderColor(), 1, true);
-    private Border unselectedBorder = BorderFactory.createDashedBorder(ColorScheme.getSelectedProductBorderColor(), 1, 2.5f ,1,true);
+    private Border unselectedBorder = ColorScheme.getSoftBorder();
     private boolean isSelected = false;
     
     private final Product product;
