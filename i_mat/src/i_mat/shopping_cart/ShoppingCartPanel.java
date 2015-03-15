@@ -56,9 +56,13 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Kundvagn");
 
+        jButton1.setBackground(ColorScheme.checkoutButtonBackground());
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setForeground(ColorScheme.checkoutButtonForeground());
         jButton1.setText("KASSA");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setOpaque(true);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

@@ -14,6 +14,15 @@ import javax.swing.border.Border;
  * @author Hjort
  */
 public class ColorScheme {
+    
+    public static Color checkoutButtonBackground() {
+        return new Color(153,0,0);
+    }
+    
+    public static Color checkoutButtonForeground() {
+        return  Color.white;
+    }
+    
     public static Color rowStripingLight() {
         return Color.WHITE;
     }
