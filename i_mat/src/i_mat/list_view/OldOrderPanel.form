@@ -8,17 +8,6 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
-          <Properties>
-            <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-              <KeyStroke key="DELETE"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Radera"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
-          </Events>
-        </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="changeNameMenuItem">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xc4;ndra namn"/>
@@ -28,6 +17,19 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeNameMenuItemActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <Component class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
+        </Component>
+        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+          <Properties>
+            <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+              <KeyStroke key="DELETE"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Radera"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
           </Events>
         </MenuItem>
       </SubComponents>
@@ -47,7 +49,7 @@
       <Dimension value="[600, 100000]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[600, 0]"/>
+      <Dimension value="[610, 0]"/>
     </Property>
     <Property name="opaque" type="boolean" value="false"/>
   </Properties>
@@ -78,7 +80,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="headPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="406" pref="393" max="32767" attributes="0"/>
+                      <EmptySpace pref="403" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="subPanel" max="32767" attributes="0"/>

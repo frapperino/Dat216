@@ -126,6 +126,7 @@ public class HistoryFullListPanel extends javax.swing.JPanel {
         totalLabel2.setFont(totalLabel2.getFont().deriveFont(Font.BOLD));
         rowPanel.add(new JLabel(""));
         rowPanel.add(new JLabel(""));
+        if (this.o instanceof ListOrder)rowPanel.add(new JLabel(""));
         rowPanel.add(totalLabel1);
         rowPanel.add(totalLabel2);
         this.add(rowPanel);

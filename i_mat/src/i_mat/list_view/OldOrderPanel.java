@@ -64,8 +64,9 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         changeNameMenuItem = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem1 = new javax.swing.JMenuItem();
         subPanel = new javax.swing.JPanel();
         subLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -73,6 +74,16 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(60, 0), new java.awt.Dimension(60, 32767));
         headPanel = new javax.swing.JPanel();
         headLabel = new javax.swing.JLabel();
+
+        changeNameMenuItem.setText("Ändra namn");
+        changeNameMenuItem.setEnabled(this.order instanceof ListOrder);
+        changeNameMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeNameMenuItemActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(changeNameMenuItem);
+        jPopupMenu1.add(jSeparator1);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0));
         jMenuItem1.setText("Radera");
@@ -83,20 +94,11 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
         });
         jPopupMenu1.add(jMenuItem1);
 
-        changeNameMenuItem.setText("Ändra namn");
-        changeNameMenuItem.setEnabled(this.order instanceof ListOrder);
-        changeNameMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                changeNameMenuItemActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(changeNameMenuItem);
-
         setBackground(new java.awt.Color(0, 255, 0));
         setBorder(ColorScheme.getSoftBorder());
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setMaximumSize(new java.awt.Dimension(600, 100000));
-        setMinimumSize(new java.awt.Dimension(600, 0));
+        setMinimumSize(new java.awt.Dimension(610, 0));
         setOpaque(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -221,7 +223,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(headPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(393, 393, Short.MAX_VALUE))
+                        .addContainerGap(403, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(subPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -333,6 +335,7 @@ public class OldOrderPanel extends javax.swing.JPanel implements ActionListener{
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel subLabel;
     private javax.swing.JPanel subPanel;
     // End of variables declaration//GEN-END:variables
