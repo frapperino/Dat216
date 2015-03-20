@@ -27,4 +27,7 @@ public interface ResultsPanel  {
      */
     public void filterBy(Filter f);
     
+    
+   public void putSelectedInCart();
+    
 }

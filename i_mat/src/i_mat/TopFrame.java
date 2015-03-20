@@ -24,6 +24,7 @@ public class TopFrame extends javax.swing.JFrame {
      */
     public TopFrame() {
         initComponents();
+        this.centerStagePanel = this.viewHomePanel1;
     }
 
     /**
@@ -41,6 +42,9 @@ public class TopFrame extends javax.swing.JFrame {
         centerStagePanel = this.centerStagePanel = new ViewHomePanel();
         viewHomePanel1 = new i_mat.center_stage.home.ViewHomePanel();
         navigationPanel = new i_mat.navigation_panel.NavigationPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +57,26 @@ public class TopFrame extends javax.swing.JFrame {
 
         topPanel.add(centerStagePanel, java.awt.BorderLayout.CENTER);
         topPanel.add(navigationPanel, java.awt.BorderLayout.PAGE_START);
+
+        jMenu2.setText("Handla");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem1.setText("Lägg markerad i kundvagnen");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,6 +91,18 @@ public class TopFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        if (this.centerStagePanel instanceof DisplayResultsPanel) {
+            ((DisplayResultsPanel)this.centerStagePanel).putSelectedInCart();
+        } else if(this.centerStagePanel instanceof ViewHomePanel) {
+            ((ViewHomePanel)this.centerStagePanel).putSelectedInCart();
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,6 +142,9 @@ public class TopFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private i_mat.browse_panel.BrowsePanel browsePanel2;
     private javax.swing.JPanel centerStagePanel;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private i_mat.navigation_panel.NavigationPanel navigationPanel;
     private i_mat.shopping_cart.ShoppingCartPanel shoppingCartPanel1;
     private javax.swing.JPanel topPanel;

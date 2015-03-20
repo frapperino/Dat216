@@ -38,6 +38,10 @@ public class DisplayResultsPanel extends javax.swing.JPanel implements PropertyC
         this.resultsPanel.sortBy(this.filterSortViewPanel2.getSorting());
         //Add filtering
     }
+    
+    public void putSelectedInCart() {
+        this.resultsPanel.putSelectedInCart();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

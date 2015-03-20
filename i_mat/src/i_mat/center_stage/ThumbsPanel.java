@@ -76,7 +76,8 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
         this.revalidate();
         this.getViewport().repaint();
     }
-
+    
+    @Override
     public void putSelectedInCart() {
         for (ProductThumbnail thumb : mainPanel.displayList) {
             if (thumb.isSelected()) {
@@ -98,7 +99,7 @@ public class ThumbsPanel extends JScrollPane implements ResultsPanel {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private static class InternalMainPanel extends JPanel {
+       private static class InternalMainPanel extends JPanel {
         private List<ProductThumbnail> displayList;
         public InternalMainPanel(List<Product> prodList, JScrollPane parent) {
             super(new WrapLayout(FlowLayout.LEFT));

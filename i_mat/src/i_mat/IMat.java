@@ -28,6 +28,7 @@ public class IMat {
         try {
             //Set look and feel to system standard
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            System.setProperty("apple.laf.useScreenMenuBar", "true");
         }
         catch (UnsupportedLookAndFeelException | ClassNotFoundException | 
                 InstantiationException | IllegalAccessException e) {

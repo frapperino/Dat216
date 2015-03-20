@@ -11,13 +11,15 @@ package i_mat.center_stage.home;
  */
 public class ViewHomePanel extends javax.swing.JPanel {
 
+    private final PromoPanel promo;
     /**
      * Creates new form ViewHomePanel
      */
     public ViewHomePanel() {
         initComponents();
         this.add(new RecipiePanel());
-        this.add(new PromoPanel());
+        this.promo = new PromoPanel();
+        this.add(promo);
     }
 
     /**
@@ -32,6 +34,9 @@ public class ViewHomePanel extends javax.swing.JPanel {
         setLayout(new java.awt.GridLayout(2, 0));
     }// </editor-fold>                        
 
+    public void putSelectedInCart() {
+        this.promo.putSelectedInCart();
+    }
 
     // Variables declaration - do not modify                     
     // End of variables declaration                   
