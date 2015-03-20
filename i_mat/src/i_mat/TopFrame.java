@@ -24,7 +24,6 @@ public class TopFrame extends javax.swing.JFrame {
      */
     public TopFrame() {
         initComponents();
-        this.centerStagePanel = this.viewHomePanel1;
     }
 
     /**
@@ -100,8 +99,10 @@ public class TopFrame extends javax.swing.JFrame {
         if (this.centerStagePanel instanceof DisplayResultsPanel) {
             ((DisplayResultsPanel)this.centerStagePanel).putSelectedInCart();
         } else if(this.centerStagePanel instanceof ViewHomePanel) {
+            this.viewHomePanel1.putSelectedInCart();
             ((ViewHomePanel)this.centerStagePanel).putSelectedInCart();
         }
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
