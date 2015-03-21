@@ -13,6 +13,7 @@ import static i_mat.model.Model.getDeliveryAddresses;
 import static i_mat.model.Model.getShoppingCart;
 import i_mat.utilities.ColorScheme;
 import i_mat.utilities.ListOrder;
+import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
@@ -147,7 +148,7 @@ public class ShoppingCartPanel extends javax.swing.JPanel implements ShoppingCar
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         List<ShoppingItem> list = Model.getShoppingCart().getItems();
         ListOrder order = new ListOrder();
-        order.setItems(list);
+        order.setItems(new ArrayList<ShoppingItem>(list));
         Model.addShoppingList(order);
     }//GEN-LAST:event_jButton3ActionPerformed
 
